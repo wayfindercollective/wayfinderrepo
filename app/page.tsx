@@ -31,7 +31,7 @@ export default function Home() {
               href="#enroll"
               className="inline-block bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              Enroll Now
+              Join the Void
             </a>
           </div>
         </div>
@@ -219,7 +219,7 @@ export default function Home() {
                 href="#"
                 className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors w-full sm:w-auto"
               >
-                Enroll Now - $297
+                Join the Void - $297
               </a>
             </div>
           </div>
@@ -243,7 +243,7 @@ export default function Home() {
               href="#enroll"
               className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors mb-8"
             >
-              Enroll Now - $297
+              Join the Void - $297
             </a>
             <div className="text-sm text-gray-500">
               <p>6-month program • $600 value • One-time payment</p>
