@@ -20,7 +20,7 @@ export default function Hero() {
         {/* CTA that jumps to pricing section */}
         <div className="mt-10">
           <a href="#pricing" className="inline-block rounded-2xl bg-white px-8 py-4 text-black font-semibold">
-            Enroll Now
+            Join the Void
           </a>
         </div>
       </div>
