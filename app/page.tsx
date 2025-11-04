@@ -1,65 +1,270 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <div className="min-h-screen w-full">
+      {/* Hero Section - Black */}
+      <section className="relative bg-black text-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div className="text-center">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+              Void Underground
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Transform Your Charisma Through Action
+            </p>
+            <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+              Join a community-driven program with missions, tasks, and real-world practice. 
+              Master the art of charisma through consistent action and learning.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+              <div className="text-center sm:text-left">
+                <div className="text-4xl sm:text-5xl font-bold text-red-500">$297</div>
+                <div className="text-sm text-gray-400 line-through">$600 value</div>
+              </div>
+              <div className="text-center sm:text-left">
+                <div className="text-lg font-semibold text-purple-400">50% Discount</div>
+                <div className="text-sm text-gray-400">6-month program</div>
+              </div>
+            </div>
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#enroll"
+              className="inline-block bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              Enroll Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* What You Get Section - White */}
+      <section className="relative bg-white text-black overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16">
+            What You Get
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-black text-white p-8 rounded-lg">
+              <div className="text-3xl mb-4">🎯</div>
+              <h3 className="text-xl font-bold mb-4">Community Missions</h3>
+              <p className="text-gray-300">
+                Engage with like-minded individuals through structured missions that push you out of your comfort zone and into real-world charisma practice.
+              </p>
+            </div>
+            <div className="bg-black text-white p-8 rounded-lg">
+              <div className="text-3xl mb-4">📚</div>
+              <h3 className="text-xl font-bold mb-4">Monthly Content</h3>
+              <p className="text-gray-300">
+                Access $50 worth of premium content each month, including strategies, techniques, and insights from Charisma in the Void.
+              </p>
+            </div>
+            <div className="bg-black text-white p-8 rounded-lg">
+              <div className="text-3xl mb-4">🚀</div>
+              <h3 className="text-xl font-bold mb-4">Action-Oriented Tasks</h3>
+              <p className="text-gray-300">
+                Don't just learn—apply. Complete practical tasks designed to build your charisma through hands-on experience and feedback.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Program Details Section - Black */}
+      <section className="relative bg-black text-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16">
+            The Program
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8">
+              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <span className="text-red-500">•</span>
+                  Six Months of Content
+                </h3>
+                <p className="text-gray-300 text-lg">
+                  Get access to 6 months of premium charisma coaching content, normally $50/month. 
+                  This bundle represents $600 of value for just $297—a 50% discount.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <span className="text-purple-500">•</span>
+                  Community-Driven Learning
+                </h3>
+                <p className="text-gray-300 text-lg">
+                  Join a vibrant community of individuals committed to improving their charisma. 
+                  Share experiences, get feedback, and grow together.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <span className="text-red-500">•</span>
+                  Missions & Tasks
+                </h3>
+                <p className="text-gray-300 text-lg">
+                  Participate in carefully designed missions and tasks that get you into action. 
+                  Learning happens through doing, not just consuming content.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <span className="text-purple-500">•</span>
+                  From Charisma in the Void
+                </h3>
+                <p className="text-gray-300 text-lg">
+                  Created by the coach behind the popular YouTube channel "Charisma in the Void". 
+                  Proven strategies and techniques that actually work.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Proposition Section - White */}
+      <section className="relative bg-white text-black overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Why Void Underground?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Most charisma programs focus on theory. We focus on action.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-black text-white p-8 rounded-lg">
+              <h3 className="text-2xl font-bold mb-4">Action Over Theory</h3>
+              <p className="text-gray-300">
+                You won't just read about charisma—you'll practice it. Our missions and tasks 
+                ensure you're actively developing your skills in real-world situations.
+              </p>
+            </div>
+            <div className="bg-black text-white p-8 rounded-lg">
+              <h3 className="text-2xl font-bold mb-4">Community Support</h3>
+              <p className="text-gray-300">
+                Learn alongside others on the same journey. Share victories, get support during 
+                challenges, and build lasting connections.
+              </p>
+            </div>
+            <div className="bg-black text-white p-8 rounded-lg">
+              <h3 className="text-2xl font-bold mb-4">Proven Content</h3>
+              <p className="text-gray-300">
+                Based on the successful Charisma in the Void YouTube channel. These aren't 
+                experimental ideas—they're tested strategies that deliver results.
+              </p>
+            </div>
+            <div className="bg-black text-white p-8 rounded-lg">
+              <h3 className="text-2xl font-bold mb-4">Exceptional Value</h3>
+              <p className="text-gray-300">
+                $600 worth of premium content for just $297. That's 6 months of $50/month 
+                programs bundled at a 50% discount.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section - Black */}
+      <section className="relative bg-black text-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Investment
+            </h2>
+            <p className="text-xl text-gray-300">
+              One-time payment for 6 months of premium access
+            </p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white text-black p-12 rounded-lg text-center border-4 border-red-500/30">
+              <div className="mb-8">
+                <div className="text-6xl sm:text-7xl font-bold mb-2">$297</div>
+                <div className="text-2xl text-gray-600 line-through mb-2">$600 value</div>
+                <div className="text-lg text-purple-600 font-semibold">50% Discount</div>
+              </div>
+              <div className="space-y-4 mb-8 text-left">
+                <div className="flex items-center gap-3">
+                  <span className="text-green-500 text-xl">✓</span>
+                  <span>6 months of premium content</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-green-500 text-xl">✓</span>
+                  <span>Access to community missions</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-green-500 text-xl">✓</span>
+                  <span>Action-oriented tasks and exercises</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-green-500 text-xl">✓</span>
+                  <span>Community support and feedback</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-green-500 text-xl">✓</span>
+                  <span>From Charisma in the Void</span>
+                </div>
+              </div>
+              <a
+                id="enroll"
+                href="#"
+                className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors w-full sm:w-auto"
+              >
+                Enroll Now - $297
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - White */}
+      <section className="relative bg-white text-black overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Ready to Transform Your Charisma?
+            </h2>
+            <p className="text-xl text-gray-600 mb-12">
+              Join Void Underground today and start your journey toward authentic, 
+              magnetic charisma. Take action, not just notes.
+            </p>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#enroll"
+              className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors mb-8"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              Enroll Now - $297
+            </a>
+            <div className="text-sm text-gray-500">
+              <p>6-month program • $600 value • One-time payment</p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Footer - Black */}
+      <footer className="bg-black text-white border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center">
+            <p className="text-gray-400 mb-4">
+              Void Underground • From Charisma in the Void
+            </p>
+            <p className="text-sm text-gray-500">
+              Transform your charisma through action, community, and proven strategies.
+            </p>
+          </div>
         </div>
-      </main>
+      </footer>
     </div>
   );
 }
