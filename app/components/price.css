@@ -1,0 +1,80 @@
+:root {
+  --void-orange: #fa6400;
+  --void-cyan: #00ffff; /* brand cyan glow used subtly in hover */
+  --muted: rgba(255,255,255,0.55);
+  --muted-2: rgba(255,255,255,0.35);
+}
+
+.price-wrap {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+  user-select: none;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.current-price {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--void-orange);
+  transition: transform .18s ease, text-shadow .25s ease, filter .25s ease;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+}
+.current-price:hover {
+  transform: translateY(-2px) scale(1.02);
+  text-shadow:
+    0 0 14px rgba(250,100,0,.75),
+    0 0 28px rgba(0,255,255,.35);
+}
+
+.discount-note {
+  color: #a78bfa; /* soft magenta from your palette family */
+  font-weight: 600;
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+.meta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* "$600 value" that breaks apart on hover */
+.strike {
+  position: relative;
+  color: var(--muted);
+  display: inline-flex;
+  gap: 1px;
+  cursor: default;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(250,100,0,.6);
+}
+.strike .shard {
+  display: inline-block;
+  transition: transform .45s ease, opacity .45s ease, filter .45s ease;
+  will-change: transform, opacity, filter;
+}
+.strike:hover .shard {
+  animation: explode .65s forwards;
+}
+@keyframes explode {
+  to {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+.program-note {
+  color: var(--muted-2);
+  font-size: clamp(13px, 1.7vw, 16px);
+}

@@ -1,5 +1,6 @@
 import VoidWordmark from "@/components/VoidWordmark";
 import Starfield from "@/components/Starfield";
+import Price from "./components/Price";
 
 export default function Home() {
   return (
@@ -17,15 +18,9 @@ export default function Home() {
               Join a community-driven program with missions, tasks, and real-world practice. 
               Master the art of charisma through consistent action and learning.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <div className="text-center sm:text-left">
-                <div className="text-4xl sm:text-5xl font-bold text-red-500">$297</div>
-                <div className="text-sm text-gray-400 line-through">$600 value</div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-lg font-semibold text-purple-400">50% Discount</div>
-                <div className="text-sm text-gray-400">6-month program</div>
-              </div>
+            {/* Branded price block: orange $297 + exploding "$600 value" */}
+            <div className="mt-8">
+              <Price />
             </div>
             <a
               href="#enroll"
