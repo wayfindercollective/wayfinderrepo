@@ -1,6 +1,6 @@
 import VoidWordmark from "@/components/VoidWordmark";
 import Starfield from "@/components/Starfield";
-import Price from "./components/Price";
+import Pricing from "./components/Pricing";
 
 export default function Home() {
   return (
@@ -18,16 +18,6 @@ export default function Home() {
               Join a community-driven program with missions, tasks, and real-world practice. 
               Master the art of charisma through consistent action and learning.
             </p>
-            {/* Branded price block: orange $297 + exploding "$600 value" */}
-            <div className="mt-8">
-              <Price />
-            </div>
-            <a
-              href="#enroll"
-              className="btn-void mt-10"
-            >
-              Join the Void
-            </a>
           </div>
         </div>
       </section>
@@ -60,6 +50,13 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="voidSection voidNavy">
+        <div className="voidContainer">
+          <Pricing />
         </div>
       </section>
 
