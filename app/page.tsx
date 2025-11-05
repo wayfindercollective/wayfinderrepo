@@ -1,10 +1,12 @@
 import VoidWordmark from "@/components/VoidWordmark";
+import Starfield from "@/components/Starfield";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
       {/* Hero Section - Black */}
       <section className="relative bg-black text-white overflow-hidden">
+        <Starfield />
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
