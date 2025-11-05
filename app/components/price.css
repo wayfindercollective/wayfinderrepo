@@ -64,13 +64,22 @@
   will-change: transform, opacity, filter;
 }
 .strike:hover .shard {
-  animation: explode .65s forwards;
+  animation: explode .8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 @keyframes explode {
-  to {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
     transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
     opacity: 0;
-    filter: blur(2px);
+    filter: blur(1px);
   }
 }
 

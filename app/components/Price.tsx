@@ -5,10 +5,10 @@ import "./price.css";
 // Small helper to turn a string into "shards" that can fly apart on hover
 function makeShards(text: string) {
   return [...text].map((ch, i) => {
-    // random but stable-ish offsets so it looks organic
-    const dx = (Math.random() * 140 - 70).toFixed(0) + "px";
-    const dy = (Math.random() * 80 - 40).toFixed(0) + "px";
-    const rot = (Math.random() * 90 - 45).toFixed(0) + "deg";
+    // random but stable-ish offsets so it looks organic - much larger distances to fly off screen
+    const dx = (Math.random() * 800 - 400).toFixed(0) + "px";
+    const dy = (Math.random() * 600 - 300).toFixed(0) + "px";
+    const rot = (Math.random() * 720 - 360).toFixed(0) + "deg";
     return (
       <span
         key={i}
