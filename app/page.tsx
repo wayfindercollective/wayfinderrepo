@@ -1,4 +1,4 @@
-import HeroLogo from "./components/HeroLogo";
+import Image from "next/image";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
 
@@ -12,7 +12,30 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center">
-            <HeroLogo />
+            <div className="relative w-fit mx-auto group">
+              <Image
+                src="/Master_Logo.jpg"
+                alt="Void Underground"
+                width={1800}
+                height={400}
+                priority
+                className="block select-none pointer-events-none"
+              />
+
+              {/* cyan underline pinned to the logo */}
+              <span
+                aria-hidden
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  bottom-[9%]
+                  h-[6px] w-[82%]
+                  rounded-full bg-[#0FF]
+                  shadow-[0_0_12px_#0FF,0_0_24px_rgba(0,255,255,0.6)]
+                  transition-[width] duration-500 ease-out
+                  group-hover:w-[86%]
+                "
+              />
+            </div>
 
             {/* Your tagline and paragraph below the logo can remain */}
             <h2 className="h2-void mt-6 text-center opacity-90">
