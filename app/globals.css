@@ -17,3 +17,105 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
+:root {
+  --voidBlack: #000000;
+  --voidCyan: #00ffff;     /* Cyan */
+  --voidMagenta: #ff00ff;  /* Magenta */
+  --voidPurple: #8000ff;   /* Purple */
+  --voidDepth: #1b1b1b;    /* Depth layering */
+  --voidOrange: #fa6400;    /* Orange */
+  --voidLightBlue: #00ccff; /* Light Blue */
+  --voidPink: #ff00cc;     /* Pink */
+  --voidYellow: #ffff00;   /* Yellow */
+  --voidWhite: #ffffff;    /* Pure white */
+  --voidNavy: #0b1220;     /* Deep navy for light sections */
+}
+
+/* base */
+body { background: var(--voidBlack); color: var(--voidWhite); }
+
+/* container helper */
+.voidContainer {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+/* section backgrounds */
+.voidSection { position: relative; }
+.voidNavy {
+  /* subtle glows plus navy-to-black blend */
+  background:
+    radial-gradient(900px 500px at 8% 0%, rgba(255,0,255,0.06), transparent 60%),
+    radial-gradient(700px 400px at 92% 6%, rgba(250,100,0,0.05), transparent 60%),
+    linear-gradient(180deg, #0b1426 0%, #0a0f1a 55%, #05070c 80%, #000000 100%);
+}
+.voidDark {
+  background: linear-gradient(180deg, #000000 0%, #05070c 60%, #0b1220 100%);
+}
+
+/* cards on dark backgrounds stay readable */
+.cardVoid {
+  background: rgba(27,27,27,0.9);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+/* full-width underlines for section titles - centered */
+.sectionTitle {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+.sectionTitle::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin: 14px 0 0;
+  box-shadow: 0 0 14px currentColor;
+}
+
+/* wrapper to ensure centered titles */
+.sectionTitleWrapper {
+  text-align: center;
+  width: 100%;
+}
+
+/* color variants for section title underlines */
+.sectionTitleCyan::after {
+  background: var(--voidCyan);
+  box-shadow: 0 0 14px rgba(0,255,255,0.55);
+}
+.sectionTitleMagenta::after {
+  background: var(--voidMagenta);
+  box-shadow: 0 0 14px rgba(255,0,255,0.55);
+}
+.sectionTitleOrange::after {
+  background: var(--voidOrange);
+  box-shadow: 0 0 14px rgba(250,100,0,0.55);
+}
+.sectionTitlePurple::after {
+  background: var(--voidPurple);
+  box-shadow: 0 0 14px rgba(128,0,255,0.55);
+}
+.sectionTitleLightBlue::after {
+  background: var(--voidLightBlue);
+  box-shadow: 0 0 14px rgba(0,204,255,0.55);
+}
+.sectionTitlePink::after {
+  background: var(--voidPink);
+  box-shadow: 0 0 14px rgba(255,0,204,0.55);
+}
+.sectionTitleYellow::after {
+  background: var(--voidYellow);
+  box-shadow: 0 0 14px rgba(255,255,0,0.55);
+}
+
+/* small accents that you can apply where needed */
+.accentCyan { color: var(--voidCyan); }
+.accentMagenta { color: var(--voidMagenta); }
+.accentOrange { color: var(--voidOrange); }
