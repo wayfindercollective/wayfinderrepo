@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import "./price.css";
 
 // Small helper to turn a string into "shards" that can fly apart on hover
@@ -36,6 +37,13 @@ export default function Price() {
           $297
         </span>
         <span className="discount-note">50% Discount</span>
+        <Image
+          src="/Signal_CoreLogo.jpg"
+          alt="Signal Core"
+          width={72}
+          height={72}
+          className="price-image"
+        />
       </div>
       <div className="meta-row">
         <span className="strike" title="Original price">
