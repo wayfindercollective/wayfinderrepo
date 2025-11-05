@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
@@ -255,11 +257,17 @@ export default function Home() {
       {/* Footer - Black */}
       <footer className="bg-black text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <p className="text-gray-400 mb-4">
+          <div className="flex flex-col items-center justify-center gap-4">
+            {/* Small Logo */}
+            <Link href="/" className="flex items-center">
+              <span className="text-lg font-bold text-white tracking-wider">
+                VOID
+              </span>
+            </Link>
+            <p className="text-gray-400 mb-4 text-center">
               Void Underground • From Charisma in the Void
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 text-center">
               Transform your charisma through action, community, and proven strategies.
             </p>
           </div>
