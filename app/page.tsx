@@ -220,30 +220,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA section — match the same navy band look */}
-      <section className="section-band">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
-              Ready to Transform Your Charisma?
-            </h2>
-            <p className="text-xl text-gray-600 mb-12">
-              Join Void Underground today and start your journey toward authentic, 
-              magnetic charisma. Take action, not just notes.
-            </p>
-            <a
-              href="#enroll"
-              className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors mb-8"
-            >
-              Join the Void - $297
-            </a>
-            <div className="text-sm text-gray-500">
-              <p>6-month program • $600 value • One-time payment</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer - Black */}
       <footer className="bg-black text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
