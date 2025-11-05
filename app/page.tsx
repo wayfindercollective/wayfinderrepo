@@ -40,9 +40,11 @@ export default function Home() {
       {/* What You Get Section - White */}
       <section className="voidSection voidNavy">
         <div className="voidContainer">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle sectionTitleOrange">
-            What You Get
-          </h2>
+          <div className="sectionTitleWrapper">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange">
+              What You Get
+            </h2>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="cardVoid text-white p-8">
               <h3 className="text-xl font-bold mb-4">Community Missions</h3>
@@ -69,9 +71,11 @@ export default function Home() {
       {/* Program Details Section - Black */}
       <section className="voidSection voidDark">
         <div className="voidContainer">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle sectionTitleMagenta">
-            The Program
-          </h2>
+          <div className="sectionTitleWrapper">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
+              The Program
+            </h2>
+          </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
               <div className="cardVoid p-8">
@@ -123,9 +127,11 @@ export default function Home() {
       <section className="voidSection voidNavy">
         <div className="voidContainer">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
-              Why Void Underground?
-            </h2>
+            <div className="sectionTitleWrapper">
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
+                Why Void Underground?
+              </h2>
+            </div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Most charisma programs focus on theory. We focus on action.
             </p>
@@ -169,9 +175,11 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan">
-              Investment
-            </h2>
+            <div className="sectionTitleWrapper">
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan">
+                Investment
+              </h2>
+            </div>
             <p className="text-xl text-gray-300">
               One-time payment for 6 months of premium access
             </p>
@@ -223,7 +231,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black sectionTitle sectionTitleCyan">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
               Ready to Transform Your Charisma?
             </h2>
             <p className="text-xl text-gray-600 mb-12">
