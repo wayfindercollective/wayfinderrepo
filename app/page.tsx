@@ -1,5 +1,4 @@
 import VoidWordmark from "@/components/VoidWordmark";
-import MasterLogo from "@/components/MasterLogo";
 
 export default function Home() {
   return (
@@ -46,21 +45,18 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-black text-white p-8 rounded-lg">
-              <div className="mb-4"><MasterLogo /></div>
               <h3 className="text-xl font-bold mb-4">Community Missions</h3>
               <p className="text-gray-300">
                 Engage with like-minded individuals through structured missions that push you out of your comfort zone and into real-world charisma practice.
               </p>
             </div>
             <div className="bg-black text-white p-8 rounded-lg">
-              <div className="mb-4"><MasterLogo /></div>
               <h3 className="text-xl font-bold mb-4">Monthly Content</h3>
               <p className="text-gray-300">
                 Access $50 worth of premium content each month, including strategies, techniques, and insights from Charisma in the Void.
               </p>
             </div>
             <div className="bg-black text-white p-8 rounded-lg">
-              <div className="mb-4"><MasterLogo /></div>
               <h3 className="text-xl font-bold mb-4">Action-Oriented Tasks</h3>
               <p className="text-gray-300">
                 Don't just learn—apply. Complete practical tasks designed to build your charisma through hands-on experience and feedback.
