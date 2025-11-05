@@ -25,14 +25,7 @@
   font-weight: 800;
   letter-spacing: 0.5px;
   color: var(--void-orange);
-  transition: transform .18s ease, text-shadow .25s ease, filter .25s ease;
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
-}
-.current-price:hover {
-  transform: translateY(-2px) scale(1.02);
-  text-shadow:
-    0 0 14px rgba(250,100,0,.75),
-    0 0 28px rgba(0,255,255,.35);
 }
 
 .discount-note {
