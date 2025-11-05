@@ -3,6 +3,17 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --void-black: #000000;
+  --void-depth: #1B1B1B;
+  --void-navy: #0A0F1F;        /* deep navy for sections */
+  --void-cyan: #00FFFF;        /* #0FF */
+  --void-magenta: #FF00FF;
+  --void-orange: #FA6400;
+  --void-white: #FFFFFF;
+  --void-lime: #7FFF00;        /* optional highlight */
+  --void-lime2: #77FF00;
+  --ring-cyan: 0 0 18px rgba(0,255,255,.18);
+  --ring-magenta: 0 0 14px rgba(255,0,255,.12);
 }
 
 @theme inline {
@@ -12,8 +23,71 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html, body {
+  background: #000;
+  color: #fff;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Section backgrounds that blend to black */
+.section-panel {
+  background: radial-gradient(1200px 280px at 50% -80px, rgba(10,15,31,.85), transparent 65%),
+              linear-gradient(#0A0F1F, #0A0F1F);
+}
+.section-panel--alt {
+  background: radial-gradient(1200px 280px at 50% 120%, rgba(10,15,31,.85), transparent 65%),
+              linear-gradient(#0A0F1F, #0A0F1F);
+}
+
+/* Card surface with subtle depth */
+.surface {
+  background: #0C0C0C;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), var(--ring-magenta);
+}
+
+/* Headings with cyan accent underline (thin, not shouty) */
+.h-accent {
+  position: relative;
+  text-shadow: 0 0 22px rgba(0,255,255,.06);
+}
+.h-accent::after {
+  content: "";
+  position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -14px; width: 54px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--void-cyan), transparent);
+  border-radius: 2px;
+  opacity: .9;
+}
+
+/* Quiet brand accents for small text/badges/links */
+.text-cyan { color: var(--void-cyan); }
+.text-magenta { color: var(--void-magenta); }
+.text-orange { color: var(--void-orange); }
+
+/* CTA button that respects brand */
+.btn-void {
+  background: #0B0B0B; color: #fff; border: 1px solid rgba(255,255,255,.10);
+  padding: .9rem 1.4rem; border-radius: 14px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.btn-void:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0,255,255,.45);
+  box-shadow: var(--ring-cyan);
+}
+
+/* Small cyan bullets for lists */
+.list-cyan li {
+  position: relative; padding-left: 18px;
+}
+.list-cyan li::before {
+  content: ""; position: absolute; left: 0; top: .58em;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--void-cyan);
+  box-shadow: 0 0 10px rgba(0,255,255,.6);
 }
