@@ -40,7 +40,7 @@ export default function Home() {
       {/* What You Get Section - White */}
       <section className="voidSection voidNavy">
         <div className="voidContainer">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle sectionTitleCyan">
             What You Get
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -69,7 +69,7 @@ export default function Home() {
       {/* Program Details Section - Black */}
       <section className="voidSection voidDark">
         <div className="voidContainer">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle sectionTitleMagenta">
             The Program
           </h2>
           <div className="max-w-4xl mx-auto">
@@ -123,7 +123,7 @@ export default function Home() {
       <section className="voidSection voidNavy">
         <div className="voidContainer">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
               Why Void Underground?
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">

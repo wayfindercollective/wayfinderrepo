@@ -60,19 +60,33 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   box-shadow: 0 8px 30px rgba(0,0,0,0.45);
 }
 
-/* gentle cyan underline for section titles */
+/* full-width underlines for section titles */
 .sectionTitle {
   font-weight: 800;
   letter-spacing: 0.02em;
+  display: inline-block;
 }
 .sectionTitle::after {
   content: "";
   display: block;
-  width: 56px;
+  width: 100%;
   height: 3px;
-  margin: 14px auto 0;
+  margin: 14px 0 0;
+  box-shadow: 0 0 14px currentColor;
+}
+
+/* color variants for section title underlines */
+.sectionTitleCyan::after {
   background: var(--voidCyan);
   box-shadow: 0 0 14px rgba(0,255,255,0.55);
+}
+.sectionTitleMagenta::after {
+  background: var(--voidMagenta);
+  box-shadow: 0 0 14px rgba(255,0,255,0.55);
+}
+.sectionTitleOrange::after {
+  background: var(--voidOrange);
+  box-shadow: 0 0 14px rgba(250,100,0,0.55);
 }
 
 /* small accents that you can apply where needed */
