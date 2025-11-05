@@ -34,6 +34,14 @@
   font-size: clamp(14px, 2vw, 18px);
 }
 
+.price-image {
+  width: clamp(42px, 6vw, 72px);
+  height: clamp(42px, 6vw, 72px);
+  object-fit: contain;
+  align-self: center;
+  margin-left: 8px;
+}
+
 .meta-row {
   display: flex;
   gap: 16px;
