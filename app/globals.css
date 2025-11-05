@@ -3,6 +3,7 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --void-cyan: #00ffff;
 }
 
 @theme inline {
@@ -16,4 +17,30 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Join the Void hover glow */
+.button-void {
+  border-radius: 1rem;
+  padding: 0.9rem 2rem;
+  font-weight: 700;
+  display: inline-block;
+  transition: background-color .2s ease, box-shadow .2s ease, transform .05s ease;
+  background: #ffffff;
+  color: #000000;
+}
+.button-void:hover {
+  background: var(--void-cyan);
+  color: #001616;
+  box-shadow: 0 0 24px rgba(0, 255, 255, 0.6);
+}
+.button-void:active { transform: translateY(1px); }
+
+/* Primary cyan button variant used in pricing */
+.button-void--primary {
+  background: var(--void-cyan);
+  color: #001616;
+}
+.button-void--primary:hover {
+  box-shadow: 0 0 24px rgba(0, 255, 255, 0.6);
 }
