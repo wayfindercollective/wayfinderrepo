@@ -119,3 +119,16 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 .accentCyan { color: var(--voidCyan); }
 .accentMagenta { color: var(--voidMagenta); }
 .accentOrange { color: var(--voidOrange); }
+
+/* ---------- VOID THEME EXTRAS ---------- */
+.fx-bump{
+  font-size: 2em;             /* +100% (was 1.33em, now 50% bigger = 2em) */
+  line-height: 1.0;
+}
+.fx-hero-sub{
+  display: block;
+  margin-top: 0.75rem;        /* push subtitle down a bit under the big title */
+}
+.hero-spacer{
+  margin-top: 2.25rem;         /* increased spacing below hero title (3x the original 0.75rem) */
+}

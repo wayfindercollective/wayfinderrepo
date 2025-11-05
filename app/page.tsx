@@ -1,10 +1,14 @@
 import VoidWordmark from "@/components/VoidWordmark";
 import Starfield from "@/components/Starfield";
 import Price from "./components/Price";
+import HeroFxClient from "./components/HeroFxClient";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full">
+    <>
+      {/* Enhance hero subtitle: enlarge "Charisma" and "Action" and add spacing */}
+      <HeroFxClient />
+      <div className="min-h-screen w-full">
       {/* Hero Section - Black */}
       <section className="relative bg-black text-white overflow-hidden">
         <Starfield />
@@ -13,18 +17,18 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center">
             <VoidWordmark className="max-w-[1100px] w-full mx-auto" />
-            <h2 className="h2-void mt-6 text-center opacity-90">Transform Your Charisma Through Action</h2>
-            <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+            <h2 className="h2-void hero-spacer text-center opacity-90">Transform Your Charisma Through Action</h2>
+            <p className="text-lg sm:text-xl text-gray-400 mb-3 max-w-2xl mx-auto">
               Join a community-driven program with missions, tasks, and real-world practice. 
               Master the art of charisma through consistent action and learning.
             </p>
             {/* Branded price block: orange $297 + exploding "$600 value" */}
-            <div className="mt-8">
+            <div className="mt-4">
               <Price />
             </div>
             <a
               href="#enroll"
-              className="btn-void mt-10"
+              className="btn-void mt-5"
             >
               Join the Void
             </a>
@@ -234,5 +238,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
