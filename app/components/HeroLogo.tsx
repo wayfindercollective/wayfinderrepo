@@ -1,32 +1,42 @@
 'use client';
 
 import Image from 'next/image';
+import Starfield from './Starfield';
 
 export default function HeroLogo() {
   return (
-    <div className="relative group inline-block">
-      {/* Let the stars show through the JPG by blending away the black */}
-      <Image
-        src="/Master_Logo.jpg"
-        alt="Void Underground"
-        width={1600}
-        height={600}
-        priority
-        className="mx-auto w-[min(90vw,1100px)] h-auto mix-blend-screen pointer-events-none select-none"
-      />
+    <section className="relative text-white overflow-visible">
+      {/* starfield behind everything */}
+      <div className="absolute inset-0 -z-10">
+        <Starfield />
+      </div>
 
-      {/* Cyan underline directly under UNDERGROUND */}
-      <span
-        aria-hidden
-        className="
-          absolute left-1/2 -translate-x-1/2
-          bottom-[22%] sm:bottom-[19%] md:bottom-[17%] lg:bottom-[15%]
-          h-[6px] w-0 rounded-full bg-[#0FF]
-          shadow-[0_0_12px_#0FF,0_0_24px_rgba(0,255,255,0.6)]
-          transition-[width] duration-500 ease-out
-          group-hover:w-[82%]
-        "
-      />
-    </div>
+      {/* logo plus cyan underline */}
+      <div className="relative w-fit mx-auto pt-6 group z-10">
+        <Image
+          src="/Master_Logo.jpg"
+          alt="Void Underground"
+          width={1800}
+          height={400}
+          priority
+          className="block select-none pointer-events-none"
+        />
+
+        {/* cyan line tucked under UNDERGROUND */}
+        <span
+          aria-hidden
+          className="
+            absolute left-1/2 -translate-x-1/2
+            block w-0 h-[6px] rounded-full
+            bg-[#0FF]
+            shadow-[0_0_10px_#0FF,0_0_24px_rgba(0,255,255,0.5)]
+            transition-[width] duration-400 ease-out
+            group-hover:w-[86%]
+            z-10
+          "
+          style={{ top: '60%' }}   // nudge this 58 to 62 until it kisses the word
+        />
+      </div>
+    </section>
   );
 }
