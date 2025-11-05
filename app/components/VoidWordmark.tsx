@@ -41,9 +41,9 @@ export default function VoidWordmark({ className }: Props) {
       onMouseLeave={() => setHovered(false)}
       aria-label="Void Underground"
     >
-      {/* Void Underground text */}
+      {/* VOID UNDERGROUND text */}
       <h1
-        className="h1-void text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight"
+        className="h1-void text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white"
         style={{
           fontFamily: "var(--font-orbitron)",
           textTransform: "uppercase",
@@ -51,10 +51,10 @@ export default function VoidWordmark({ className }: Props) {
           fontWeight: 700,
         }}
       >
-        Void <span ref={undergroundRef}>Underground</span>
+        VOID <span ref={undergroundRef}>UNDERGROUND</span>
       </h1>
       
-      {/* Blue line positioned under "Underground" */}
+      {/* Cyan line positioned under "UNDERGROUND" */}
       <span
         aria-hidden
         className="pointer-events-none absolute"
