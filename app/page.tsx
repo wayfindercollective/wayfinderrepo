@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full">
       {/* Hero Section - Black */}
-      <section className="relative bg-black text-white overflow-hidden">
+      <section className="relative text-white overflow-hidden">
         <Starfield />
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
