@@ -1,29 +1,44 @@
-import HeroLogo from "./components/HeroLogo";
+import Image from "next/image";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
-      {/* Hero Section - Black */}
+      {/* HERO */}
       <section className="relative text-white overflow-hidden">
-        <Starfield />
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="text-center">
-            <HeroLogo />
+        {/* Stars behind everything */}
+        <div className="absolute inset-0 -z-10">
+          <Starfield />
+        </div>
 
-            {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void mt-6 text-center opacity-90">
-              Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span>
-            </h2>
+        {/* Logo and underline */}
+        <div className="relative mx-auto w-full max-w-[1100px] pt-6">
+          <Image
+            src="/Master_Logo.jpg"
+            alt="Void Underground"
+            width={1800}
+            height={400}
+            priority
+            className="mx-auto block h-auto w-[min(1100px,90vw)]"
+          />
 
-            <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-              Join a community driven program with missions, tasks, and real world practice.
-              Master the art of charisma through consistent action and learning.
-            </p>
-          </div>
+          {/* cyan underline positioned under UNDERGROUND */}
+          <span
+            aria-hidden
+            style={{
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              top: "62%",
+              width: "86%",
+              height: "6px",
+              borderRadius: "9999px",
+              background: "#0FF",
+              boxShadow: "0 0 12px #0FF, 0 0 26px rgba(0,255,255,0.6)",
+              transition: "width 500ms ease-out"
+            }}
+          />
         </div>
       </section>
 
