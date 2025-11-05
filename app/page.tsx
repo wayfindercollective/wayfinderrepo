@@ -1,6 +1,7 @@
 import HeroLogo from "./components/HeroLogo";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
+import SignalLogo from "./components/SignalLogo";
 
 export default function Home() {
   return (
@@ -210,13 +211,16 @@ export default function Home() {
                   <span>From Charisma in the Void</span>
                 </div>
               </div>
-              <a
-                id="enroll"
-                href="#"
-                className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors w-full sm:w-auto"
-              >
-                Join the Void - $297
-              </a>
+              <div className="flex items-center justify-center gap-6 flex-wrap">
+                <a
+                  id="enroll"
+                  href="#"
+                  className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors w-full sm:w-auto"
+                >
+                  Join the Void - $297
+                </a>
+                <SignalLogo />
+              </div>
             </div>
           </div>
         </div>

@@ -1,0 +1,219 @@
+:root {
+  --void-cyan: #00ffff;
+  --orbit-radius: 110px; /* Distance from center */
+  --dot-size: 8px;
+}
+
+.signal-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signal-logo-wrapper {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signal-image-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  z-index: 2;
+  /* Create a backdrop that shows through transparent areas */
+  background: transparent;
+  /* Use isolation to create a new stacking context for blend mode */
+  isolation: isolate;
+}
+
+.signal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Remove black background using mix-blend-mode: screen
+     This makes black pixels transparent while preserving other colors */
+  mix-blend-mode: screen;
+  /* Enhance the image visibility */
+  filter: brightness(1.2) contrast(1.2) drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+  /* Ensure the image displays properly */
+  display: block;
+}
+
+/* Alternative approach: Use CSS to make black transparent */
+.signal-image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.signal-logo-wrapper:hover .signal-image-wrapper::before {
+  opacity: 1;
+}
+
+/* Orbiting dots */
+.orbit {
+  position: absolute;
+  width: calc(var(--orbit-radius) * 2);
+  height: calc(var(--orbit-radius) * 2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.signal-logo-wrapper:hover .orbit {
+  opacity: 1;
+}
+
+.dot {
+  position: absolute;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background: var(--void-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--void-cyan), 0 0 16px var(--void-cyan);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Animation for each orbit - different speeds for organic feel */
+.orbit-1 {
+  animation: orbit-rotate 8s linear infinite;
+}
+.orbit-2 {
+  animation: orbit-rotate 10s linear infinite;
+  animation-delay: -1s;
+}
+.orbit-3 {
+  animation: orbit-rotate 12s linear infinite;
+  animation-delay: -2s;
+}
+.orbit-4 {
+  animation: orbit-rotate 9s linear infinite;
+  animation-delay: -0.5s;
+}
+.orbit-5 {
+  animation: orbit-rotate 11s linear infinite reverse;
+  animation-delay: -3s;
+}
+.orbit-6 {
+  animation: orbit-rotate 13s linear infinite reverse;
+  animation-delay: -1.5s;
+}
+.orbit-7 {
+  animation: orbit-rotate 7s linear infinite;
+  animation-delay: -2.5s;
+}
+.orbit-8 {
+  animation: orbit-rotate 14s linear infinite reverse;
+  animation-delay: -4s;
+}
+
+/* Different starting positions for each dot */
+.dot-1 {
+  transform: translateX(-50%) rotate(0deg) translateX(var(--orbit-radius));
+}
+.dot-2 {
+  transform: translateX(-50%) rotate(45deg) translateX(var(--orbit-radius));
+}
+.dot-3 {
+  transform: translateX(-50%) rotate(90deg) translateX(var(--orbit-radius));
+}
+.dot-4 {
+  transform: translateX(-50%) rotate(135deg) translateX(var(--orbit-radius));
+}
+.dot-5 {
+  transform: translateX(-50%) rotate(180deg) translateX(var(--orbit-radius));
+}
+.dot-6 {
+  transform: translateX(-50%) rotate(225deg) translateX(var(--orbit-radius));
+}
+.dot-7 {
+  transform: translateX(-50%) rotate(270deg) translateX(var(--orbit-radius));
+}
+.dot-8 {
+  transform: translateX(-50%) rotate(315deg) translateX(var(--orbit-radius));
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Ensure dots rotate correctly with their orbit */
+.orbit-1 .dot-1,
+.orbit-2 .dot-2,
+.orbit-3 .dot-3,
+.orbit-4 .dot-4,
+.orbit-5 .dot-5,
+.orbit-6 .dot-6,
+.orbit-7 .dot-7,
+.orbit-8 .dot-8 {
+  animation: dot-counter-rotate 8s linear infinite;
+}
+
+.orbit-2 .dot-2 {
+  animation-duration: 10s;
+}
+.orbit-3 .dot-3 {
+  animation-duration: 12s;
+}
+.orbit-4 .dot-4 {
+  animation-duration: 9s;
+}
+.orbit-5 .dot-5 {
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+.orbit-6 .dot-6 {
+  animation-duration: 13s;
+  animation-direction: reverse;
+}
+.orbit-7 .dot-7 {
+  animation-duration: 7s;
+}
+.orbit-8 .dot-8 {
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+
+@keyframes dot-counter-rotate {
+  from {
+    transform: translateX(-50%) rotate(0deg) translateX(var(--orbit-radius));
+  }
+  to {
+    transform: translateX(-50%) rotate(-360deg) translateX(var(--orbit-radius));
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .signal-logo-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .signal-image-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+  
+  :root {
+    --orbit-radius: 85px;
+  }
+}
