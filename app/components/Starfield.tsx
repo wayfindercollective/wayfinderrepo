@@ -2,9 +2,9 @@
 import { useRef, useEffect } from 'react';
 import './starfield.css';
 
-type Star = { x: number; y: number; z: number; r: number; vx: number; vy: number };
+type Star = { x: number; y: number; z: number; r: number; vx: number; vy: number; rotation: number; rotSpeed: number };
 
-export default function Starfield({ count = 50 }: { count?: number }) {
+export default function Starfield({ count = 150 }: { count?: number }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const starsRef = useRef<Star[]>([]);
 
@@ -37,18 +37,49 @@ export default function Starfield({ count = 50 }: { count?: number }) {
       .getPropertyValue('--cyan-glow')
       .trim() || '#00FFFF';
 
+    // Function to draw a star shape
+    const drawStar = (ctx: CanvasRenderingContext2D, x: number, y: number, r: number, rotation: number) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      
+      const spikes = 5;
+      const outerRadius = r;
+      const innerRadius = r * 0.4;
+      
+      ctx.beginPath();
+      for (let i = 0; i < spikes * 2; i++) {
+        const radius = i % 2 === 0 ? outerRadius : innerRadius;
+        const angle = (i * Math.PI) / spikes;
+        const px = Math.cos(angle) * radius;
+        const py = Math.sin(angle) * radius;
+        if (i === 0) {
+          ctx.moveTo(px, py);
+        } else {
+          ctx.lineTo(px, py);
+        }
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    };
+
     const makeStars = () => {
       const w = canvas.width / dpr;
       const h = canvas.height / dpr;
       starsRef.current = Array.from({ length: count }, () => {
         const z = Math.random() * 0.7 + 0.3;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = (Math.random() * 0.15 + 0.05) * z; // Vary speed based on depth
         return {
           x: Math.random() * w,
           y: Math.random() * h,
           z,
-          r: 2 * z + 1,  // Make stars bigger and more visible
-          vx: (Math.random() - 0.5) * 0.2,  // Slow drift
-          vy: (Math.random() - 0.5) * 0.2
+          r: (1 * z + 0.5) * 0.5,  // Half the size
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.02 // Slow rotation
         };
       });
     };
@@ -61,22 +92,21 @@ export default function Starfield({ count = 50 }: { count?: number }) {
       ctx.save();
       ctx.fillStyle = color;
       ctx.shadowColor = color;
-      ctx.shadowBlur = 15;
+      ctx.shadowBlur = 8;
       ctx.globalAlpha = 0.9;
 
       for (const s of starsRef.current) {
         s.x += s.vx;
         s.y += s.vy;
+        s.rotation += s.rotSpeed;
 
         // wrap edges
-        if (s.x < -10) s.x = w + 10;
-        if (s.x > w + 10) s.x = -10;
-        if (s.y < -10) s.y = h + 10;
-        if (s.y > h + 10) s.y = -10;
+        if (s.x < -20) s.x = w + 20;
+        if (s.x > w + 20) s.x = -20;
+        if (s.y < -20) s.y = h + 20;
+        if (s.y > h + 20) s.y = -20;
 
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
+        drawStar(ctx, s.x, s.y, s.r, s.rotation);
       }
       ctx.restore();
 
