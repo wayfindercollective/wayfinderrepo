@@ -1,4 +1,4 @@
-import VoidWordmark from "@/components/VoidWordmark";
+import HeroLogo from "./components/HeroLogo";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
 
@@ -12,10 +12,15 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center">
-            <VoidWordmark className="max-w-[1100px] w-full mx-auto" />
-            <h2 className="h2-void mt-6 text-center opacity-90">Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span></h2>
+            <HeroLogo />
+
+            {/* Your tagline and paragraph below the logo can remain */}
+            <h2 className="h2-void mt-6 text-center opacity-90">
+              Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span>
+            </h2>
+
             <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-              Join a community-driven program with missions, tasks, and real-world practice. 
+              Join a community driven program with missions, tasks, and real world practice.
               Master the art of charisma through consistent action and learning.
             </p>
           </div>
