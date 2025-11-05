@@ -31,7 +31,7 @@ export default function HeroLogo() {
             bg-[#0FF]
             shadow-[0_0_10px_#0FF,0_0_24px_rgba(0,255,255,0.5)]
             transition-[width] duration-400 ease-out
-            group-hover:w-[90%]
+            group-hover:w-[86%]
             z-10
           "
           style={{ top: '60%' }}   // nudge this 58 to 62 until it kisses the word
