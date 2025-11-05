@@ -38,27 +38,25 @@ export default function Home() {
       </section>
 
       {/* What You Get Section - White */}
-      <section className="relative bg-white text-black overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16">
+      <section className="voidSection voidNavy">
+        <div className="voidContainer">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle">
             What You Get
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-black text-white p-8 rounded-lg">
+            <div className="cardVoid text-white p-8">
               <h3 className="text-xl font-bold mb-4">Community Missions</h3>
               <p className="text-gray-300">
                 Engage with like-minded individuals through structured missions that push you out of your comfort zone and into real-world charisma practice.
               </p>
             </div>
-            <div className="bg-black text-white p-8 rounded-lg">
+            <div className="cardVoid text-white p-8">
               <h3 className="text-xl font-bold mb-4">Monthly Content</h3>
               <p className="text-gray-300">
                 Access $50 worth of premium content each month, including strategies, techniques, and insights from Charisma in the Void.
               </p>
             </div>
-            <div className="bg-black text-white p-8 rounded-lg">
+            <div className="cardVoid text-white p-8">
               <h3 className="text-xl font-bold mb-4">Action-Oriented Tasks</h3>
               <p className="text-gray-300">
                 Don't just learn—apply. Complete practical tasks designed to build your charisma through hands-on experience and feedback.
@@ -69,17 +67,15 @@ export default function Home() {
       </section>
 
       {/* Program Details Section - Black */}
-      <section className="relative bg-black text-white overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16">
+      <section className="voidSection voidDark">
+        <div className="voidContainer">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle">
             The Program
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+              <div className="cardVoid p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
                   <span className="text-red-500">•</span>
                   Six Months of Content
                 </h3>
@@ -88,8 +84,8 @@ export default function Home() {
                   This bundle represents $600 of value for just $297—a 50% discount.
                 </p>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+              <div className="cardVoid p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
                   <span className="text-purple-500">•</span>
                   Community-Driven Learning
                 </h3>
@@ -98,8 +94,8 @@ export default function Home() {
                   Share experiences, get feedback, and grow together.
                 </p>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+              <div className="cardVoid p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
                   <span className="text-red-500">•</span>
                   Missions & Tasks
                 </h3>
@@ -108,8 +104,8 @@ export default function Home() {
                   Learning happens through doing, not just consuming content.
                 </p>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+              <div className="cardVoid p-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
                   <span className="text-purple-500">•</span>
                   From Charisma in the Void
                 </h3>
@@ -124,41 +120,39 @@ export default function Home() {
       </section>
 
       {/* Value Proposition Section - White */}
-      <section className="relative bg-white text-black overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+      <section className="voidSection voidNavy">
+        <div className="voidContainer">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle">
               Why Void Underground?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Most charisma programs focus on theory. We focus on action.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-black text-white p-8 rounded-lg">
+            <div className="cardVoid text-white p-8">
               <h3 className="text-2xl font-bold mb-4">Action Over Theory</h3>
               <p className="text-gray-300">
                 You won't just read about charisma—you'll practice it. Our missions and tasks 
                 ensure you're actively developing your skills in real-world situations.
               </p>
             </div>
-            <div className="bg-black text-white p-8 rounded-lg">
+            <div className="cardVoid text-white p-8">
               <h3 className="text-2xl font-bold mb-4">Community Support</h3>
               <p className="text-gray-300">
                 Learn alongside others on the same journey. Share victories, get support during 
                 challenges, and build lasting connections.
               </p>
             </div>
-            <div className="bg-black text-white p-8 rounded-lg">
+            <div className="cardVoid text-white p-8">
               <h3 className="text-2xl font-bold mb-4">Proven Content</h3>
               <p className="text-gray-300">
                 Based on the successful Charisma in the Void YouTube channel. These aren't 
                 experimental ideas—they're tested strategies that deliver results.
               </p>
             </div>
-            <div className="bg-black text-white p-8 rounded-lg">
+            <div className="cardVoid text-white p-8">
               <h3 className="text-2xl font-bold mb-4">Exceptional Value</h3>
               <p className="text-gray-300">
                 $600 worth of premium content for just $297. That's 6 months of $50/month 
