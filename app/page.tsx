@@ -7,9 +7,14 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-              Void Underground
-            </h1>
+            <div className="relative inline-block mb-6 group">
+              <img 
+                src="/void-logo.svg" 
+                alt="Void Underground" 
+                className="h-16 sm:h-20 lg:h-24 w-auto mx-auto transition-all duration-300"
+              />
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></div>
+            </div>
             <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Transform Your Charisma Through Action
             </p>
