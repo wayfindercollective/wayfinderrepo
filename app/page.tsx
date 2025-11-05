@@ -40,7 +40,7 @@ export default function Home() {
       {/* What You Get Section - White */}
       <section className="voidSection voidNavy">
         <div className="voidContainer">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle sectionTitleCyan">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-white sectionTitle sectionTitleOrange">
             What You Get
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -169,7 +169,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan">
               Investment
             </h2>
             <p className="text-xl text-gray-300">
@@ -223,7 +223,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black sectionTitle sectionTitleCyan">
               Ready to Transform Your Charisma?
             </h2>
             <p className="text-xl text-gray-600 mb-12">
