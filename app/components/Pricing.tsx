@@ -1,4 +1,5 @@
 import Price from "./Price";
+import SignalLogo from "./SignalLogo";
 
 export default function Pricing() {
   return (
@@ -7,12 +8,15 @@ export default function Pricing() {
       <div className="mt-8">
         <Price />
       </div>
-      <a
-        href="#enroll"
-        className="btn-void mt-10"
-      >
-        Join the Void
-      </a>
+      <div className="flex items-center justify-center gap-6 mt-10 flex-wrap">
+        <a
+          href="#enroll"
+          className="btn-void"
+        >
+          Join the Void
+        </a>
+        <SignalLogo />
+      </div>
     </div>
   );
 }
