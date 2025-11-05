@@ -27,7 +27,7 @@ export default function HeroLogo() {
           aria-hidden
           className="
             absolute left-1/2 -translate-x-1/2
-            block w-[86%] h-[6px] rounded-full
+            block w-0 h-[6px] rounded-full
             bg-[#0FF]
             shadow-[0_0_10px_#0FF,0_0_24px_rgba(0,255,255,0.5)]
             transition-[width] duration-400 ease-out
