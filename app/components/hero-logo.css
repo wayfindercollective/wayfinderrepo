@@ -1,0 +1,65 @@
+.heroLogo{
+  position:relative;
+  width:min(1100px,92vw);
+  margin:0 auto 2.5rem;
+}
+
+.logoImg{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 0 22px rgba(0,255,255,.18));
+}
+
+/* cyan underline under the word UNDERGROUND */
+.cyanBar{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  /* tune these three numbers to align the bar under UNDERGROUND in your image */
+  bottom:calc(7% * -1);   /* how far below the image baseline the bar sits */
+  width:64%;              /* proportion of image width that the bar spans */
+  height:6px;
+  border-radius:9999px;
+  background:#00ffff;
+  box-shadow:
+    0 0 14px rgba(0,255,255,.75),
+    0 0 32px rgba(0,255,255,.35);
+}
+
+/* orbiting dots overlay */
+.orbit{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.orbitInner{
+  position:absolute;
+  /* this rectangle roughly matches the circle in the PSD */
+  top:16%;
+  left:16%;
+  right:16%;
+  bottom:48%;
+  margin:auto;
+  border-radius:50%;
+  animation:spin 40s linear infinite;
+  /* radius used by the child transform */
+  --r: 44%;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+.orbitDot{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#00ffff;
+  box-shadow:0 0 14px rgba(0,255,255,.95), 0 0 26px rgba(0,255,255,.55);
+  transform: rotate(var(--a)) translate(var(--r)) translate(-50%,-50%);
+  opacity:.95;
+}
+
+/* optional hover: speed up the orbit a bit */
+.heroLogo:hover .orbitInner{ animation-duration:22s; }

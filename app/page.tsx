@@ -1,10 +1,15 @@
 import VoidWordmark from "@/components/VoidWordmark";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
+import HeroLogo from './components/HeroLogo';
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
+      <section className="pt-8">
+        <HeroLogo />
+      </section>
+
       {/* Hero Section - Black */}
       <section className="relative bg-black text-white overflow-hidden">
         <Starfield />
