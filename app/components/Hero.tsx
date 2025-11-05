@@ -9,7 +9,7 @@ export default function Hero() {
 
         {/* Main headline */}
         <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">
-          Transform Your Charisma Through Action
+          Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span>
         </h1>
 
         {/* Support line */}

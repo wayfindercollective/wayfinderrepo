@@ -130,3 +130,11 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 .fx-hero-sub + p{
   margin-top: clamp(1rem, 2.5vw, 2rem);
 }
+
+/* Emphasize CHARISMA and ACTION words */
+.emphasis-word {
+  font-weight: 900;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  display: inline-block;
+}
