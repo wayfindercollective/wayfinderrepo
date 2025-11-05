@@ -1,10 +1,14 @@
 import VoidWordmark from "@/components/VoidWordmark";
 import Starfield from "@/components/Starfield";
 import Price from "./components/Price";
+import HeroFxClient from "./components/HeroFxClient";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full">
+    <>
+      {/* Enhance hero subtitle: enlarge "Charisma" and "Action" and add spacing */}
+      <HeroFxClient />
+      <div className="min-h-screen w-full">
       {/* Hero Section - Black */}
       <section className="relative bg-black text-white overflow-hidden">
         <Starfield />
@@ -258,5 +262,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
