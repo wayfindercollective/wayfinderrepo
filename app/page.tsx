@@ -17,7 +17,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center">
             <VoidWordmark className="max-w-[1100px] w-full mx-auto" />
-            <h2 className="h2-void mt-1.5 text-center opacity-90">Transform Your Charisma Through Action</h2>
+            <h2 className="h2-void hero-spacer text-center opacity-90">Transform Your Charisma Through Action</h2>
             <p className="text-lg sm:text-xl text-gray-400 mb-3 max-w-2xl mx-auto">
               Join a community-driven program with missions, tasks, and real-world practice. 
               Master the art of charisma through consistent action and learning.
