@@ -122,7 +122,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 /* ---------- VOID THEME EXTRAS ---------- */
 .fx-bump{
-  font-size: 1.33em;          /* +33% */
+  font-size: 2em;             /* +100% (was 1.33em, now 50% bigger = 2em) */
   line-height: 1.0;
 }
 .fx-hero-sub{

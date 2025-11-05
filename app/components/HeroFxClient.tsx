@@ -25,9 +25,9 @@ export default function HeroFxClient() {
     // Safely replace only the exact words Charisma / Action with wrapped spans
     const html = target.innerHTML;
     const replaced = html
-      // preserve case; we replace only the first match to avoid other sections
-      .replace(/\bCharisma\b/, '<span class="fx-bump">Charisma</span>')
-      .replace(/\bAction\b/, '<span class="fx-bump">Action</span>');
+      // capitalize and wrap; we replace only the first match to avoid other sections
+      .replace(/\bCharisma\b/i, '<span class="fx-bump">CHARISMA</span>')
+      .replace(/\bAction\b/i, '<span class="fx-bump">ACTION</span>');
 
     target.innerHTML = replaced;
   }, []);
