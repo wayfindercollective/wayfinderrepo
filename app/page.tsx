@@ -1,8 +1,14 @@
+import Header from "./components/Header";
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
+      {/* Sticky Header */}
+      <Header />
+      
       {/* Hero Section - Black */}
-      <section className="relative bg-black text-white overflow-hidden">
+      <section className="relative bg-black text-white overflow-hidden pt-16">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
@@ -256,6 +262,16 @@ export default function Home() {
       <footer className="bg-black text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
+            {/* Small logo */}
+            <div className="flex justify-center mb-4">
+              <Image
+                src="/void-logo.svg"
+                alt="Void Underground"
+                width={80}
+                height={27}
+                className="h-6 w-auto opacity-80"
+              />
+            </div>
             <p className="text-gray-400 mb-4">
               Void Underground • From Charisma in the Void
             </p>
