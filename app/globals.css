@@ -23,15 +23,15 @@ body {
 /* Replace the white bands with deep navy and fade smoothly into black */
 .bg-white {
   background: 
-    radial-gradient(circle at top left, rgba(220, 38, 38, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at top right, rgba(220, 38, 38, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at bottom left, rgba(220, 38, 38, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at bottom right, rgba(220, 38, 38, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at top left, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at top right, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at bottom left, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at bottom right, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
     #0b1020 !important;
   color: var(--navyText) !important;
   position: relative;
   isolation: isolate;
-  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100%;
+  background-size: 120px 120px, 120px 120px, 120px 120px, 120px 120px, 100%;
   background-position: top left, top right, bottom left, bottom right, center;
   background-repeat: no-repeat;
 }
