@@ -3,6 +3,8 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --navy: #0b1020;        /* tweak if you want it darker or bluer */
+  --navyText: #e8f6ff;    /* text color on navy */
 }
 
 @theme inline {
@@ -16,4 +18,56 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Replace the white bands with deep navy and fade smoothly into black */
+.bg-white {
+  background: 
+    radial-gradient(circle at top left, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at top right, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at bottom left, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at bottom right, rgba(220, 38, 38, 0.08) 0%, transparent 60%),
+    #0b1020 !important;
+  color: var(--navyText) !important;
+  position: relative;
+  isolation: isolate;
+  background-size: 120px 120px, 120px 120px, 120px 120px, 120px 120px, 100%;
+  background-position: top left, top right, bottom left, bottom right, center;
+  background-repeat: no-repeat;
+}
+
+.bg-white::before {
+  top: -64px;
+  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.bg-white::after {
+  bottom: -64px;
+  background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* ensure text inside turns light as well */
+.bg-white :where(h1, h2, h3, h4, h5, h6, p, li, span, div) {
+  color: var(--navyText) !important;
+}
+
+/* soft fade into black above and below the band */
+.bg-white::before,
+.bg-white::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 64px;           /* increase for a longer fade */
+  pointer-events: none;
+}
+
+.bg-white::before {
+  top: -64px;
+  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.bg-white::after {
+  bottom: -64px;
+  background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0) 100%);
 }
