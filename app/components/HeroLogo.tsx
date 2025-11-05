@@ -4,27 +4,27 @@ import Image from 'next/image';
 
 export default function HeroLogo() {
   return (
-    <div className="relative group inline-block">
-      {/* Let the stars show through the JPG by blending away the black */}
+    <div className="relative w-fit mx-auto group">
       <Image
         src="/Master_Logo.jpg"
         alt="Void Underground"
-        width={1600}
-        height={600}
+        width={1800}
+        height={400}
         priority
-        className="mx-auto w-[min(90vw,1100px)] h-auto mix-blend-screen pointer-events-none select-none"
+        className="block select-none pointer-events-none"
       />
 
-      {/* Cyan underline directly under UNDERGROUND */}
+      {/* underline locked to UNDERGROUND */}
       <span
         aria-hidden
         className="
           absolute left-1/2 -translate-x-1/2
-          bottom-[22%] sm:bottom-[19%] md:bottom-[17%] lg:bottom-[15%]
-          h-[6px] w-0 rounded-full bg-[#0FF]
-          shadow-[0_0_12px_#0FF,0_0_24px_rgba(0,255,255,0.6)]
+          bottom-[36%]           /* move up under the word */
+          w-[84%] h-[6px]        /* match word width and thickness */
+          rounded-full bg-[#0FF]
+          shadow-[0_0_12px_#0FF,0_0_26px_rgba(0,255,255,0.6)]
           transition-[width] duration-500 ease-out
-          group-hover:w-[82%]
+          group-hover:w-[88%]
         "
       />
     </div>
