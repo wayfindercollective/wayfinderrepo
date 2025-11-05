@@ -29,7 +29,7 @@ export default function Home() {
             </div>
             <a
               href="#enroll"
-              className="inline-block bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              className="button-void"
             >
               Join the Void
             </a>
@@ -217,7 +217,7 @@ export default function Home() {
               <a
                 id="enroll"
                 href="#"
-                className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors w-full sm:w-auto"
+                className="button-void--primary w-full sm:w-auto"
               >
                 Join the Void - $297
               </a>
@@ -241,7 +241,7 @@ export default function Home() {
             </p>
             <a
               href="#enroll"
-              className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors mb-8"
+              className="button-void--primary mb-8"
             >
               Join the Void - $297
             </a>
