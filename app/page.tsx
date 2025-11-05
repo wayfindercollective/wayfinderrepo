@@ -123,7 +123,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value Proposition Section - White */}
+      {/* WHY VOID UNDERGROUND — second navy band */}
       <section className="voidSection voidNavy">
         <div className="voidContainer">
           <div className="text-center mb-16">
@@ -225,11 +225,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section - White */}
-      <section className="relative bg-white text-black overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/20 blur-3xl"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+      {/* Final CTA section — match the same navy band look */}
+      <section className="section-band">
+        <div className="container">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
               Ready to Transform Your Charisma?
