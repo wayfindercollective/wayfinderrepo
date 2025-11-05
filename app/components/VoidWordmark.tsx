@@ -1,28 +1,27 @@
 "use client";
 
-import Image from "next/image";
-
 type Props = { className?: string };
 
 export default function VoidWordmark({ className }: Props) {
   return (
     <div
-      className={`relative inline-block ${className || ""}`}
+      className={`relative inline-block w-full ${className || ""}`}
       aria-label="Void Underground"
     >
       {/* Master Logo */}
-      <div className="relative">
-        <Image
+      <div className="relative w-full">
+        {/* Using regular img tag to ensure visibility */}
+        <img
           src="/Master_Logo.jpg"
-          alt="Void Underground"
-          width={1100}
-          height={400}
-          className="w-full h-auto"
+          alt="Void Underground Logo"
+          className="w-full h-auto block"
           style={{
-            mixBlendMode: 'multiply',
-            filter: 'brightness(1.1) contrast(1.2)',
+            display: 'block',
+            visibility: 'visible',
+            opacity: 1,
+            maxWidth: '100%',
+            height: 'auto',
           }}
-          priority
         />
       </div>
     </div>
