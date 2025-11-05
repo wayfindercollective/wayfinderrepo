@@ -205,13 +205,20 @@ export default function Home() {
                   <span>From Charisma in the Void</span>
                 </div>
               </div>
-              <a
-                id="enroll"
-                href="#"
-                className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors w-full sm:w-auto"
-              >
-                Join the Void - $297
-              </a>
+              <div className="flex items-center justify-center gap-4 flex-wrap">
+                <img 
+                  src="/Master_Logo.jpg" 
+                  alt="Void Logo" 
+                  className="logo-no-bg h-12 w-auto"
+                />
+                <a
+                  id="enroll"
+                  href="#"
+                  className="inline-block bg-black text-white px-12 py-4 rounded-lg font-semibold text-xl hover:bg-gray-800 transition-colors w-full sm:w-auto"
+                >
+                  Join the Void - $297
+                </a>
+              </div>
             </div>
           </div>
         </div>
