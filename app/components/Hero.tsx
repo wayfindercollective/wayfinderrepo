@@ -18,7 +18,12 @@ export default function Hero() {
         </p>
 
         {/* CTA that jumps to pricing section */}
-        <div className="mt-10">
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <img 
+            src="/Master_Logo.jpg" 
+            alt="Void Logo" 
+            className="logo-no-bg h-12 w-auto"
+          />
           <a href="#pricing" className="inline-block rounded-2xl bg-white px-8 py-4 text-black font-semibold">
             Join the Void
           </a>
