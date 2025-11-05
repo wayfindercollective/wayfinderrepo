@@ -256,6 +256,9 @@ export default function Home() {
       <footer className="bg-black text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
+            <div className="mb-4">
+              <span className="text-xl font-bold text-white">VOID</span>
+            </div>
             <p className="text-gray-400 mb-4">
               Void Underground • From Charisma in the Void
             </p>
