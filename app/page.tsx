@@ -1,6 +1,7 @@
 import HeroLogo from "./components/HeroLogo";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -227,9 +228,29 @@ export default function Home() {
       </section>
 
       {/* Footer - Black */}
-      <footer className="bg-black text-white border-t border-white/10">
+      <footer className="relative bg-black text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
+          {/* Signal Core Images - Left and Right */}
+          <div className="absolute bottom-0 left-0 right-0 flex justify-between items-end px-4 sm:px-6 lg:px-8 pb-4 pointer-events-none">
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 opacity-60">
+              <Image
+                src="/Signal_CoreLogo.jpg"
+                alt="Signal Core"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 opacity-60">
+              <Image
+                src="/Signal_CoreLogo.jpg"
+                alt="Signal Core"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+          
+          <div className="text-center relative z-10">
             <p className="text-gray-400 mb-4">
               Void Underground • From Charisma in the Void
             </p>
