@@ -182,7 +182,7 @@ export default function Home() {
             </p>
           </div>
           <div className="max-w-2xl mx-auto">
-            <div className="bg-white text-black p-12 rounded-lg text-center border-4 border-red-500/30">
+            <div className="bg-white text-black p-12 rounded-lg text-center">
               <div className="mb-8">
                 <div className="text-6xl sm:text-7xl font-bold mb-2">$297</div>
                 <div className="text-2xl text-gray-600 line-through mb-2">$600 value</div>
