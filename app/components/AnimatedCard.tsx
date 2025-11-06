@@ -6,77 +6,76 @@
  * respects prefers-reduced-motion. Use by wrapping any "black card/panel".
  */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 type Dir = "left" | "right";
 
-function useAlternatingSlideAnimation(
-  el: HTMLElement | null,
+function initAlternatingSlideAnimation(
+  el: HTMLElement,
   dir: Dir = "left",
   offsetPx = 20,
   durationMs = 600
-) {
-  useEffect(() => {
-    if (!el) return;
+): () => void {
+  const prefersReduced =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Set base styles first (no transition yet → avoids flash/jump)
+  const baseOpacity = prefersReduced ? "1" : "0";
+  const baseTransform = prefersReduced
+    ? "translateX(0px)"
+    : `translateX(${dir === "left" ? -offsetPx : offsetPx}px)`;
 
-    // Set base styles first (no transition yet → avoids flash/jump)
-    const baseOpacity = prefersReduced ? "1" : "0";
-    const baseTransform = prefersReduced
-      ? "translateX(0px)"
-      : `translateX(${dir === "left" ? -offsetPx : offsetPx}px)`;
+  el.style.opacity = baseOpacity;
+  el.style.transform = baseTransform;
+  el.style.willChange = "transform, opacity";
+  el.style.transition = "none";
 
-    el.style.opacity = baseOpacity;
-    el.style.transform = baseTransform;
-    el.style.willChange = "transform, opacity";
-    el.style.transition = "none";
+  // Enable transition on next frame
+  const rafId = requestAnimationFrame(() => {
+    el.style.transition = `opacity ${durationMs}ms ease-out, transform ${durationMs}ms ease-out`;
+  });
 
-    // Enable transition on next frame
-    const t = requestAnimationFrame(() => {
-      el.style.transition = `opacity ${durationMs}ms ease-out, transform ${durationMs}ms ease-out`;
-    });
-
-    // Reduced motion: reveal immediately, no observer
-    if (prefersReduced) {
-      el.style.opacity = "1";
-      el.style.transform = "translateX(0px)";
-      return () => cancelAnimationFrame(t);
-    }
-
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      // Fallback for very old browsers
-      el.style.opacity = "1";
-      el.style.transform = "translateX(0px)";
-      return () => cancelAnimationFrame(t);
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            el.style.opacity = "1";
-            el.style.transform = "translateX(0px)";
-          } else {
-            el.style.opacity = "0";
-            el.style.transform =
-              `translateX(${dir === "left" ? -offsetPx : offsetPx}px)`;
-          }
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
-
-    io.observe(el);
-
+  // Reduced motion: reveal immediately, no observer
+  if (prefersReduced) {
+    el.style.opacity = "1";
+    el.style.transform = "translateX(0px)";
     return () => {
-      cancelAnimationFrame(t);
-      io.disconnect();
+      cancelAnimationFrame(rafId);
     };
-  }, [el, dir, offsetPx, durationMs]);
+  }
+
+  if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+    // Fallback for very old browsers
+    el.style.opacity = "1";
+    el.style.transform = "translateX(0px)";
+    return () => {
+      cancelAnimationFrame(rafId);
+    };
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          el.style.opacity = "1";
+          el.style.transform = "translateX(0px)";
+        } else {
+          el.style.opacity = "0";
+          el.style.transform = `translateX(${dir === "left" ? -offsetPx : offsetPx}px)`;
+        }
+      }
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+  );
+
+  io.observe(el);
+
+  return () => {
+    cancelAnimationFrame(rafId);
+    io.disconnect();
+  };
 }
 
 type Props = {
@@ -101,16 +100,16 @@ export default function AnimatedCard({
   className = "",
   as: Tag = "div",
 }: Props) {
-  const [element, setElement] = React.useState<HTMLElement | null>(null);
+  const ref = useRef<HTMLElement | null>(null);
 
-  // Use callback ref to update element state when ref is set
-  const callbackRef = React.useCallback((node: HTMLElement | null) => {
-    setElement(node);
-  }, []);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
 
-  // Run the animation hook
-  useAlternatingSlideAnimation(element, direction, offsetPx, durationMs);
+    const cleanup = initAlternatingSlideAnimation(el, direction, offsetPx, durationMs);
+    return cleanup;
+  }, [direction, offsetPx, durationMs]);
 
   // @ts-expect-error: generic HTMLElement ref for arbitrary tag
-  return <Tag ref={callbackRef} className={className}>{children}</Tag>;
+  return <Tag ref={ref} className={className}>{children}</Tag>;
 }
