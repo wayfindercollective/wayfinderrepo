@@ -4,6 +4,7 @@ import HeroLogo from "./components/HeroLogo";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
+import "./components/price.css";
 
 export default function Home() {
   return (
@@ -187,7 +188,7 @@ export default function Home() {
           <div className="max-w-2xl mx-auto">
             <div className="bg-white text-black p-12 rounded-lg text-center">
               <div className="mb-8">
-                <div className="text-6xl sm:text-7xl font-bold mb-2">$297</div>
+                <div className="text-6xl sm:text-7xl mb-2 price-main">$297</div>
                 <div className="text-2xl text-gray-600 line-through mb-2">$600 value</div>
                 <div className="text-lg text-purple-600 font-semibold">50% Discount</div>
               </div>
