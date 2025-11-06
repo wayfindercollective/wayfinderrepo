@@ -14,12 +14,12 @@ export default function HeroLogo() {
       {/* logo plus cyan underline */}
       <div className="relative w-fit mx-auto pt-6 group z-10">
         <Image
-          src="/Master_Logo.jpg"
+          src="/Master_Logo.png"
           alt="Void Underground"
           width={1800}
           height={400}
           priority
-          className="block select-none pointer-events-none"
+          className="mx-auto block h-auto w-[min(1100px,90vw)] mix-blend-screen"
         />
 
         {/* cyan line tucked under UNDERGROUND */}
