@@ -20,12 +20,8 @@ export default function Starfield({ count = 150 }: { count?: number }) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     
     const resize = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      
-      const rect = parent.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
       canvas.style.width = w + 'px';
@@ -121,24 +117,12 @@ export default function Starfield({ count = 150 }: { count?: number }) {
       makeStars();
     };
     
-    // Use ResizeObserver to watch parent element size
-    const resizeObserver = new ResizeObserver(() => {
-      resize();
-      makeStars();
-    });
-    
-    const parent = canvas.parentElement;
-    if (parent) {
-      resizeObserver.observe(parent);
-    }
-    
     window.addEventListener('resize', handleResize);
     raf = requestAnimationFrame(step);
     
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', handleResize);
-      resizeObserver.disconnect();
     };
   }, [count]);
 

@@ -46,16 +46,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 /* section backgrounds */
 .voidSection { position: relative; }
-.voidNavy {
-  /* subtle glows plus navy-to-black blend */
-  background:
-    radial-gradient(900px 500px at 8% 0%, rgba(255,0,255,0.06), transparent 60%),
-    radial-gradient(700px 400px at 92% 6%, rgba(250,100,0,0.05), transparent 60%),
-    linear-gradient(180deg, #0b1426 0%, #0a0f1a 55%, #05070c 80%, #000000 100%);
-}
-.voidDark {
-  background: linear-gradient(180deg, #000000 0%, #05070c 60%, #0b1220 100%);
-}
+/* Backgrounds removed to show starfield throughout */
 
 /* cards on dark backgrounds stay readable */
 .cardVoid {

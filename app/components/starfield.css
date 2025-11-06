@@ -1,7 +1,10 @@
 .starfieldCanvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;                 /* above background gradients but below content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;                 /* behind all content */
   pointer-events: none;       /* do not block clicks */
   background: transparent;
 }
