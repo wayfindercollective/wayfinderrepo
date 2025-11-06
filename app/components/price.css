@@ -5,6 +5,27 @@
   --muted-2: rgba(255,255,255,0.35);
 }
 
+/* Reusable class for main price styling to match VOID logo */
+.price-main {
+  font-family: var(--fontB-display);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #000000;
+  -webkit-text-stroke: 2px #00ffff;
+  text-stroke: 2px #00ffff;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.4),
+    0 0 40px rgba(0, 255, 255, 0.2);
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+}
+
+.price-main .flickering,
+.price-main.flickering {
+  animation: flicker-warning 1.5s infinite;
+}
+
 .price-wrap {
   display: grid;
   gap: 6px;
@@ -24,8 +45,19 @@
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0.5px;
-  color: var(--void-orange);
+  font-family: var(--fontB-display);
+  color: #000000;
+  -webkit-text-stroke: 2px #00ffff;
+  text-stroke: 2px #00ffff;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.4),
+    0 0 40px rgba(0, 255, 255, 0.2);
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+}
+
+.current-price.flickering {
   animation: flicker-warning 1.5s infinite;
 }
 
@@ -33,42 +65,112 @@
   0%, 100% {
     opacity: 1;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
   }
   10% {
     opacity: 0.3;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.2);
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 15px rgba(0, 255, 255, 1),
+      0 0 30px rgba(0, 255, 255, 0.8),
+      0 0 45px rgba(0, 255, 255, 0.6),
+      0 0 60px rgba(0, 255, 255, 0.4);
   }
   15% {
     opacity: 1;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
   }
   20% {
     opacity: 0.4;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.3);
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 18px rgba(0, 255, 255, 1),
+      0 0 35px rgba(0, 255, 255, 0.9),
+      0 0 50px rgba(0, 255, 255, 0.7),
+      0 0 70px rgba(0, 255, 255, 0.5);
   }
   25% {
     opacity: 1;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
   }
   50% {
     opacity: 1;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
   }
   55% {
     opacity: 0.2;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.4);
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 20px rgba(0, 255, 255, 1),
+      0 0 40px rgba(0, 255, 255, 1),
+      0 0 60px rgba(0, 255, 255, 0.8),
+      0 0 80px rgba(0, 255, 255, 0.6);
   }
   60% {
     opacity: 1;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
   }
   65% {
     opacity: 0.5;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.2);
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 12px rgba(0, 255, 255, 0.9),
+      0 0 25px rgba(0, 255, 255, 0.7),
+      0 0 38px rgba(0, 255, 255, 0.5),
+      0 0 50px rgba(0, 255, 255, 0.3);
   }
   70% {
     opacity: 1;
     filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
   }
 }
 
@@ -93,7 +195,7 @@
   cursor: default;
   text-decoration-line: line-through;
   text-decoration-thickness: 2px;
-  text-decoration-color: rgba(250,100,0,.6);
+  text-decoration-color: rgba(0,255,255,.4);
 }
 .strike .shard {
   display: inline-block;
