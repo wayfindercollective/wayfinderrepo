@@ -8,3 +8,21 @@
   pointer-events: none;       /* do not block clicks */
   background: transparent;
 }
+
+.logoStarfieldContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;                 /* above stars but behind content */
+  pointer-events: none;       /* do not block clicks */
+  overflow: hidden;
+}
+
+.logoStarfieldItem {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+}
