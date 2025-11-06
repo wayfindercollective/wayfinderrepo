@@ -15,11 +15,11 @@ export default function Home() {
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void mt-6 text-center opacity-90">
+            <h2 className="h2-void -mt-8 text-center opacity-90">
               Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto mt-2">
               Join a community driven program with missions, tasks, and real world practice.
               Master the art of charisma through consistent action and learning.
             </p>
