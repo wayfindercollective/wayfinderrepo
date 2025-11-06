@@ -19,9 +19,15 @@ export default function Hero() {
 
         {/* CTA that jumps to pricing section */}
         <div className="mt-10">
-          <a href="#pricing" className="inline-block rounded-2xl bg-white px-8 py-4 text-black font-semibold">
+          <button
+            className="ui inline-flex items-center justify-center rounded-2xl px-6 py-3
+                       bg-black text-white border border-white/10 shadow-md
+                       transition duration-200 ease-out
+                       hover:-translate-y-0.5 hover:shadow-xl hover:text-cyan-300
+                       focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
+          >
             Join the Void
-          </a>
+          </button>
         </div>
       </div>
     </section>
