@@ -19,7 +19,7 @@ export default function HeroLogo() {
           width={1800}
           height={400}
           priority
-          className="block select-none pointer-events-none"
+          className="mx-auto block h-auto w-[min(1100px,90vw)] mix-blend-screen"
         />
 
         {/* cyan line tucked under UNDERGROUND */}
