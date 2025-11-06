@@ -18,19 +18,19 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative">
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10">
+      <section className="relative text-white overflow-hidden z-10 -mt-8 sm:-mt-12">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-2">
           <div className="text-center">
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void mt-2 text-center opacity-90">
+            <h2 className="h2-void -mt-4 text-center opacity-90">
               Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1">
               Join a community driven program with missions, tasks, and real world practice.
               Master the art of charisma through consistent action and learning.
             </p>
