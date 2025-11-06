@@ -63,6 +63,12 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardVoid:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
 }
 
 /* full-width underlines for section titles - centered */
@@ -70,14 +76,19 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   font-weight: 800;
   letter-spacing: 0.02em;
   display: inline-block;
+  cursor: pointer;
 }
 .sectionTitle::after {
   content: "";
   display: block;
-  width: 100%;
+  width: 0;
   height: 3px;
   margin: 14px 0 0;
   box-shadow: 0 0 14px currentColor;
+  transition: width 0.4s ease-out;
+}
+.sectionTitle:hover::after {
+  width: 100%;
 }
 
 /* wrapper to ensure centered titles */
