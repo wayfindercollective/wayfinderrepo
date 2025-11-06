@@ -26,7 +26,7 @@
   letter-spacing: 0.5px;
   color: var(--void-orange);
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
-  animation: flicker-warning 2.5s infinite;
+  animation: flicker-warning 4s infinite;
 }
 
 @keyframes flicker-warning {
