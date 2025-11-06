@@ -1,54 +1,155 @@
-:root {
-  --pure-black: #000000;
-  --cyan-glow: #00FFFF;
-  --magenta: #FF00FF;
-  --depth: #1B1B1B;
-  --orange: #FA6400;
-  --white: #FFFFFF;
-  --acid-green: #7FFF00;
+/* =========================
+   CITV System — Global Theme + Effects
+   ========================= */
 
-  --font-inter: var(--fontB-body);
-  --font-orbitron: var(--fontB-display);
-  --font-plex: var(--fontB-mono);
+/* --- Palette tokens --- */
+:root{
+  --c-black:#000000;        /* The Void */
+  --c-cyan:#00FFFF;         /* Signal glow */
+  --c-magenta:#FF00FF;      /* Controlled chaos */
+  --c-ink:#1B1B1B;          /* Panels / depth */
+  --c-orange:#FA6400;       /* Warning / friction */
+  --c-white:#FFFFFF;        /* Text on black */
+  --c-acid:#7FFF00;         /* Optional highlight */
+
+  --shadow-panel: 0 24px 60px -20px rgba(11,19,36,.55);
+  --glow-cyan: 0 0 28px rgba(0,255,255,.30);
+  --glow-magenta: 0 0 24px rgba(255,0,255,.25);
 }
 
-html, body {
-  background: var(--pure-black);
-  color: var(--white);
+/* --- Site base --- */
+html, body{ background:var(--c-black); color:var(--c-white); }
+h1,h2,h3,h4,h5,h6{ color:var(--c-white); letter-spacing:-.01em; }
+a{ color:var(--c-cyan); text-decoration:none; transition:color .18s ease, text-shadow .18s ease; }
+a:hover{ color:var(--c-magenta); text-shadow:0 0 10px rgba(255,0,255,.35); }
+
+/* --- Section ambient band (apply .citv-band to any section wrapper) --- */
+.citv-band{
+  background:
+    radial-gradient(60vw 40vh at 12% 88%, rgba(255,0,255,.10), transparent 60%),
+    radial-gradient(60vw 40vh at 88% 12%, rgba(255,0,255,.08), transparent 60%),
+    linear-gradient(180deg, #000 0%, #0B1324 35%, #000 100%);
 }
 
-.h1-void {
-  font-family: var(--fontB-display);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 700;
+/* --- Cards / Feature blocks (works on common class names) --- */
+.panel,.card,.feature,.content-card,.pricing{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  box-shadow:var(--shadow-panel);
+  backdrop-filter:blur(2px);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.panel:hover,.card:hover,.feature:hover,.content-card:hover,.pricing:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.18);
+  box-shadow:var(--glow-cyan);
 }
 
-.h2-void {
-  font-family: var(--fontB-body);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+/* Headings inside blocks pop a bit */
+.panel h3,.card h3,.feature h3,.content-card h3{
+  text-shadow: 0 0 6px rgba(0,255,255,.35);
 }
 
-.code-void {
-  font-family: var(--fontB-mono);
+/* --- Buttons (applies to <button>, .btn, and submit) --- */
+button,.btn,input[type="submit"]{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.75rem 1.25rem; border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:var(--c-black); color:var(--c-white); font-weight:500;
+  transition:transform .18s ease, box-shadow .18s ease, color .18s ease, border-color .18s ease;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);
+}
+button:hover,.btn:hover,input[type="submit"]:hover{
+  transform:translateY(-2px);
+  color:var(--c-cyan);
+  box-shadow:var(--glow-cyan);
+  border-color:rgba(255,255,255,.24);
 }
 
-.btn-void {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  background: var(--white);
-  color: var(--pure-black);
-  transition: box-shadow 200ms ease, transform 200ms ease;
+/* --- "System flicker / glitch" text effects --- */
+@keyframes citv-flicker {
+  0%, 100% { opacity:1; text-shadow:none; }
+  5% { opacity:.85; }
+  8% { opacity:1; text-shadow:0 0 12px rgba(0,255,255,.45); }
+  11% { opacity:.9; }
+  13% { opacity:1; text-shadow:0 0 10px rgba(255,0,255,.35); }
+  20% { opacity:.95; }
+}
+@keyframes citv-glitch-shift {
+  0% { transform:translate(0,0); }
+  50%{ transform:translate(1px,-0.5px); }
+  100%{ transform:translate(0,0); }
 }
 
-.btn-void:hover {
-  box-shadow:
-    0 0 24px rgba(0, 255, 255, 0.55),
-    0 0 2px rgba(0, 255, 255, 1) inset;
-  transform: translateY(-2px);
+/* Apply to any heading or label you want to feel "live" */
+.live {
+  animation: citv-flicker 6s infinite steps(60, end);
+}
+
+/* Stronger glitch pulse (use sparingly) */
+.glitch {
+  position: relative;
+  animation: citv-glitch-shift .9s infinite;
+}
+.glitch::before,
+.glitch::after{
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  mix-blend-mode: screen; pointer-events:none;
+}
+.glitch::before{ color:var(--c-cyan); transform:translate(-1px,0); opacity:.7; filter:blur(.3px); }
+.glitch::after { color:var(--c-magenta); transform:translate(1px,0);  opacity:.7; filter:blur(.3px); }
+
+/* Subtle scanline overlay for block containers (toggle with .scanlines) */
+.scanlines{
+  position:relative; overflow:hidden;
+}
+.scanlines::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.04) 0px,
+      rgba(255,255,255,.04) 1px,
+      transparent 2px,
+      transparent 3px
+    );
+  mix-blend-mode: overlay;
+}
+
+/* --- Urgency / Warning badge (for price or critical notices) --- */
+@keyframes citv-ping {
+  0%   { box-shadow:0 0 0 0 rgba(250,100,0,.45); transform:translateY(0); }
+  60%  { box-shadow:0 0 0 10px rgba(250,100,0,0); transform:translateY(-1px);}
+  100% { box-shadow:0 0 0 0 rgba(250,100,0,0); transform:translateY(0); }
+}
+
+/* Attach this automatically if your markup has .pricing .price */
+.pricing .price,
+.price.warn { position:relative; padding-left:2.1rem; }
+
+.pricing .price::before,
+.price.warn::before{
+  content:"⚠"; /* warning triangle symbol */
+  position:absolute; left:0; top:50%; transform:translateY(-50%);
+  display:inline-grid; place-items:center;
+  width:1.6rem; height:1.6rem; border-radius:6px;
+  background: color-mix(in oklab, var(--c-orange) 70%, #000 30%);
+  color:#000; font-weight:800; text-shadow:none;
+  border:1px solid color-mix(in oklab, var(--c-orange) 60%, #fff 0%);
+  box-shadow:0 0 14px rgba(250,100,0,.35);
+  animation: citv-ping 2.6s infinite;
+}
+
+/* Optional "critical" text style anywhere */
+.urgent{ color:var(--c-orange); text-shadow:0 0 10px rgba(250,100,0,.35); }
+
+/* Cyan/Magenta emphases you can wrap around keywords */
+.em-cyan   { color:var(--c-cyan);    text-shadow:var(--glow-cyan); }
+.em-magenta{ color:var(--c-magenta); text-shadow:var(--glow-magenta); }
+
+/* Accessibility: honor reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
 }
