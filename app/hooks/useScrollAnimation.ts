@@ -15,6 +15,8 @@ export function useScrollAnimation(options?: IntersectionObserverInit) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+          } else {
+            setIsVisible(false);
           }
         });
       },
