@@ -7,15 +7,12 @@ export default function Pricing() {
       <div className="mt-8">
         <Price />
       </div>
-      <button
-        className="ui inline-flex items-center justify-center rounded-2xl px-6 py-3 mt-10
-                   bg-black text-white border border-white/10 shadow-md
-                   transition duration-200 ease-out
-                   hover:-translate-y-0.5 hover:shadow-xl hover:text-cyan-300
-                   focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
+      <a
+        href="#enroll"
+        className="btn-void mt-10"
       >
         Join the Void
-      </button>
+      </a>
     </div>
   );
 }

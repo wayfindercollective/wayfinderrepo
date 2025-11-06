@@ -212,14 +212,14 @@ export default function Home() {
               </div>
               <button
                 id="enroll"
-                className="ui inline-flex items-center justify-center rounded-2xl px-6 py-3
+                className="inline-flex items-center justify-center rounded-2xl px-6 py-3
                            bg-black text-white border border-white/10 shadow-md
                            transition duration-200 ease-out
                            hover:-translate-y-0.5 hover:shadow-xl hover:text-cyan-300
                            focus:outline-none focus:ring-2 focus:ring-cyan-400/40
                            w-full sm:w-auto"
               >
-                Join the Void - $297
+                Join the Void
               </button>
             </div>
           </div>
