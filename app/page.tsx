@@ -1,13 +1,28 @@
 import HeroLogo from "./components/HeroLogo";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
       {/* Hero Section - Black */}
-      <section className="relative text-white overflow-hidden">
+      <section className="relative isolate text-white overflow-hidden">
         <Starfield />
+        <Image
+          src="/void-underground.jpg"
+          alt="VOID UNDERGROUND"
+          width={1600}
+          height={800}
+          priority
+          className="
+            pointer-events-none
+            mx-auto w-[min(92vw,1100px)]
+            mix-blend-screen
+            brightness-110 contrast-110
+            drop-shadow-[0_0_24px_rgba(0,229,255,0.35)]
+          "
+        />
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
