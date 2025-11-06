@@ -77,6 +77,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   letter-spacing: 0.02em;
   display: inline-block;
   cursor: pointer;
+  position: relative;
 }
 .sectionTitle::after {
   content: "";
@@ -85,10 +86,32 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   height: 3px;
   margin: 14px 0 0;
   box-shadow: 0 0 14px currentColor;
-  transition: width 0.4s ease-out;
+  transition: width 0.6s ease-out;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
 }
 .sectionTitle:hover::after {
   width: 100%;
+}
+
+/* Scroll-triggered animation: line expands from center to sides */
+.sectionTitle.animate-line::after {
+  animation: expandFromCenter 0.8s ease-out forwards;
+}
+
+@keyframes expandFromCenter {
+  0% {
+    width: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  100% {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* wrapper to ensure centered titles */
