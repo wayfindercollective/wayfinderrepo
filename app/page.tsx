@@ -1,10 +1,67 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import HeroLogo from "./components/HeroLogo";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import "./components/price.css";
+
+function InvestmentPrice() {
+  const priceRef = useRef<HTMLDivElement>(null);
+  const [isFlickering, setIsFlickering] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const element = priceRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Clear any existing timeout
+            if (timeoutRef.current) {
+              clearTimeout(timeoutRef.current);
+            }
+            // Start flickering
+            setIsFlickering(true);
+            // Stop flickering after 5 seconds
+            timeoutRef.current = setTimeout(() => {
+              setIsFlickering(false);
+            }, 5000);
+          } else {
+            // Reset when scrolling away
+            if (timeoutRef.current) {
+              clearTimeout(timeoutRef.current);
+              timeoutRef.current = null;
+            }
+            setIsFlickering(false);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px',
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div ref={priceRef} className={`text-6xl sm:text-7xl mb-2 price-main ${isFlickering ? 'flickering' : ''}`}>
+      $297
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -188,7 +245,7 @@ export default function Home() {
           <div className="max-w-2xl mx-auto">
             <div className="bg-white text-black p-12 rounded-lg text-center">
               <div className="mb-8">
-                <div className="text-6xl sm:text-7xl mb-2 price-main">$297</div>
+                <InvestmentPrice />
                 <div className="text-2xl text-gray-600 line-through mb-2">$600 value</div>
                 <div className="text-lg text-purple-600 font-semibold">50% Discount</div>
               </div>
