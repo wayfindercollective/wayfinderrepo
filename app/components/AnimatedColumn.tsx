@@ -1,0 +1,32 @@
+'use client';
+
+import { useColumnScrollAnimation } from '../hooks/useColumnScrollAnimation';
+
+interface AnimatedColumnProps {
+  children: React.ReactNode;
+  direction: 'left' | 'right' | 'fade';
+  className?: string;
+}
+
+export default function AnimatedColumn({ children, direction, className = '' }: AnimatedColumnProps) {
+  const { elementRef, isVisible } = useColumnScrollAnimation();
+
+  const getAnimationClass = () => {
+    switch (direction) {
+      case 'left':
+        return `column-animate-left ${isVisible ? 'visible' : ''}`;
+      case 'right':
+        return `column-animate-right ${isVisible ? 'visible' : ''}`;
+      case 'fade':
+        return `column-animate-fade ${isVisible ? 'visible' : ''}`;
+      default:
+        return '';
+    }
+  };
+
+  return (
+    <div ref={elementRef} className={`${getAnimationClass()} ${className}`}>
+      {children}
+    </div>
+  );
+}
