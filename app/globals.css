@@ -139,3 +139,82 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   text-transform: uppercase;
   display: inline-block;
 }
+
+/* =========================
+   CITV Design System
+   ========================= */
+
+/* Site base */
+body { background: #000; color: #fff; }
+
+/* Background "emotional gradient" bands (calm → chaos → clarity) */
+.bg-citv-band {
+  /* top: calm black fading to deep navy */
+  background:
+    radial-gradient(60vw 40vh at 10% 90%, rgba(255,0,255,0.10), transparent 60%),
+    radial-gradient(60vw 40vh at 90% 10%, rgba(255,0,255,0.08), transparent 60%),
+    linear-gradient(180deg, #000 0%, #0B1324 35%, #000 100%);
+}
+
+/* Section panel (for cards/feature rows) */
+.panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -20px rgba(11,19,36,0.55);
+  backdrop-filter: blur(2px);
+}
+
+/* Neon underline for headings */
+.neon-underline {
+  position: relative;
+  display: inline-block;
+}
+.neon-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px; height: 2px;
+  background: linear-gradient(90deg, #FF00FF, #00FFFF);
+  box-shadow: 0 0 12px rgba(0,255,255,0.5), 0 0 12px rgba(255,0,255,0.35) inset;
+  border-radius: 999px;
+}
+
+/* CTA buttons */
+.btn {
+  @apply inline-flex items-center justify-center rounded-2xl px-5 py-3
+  text-[15px] font-medium transition duration-200 ease-out;
+}
+
+.btn-primary {
+  background: #000;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  color: #00FFFF;               /* cyan signal on hover */
+  box-shadow: 0 0 32px rgba(0,255,255,0.25);
+}
+
+/* Secondary ghost button (magenta accent) */
+.btn-ghost {
+  color: #fff;
+  border: 1px solid rgba(255,0,255,0.35);
+  background: rgba(255,0,255,0.06);
+}
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  color: #00FFFF;
+  box-shadow: 0 0 28px rgba(255,0,255,0.25);
+}
+
+/* Cyan glow utility (for logos, icons, key words) */
+.glow-cyan     { filter: drop-shadow(0 0 12px rgba(0,255,255,0.45)); }
+.glow-magenta  { filter: drop-shadow(0 0 12px rgba(255,0,255,0.35)); }
+
+/* Reveal (from your scroll effect) */
+@layer utilities {
+  .reveal { @apply opacity-0 translate-y-4 transition-opacity transition-transform duration-700 ease-out; }
+  .reveal.is-visible { @apply opacity-100 translate-y-0; }
+}
