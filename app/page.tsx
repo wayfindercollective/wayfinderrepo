@@ -77,7 +77,7 @@ export default function Home() {
             <div className="space-y-8">
               <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
-                  <span className="text-red-500">•</span>
+                  <img src="/dot-icon.png" alt="" className="w-6 h-6 object-contain" />
                   Six Months of Content
                 </h3>
                 <p className="text-gray-300 text-lg">
@@ -87,7 +87,7 @@ export default function Home() {
               </div>
               <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
-                  <span className="text-purple-500">•</span>
+                  <img src="/dot-icon.png" alt="" className="w-6 h-6 object-contain" />
                   Community-Driven Learning
                 </h3>
                 <p className="text-gray-300 text-lg">
@@ -97,7 +97,7 @@ export default function Home() {
               </div>
               <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
-                  <span className="text-red-500">•</span>
+                  <img src="/dot-icon.png" alt="" className="w-6 h-6 object-contain" />
                   Missions & Tasks
                 </h3>
                 <p className="text-gray-300 text-lg">
@@ -107,7 +107,7 @@ export default function Home() {
               </div>
               <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
-                  <span className="text-purple-500">•</span>
+                  <img src="/dot-icon.png" alt="" className="w-6 h-6 object-contain" />
                   From Charisma in the Void
                 </h3>
                 <p className="text-gray-300 text-lg">
