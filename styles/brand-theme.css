@@ -7,9 +7,9 @@
   --white: #FFFFFF;
   --acid-green: #7FFF00;
 
-  --font-inter: var(--font-body);
-  --font-orbitron: var(--font-display);
-  --font-plex: var(--font-mono);
+  --font-inter: var(--fontB-body);
+  --font-orbitron: var(--fontB-display);
+  --font-plex: var(--fontB-mono);
 }
 
 html, body {
@@ -18,20 +18,20 @@ html, body {
 }
 
 .h1-void {
-  font-family: var(--font-display);
+  font-family: var(--fontB-display);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 700;
 }
 
 .h2-void {
-  font-family: var(--font-body);
+  font-family: var(--fontB-body);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .code-void {
-  font-family: var(--font-mono);
+  font-family: var(--fontB-mono);
 }
 
 .btn-void {

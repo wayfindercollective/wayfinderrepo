@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./../styles/brand-theme.css";
-import { inter, orbitron, plexMono } from "./fonts";
+import { manrope, exo2, jetbrains } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${exo2.variable} ${jetbrains.variable}`}>
       <body className="antialiased">
         {children}
       </body>
