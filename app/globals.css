@@ -139,3 +139,15 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   text-transform: uppercase;
   display: inline-block;
 }
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: transform, opacity; /* always allowed in plain CSS */
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
