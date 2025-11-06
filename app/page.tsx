@@ -1,6 +1,9 @@
+'use client';
+
 import HeroLogo from "./components/HeroLogo";
 import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
+import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 
 export default function Home() {
   return (
@@ -31,9 +34,9 @@ export default function Home() {
       <section className="voidSection voidNavy">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange">
+            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange">
               What You Get
-            </h2>
+            </AnimatedSectionTitle>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="cardVoid text-white p-8">
@@ -69,9 +72,9 @@ export default function Home() {
       <section className="voidSection voidDark">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
+            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
               The Program
-            </h2>
+            </AnimatedSectionTitle>
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
@@ -125,9 +128,9 @@ export default function Home() {
         <div className="voidContainer">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
+              <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
                 Why Void Underground?
-              </h2>
+              </AnimatedSectionTitle>
             </div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Most charisma programs focus on theory. We focus on action.
@@ -173,9 +176,9 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan">
+              <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan">
                 Investment
-              </h2>
+              </AnimatedSectionTitle>
             </div>
             <p className="text-xl text-gray-300">
               One-time payment for 6 months of premium access
