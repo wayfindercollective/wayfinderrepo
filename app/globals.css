@@ -76,14 +76,19 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   font-weight: 800;
   letter-spacing: 0.02em;
   display: inline-block;
+  cursor: pointer;
 }
 .sectionTitle::after {
   content: "";
   display: block;
-  width: 100%;
+  width: 0;
   height: 3px;
   margin: 14px 0 0;
   box-shadow: 0 0 14px currentColor;
+  transition: width 0.4s ease-out;
+}
+.sectionTitle:hover::after {
+  width: 100%;
 }
 
 /* wrapper to ensure centered titles */
