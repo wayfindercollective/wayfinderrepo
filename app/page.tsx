@@ -15,7 +15,7 @@ export default function Home() {
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void mt-0 text-center opacity-90">
+            <h2 className="h2-void -mt-8 text-center opacity-90">
               Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span>
             </h2>
 
