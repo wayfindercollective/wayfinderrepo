@@ -26,6 +26,50 @@
   letter-spacing: 0.5px;
   color: var(--void-orange);
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  animation: flicker-warning 1.5s infinite;
+}
+
+@keyframes flicker-warning {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  }
+  10% {
+    opacity: 0.3;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.2);
+  }
+  15% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  }
+  20% {
+    opacity: 0.4;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.3);
+  }
+  25% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  }
+  55% {
+    opacity: 0.2;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.4);
+  }
+  60% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  }
+  65% {
+    opacity: 0.5;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.2);
+  }
+  70% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  }
 }
 
 .discount-note {
