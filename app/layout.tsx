@@ -1,22 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./../styles/brand-theme.css";
-import { Inter, Orbitron, IBM_Plex_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const inter = Inter({ subsets: ["latin"], variable: "--f-inter", display: "swap", weight: ["400", "500", "600", "700"] });
-const orbitron = Orbitron({ subsets: ["latin"], variable: "--f-orbitron", display: "swap", weight: ["400", "500", "600", "700", "900"] });
-const plex = IBM_Plex_Mono({ subsets: ["latin"], variable: "--f-plex", display: "swap", weight: ["400", "500", "600", "700"] });
+import { manrope, exo2, jetbrains } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
@@ -29,10 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${plex.variable}`}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${manrope.variable} ${exo2.variable} ${jetbrains.variable}`}>
+      <body className="antialiased">
         {children}
       </body>
     </html>
