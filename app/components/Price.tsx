@@ -2,13 +2,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./price.css";
 
+// Seeded random function for deterministic random values
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
 // Small helper to turn a string into "shards" that can fly apart on hover
 function makeShards(text: string) {
   return [...text].map((ch, i) => {
-    // random but stable-ish offsets so it looks organic - much larger distances to fly off screen
-    const dx = (Math.random() * 800 - 400).toFixed(0) + "px";
-    const dy = (Math.random() * 600 - 300).toFixed(0) + "px";
-    const rot = (Math.random() * 720 - 360).toFixed(0) + "deg";
+    // Use character index and char code as seed for deterministic randomness
+    const seed = i * 1000 + ch.charCodeAt(0);
+    // random but stable offsets so it looks organic - much larger distances to fly off screen
+    const dx = (seededRandom(seed) * 800 - 400).toFixed(0) + "px";
+    const dy = (seededRandom(seed + 1) * 600 - 300).toFixed(0) + "px";
+    const rot = (seededRandom(seed + 2) * 720 - 360).toFixed(0) + "deg";
     return (
       <span
         key={i}

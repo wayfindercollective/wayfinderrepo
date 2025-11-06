@@ -14,7 +14,7 @@ export default function HeroLogo() {
       {/* logo plus cyan underline */}
       <div className="relative w-fit mx-auto -mt-4 group z-10" style={{ transform: 'scale(0.75)' }}>
         <Image
-          src="/Master_Logo.jpg"
+          src="/Master_Logo.png"
           alt="Void Underground"
           width={1800}
           height={400}

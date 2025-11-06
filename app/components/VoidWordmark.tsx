@@ -12,7 +12,7 @@ export default function VoidWordmark({ className }: Props) {
       <div className="relative w-full">
         {/* Using regular img tag to ensure visibility */}
         <img
-          src="/Master_Logo.jpg"
+          src="/Master_Logo.png"
           alt="Void Underground Logo"
           className="w-full h-auto block"
           style={{
