@@ -139,3 +139,109 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   text-transform: uppercase;
   display: inline-block;
 }
+
+/* ===== CITV Color System — Drop-in global styles ===== */
+:root{
+  --c-black:   #000000;   /* The Void */
+  --c-cyan:    #00FFFF;   /* Signal glow */
+  --c-magenta: #FF00FF;   /* Controlled chaos */
+  --c-ink:     #1B1B1B;   /* Panels / depth */
+  --c-orange:  #FA6400;   /* Warning / friction */
+  --c-white:   #FFFFFF;   /* Purity of signal */
+  --c-acid:    #7FFF00;   /* Optional highlight */
+
+  /* Shadows / radiance */
+  --glow-cyan:    0 0 32px rgba(0,255,255,0.25);
+  --glow-magenta: 0 0 28px rgba(255,0,255,0.22);
+  --panel-shadow: 0 24px 60px -20px rgba(11,19,36,0.55);
+}
+
+/* Site base */
+html, body {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+/* Headings – clean neon minimalism */
+h1, h2, h3, h4, h5, h6 { 
+  color: var(--c-white);
+  letter-spacing: -0.01em;
+}
+
+/* Neon underline helper on headings (add .neon to any heading if you want underline) */
+.neon { position: relative; display: inline-block; }
+.neon::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:-8px; height:2px;
+  background: linear-gradient(90deg, var(--c-magenta), var(--c-cyan));
+  border-radius: 999px;
+  box-shadow: var(--glow-cyan);
+}
+
+/* Links – cyan to magenta on hover */
+a{
+  color: var(--c-cyan);
+  text-decoration: none;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+a:hover{
+  color: var(--c-magenta);
+  text-shadow: 0 0 10px rgba(255,0,255,0.35);
+}
+
+/* Buttons – global defaults without changing your markup */
+button, .btn, input[type="submit"]{
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: .75rem 1.25rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: var(--c-black);
+  color: var(--c-white);
+  font-weight: 500;
+  transition: transform .18s ease, box-shadow .18s ease, color .18s ease, border-color .18s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+button:hover, .btn:hover, input[type="submit"]:hover{
+  transform: translateY(-2px);
+  color: var(--c-cyan);
+  box-shadow: var(--glow-cyan);
+  border-color: rgba(255,255,255,0.24);
+}
+
+/* Warning / friction variant (add .btn-warning) */
+.btn-warning{
+  background: color-mix(in oklab, var(--c-orange) 25%, var(--c-black));
+  border-color: color-mix(in oklab, var(--c-orange) 60%, #fff 0%);
+}
+.btn-warning:hover{
+  color: var(--c-white);
+  box-shadow: 0 0 28px rgba(250,100,0,0.35);
+}
+
+/* Panels / cards — applies to common names without refactoring */
+.card, .panel, .box, .feature, .pricing, .content-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: var(--panel-shadow);
+  backdrop-filter: blur(2px);
+}
+
+/* Section bands (optional): apply .citv-band to any section wrapper */
+.citv-band{
+  background:
+    radial-gradient(60vw 40vh at 12% 88%, rgba(255,0,255,0.10), transparent 60%),
+    radial-gradient(60vw 40vh at 88% 12%, rgba(255,0,255,0.08), transparent 60%),
+    linear-gradient(180deg, #000 0%, #0B1324 35%, #000 100%);
+}
+
+/* Cyan / Magenta glow utilities (use on logos, key words) */
+.glow-cyan   { filter: drop-shadow(0 0 12px rgba(0,255,255,0.45)); }
+.glow-magenta{ filter: drop-shadow(0 0 12px rgba(255,0,255,0.35)); }
+
+/* Price buttons from earlier request: small lift + cyan text on hover already covered by button:hover */
+
+/* Accessibility: honor reduced motion */
+@media (prefers-reduced-motion: reduce){
+  * { transition: none !important; }
+}
