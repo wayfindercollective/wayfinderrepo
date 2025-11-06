@@ -63,6 +63,12 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardVoid:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
 }
 
 /* full-width underlines for section titles - centered */
