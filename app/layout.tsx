@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./../styles/brand-theme.css";
 import { manrope, exo2, jetbrains } from "./fonts";
+import Starfield from "./components/Starfield";
 
 export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
@@ -15,7 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${exo2.variable} ${jetbrains.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased relative">
+        <Starfield />
         {children}
       </body>
     </html>

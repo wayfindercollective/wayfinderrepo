@@ -1,16 +1,14 @@
 'use client';
 
 import HeroLogo from "./components/HeroLogo";
-import Starfield from "@/components/Starfield";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full">
-      {/* Hero Section - Black */}
-      <section className="relative text-white overflow-hidden">
-        <Starfield />
+    <div className="min-h-screen w-full relative">
+      {/* Hero Section */}
+      <section className="relative text-white overflow-hidden z-10">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -30,8 +28,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What You Get Section - White */}
-      <section className="voidSection voidNavy">
+      {/* What You Get Section */}
+      <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange">
@@ -62,14 +60,14 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="voidSection voidNavy">
+      <section className="voidSection relative z-10">
         <div className="voidContainer">
           <Pricing />
         </div>
       </section>
 
-      {/* Program Details Section - Black */}
-      <section className="voidSection voidDark">
+      {/* Program Details Section */}
+      <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
@@ -123,8 +121,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY VOID UNDERGROUND — second navy band */}
-      <section className="voidSection voidNavy">
+      {/* WHY VOID UNDERGROUND */}
+      <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
@@ -169,8 +167,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section - Black */}
-      <section className="relative bg-black text-white overflow-hidden">
+      {/* Pricing Section */}
+      <section className="relative text-white overflow-hidden z-10">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
@@ -229,8 +227,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer - Black */}
-      <footer className="bg-black text-white border-t border-white/10">
+      {/* Footer */}
+      <footer className="relative text-white border-t border-white/10 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <p className="text-gray-400 mb-4">
