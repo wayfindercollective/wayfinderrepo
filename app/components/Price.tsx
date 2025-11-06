@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./price.css";
 
 // Small helper to turn a string into "shards" that can fly apart on hover
@@ -29,11 +29,59 @@ function makeShards(text: string) {
 }
 
 export default function Price() {
+  const priceRef = useRef<HTMLDivElement>(null);
+  const [isFlickering, setIsFlickering] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const element = priceRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Clear any existing timeout
+            if (timeoutRef.current) {
+              clearTimeout(timeoutRef.current);
+            }
+            // Start flickering
+            setIsFlickering(true);
+            // Stop flickering after 5 seconds
+            timeoutRef.current = setTimeout(() => {
+              setIsFlickering(false);
+            }, 5000);
+          } else {
+            // Reset when scrolling away
+            if (timeoutRef.current) {
+              clearTimeout(timeoutRef.current);
+              timeoutRef.current = null;
+            }
+            setIsFlickering(false);
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the element is visible
+        rootMargin: '0px',
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="price-wrap">
+    <div ref={priceRef} className="price-wrap">
       <div className="price-row">
         <span 
-          className="current-price" 
+          className={`current-price ${isFlickering ? 'flickering' : ''}`} 
           aria-hidden="true"
         >
           $297

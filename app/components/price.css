@@ -5,25 +5,20 @@
   --muted-2: rgba(255,255,255,0.35);
 }
 
-/* Reusable class for main price styling to match VOID logo */
+/* Reusable class for main price styling - bottom price in white box (purple, no flicker) */
 .price-main {
   font-family: var(--fontB-display);
   font-weight: 800;
   letter-spacing: 0.5px;
   color: #000000;
-  -webkit-text-stroke: 2px #00ffff;
-  text-stroke: 2px #00ffff;
+  -webkit-text-stroke: 2px #a855f7;
+  text-stroke: 2px #a855f7;
   text-shadow: 
-    0 0 10px rgba(0, 255, 255, 0.8),
-    0 0 20px rgba(0, 255, 255, 0.6),
-    0 0 30px rgba(0, 255, 255, 0.4),
-    0 0 40px rgba(0, 255, 255, 0.2);
+    0 0 10px rgba(168, 85, 247, 0.8),
+    0 0 20px rgba(168, 85, 247, 0.6),
+    0 0 30px rgba(168, 85, 247, 0.4),
+    0 0 40px rgba(168, 85, 247, 0.2);
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
-}
-
-.price-main .flickering,
-.price-main.flickering {
-  animation: flicker-warning-cyan 1.5s infinite;
 }
 
 .price-wrap {
@@ -47,17 +42,19 @@
   letter-spacing: 0.5px;
   font-family: var(--fontB-display);
   color: #000000;
-  -webkit-text-stroke: 2px #a855f7;
-  text-stroke: 2px #a855f7;
+  -webkit-text-stroke: 2px #00ffff;
+  text-stroke: 2px #00ffff;
   text-shadow: 
-    0 0 10px rgba(168, 85, 247, 0.8),
-    0 0 20px rgba(168, 85, 247, 0.6),
-    0 0 30px rgba(168, 85, 247, 0.4),
-    0 0 40px rgba(168, 85, 247, 0.2);
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.4),
+    0 0 40px rgba(0, 255, 255, 0.2);
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
 }
 
-/* Removed flickering for .current-price - bottom price should not flicker */
+.current-price.flickering {
+  animation: flicker-warning-cyan 1.5s infinite;
+}
 
 @keyframes flicker-warning-cyan {
   0%, 100% {
