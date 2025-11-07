@@ -86,8 +86,8 @@ export default function HeroLogo() {
     let useRawValues = false; // Use raw values directly for instant response
     
     if (currentTime < 2.0) {
-      // First 2 seconds: High contrast, fast lamp-like flickering
-      timeMultiplier = 2.5 - (currentTime / 2.0) * 1.0;
+      // First 2 seconds: Very intense, fast lamp-like flickering
+      timeMultiplier = 3.5 - (currentTime / 2.0) * 1.5; // Increased from 2.5 to 3.5, and steeper drop
       smoothingFactor = 0.1; // Very fast flickering (minimal smoothing) - like a flickering lamp
       useRawValues = true; // Use raw values directly for instant, visible flickering
     } else {
