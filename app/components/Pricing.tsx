@@ -8,7 +8,9 @@ export default function Pricing() {
         <Price />
       </div>
       <a
-        href="#enroll"
+        href="https://bookmyeventnow.com/register?a=new&p=32"
+        target="_blank"
+        rel="noopener noreferrer"
         className="btn-void mt-10"
       >
         Join the Void

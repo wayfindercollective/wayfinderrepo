@@ -243,8 +243,11 @@ export default function Home() {
                   <span>From Charisma in the Void</span>
                 </div>
               </div>
-              <button
+              <a
                 id="enroll"
+                href="https://bookmyeventnow.com/register?a=new&p=32"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-2xl px-6 py-3
                            bg-black text-white border border-white/10 shadow-md
                            transition duration-200 ease-out
@@ -253,7 +256,7 @@ export default function Home() {
                            w-full sm:w-auto"
               >
                 Join the Void
-              </button>
+              </a>
             </div>
           </div>
         </div>
