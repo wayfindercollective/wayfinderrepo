@@ -392,14 +392,101 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="relative text-white border-t border-white/10 z-10">
+        {/* Signal Core Logo - Left */}
+        <div className="absolute left-0 bottom-0 top-0 flex items-center group">
+          <div className="h-full w-auto relative signal-core-logo-wrapper">
+            {/* Static text layer */}
+            <Image
+              src="/Signal_CoreLogo.png"
+              alt=""
+              width={1200}
+              height={1200}
+              className="h-full w-auto object-contain signal-core-logo-static"
+              unoptimized
+              style={{
+                filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                clipPath: 'polygon(0% 68%, 100% 68%, 100% 100%, 0% 100%)',
+              }}
+            />
+            {/* Spinning top layer */}
+            <Image
+              src="/Signal_CoreLogo.png"
+              alt=""
+              width={1200}
+              height={1200}
+              className="h-full w-auto object-contain signal-core-logo-spin signal-core-logo-spin-left absolute top-0 left-0"
+              unoptimized
+              style={{
+                filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 68%, 0% 68%)',
+              }}
+            />
+          </div>
+        </div>
+        {/* Signal Core Logo - Right */}
+        <div className="absolute right-0 bottom-0 top-0 flex items-center justify-end group">
+          <div className="h-full w-auto relative signal-core-logo-wrapper">
+            {/* Static text layer */}
+            <Image
+              src="/Signal_CoreLogo.png"
+              alt=""
+              width={1200}
+              height={1200}
+              className="h-full w-auto object-contain signal-core-logo-static"
+              unoptimized
+              style={{
+                filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                clipPath: 'polygon(0% 68%, 100% 68%, 100% 100%, 0% 100%)',
+              }}
+            />
+            {/* Spinning top layer */}
+            <Image
+              src="/Signal_CoreLogo.png"
+              alt=""
+              width={1200}
+              height={1200}
+              className="h-full w-auto object-contain signal-core-logo-spin signal-core-logo-spin-right absolute top-0 left-0"
+              unoptimized
+              style={{
+                filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 68%, 0% 68%)',
+              }}
+            />
+          </div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <p className="text-gray-400 mb-4">
-              Void Underground • From Charisma in the Void
-            </p>
-            <p className="text-sm text-gray-500">
-              Transform your charisma through action, community, and proven strategies.
-            </p>
+            <div className="max-w-md mx-auto relative group">
+              <Image
+                src="/Master_Logo.png"
+                alt="Void Underground"
+                width={800}
+                height={200}
+                className="w-full h-auto"
+                style={{
+                  filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+                  WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+                }}
+              />
+              {/* cyan line tucked under UNDERGROUND */}
+              <span
+                aria-hidden
+                className="
+                  absolute left-1/2 -translate-x-1/2
+                  block w-0 h-[6px] rounded-full
+                  bg-[#0FF]
+                  shadow-[0_0_10px_#0FF,0_0_24px_rgba(0,255,255,0.5)]
+                  transition-[width] duration-400 ease-out
+                  group-hover:w-[86%]
+                  z-10
+                "
+                style={{ top: '60%' }}
+              />
+            </div>
           </div>
         </div>
       </footer>

@@ -329,3 +329,34 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
     transform: translateY(-6px) translateX(0);
   }
 }
+
+/* Signal Core Logo 3D Spin Effect */
+.signal-core-logo-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.signal-core-logo-wrapper {
+  position: relative;
+}
+
+.signal-core-logo-static {
+  position: relative;
+  z-index: 1;
+}
+
+.signal-core-logo-spin {
+  transform-style: preserve-3d;
+  transition: transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center 50%;
+  z-index: 2;
+}
+
+.group:hover .signal-core-logo-spin-left {
+  transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
+}
+
+.group:hover .signal-core-logo-spin-right {
+  transform: perspective(1000px) rotateY(-360deg) rotateX(10deg);
+}
