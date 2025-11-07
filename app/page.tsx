@@ -30,8 +30,6 @@ export default function Home() {
     <div className="min-h-screen w-full relative">
       {/* Hero Section */}
       <section className="relative text-white overflow-hidden z-10 -mt-8 sm:-mt-12 bg-transparent">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-2">
           <div className="text-center">
             <HeroLogo />
@@ -54,7 +52,18 @@ export default function Home() {
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange">
-              What You Get
+              <span className="inline-flex items-center gap-3">
+                <span className="cyan-dots-wrapper">
+                  <Image 
+                    src="/CyanDots.png" 
+                    alt="" 
+                    width={24} 
+                    height={24} 
+                    className="h-[1em] w-auto cyan-dots-icon"
+                  />
+                </span>
+                What You Get
+              </span>
             </AnimatedSectionTitle>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -98,7 +107,18 @@ export default function Home() {
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
-              The Program
+              <span className="inline-flex items-center gap-3">
+                <span className="cyan-dots-wrapper">
+                  <Image 
+                    src="/CyanDots.png" 
+                    alt="" 
+                    width={24} 
+                    height={24} 
+                    className="h-[1em] w-auto cyan-dots-icon"
+                  />
+                </span>
+                The Program
+              </span>
             </AnimatedSectionTitle>
           </div>
           <div className="max-w-4xl mx-auto">
@@ -190,7 +210,18 @@ export default function Home() {
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
               <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
-                Why Void Underground?
+                <span className="inline-flex items-center gap-3">
+                  <span className="cyan-dots-wrapper">
+                    <Image 
+                      src="/CyanDots.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-auto cyan-dots-icon"
+                    />
+                  </span>
+                  Why Void Underground?
+                </span>
               </AnimatedSectionTitle>
             </div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -240,13 +271,22 @@ export default function Home() {
 
       {/* Pricing Section */}
       <section className="relative text-white overflow-hidden z-10">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
               <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan">
-                Investment
+                <span className="inline-flex items-center gap-3">
+                  <span className="cyan-dots-wrapper">
+                    <Image 
+                      src="/CyanDots.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-auto cyan-dots-icon"
+                    />
+                  </span>
+                  Investment
+                </span>
               </AnimatedSectionTitle>
             </div>
             <p className="text-xl text-gray-300">
