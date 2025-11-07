@@ -5,7 +5,7 @@ import Starfield from './Starfield';
 
 export default function HeroLogo() {
   return (
-    <section className="relative text-white overflow-visible">
+    <section className="relative text-white overflow-visible bg-transparent">
       {/* starfield behind everything */}
       <div className="absolute inset-0 -z-10">
         <Starfield />
@@ -14,11 +14,12 @@ export default function HeroLogo() {
       {/* logo plus cyan underline */}
       <div className="relative w-fit mx-auto -mt-4 group z-10" style={{ transform: 'scale(0.75)' }}>
         <Image
-          src="/Master_Logo.png"
+          src="/Master_Logo.png?v=2"
           alt="Void Underground"
           width={1800}
           height={400}
           priority
+          unoptimized
           className="block select-none pointer-events-none"
           style={{
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',

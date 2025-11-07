@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative">
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 -mt-8 sm:-mt-12">
+      <section className="relative text-white overflow-hidden z-10 -mt-8 sm:-mt-12 bg-transparent">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600/30 blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-2">

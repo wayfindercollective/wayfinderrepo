@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="bg-black text-white">
+    <section className="text-white relative">
       <div className="mx-auto max-w-5xl px-6 py-20 text-center">
         {/* Eyebrow */}
         <p className="text-sm md:text-base tracking-wide text-neutral-300">
