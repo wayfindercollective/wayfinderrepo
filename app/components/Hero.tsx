@@ -19,7 +19,12 @@ export default function Hero() {
 
         {/* CTA that jumps to pricing section */}
         <div className="mt-10">
-          <a href="#pricing" className="inline-block rounded-2xl bg-white px-8 py-4 text-black font-semibold">
+          <a 
+            href="https://bookmyeventnow.com/register?a=new&p=32" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-2xl bg-white px-8 py-4 text-black font-semibold"
+          >
             Join the Void
           </a>
         </div>

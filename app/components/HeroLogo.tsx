@@ -20,6 +20,10 @@ export default function HeroLogo() {
           height={400}
           priority
           className="block select-none pointer-events-none"
+          style={{
+            filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+            WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+          }}
         />
 
         {/* cyan line tucked under UNDERGROUND */}

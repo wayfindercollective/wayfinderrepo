@@ -21,6 +21,8 @@ export default function VoidWordmark({ className }: Props) {
             opacity: 1,
             maxWidth: '100%',
             height: 'auto',
+            filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+            WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
           }}
         />
       </div>
