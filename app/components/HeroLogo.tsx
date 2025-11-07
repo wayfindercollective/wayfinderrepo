@@ -84,11 +84,19 @@ export default function HeroLogo() {
     let timeMultiplier = 1.0;
     let smoothingFactor = 0.95; // Higher = slower changes (0.95 = smooth, 0.1 = very fast)
     let useRawValues = false; // Use raw values directly for instant response
+    let baseFlickerIntensity = 0; // Base flickering independent of audio
     
     if (currentTime < 2.0) {
       // First 2 seconds: Very intense, fast lamp-like flickering
-      timeMultiplier = 3.5 - (currentTime / 2.0) * 1.5; // Increased from 2.5 to 3.5, and steeper drop
-      smoothingFactor = 0.1; // Very fast flickering (minimal smoothing) - like a flickering lamp
+      // Create intense base flickering that doesn't depend on audio
+      // Use time-based sine wave for consistent visible flickering
+      const flickerSpeed = 15; // Fast flicker rate (15 cycles per second)
+      const timeBasedFlicker = Math.sin(currentTime * flickerSpeed * Math.PI * 2);
+      // Map from -1 to 1 range to 0.15 to 0.95 range for dramatic flickering
+      baseFlickerIntensity = 0.15 + (timeBasedFlicker + 1) / 2 * 0.8;
+      
+      timeMultiplier = 4.5 - (currentTime / 2.0) * 2.0; // Start at 4.5, more intense than before
+      smoothingFactor = 0.05; // Even faster flickering (minimal smoothing) - like a flickering lamp
       useRawValues = true; // Use raw values directly for instant, visible flickering
     } else {
       // After 2 seconds: Gradually decrease intensity and increase smoothing (slower)
@@ -101,9 +109,14 @@ export default function HeroLogo() {
       smoothingFactor = 0.1 + (fadeProgress * 0.85); // From 0.1 (fast) to 0.95 (slow)
     }
     
-    // Very intense flicker: combine bass and overall amplitude with much larger range
-    const baseIntensity = 0.2 + (normalized * 0.5) + (bass * 0.4);
-    const rawIntensity = Math.max(0.1, Math.min(1.0, baseIntensity * timeMultiplier));
+    // Very intense flicker: combine base flicker (for first 2s), bass and overall amplitude
+    // For first 2 seconds, baseFlickerIntensity provides guaranteed visible flickering
+    const audioBasedIntensity = 0.2 + (normalized * 0.5) + (bass * 0.4);
+    const combinedIntensity = currentTime < 2.0 
+      ? baseFlickerIntensity * 0.6 + audioBasedIntensity * 0.4 * timeMultiplier // Mix base + audio for first 2s
+      : audioBasedIntensity * timeMultiplier; // Audio only after 2s
+    
+    const rawIntensity = Math.max(0.1, Math.min(1.0, combinedIntensity));
     
     // For first 2 seconds, use raw values directly for instant flickering
     // After that, smooth the intensity changes
@@ -126,8 +139,20 @@ export default function HeroLogo() {
         const opacity = Math.max(0.1, Math.min(1.0, intensity));
         
         // High contrast brightness: ranges from 0.4 to 2.2 (very dramatic)
-        const baseBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
-        const rawBrightness = Math.max(0.4, Math.min(2.2, baseBrightness * timeMultiplier));
+        // For first 2 seconds, also add time-based brightness flickering
+        let baseBrightness: number;
+        if (currentTime < 2.0) {
+          // Intense brightness flickering in first 2 seconds
+          const flickerSpeed = 12; // Slightly different speed for brightness
+          const timeBasedBrightness = Math.sin(currentTime * flickerSpeed * Math.PI * 2);
+          const baseBrightnessFlicker = 0.3 + (timeBasedBrightness + 1) / 2 * 1.4; // 0.3 to 1.7 range
+          const audioBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
+          baseBrightness = baseBrightnessFlicker * 0.5 + audioBrightness * 0.5 * timeMultiplier;
+        } else {
+          baseBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
+        }
+        
+        const rawBrightness = Math.max(0.3, Math.min(2.2, baseBrightness * (currentTime < 2.0 ? timeMultiplier : 1.0)));
         
         // For first 2 seconds, use raw values directly for instant flickering
         // After that, smooth brightness changes
