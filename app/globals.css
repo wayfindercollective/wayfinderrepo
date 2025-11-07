@@ -67,6 +67,15 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   border-width: 2px;
 }
 
+/* Hourglass rotation on card hover */
+.hourglass-icon {
+  transition: transform 0.4s ease;
+}
+
+.cardVoid:hover .hourglass-icon {
+  transform: rotate(180deg);
+}
+
 /* Ensure all text inside cardVoid is white */
 .cardVoid h3,
 .cardVoid p,

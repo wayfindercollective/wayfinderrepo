@@ -4,6 +4,7 @@ import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
+import Image from "next/image";
 import "./components/price.css";
 
 function InvestmentPrice() {
@@ -95,7 +96,13 @@ export default function Home() {
               <AnimatedColumn direction="left">
                 <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span className="text-red-500">•</span>
+                    <Image 
+                      src="/HourGlass.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-auto hourglass-icon"
+                    />
                     Six Months of Content
                   </h3>
                   <p className="text-lg">
@@ -107,7 +114,13 @@ export default function Home() {
               <AnimatedColumn direction="right">
                 <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span className="text-purple-500">•</span>
+                    <Image 
+                      src="/HourGlass.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-auto hourglass-icon"
+                    />
                     Community-Driven Learning
                   </h3>
                   <p className="text-lg">
@@ -119,7 +132,13 @@ export default function Home() {
               <AnimatedColumn direction="left">
                 <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span className="text-red-500">•</span>
+                    <Image 
+                      src="/HourGlass.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-auto hourglass-icon"
+                    />
                     Missions & Tasks
                   </h3>
                   <p className="text-lg">
@@ -131,7 +150,13 @@ export default function Home() {
               <AnimatedColumn direction="right">
                 <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span className="text-purple-500">•</span>
+                    <Image 
+                      src="/HourGlass.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-auto hourglass-icon"
+                    />
                     From Charisma in the Void
                   </h3>
                   <p className="text-lg">
