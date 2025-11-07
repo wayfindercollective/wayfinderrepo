@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from "react";
 import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
@@ -16,6 +17,15 @@ function InvestmentPrice() {
 }
 
 export default function Home() {
+  const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
+
+  const handleHourglassHover = (id: string) => {
+    setHourglassRotations(prev => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1
+    }));
+  };
+
   return (
     <div className="min-h-screen w-full relative">
       {/* Hero Section */}
@@ -94,7 +104,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
               <AnimatedColumn direction="left">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-1')}>
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -102,6 +112,7 @@ export default function Home() {
                       width={24} 
                       height={24} 
                       className="h-[1em] w-auto hourglass-icon"
+                      style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                     />
                     Six Months of Content
                   </h3>
@@ -112,7 +123,7 @@ export default function Home() {
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-2')}>
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -120,6 +131,7 @@ export default function Home() {
                       width={24} 
                       height={24} 
                       className="h-[1em] w-auto hourglass-icon"
+                      style={{ transform: `rotate(${(hourglassRotations['hourglass-2'] || 0) * 180}deg)` }}
                     />
                     Community-Driven Learning
                   </h3>
@@ -130,7 +142,7 @@ export default function Home() {
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="left">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-3')}>
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -138,6 +150,7 @@ export default function Home() {
                       width={24} 
                       height={24} 
                       className="h-[1em] w-auto hourglass-icon"
+                      style={{ transform: `rotate(${(hourglassRotations['hourglass-3'] || 0) * 180}deg)` }}
                     />
                     Missions & Tasks
                   </h3>
@@ -148,7 +161,7 @@ export default function Home() {
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-4')}>
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -156,6 +169,7 @@ export default function Home() {
                       width={24} 
                       height={24} 
                       className="h-[1em] w-auto hourglass-icon"
+                      style={{ transform: `rotate(${(hourglassRotations['hourglass-4'] || 0) * 180}deg)` }}
                     />
                     From Charisma in the Void
                   </h3>
