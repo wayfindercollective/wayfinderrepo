@@ -82,7 +82,7 @@ export default function SigilField({ count = 100 }: { count?: number }) {
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
           rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.01 // Slow rotation
+          rotSpeed: (Math.random() - 0.5) * 0.02 // Subtle rotation
         };
       });
     };

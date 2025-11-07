@@ -83,7 +83,7 @@ export default function Starfield({ count = 150 }: { count?: number }) {
     const step = () => {
       const w = canvas.width / dpr;
       const h = canvas.height / dpr;
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       ctx.save();
       ctx.fillStyle = color;

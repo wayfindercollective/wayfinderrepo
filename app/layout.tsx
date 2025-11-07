@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} ${exo2.variable} ${jetbrains.variable}`}>
       <body className="antialiased relative">
         <Starfield />
-        <SigilField count={50} />
+        <SigilField count={100} />
         {children}
       </body>
     </html>
