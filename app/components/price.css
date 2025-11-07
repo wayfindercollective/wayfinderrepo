@@ -173,6 +173,10 @@
   align-items: center;
 }
 
+.value-row {
+  margin-bottom: 9px; /* additional 50% more space (6px + 50% = 9px total additional, total 15px) */
+}
+
 /* "$600 value" that breaks apart on hover */
 .strike {
   position: relative;
@@ -212,4 +216,27 @@
 .program-note {
   color: var(--muted-2);
   font-size: clamp(13px, 1.7vw, 16px);
+}
+
+.bootcamp-credit {
+  color: var(--muted-2);
+  font-size: clamp(16px, 2.2vw, 20px);
+}
+
+.credit-emphasis {
+  color: #39ff14; /* toxic green */
+  font-weight: 800;
+  font-style: italic;
+  font-size: 125%;
+  text-shadow: 
+    0 0 5px rgba(57, 255, 20, 0.8),
+    0 0 10px rgba(57, 255, 20, 0.6);
+}
+
+.tt-spacing {
+  letter-spacing: 0.2em;
+}
+
+.bootcamp-text {
+  color: #f5fff5; /* white with slight toxic green hue */
 }

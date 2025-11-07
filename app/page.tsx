@@ -67,9 +67,9 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid text-white p-8">
-                <h3 className="text-xl font-bold mb-4">Action-Oriented Tasks</h3>
+                <h3 className="text-xl font-bold mb-4">A $500 credit towards a Jeffy 2025-2026 Bootcamp</h3>
                 <p className="text-gray-300">
-                  Don't just learn—apply. Complete practical tasks designed to build your charisma through hands-on experience and feedback.
+                  Learn from the founder of Charisma in the Void: Jeffy. Teaching bootcamps since the 2000's helping gain real life experience.
                 </p>
               </div>
             </AnimatedColumn>
@@ -257,7 +257,7 @@ export default function Home() {
                            focus:outline-none focus:ring-2 focus:ring-cyan-400/40
                            w-full sm:w-auto"
               >
-                Join the Void
+                Get your Founders Annual Pass Now
               </a>
             </div>
           </div>

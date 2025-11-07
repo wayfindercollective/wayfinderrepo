@@ -96,11 +96,13 @@ export default function Price() {
         </span>
         <span className="discount-note">50% Discount</span>
       </div>
-      <div className="meta-row">
+      <div className="meta-row value-row">
         <span className="strike" title="Original price">
           {makeShards("$600 value")}
         </span>
-        <span className="program-note">6-month program</span>
+      </div>
+      <div className="meta-row">
+        <span className="bootcamp-credit"><span className="credit-emphasis">+ $500 credit</span><span className="tt-spacing"> </span><span className="bootcamp-text">towards a Jeffy 2025-2026 Bootcamp</span></span>
       </div>
     </div>
   );
