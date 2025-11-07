@@ -3,6 +3,7 @@ import "./globals.css";
 import "./../styles/brand-theme.css";
 import { manrope, exo2, jetbrains } from "./fonts";
 import Starfield from "./components/Starfield";
+import SigilField from "./components/SigilField";
 
 export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} ${exo2.variable} ${jetbrains.variable}`}>
       <body className="antialiased relative">
         <Starfield />
+        <SigilField count={50} />
         {children}
       </body>
     </html>
