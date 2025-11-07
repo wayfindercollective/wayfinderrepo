@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
@@ -10,12 +10,74 @@ import "./components/price.css";
 
 export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
+  const audioContextRef = useRef<AudioContext | null>(null);
+
+  // Create crystal clear ping sound for hourglass
+  const playHourglassPing = () => {
+    // Check if sound is enabled
+    if (typeof window !== 'undefined') {
+      const soundEnabled = localStorage.getItem('soundEnabled');
+      if (soundEnabled === 'false') {
+        return; // Don't play sound if disabled
+      }
+    }
+
+    try {
+      // Initialize AudioContext if needed
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+      const audioContext = audioContextRef.current;
+
+      // Resume context if suspended (required by some browsers)
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+
+      // Create oscillator for the ping sound
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      // Set frequency to a high, bright tone (like champagne flute tap)
+      // Using a high frequency around 2000-3000 Hz for that crystal clear ping
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(2500, audioContext.currentTime);
+      
+      // Add a slight frequency sweep for more character (optional)
+      oscillator.frequency.exponentialRampToValueAtTime(2200, audioContext.currentTime + 0.05);
+
+      // Set gain envelope for natural decay
+      // Volume 0.25 as specified
+      const peakGain = 0.25;
+      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+      gainNode.gain.linearRampToValueAtTime(peakGain, audioContext.currentTime + 0.01); // Quick attack
+      // Natural decay over 600ms (middle of 400-900ms range)
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.61);
+
+      // Connect nodes
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      // Play the sound (no loop)
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.61); // 610ms duration
+    } catch (error) {
+      // Silently fail if audio context is not available
+      console.warn('Could not play hourglass ping sound:', error);
+    }
+  };
 
   const handleHourglassHover = (id: string) => {
     setHourglassRotations(prev => ({
       ...prev,
       [id]: (prev[id] || 0) + 1
     }));
+  };
+
+  const handleHourglassIconHover = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering card hover
+    // Only play sound, rotation is handled by card hover
+    playHourglassPing();
   };
 
   return (
@@ -123,8 +185,9 @@ export default function Home() {
                       alt="" 
                       width={24} 
                       height={24} 
-                      className="h-[1em] w-auto hourglass-icon"
+                      className="h-[1em] w-auto hourglass-icon cursor-pointer"
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
+                      onMouseEnter={(e) => handleHourglassIconHover('hourglass-1', e)}
                     />
                     12 Months of Content
                   </h3>
@@ -142,8 +205,9 @@ export default function Home() {
                       alt="" 
                       width={24} 
                       height={24} 
-                      className="h-[1em] w-auto hourglass-icon"
+                      className="h-[1em] w-auto hourglass-icon cursor-pointer"
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-2'] || 0) * 180}deg)` }}
+                      onMouseEnter={(e) => handleHourglassIconHover('hourglass-2', e)}
                     />
                     Community-Driven Learning
                   </h3>
@@ -161,8 +225,9 @@ export default function Home() {
                       alt="" 
                       width={24} 
                       height={24} 
-                      className="h-[1em] w-auto hourglass-icon"
+                      className="h-[1em] w-auto hourglass-icon cursor-pointer"
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-3'] || 0) * 180}deg)` }}
+                      onMouseEnter={(e) => handleHourglassIconHover('hourglass-3', e)}
                     />
                     Missions & Tasks
                   </h3>
@@ -180,8 +245,9 @@ export default function Home() {
                       alt="" 
                       width={24} 
                       height={24} 
-                      className="h-[1em] w-auto hourglass-icon"
+                      className="h-[1em] w-auto hourglass-icon cursor-pointer"
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-4'] || 0) * 180}deg)` }}
+                      onMouseEnter={(e) => handleHourglassIconHover('hourglass-4', e)}
                     />
                     From Charisma in the Void
                   </h3>
@@ -295,78 +361,83 @@ export default function Home() {
                 <div className="text-lg text-purple-400 font-semibold">50% Discount</div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-1')}>
+                <div className="flex items-center gap-3">
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
                     width={36} 
                     height={36} 
-                    className="hourglass-icon"
+                    className="hourglass-icon cursor-pointer"
                     style={{ 
                       transform: `rotate(${(hourglassRotations['investment-hourglass-1'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto'
                     }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-1', e)}
                   />
                   <span>12 months of premium content</span>
                 </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-2')}>
+                <div className="flex items-center gap-3">
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
                     width={36} 
                     height={36} 
-                    className="hourglass-icon"
+                    className="hourglass-icon cursor-pointer"
                     style={{ 
                       transform: `rotate(${(hourglassRotations['investment-hourglass-2'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto'
                     }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-2', e)}
                   />
                   <span>Access to community missions</span>
                 </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-3')}>
+                <div className="flex items-center gap-3">
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
                     width={36} 
                     height={36} 
-                    className="hourglass-icon"
+                    className="hourglass-icon cursor-pointer"
                     style={{ 
                       transform: `rotate(${(hourglassRotations['investment-hourglass-3'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto'
                     }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-3', e)}
                   />
                   <span>Action-oriented tasks and exercises</span>
                 </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-4')}>
+                <div className="flex items-center gap-3">
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
                     width={36} 
                     height={36} 
-                    className="hourglass-icon"
+                    className="hourglass-icon cursor-pointer"
                     style={{ 
                       transform: `rotate(${(hourglassRotations['investment-hourglass-4'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto'
                     }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-4', e)}
                   />
                   <span>Community support and feedback</span>
                 </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-5')}>
+                <div className="flex items-center gap-3">
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
                     width={36} 
                     height={36} 
-                    className="hourglass-icon"
+                    className="hourglass-icon cursor-pointer"
                     style={{ 
                       transform: `rotate(${(hourglassRotations['investment-hourglass-5'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto'
                     }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-5', e)}
                   />
                   <span>From Charisma in the Void</span>
                 </div>
