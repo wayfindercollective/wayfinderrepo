@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { orbitron } from '../fonts';
+import { exo2 } from '../fonts';
 
 export default function EnableSoundButton() {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
@@ -131,11 +131,12 @@ export default function EnableSoundButton() {
       <button
         ref={buttonRef}
         onClick={handleClick}
-        className={`px-6 py-3 bg-black border-2 border-[#00FFFF] rounded text-[#00FFFF] text-lg sm:text-xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${orbitron.variable}`}
+        className={`px-6 py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-xl sm:text-2xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable}`}
         style={{ 
-          fontFamily: 'var(--font-display), sans-serif', 
+          fontFamily: 'var(--fontB-display), sans-serif', 
           letterSpacing: '0.1em', 
           textTransform: 'uppercase',
+          fontWeight: 700,
           position: 'relative',
           opacity: 1,
           filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',

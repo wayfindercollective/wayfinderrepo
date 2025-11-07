@@ -430,7 +430,7 @@ export default function HeroLogo() {
         />
 
         {/* Sound button right under the cyan line */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[65%] z-10">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10">
           <EnableSoundButton />
         </div>
       </div>
