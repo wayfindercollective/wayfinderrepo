@@ -5,6 +5,7 @@ import { orbitron } from '../fonts';
 
 export default function EnableSoundButton() {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
+  const [showLoading, setShowLoading] = useState(false);
 
   const initAudio = async () => {
     // Create AudioContext
@@ -39,6 +40,27 @@ export default function EnableSoundButton() {
     }
   }, []);
 
+  // Listen for audio ended event to redirect
+  useEffect(() => {
+    const handleAudioEnded = () => {
+      if (showLoading) {
+        // Scroll to enrollment button
+        const enrollButton = document.getElementById('enroll');
+        if (enrollButton) {
+          enrollButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setShowLoading(false);
+        }
+      }
+    };
+
+    // Listen for custom audio ended event
+    window.addEventListener('audioEnded', handleAudioEnded);
+    
+    return () => {
+      window.removeEventListener('audioEnded', handleAudioEnded);
+    };
+  }, [showLoading]);
+
   const disableAudio = () => {
     // Stop all audio elements on the page
     if (typeof window !== 'undefined') {
@@ -67,36 +89,52 @@ export default function EnableSoundButton() {
       (window as any).audioContext = null;
       localStorage.setItem('soundEnabled', 'false');
     }
+    
+    setShowLoading(false);
   };
 
   const handleClick = async () => {
     if (audioContext) {
-      // Disable sound
-      disableAudio();
+      // Audio context already exists - this means "Join the Void" was clicked
+      setShowLoading(true);
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('audioEnabled'));
+      }
     } else {
       // Enable sound - initAudio will handle resuming if needed
       await initAudio();
+      // Dispatch event to trigger audio playback in HeroLogo
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('audioEnabled'));
+      }
     }
   };
 
   // Determine button text based on whether audio context is active
-  const buttonText = audioContext ? 'Release the Signal 🔊' : 'Enter the Signal 🔊';
+  const buttonText = audioContext ? 'Join the Void 🔊' : 'Enable the Signal 🔊';
 
   return (
-    <button
-      onClick={handleClick}
-      className={`absolute right-5 px-4 py-2 bg-black border-2 border-black rounded text-[#00FFFF] text-xs font-bold cursor-pointer z-[9999] transition-all duration-300 hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] ${orbitron.variable}`}
-      style={{ 
-        fontFamily: 'var(--font-display), sans-serif', 
-        letterSpacing: '0.1em', 
-        textTransform: 'uppercase',
-        position: 'absolute',
-        top: '5rem',
-        right: '1.25rem'
-      }}
-    >
-      {buttonText}
-    </button>
+    <div className="flex flex-col items-center">
+      <button
+        onClick={handleClick}
+        className={`px-6 py-3 bg-black border-2 border-[#00FFFF] rounded text-[#00FFFF] text-lg sm:text-xl font-bold cursor-pointer transition-all duration-300 hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] ${audioContext ? 'button-shimmer' : ''} ${orbitron.variable}`}
+        style={{ 
+          fontFamily: 'var(--font-display), sans-serif', 
+          letterSpacing: '0.1em', 
+          textTransform: 'uppercase',
+          position: 'relative'
+        }}
+      >
+        <span style={{ position: 'relative', zIndex: 2 }}>{buttonText}</span>
+      </button>
+      
+      {showLoading && (
+        <div className="mt-4 flex items-center gap-3 text-[#00FFFF] text-sm sm:text-base animate-pulse">
+          <div className="w-5 h-5 border-2 border-[#00FFFF] border-t-transparent rounded-full animate-spin"></div>
+          <span className="font-medium">Welcome to the movement. You will be redirected shortly.</span>
+        </div>
+      )}
+    </div>
   );
 }
 

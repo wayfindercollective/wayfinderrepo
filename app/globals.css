@@ -206,3 +206,44 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 .column-animate-fade.visible {
   opacity: 1;
 }
+
+/* Shimmer animation for Release the Signal button */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.button-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(0, 255, 255, 0.3) 50%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.button-shimmer > * {
+  position: relative;
+  z-index: 2;
+}

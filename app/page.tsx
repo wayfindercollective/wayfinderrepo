@@ -4,7 +4,6 @@ import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
-import EnableSoundButton from "./components/EnableSoundButton";
 import "./components/price.css";
 
 function InvestmentPrice() {
@@ -18,7 +17,6 @@ function InvestmentPrice() {
 export default function Home() {
   return (
     <div className="min-h-screen w-full relative">
-      <EnableSoundButton />
       {/* Hero Section */}
       <section className="relative text-white overflow-hidden z-10 -mt-8 sm:-mt-12 bg-transparent">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/30 blur-3xl"></div>

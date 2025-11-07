@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Starfield from './Starfield';
+import EnableSoundButton from './EnableSoundButton';
 
 export default function HeroLogo() {
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
@@ -41,6 +42,11 @@ export default function HeroLogo() {
       }
       
       setFlickerIntensity(1);
+      
+      // Dispatch audio ended event for redirect
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('audioEnded'));
+      }
     });
     
     setAudioElement(audio);
@@ -279,10 +285,95 @@ export default function HeroLogo() {
       smoothedBrightnessRef.current = 1.15;
     };
 
+    // Listen for audio enabled event to auto-play
+    const handleAudioEnabled = () => {
+      if (audioElement) {
+        // Check if audio is enabled
+        const soundEnabled = localStorage.getItem('soundEnabled');
+        if (soundEnabled === 'false') {
+          return; // Don't play audio if disabled
+        }
+
+        // Stop any currently playing audio and reset
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        
+        // Stop any existing animation loop
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+          animationFrameRef.current = null;
+        }
+
+        const audioCtx = (window as any).audioContext;
+        
+        // If Web Audio API is enabled, connect the audio element to it
+        if (audioCtx) {
+          try {
+            // Resume audio context if suspended
+            if (audioCtx.state === 'suspended') {
+              audioCtx.resume();
+            }
+
+            // Connect audio element to Web Audio API context if not already connected
+            // Note: createMediaElementSource can only be called once per audio element
+            if (!audioSourceRef.current) {
+              try {
+                const source = audioCtx.createMediaElementSource(audioElement);
+                
+                // Create analyser node for audio visualization
+                const analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 256;
+                analyser.smoothingTimeConstant = 0.2;
+                
+                source.connect(analyser);
+                analyser.connect(audioCtx.destination);
+                
+                audioSourceRef.current = source;
+                analyserRef.current = analyser;
+              } catch (err) {
+                console.warn('Could not create media source:', err);
+              }
+            }
+            
+            // Always restart the analysis loop when restarting audio
+            if (analyserRef.current) {
+              analyzeAudio();
+            }
+          } catch (err) {
+            console.warn('Error with audio context:', err);
+          }
+        }
+
+        // Reset and play audio from the beginning
+        audioElement.currentTime = 0;
+        audioStartTimeRef.current = Date.now();
+        
+        // Reset smoothed values for fresh start
+        smoothedIntensityRef.current = 1.0;
+        smoothedBrightnessRef.current = 1.15;
+        
+        // Reset logo to original state before starting
+        if (logoRef.current) {
+          const logo = logoRef.current.querySelector('img') as HTMLImageElement;
+          if (logo) {
+            logo.style.opacity = '1';
+            logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+            logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+          }
+        }
+        
+        audioElement.play().catch((err) => {
+          console.warn('Could not play audio:', err);
+        });
+      }
+    };
+
     window.addEventListener('audioDisabled', handleAudioDisabled);
+    window.addEventListener('audioEnabled', handleAudioEnabled);
     
     return () => {
       window.removeEventListener('audioDisabled', handleAudioDisabled);
+      window.removeEventListener('audioEnabled', handleAudioEnabled);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -301,8 +392,6 @@ export default function HeroLogo() {
         ref={logoRef}
         className="relative w-fit mx-auto -mt-4 group z-10" 
         style={{ transform: 'scale(0.75)' }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
         <Image
           src="/Master_Logo.png?v=2"
@@ -332,6 +421,11 @@ export default function HeroLogo() {
           "
           style={{ top: '60%' }}   // nudge this 58 to 62 until it kisses the word
         />
+
+        {/* Sound button right under the cyan line */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-[65%] z-10">
+          <EnableSoundButton />
+        </div>
       </div>
     </section>
   );
