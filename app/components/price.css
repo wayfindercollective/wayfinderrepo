@@ -44,6 +44,11 @@
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
 }
 
+/* Ensure current-price is black even inside cardVoid */
+.cardVoid .current-price {
+  color: #000000 !important;
+}
+
 .current-price.flickering {
   animation: flicker-warning-cyan 1.5s infinite;
 }
@@ -177,7 +182,7 @@
   margin-bottom: 9px; /* additional 50% more space (6px + 50% = 9px total additional, total 15px) */
 }
 
-/* "$600 value" that breaks apart on hover */
+/* "$1200 value" that breaks apart on hover */
 .strike {
   position: relative;
   color: var(--muted);

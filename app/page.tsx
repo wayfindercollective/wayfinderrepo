@@ -8,14 +8,6 @@ import AnimatedColumn from "./components/AnimatedColumn";
 import Image from "next/image";
 import "./components/price.css";
 
-function InvestmentPrice() {
-  return (
-    <div className="text-6xl sm:text-7xl mb-2 price-main">
-      $297
-    </div>
-  );
-}
-
 export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
 
@@ -134,11 +126,11 @@ export default function Home() {
                       className="h-[1em] w-auto hourglass-icon"
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                     />
-                    Six Months of Content
+                    12 Months of Content
                   </h3>
                   <p className="text-lg">
-                    Get access to 6 months of premium charisma coaching content, normally $50/month. 
-                    This bundle represents $600 of value for just $297—a 50% discount.
+                    Get access to 12 months of premium charisma coaching content, normally $50/month. 
+                    This bundle represents $1200 of value for just $297—a 50% discount.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -260,7 +252,7 @@ export default function Home() {
               <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4">Exceptional Value</h3>
                 <p>
-                  $600 worth of premium content for just $297. That's 6 months of $50/month 
+                  $1200 worth of premium content for just $297. That's 12 months of $50/month 
                   programs bundled at a 50% discount.
                 </p>
               </div>
@@ -290,35 +282,92 @@ export default function Home() {
               </AnimatedSectionTitle>
             </div>
             <p className="text-xl text-gray-300">
-              One-time payment for 6 months of premium access
+              One-time payment for 12 months of premium access
             </p>
           </div>
           <div className="max-w-2xl mx-auto">
-            <div className="bg-white text-black p-12 rounded-lg text-center">
-              <div className="mb-8">
-                <InvestmentPrice />
-                <div className="text-2xl text-gray-600 line-through mb-2">$600 value</div>
-                <div className="text-lg text-purple-600 font-semibold">50% Discount</div>
-              </div>
-              <div className="space-y-4 mb-8 text-left">
-                <div className="flex items-center gap-3">
-                  <span className="text-green-500 text-xl">✓</span>
-                  <span>6 months of premium content</span>
+            <div className="cardVoid p-12 text-center">
+              <div className="mb-8" style={{ fontSize: '150%' }}>
+                <div className="current-price mb-2">
+                  $297
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-green-500 text-xl">✓</span>
+                <div className="text-2xl text-gray-400 line-through mb-2">$1200 value</div>
+                <div className="text-lg text-purple-400 font-semibold">50% Discount</div>
+              </div>
+              <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-1')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-1'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                  />
+                  <span>12 months of premium content</span>
+                </div>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-2')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-2'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                  />
                   <span>Access to community missions</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-green-500 text-xl">✓</span>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-3')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-3'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                  />
                   <span>Action-oriented tasks and exercises</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-green-500 text-xl">✓</span>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-4')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-4'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                  />
                   <span>Community support and feedback</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-green-500 text-xl">✓</span>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-5')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-5'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                  />
                   <span>From Charisma in the Void</span>
                 </div>
               </div>

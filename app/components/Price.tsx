@@ -98,7 +98,7 @@ export default function Price() {
       </div>
       <div className="meta-row value-row">
         <span className="strike" title="Original price">
-          {makeShards("$600 value")}
+          {makeShards("$1200 value")}
         </span>
       </div>
       <div className="meta-row">
