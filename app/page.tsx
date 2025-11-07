@@ -10,6 +10,8 @@ import "./components/price.css";
 
 export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
+  const [showWeekPackOverlay, setShowWeekPackOverlay] = useState(false);
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
 
   // Create crystal clear ping sound for hourglass
@@ -90,12 +92,11 @@ export default function Home() {
 
             {/* Your tagline and paragraph below the logo can remain */}
             <h2 className="h2-void -mt-4 text-center opacity-90">
-              Transform Your <span className="emphasis-word">Charisma</span> Through <span className="emphasis-word">Action</span>
+              Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
             <p className="text-lg sm:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1">
-              Join a community driven program with missions, tasks, and real world practice.
-              Master the art of charisma through consistent action and learning.
+              A private dojo for presence under fire. Weekly drills. Live labs. Field ops. You do not binge. You install.
             </p>
           </div>
         </div>
@@ -123,25 +124,25 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-xl font-bold mb-4">Community Missions</h3>
+                <h3 className="text-xl font-bold mb-4">Founders Annual Pass</h3>
                 <p>
-                  Engage with like-minded individuals through structured missions that push you out of your comfort zone and into real-world charisma practice.
+                  Twelve months inside the dojo. Weekly doctrine. Drills. Field missions. Live labs. Clear wins tracked.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="fade">
               <div className="cardVoid p-8">
-                <h3 className="text-xl font-bold mb-4">Monthly Content</h3>
+                <h3 className="text-xl font-bold mb-4">Community that trains</h3>
                 <p>
-                  Access $50 worth of premium content each month, including strategies, techniques, and insights from Charisma in the Void.
+                  Operators who post reps and after action notes. Feedback that builds presence. Proof over talk.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-xl font-bold mb-4">A $500 credit towards a Jeffy 2025-2026 Bootcamp</h3>
+                <h3 className="text-xl font-bold mb-4">Credit for live training</h3>
                 <p>
-                  Learn from the founder of Charisma in the Void: Jeffy. Teaching bootcamps since the 2000's helping gain real life experience.
+                  $500 credit toward a Jeffy Bootcamp in 2025-2026.
                 </p>
               </div>
             </AnimatedColumn>
@@ -189,11 +190,10 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-1', e)}
                     />
-                    12 Months of Content
+                    WeekPack engine
                   </h3>
                   <p className="text-lg">
-                    Get access to 12 months of premium charisma coaching content, normally $50/month. 
-                    This bundle represents $1200 of value for just $297—a 50% discount.
+                    Every week you get a doctrine card, a short home drill, a real world mission, and a live lab.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -209,11 +209,10 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-2'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-2', e)}
                     />
-                    Community-Driven Learning
+                    KSIs we track
                   </h3>
                   <p className="text-lg">
-                    Join a vibrant community of individuals committed to improving their charisma. 
-                    Share experiences, get feedback, and grow together.
+                    State control. Nonverbals. Attention leadership. Calibration. Decisiveness. Spontaneity.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -229,11 +228,10 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-3'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-3', e)}
                     />
-                    Missions & Tasks
+                    Sample drills
                   </h3>
                   <p className="text-lg">
-                    Participate in carefully designed missions and tasks that get you into action. 
-                    Learning happens through doing, not just consuming content.
+                    Breath weight eyes baseline. Three beat silence. Spike then sincere pivot. Empathy to plow recovery.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -249,18 +247,54 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-4'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-4', e)}
                     />
-                    From Charisma in the Void
+                    Reset ritual
                   </h3>
                   <p className="text-lg">
-                    Created by the coach behind the popular YouTube channel "Charisma in the Void". 
-                    Proven strategies and techniques that actually work.
+                    End of week check that locks gains and sets the next mission.
                   </p>
                 </div>
               </AnimatedColumn>
             </div>
           </div>
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setShowWeekPackOverlay(true)}
+              className="text-cyan-400 hover:text-cyan-300 underline"
+              style={{ fontSize: '300%' }}
+            >
+              See a WeekPack
+            </button>
+          </div>
         </div>
       </section>
+
+      {/* WeekPack Overlay */}
+      {showWeekPackOverlay && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowWeekPackOverlay(false)}
+        >
+          <div 
+            className="bg-gray-900 border border-cyan-500 rounded-lg p-8 max-w-md w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-2xl font-bold text-white mb-4">Sample WeekPack</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li>• Doctrine card: Frame in a dying empire</li>
+              <li>• Home drill: Three beat silence</li>
+              <li>• Field mission: Attention leadership at coffee shop</li>
+              <li>• Live lab: State control under pressure</li>
+              <li>• Reset ritual: Lock gains and set next mission</li>
+            </ul>
+            <button
+              onClick={() => setShowWeekPackOverlay(false)}
+              className="mt-6 text-cyan-400 hover:text-cyan-300 underline"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* WHY VOID UNDERGROUND */}
       <section className="voidSection relative z-10">
@@ -289,37 +323,33 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Action Over Theory</h3>
+                <h3 className="text-2xl font-bold mb-4">Action over theory</h3>
                 <p>
-                  You won't just read about charisma—you'll practice it. Our missions and tasks 
-                  ensure you're actively developing your skills in real-world situations.
+                  You train state first. Information emerges from embodiment.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Community Support</h3>
+                <h3 className="text-2xl font-bold mb-4">Bootcamp precision</h3>
                 <p>
-                  Learn alongside others on the same journey. Share victories, get support during 
-                  challenges, and build lasting connections.
+                  Field tested drills turned into a repeatable system without losing the heat.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Proven Content</h3>
+                <h3 className="text-2xl font-bold mb-4">Myth and map</h3>
                 <p>
-                  Based on the successful Charisma in the Void YouTube channel. These aren't 
-                  experimental ideas—they're tested strategies that deliver results.
+                  Presence over Persona. Controlled Madness. Frame in a dying empire.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Exceptional Value</h3>
+                <h3 className="text-2xl font-bold mb-4">Receipts and ethics</h3>
                 <p>
-                  $1200 worth of premium content for just $297. That's 12 months of $50/month 
-                  programs bundled at a 50% discount.
+                  Decades of live proof. Consent forward leadership. Zero manipulation.
                 </p>
               </div>
             </AnimatedColumn>
@@ -357,8 +387,12 @@ export default function Home() {
                 <div className="current-price mb-2">
                   $297
                 </div>
-                <div className="text-2xl text-gray-400 line-through mb-2">$1200 value</div>
-                <div className="text-lg text-purple-400 font-semibold">50% Discount</div>
+                <div className="text-gray-300 mt-1" style={{ fontSize: '200%' }}>
+                  Founders Annual Pass
+                </div>
+                <div className="text-lg text-gray-300 mt-2">
+                  Includes $500 credit for a Jeffy Bootcamp in 2025-2026.
+                </div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
                 <div className="flex items-center gap-3">
@@ -375,7 +409,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-1', e)}
                   />
-                  <span>12 months of premium content</span>
+                  <span>Twelve months of premium content</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Image 
@@ -391,7 +425,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-2', e)}
                   />
-                  <span>Access to community missions</span>
+                  <span>Access to missions and labs</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Image 
@@ -407,7 +441,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-3', e)}
                   />
-                  <span>Action-oriented tasks and exercises</span>
+                  <span>Action oriented tasks and exercises</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Image 
@@ -449,8 +483,91 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn-void w-full sm:w-auto"
               >
-                Get your Founders Annual Pass Now
+                Join the Void
               </a>
+              <p className="text-sm text-gray-400 mt-6">
+                One time payment for twelve months of access.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="voidSection relative z-10">
+        <div className="voidContainer">
+          <div className="sectionTitleWrapper">
+            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleCyan">
+              <span className="inline-flex items-center gap-3">
+                <span className="cyan-dots-wrapper">
+                  <Image 
+                    src="/CyanDots.png" 
+                    alt="" 
+                    width={24} 
+                    height={24} 
+                    className="h-[1em] w-auto cyan-dots-icon"
+                  />
+                </span>
+                FAQ
+              </span>
+            </AnimatedSectionTitle>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-4">
+            <div className="cardVoid p-6">
+              <button
+                onClick={() => setOpenFAQ(openFAQ === 0 ? null : 0)}
+                className="w-full text-left flex items-center justify-between"
+              >
+                <h3 className="text-xl font-bold">Is this a course</h3>
+                <span className="text-2xl">{openFAQ === 0 ? '−' : '+'}</span>
+              </button>
+              {openFAQ === 0 && (
+                <p className="mt-4 text-gray-300">
+                  No. It is a dojo with weekly training and clear KSIs that show change.
+                </p>
+              )}
+            </div>
+            <div className="cardVoid p-6">
+              <button
+                onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
+                className="w-full text-left flex items-center justify-between"
+              >
+                <h3 className="text-xl font-bold">Do I need nightlife</h3>
+                <span className="text-2xl">{openFAQ === 1 ? '−' : '+'}</span>
+              </button>
+              {openFAQ === 1 && (
+                <p className="mt-4 text-gray-300">
+                  No. Day missions and labs cover all contexts.
+                </p>
+              )}
+            </div>
+            <div className="cardVoid p-6">
+              <button
+                onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
+                className="w-full text-left flex items-center justify-between"
+              >
+                <h3 className="text-xl font-bold">Is this pickup</h3>
+                <span className="text-2xl">{openFAQ === 2 ? '−' : '+'}</span>
+              </button>
+              {openFAQ === 2 && (
+                <p className="mt-4 text-gray-300">
+                  No. It is consent forward charisma for dating, business, and leadership.
+                </p>
+              )}
+            </div>
+            <div className="cardVoid p-6">
+              <button
+                onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
+                className="w-full text-left flex items-center justify-between"
+              >
+                <h3 className="text-xl font-bold">What changes in thirty days</h3>
+                <span className="text-2xl">{openFAQ === 3 ? '−' : '+'}</span>
+              </button>
+              {openFAQ === 3 && (
+                <p className="mt-4 text-gray-300">
+                  A louder baseline broadcast. Fewer freezes. Cleaner recovery under pressure.
+                </p>
+              )}
             </div>
           </div>
         </div>

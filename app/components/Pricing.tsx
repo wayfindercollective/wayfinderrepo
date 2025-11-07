@@ -14,7 +14,7 @@ export default function Pricing() {
         rel="noopener noreferrer"
         className="btn-void mt-10"
       >
-        Get your Founders Annual Pass Now
+        Join the Void
       </a>
     </div>
   );
