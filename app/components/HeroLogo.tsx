@@ -22,7 +22,7 @@ export default function HeroLogo() {
     const audioPath = '/reality real story_2025-10-22T10-31-44_1.MP4'.replace(/ /g, '%20');
     const audio = new Audio(audioPath);
     audio.loop = false;
-    audio.volume = 0.5;
+    audio.volume = 1.0;
     
     // Stop flicker animation when audio ends
     audio.addEventListener('ended', () => {
