@@ -50,14 +50,14 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 /* cards on dark backgrounds stay readable */
 .cardVoid {
-  background: rgba(0, 0, 0, 0.15); /* very transparent dark background to show cyan stars */
+  background: transparent; /* completely transparent to show cyan stars */
   border: 2px solid rgba(255, 255, 255, 1); /* thicker, fully opaque white border */
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-family: var(--fontB-display), var(--fontB-body), sans-serif; /* futuristic font */
   color: #ffffff; /* white text */
-  backdrop-filter: blur(1px); /* minimal blur to keep stars visible */
+  backdrop-filter: none; /* no blur to maximize star visibility */
 }
 
 .cardVoid:hover {
