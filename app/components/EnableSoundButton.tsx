@@ -1,11 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { orbitron } from '../fonts';
 
 export default function EnableSoundButton() {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [showLoading, setShowLoading] = useState(false);
+  const [isFlickering, setIsFlickering] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const loadingRef = useRef<HTMLDivElement>(null);
 
   const initAudio = async () => {
     // Create AudioContext
@@ -30,22 +33,72 @@ export default function EnableSoundButton() {
     }
   };
 
-  // Auto-initialize audio on component mount
+  // Listen for flicker data from HeroLogo to apply to button and loading message
   useEffect(() => {
-    // Check if sound was previously enabled, or enable by default
-    const soundEnabled = localStorage.getItem('soundEnabled');
-    if (soundEnabled !== 'false') {
-      // Try to initialize audio automatically
-      initAudio();
-    }
+    const handleFlickerData = (event: any) => {
+      if (isFlickering && event.detail) {
+        const { intensity, brightness } = event.detail;
+        const opacity = Math.max(0.1, Math.min(1.0, intensity));
+        // Use the same filter as the logo: contrast(1.4) brightness() saturate(1.2)
+        const filterValue = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
+        
+        // Apply to button
+        if (buttonRef.current) {
+          buttonRef.current.style.opacity = opacity.toString();
+          buttonRef.current.style.filter = filterValue;
+          buttonRef.current.style.webkitFilter = filterValue;
+        }
+        
+        // Apply to loading message
+        if (loadingRef.current) {
+          loadingRef.current.style.opacity = opacity.toString();
+          loadingRef.current.style.filter = filterValue;
+          loadingRef.current.style.webkitFilter = filterValue;
+        }
+      }
+    };
+
+    window.addEventListener('flickerData', handleFlickerData as EventListener);
+    
+    return () => {
+      window.removeEventListener('flickerData', handleFlickerData as EventListener);
+    };
+  }, [isFlickering]);
+
+  // Listen for audio enabled to start flickering
+  useEffect(() => {
+    const handleAudioEnabled = () => {
+      setIsFlickering(true);
+    };
+
+    window.addEventListener('audioEnabled', handleAudioEnabled);
+    
+    return () => {
+      window.removeEventListener('audioEnabled', handleAudioEnabled);
+    };
   }, []);
 
-  // Listen for audio ended event to redirect
+  // Listen for audio ended event to redirect and stop flickering
   useEffect(() => {
     const handleAudioEnded = () => {
+      setIsFlickering(false);
+      
+      // Reset button and loading styles to match logo's initial state
+      if (buttonRef.current) {
+        buttonRef.current.style.opacity = '1';
+        buttonRef.current.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+        buttonRef.current.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+      }
+      
+      if (loadingRef.current) {
+        loadingRef.current.style.opacity = '1';
+        loadingRef.current.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+        loadingRef.current.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+      }
+      
       if (showLoading) {
-        // Scroll to enrollment button
-        const enrollButton = document.getElementById('enroll');
+        // Scroll to upper enrollment button in Pricing section
+        const enrollButton = document.getElementById('pricing-enroll');
         if (enrollButton) {
           enrollButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
           setShowLoading(false);
@@ -61,75 +114,49 @@ export default function EnableSoundButton() {
     };
   }, [showLoading]);
 
-  const disableAudio = () => {
-    // Stop all audio elements on the page
-    if (typeof window !== 'undefined') {
-      // Find and pause all HTML audio elements
-      const audioElements = document.querySelectorAll('audio');
-      audioElements.forEach((audio) => {
-        audio.pause();
-        audio.currentTime = 0;
-      });
-      
-      // Also check for any Audio objects created via new Audio()
-      // We'll use a custom event to notify components to stop their audio
-      window.dispatchEvent(new CustomEvent('audioDisabled'));
-    }
-
-    // Close audio context
-    if (audioContext) {
-      audioContext.close().catch(() => {
-        // Context might already be closed
-      });
-      setAudioContext(null);
-    }
-
-    // Remove global references
-    if (typeof window !== 'undefined') {
-      (window as any).audioContext = null;
-      localStorage.setItem('soundEnabled', 'false');
+  const handleClick = async () => {
+    // Always initialize audio and play when Join the Void is clicked
+    if (!audioContext) {
+      await initAudio();
     }
     
-    setShowLoading(false);
-  };
-
-  const handleClick = async () => {
-    if (audioContext) {
-      // Audio context already exists - this means "Join the Void" was clicked
-      setShowLoading(true);
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('audioEnabled'));
-      }
-    } else {
-      // Enable sound - initAudio will handle resuming if needed
-      await initAudio();
-      // Dispatch event to trigger audio playback in HeroLogo
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('audioEnabled'));
-      }
+    setShowLoading(true);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('audioEnabled'));
     }
   };
-
-  // Determine button text based on whether audio context is active
-  const buttonText = audioContext ? 'Join the Void 🔊' : 'Enable the Signal 🔊';
 
   return (
     <div className="flex flex-col items-center">
       <button
+        ref={buttonRef}
         onClick={handleClick}
-        className={`px-6 py-3 bg-black border-2 border-[#00FFFF] rounded text-[#00FFFF] text-lg sm:text-xl font-bold cursor-pointer transition-all duration-300 hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] ${audioContext ? 'button-shimmer' : ''} ${orbitron.variable}`}
+        className={`px-6 py-3 bg-black border-2 border-[#00FFFF] rounded text-[#00FFFF] text-lg sm:text-xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${orbitron.variable}`}
         style={{ 
           fontFamily: 'var(--font-display), sans-serif', 
           letterSpacing: '0.1em', 
           textTransform: 'uppercase',
-          position: 'relative'
+          position: 'relative',
+          opacity: 1,
+          filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+          WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+          transition: 'none' // Remove transition to allow instant flicker
         }}
       >
-        <span style={{ position: 'relative', zIndex: 2 }}>{buttonText}</span>
+        <span style={{ position: 'relative', zIndex: 2 }}>Join the Void</span>
       </button>
       
       {showLoading && (
-        <div className="mt-4 flex items-center gap-3 text-[#00FFFF] text-sm sm:text-base animate-pulse">
+        <div 
+          ref={loadingRef}
+          className="mt-4 flex items-center gap-3 text-[#00FFFF] text-sm sm:text-base"
+          style={{
+            opacity: 1,
+            filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+            WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+            transition: 'none' // Remove transition to allow instant flicker
+          }}
+        >
           <div className="w-5 h-5 border-2 border-[#00FFFF] border-t-transparent rounded-full animate-spin"></div>
           <span className="font-medium">Welcome to the movement. You will be redirected shortly.</span>
         </div>

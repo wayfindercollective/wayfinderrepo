@@ -8,6 +8,7 @@ export default function Pricing() {
         <Price />
       </div>
       <a
+        id="pricing-enroll"
         href="https://bookmyeventnow.com/register?a=new&p=32"
         target="_blank"
         rel="noopener noreferrer"

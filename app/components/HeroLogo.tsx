@@ -143,6 +143,13 @@ export default function HeroLogo() {
         logo.style.opacity = opacity.toString();
         logo.style.filter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
         logo.style.webkitFilter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
+        
+        // Dispatch flicker data for other components (like button)
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('flickerData', {
+            detail: { intensity, brightness }
+          }));
+        }
       }
     }
 
