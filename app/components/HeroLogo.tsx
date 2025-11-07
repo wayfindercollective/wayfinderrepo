@@ -6,7 +6,14 @@ import Starfield from './Starfield';
 
 export default function HeroLogo() {
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
+  const [flickerIntensity, setFlickerIntensity] = useState(1);
   const audioSourceRef = useRef<MediaElementAudioSourceNode | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
+  const logoRef = useRef<HTMLDivElement | null>(null);
+  const audioStartTimeRef = useRef<number | null>(null);
+  const smoothedIntensityRef = useRef<number>(1.0);
+  const smoothedBrightnessRef = useRef<number>(1.15);
 
   useEffect(() => {
     // Create audio element for the video file
@@ -15,6 +22,27 @@ export default function HeroLogo() {
     const audio = new Audio(audioPath);
     audio.loop = false;
     audio.volume = 0.5;
+    
+    // Stop flicker animation when audio ends
+    audio.addEventListener('ended', () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      
+      // Reset logo to original state
+      if (logoRef.current) {
+        const logo = logoRef.current.querySelector('img') as HTMLImageElement;
+        if (logo) {
+          logo.style.opacity = '1';
+          logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+          logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+        }
+      }
+      
+      setFlickerIntensity(1);
+    });
+    
     setAudioElement(audio);
 
     return () => {
@@ -23,11 +51,106 @@ export default function HeroLogo() {
         audio.pause();
         audio.src = '';
       }
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
   }, []);
 
+  // Analyze audio and update flicker effect
+  const analyzeAudio = () => {
+    if (!analyserRef.current || !logoRef.current || !audioElement) return;
+
+    const analyser = analyserRef.current;
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(dataArray);
+
+    // Calculate average amplitude for rhythm detection
+    const average = dataArray.reduce((sum, value) => sum + value, 0) / dataArray.length;
+    
+    // Normalize to 0-1 range and create very intense flicker effect
+    // Use a combination of low frequencies (bass) and overall amplitude
+    const bass = (dataArray[0] + dataArray[1] + dataArray[2] + dataArray[3] + dataArray[4]) / 5 / 255;
+    const normalized = Math.min(average / 255, 1);
+    
+    // Calculate time-based intensity multiplier and smoothing
+    const currentTime = audioElement.currentTime;
+    let timeMultiplier = 1.0;
+    let smoothingFactor = 0.95; // Higher = slower changes (0.95 = smooth, 0.1 = very fast)
+    let useRawValues = false; // Use raw values directly for instant response
+    
+    if (currentTime < 2.0) {
+      // First 2 seconds: High contrast, fast lamp-like flickering
+      timeMultiplier = 2.5 - (currentTime / 2.0) * 1.0;
+      smoothingFactor = 0.1; // Very fast flickering (minimal smoothing) - like a flickering lamp
+      useRawValues = true; // Use raw values directly for instant, visible flickering
+    } else {
+      // After 2 seconds: Gradually decrease intensity and increase smoothing (slower)
+      const fadeStartTime = 2.0;
+      const fadeDuration = 28.0;
+      const elapsedAfterStart = currentTime - fadeStartTime;
+      const fadeProgress = Math.min(elapsedAfterStart / fadeDuration, 1.0);
+      timeMultiplier = 1.5 - (fadeProgress * 1.2);
+      // Gradually increase smoothing (slower flickering) as time progresses
+      smoothingFactor = 0.1 + (fadeProgress * 0.85); // From 0.1 (fast) to 0.95 (slow)
+    }
+    
+    // Very intense flicker: combine bass and overall amplitude with much larger range
+    const baseIntensity = 0.2 + (normalized * 0.5) + (bass * 0.4);
+    const rawIntensity = Math.max(0.1, Math.min(1.0, baseIntensity * timeMultiplier));
+    
+    // For first 2 seconds, use raw values directly for instant flickering
+    // After that, smooth the intensity changes
+    let intensity: number;
+    if (useRawValues) {
+      intensity = rawIntensity;
+      smoothedIntensityRef.current = rawIntensity; // Update ref for smooth transition later
+    } else {
+      smoothedIntensityRef.current = smoothedIntensityRef.current * smoothingFactor + rawIntensity * (1 - smoothingFactor);
+      intensity = smoothedIntensityRef.current;
+    }
+    
+    setFlickerIntensity(intensity);
+
+    // Apply visual flicker effect with dramatic contrast changes
+    if (logoRef.current) {
+      const logo = logoRef.current.querySelector('img') as HTMLImageElement;
+      if (logo) {
+        // High contrast opacity: ranges from 0.1 to 1.0 (very dramatic fade in/out)
+        const opacity = Math.max(0.1, Math.min(1.0, intensity));
+        
+        // High contrast brightness: ranges from 0.4 to 2.2 (very dramatic)
+        const baseBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
+        const rawBrightness = Math.max(0.4, Math.min(2.2, baseBrightness * timeMultiplier));
+        
+        // For first 2 seconds, use raw values directly for instant flickering
+        // After that, smooth brightness changes
+        let brightness: number;
+        if (useRawValues) {
+          brightness = rawBrightness;
+          smoothedBrightnessRef.current = rawBrightness; // Update ref for smooth transition later
+        } else {
+          smoothedBrightnessRef.current = smoothedBrightnessRef.current * smoothingFactor + rawBrightness * (1 - smoothingFactor);
+          brightness = smoothedBrightnessRef.current;
+        }
+        
+        logo.style.opacity = opacity.toString();
+        logo.style.filter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
+        logo.style.webkitFilter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
+      }
+    }
+
+    animationFrameRef.current = requestAnimationFrame(analyzeAudio);
+  };
+
   const handleMouseEnter = () => {
     if (!audioElement) return;
+
+    // Check if audio is enabled
+    const soundEnabled = localStorage.getItem('soundEnabled');
+    if (soundEnabled === 'false') {
+      return; // Don't play audio if disabled
+    }
 
     const audioCtx = (window as any).audioContext;
     
@@ -44,12 +167,27 @@ export default function HeroLogo() {
         if (!audioSourceRef.current) {
           try {
             const source = audioCtx.createMediaElementSource(audioElement);
-            source.connect(audioCtx.destination);
+            
+            // Create analyser node for audio visualization
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 256;
+            analyser.smoothingTimeConstant = 0.2; // Low smoothing for fast, responsive flickering
+            
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            
             audioSourceRef.current = source;
+            analyserRef.current = analyser;
+            
+            // Start analyzing audio for flicker effect
+            analyzeAudio();
           } catch (err) {
             // Source might already exist or connection failed, continue anyway
             console.warn('Could not create media source:', err);
           }
+        } else if (analyserRef.current) {
+          // If source already exists, start analyzing
+          analyzeAudio();
         }
       } catch (err) {
         console.warn('Error with audio context:', err);
@@ -58,6 +196,12 @@ export default function HeroLogo() {
 
     // Reset and play audio
     audioElement.currentTime = 0;
+    audioStartTimeRef.current = Date.now();
+    
+    // Reset smoothed values for fresh start
+    smoothedIntensityRef.current = 1.0;
+    smoothedBrightnessRef.current = 1.15;
+    
     audioElement.play().catch((err) => {
       console.warn('Could not play audio:', err);
     });
@@ -68,7 +212,82 @@ export default function HeroLogo() {
       audioElement.pause();
       audioElement.currentTime = 0;
     }
+    
+    // Stop animation loop
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
+    }
+    
+    audioStartTimeRef.current = null;
+    
+    // Reset smoothed values
+    smoothedIntensityRef.current = 1.0;
+    smoothedBrightnessRef.current = 1.15;
+    
+    // Reset logo to original state
+    if (logoRef.current) {
+      const logo = logoRef.current.querySelector('img') as HTMLImageElement;
+      if (logo) {
+        logo.style.opacity = '1';
+        logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+        logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+      }
+    }
+    
+    setFlickerIntensity(1);
   };
+
+  // Listen for audio disable event
+  useEffect(() => {
+    const handleAudioDisabled = () => {
+      if (audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+      }
+      
+      // Disconnect audio source if connected
+      if (audioSourceRef.current) {
+        try {
+          audioSourceRef.current.disconnect();
+        } catch (e) {
+          // Source might already be disconnected
+        }
+        audioSourceRef.current = null;
+      }
+      analyserRef.current = null;
+      
+      // Stop animation loop
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      
+      // Reset logo to original state
+      if (logoRef.current) {
+        const logo = logoRef.current.querySelector('img') as HTMLImageElement;
+        if (logo) {
+          logo.style.opacity = '1';
+          logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+          logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+        }
+      }
+      
+      setFlickerIntensity(1);
+      audioStartTimeRef.current = null;
+      smoothedIntensityRef.current = 1.0;
+      smoothedBrightnessRef.current = 1.15;
+    };
+
+    window.addEventListener('audioDisabled', handleAudioDisabled);
+    
+    return () => {
+      window.removeEventListener('audioDisabled', handleAudioDisabled);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [audioElement]);
 
   return (
     <section className="relative text-white overflow-visible bg-transparent">
@@ -79,6 +298,7 @@ export default function HeroLogo() {
 
       {/* logo plus cyan underline */}
       <div 
+        ref={logoRef}
         className="relative w-fit mx-auto -mt-4 group z-10" 
         style={{ transform: 'scale(0.75)' }}
         onMouseEnter={handleMouseEnter}
