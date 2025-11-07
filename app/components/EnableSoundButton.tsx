@@ -85,8 +85,15 @@ export default function EnableSoundButton() {
   return (
     <button
       onClick={handleClick}
-      className={`fixed top-5 right-5 px-4 py-2 bg-black border-2 border-black rounded text-[#00FFFF] text-xs font-bold cursor-pointer z-[1000] transition-all duration-300 hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] ${orbitron.variable}`}
-      style={{ fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}
+      className={`absolute right-5 px-4 py-2 bg-black border-2 border-black rounded text-[#00FFFF] text-xs font-bold cursor-pointer z-[9999] transition-all duration-300 hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] ${orbitron.variable}`}
+      style={{ 
+        fontFamily: 'var(--font-display), sans-serif', 
+        letterSpacing: '0.1em', 
+        textTransform: 'uppercase',
+        position: 'absolute',
+        top: '5rem',
+        right: '1.25rem'
+      }}
     >
       {buttonText}
     </button>
