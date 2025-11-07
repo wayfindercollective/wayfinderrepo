@@ -50,16 +50,47 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 /* cards on dark backgrounds stay readable */
 .cardVoid {
-  background: rgba(27,27,27,0.9);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0, 0, 0, 0.15); /* very transparent dark background to show cyan stars */
+  border: 2px solid rgba(255, 255, 255, 1); /* thicker, fully opaque white border */
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: var(--fontB-display), var(--fontB-body), sans-serif; /* futuristic font */
+  color: #ffffff; /* white text */
+  backdrop-filter: blur(1px); /* minimal blur to keep stars visible */
 }
 
 .cardVoid:hover {
   transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  border-color: rgba(255, 255, 255, 1); /* maintain bright border on hover */
+  border-width: 2px;
+}
+
+/* Ensure all text inside cardVoid is white */
+.cardVoid h3,
+.cardVoid p,
+.cardVoid span,
+.cardVoid * {
+  color: #ffffff !important; /* white text */
+  font-family: var(--fontB-display), var(--fontB-body), sans-serif;
+}
+
+.cardVoid h3 {
+  font-family: var(--fontB-display), sans-serif; /* more futuristic for headings */
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cardVoid p {
+  font-family: var(--fontB-body), sans-serif;
+  font-weight: 400;
+}
+
+/* Bullet points in white */
+.cardVoid h3 span.text-red-500,
+.cardVoid h3 span.text-purple-500 {
+  color: #ffffff !important;
 }
 
 /* full-width underlines for section titles - centered */

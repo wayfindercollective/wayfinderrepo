@@ -48,25 +48,25 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedColumn direction="left">
-              <div className="cardVoid text-white p-8">
+              <div className="cardVoid p-8">
                 <h3 className="text-xl font-bold mb-4">Community Missions</h3>
-                <p className="text-gray-300">
+                <p>
                   Engage with like-minded individuals through structured missions that push you out of your comfort zone and into real-world charisma practice.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="fade">
-              <div className="cardVoid text-white p-8">
+              <div className="cardVoid p-8">
                 <h3 className="text-xl font-bold mb-4">Monthly Content</h3>
-                <p className="text-gray-300">
+                <p>
                   Access $50 worth of premium content each month, including strategies, techniques, and insights from Charisma in the Void.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
-              <div className="cardVoid text-white p-8">
+              <div className="cardVoid p-8">
                 <h3 className="text-xl font-bold mb-4">A $500 credit towards a Jeffy 2025-2026 Bootcamp</h3>
-                <p className="text-gray-300">
+                <p>
                   Learn from the founder of Charisma in the Void: Jeffy. Teaching bootcamps since the 2000's helping gain real life experience.
                 </p>
               </div>
@@ -94,11 +94,11 @@ export default function Home() {
             <div className="space-y-8">
               <AnimatedColumn direction="left">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <span className="text-red-500">•</span>
                     Six Months of Content
                   </h3>
-                  <p className="text-gray-300 text-lg">
+                  <p className="text-lg">
                     Get access to 6 months of premium charisma coaching content, normally $50/month. 
                     This bundle represents $600 of value for just $297—a 50% discount.
                   </p>
@@ -106,11 +106,11 @@ export default function Home() {
               </AnimatedColumn>
               <AnimatedColumn direction="right">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <span className="text-purple-500">•</span>
                     Community-Driven Learning
                   </h3>
-                  <p className="text-gray-300 text-lg">
+                  <p className="text-lg">
                     Join a vibrant community of individuals committed to improving their charisma. 
                     Share experiences, get feedback, and grow together.
                   </p>
@@ -118,11 +118,11 @@ export default function Home() {
               </AnimatedColumn>
               <AnimatedColumn direction="left">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <span className="text-red-500">•</span>
                     Missions & Tasks
                   </h3>
-                  <p className="text-gray-300 text-lg">
+                  <p className="text-lg">
                     Participate in carefully designed missions and tasks that get you into action. 
                     Learning happens through doing, not just consuming content.
                   </p>
@@ -130,11 +130,11 @@ export default function Home() {
               </AnimatedColumn>
               <AnimatedColumn direction="right">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-white">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <span className="text-purple-500">•</span>
                     From Charisma in the Void
                   </h3>
-                  <p className="text-gray-300 text-lg">
+                  <p className="text-lg">
                     Created by the coach behind the popular YouTube channel "Charisma in the Void". 
                     Proven strategies and techniques that actually work.
                   </p>
@@ -160,36 +160,36 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <AnimatedColumn direction="left">
-              <div className="cardVoid text-white p-8">
+              <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4">Action Over Theory</h3>
-                <p className="text-gray-300">
+                <p>
                   You won't just read about charisma—you'll practice it. Our missions and tasks 
                   ensure you're actively developing your skills in real-world situations.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
-              <div className="cardVoid text-white p-8">
+              <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4">Community Support</h3>
-                <p className="text-gray-300">
+                <p>
                   Learn alongside others on the same journey. Share victories, get support during 
                   challenges, and build lasting connections.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="left">
-              <div className="cardVoid text-white p-8">
+              <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4">Proven Content</h3>
-                <p className="text-gray-300">
+                <p>
                   Based on the successful Charisma in the Void YouTube channel. These aren't 
                   experimental ideas—they're tested strategies that deliver results.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
-              <div className="cardVoid text-white p-8">
+              <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4">Exceptional Value</h3>
-                <p className="text-gray-300">
+                <p>
                   $600 worth of premium content for just $297. That's 6 months of $50/month 
                   programs bundled at a 50% discount.
                 </p>
