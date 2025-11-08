@@ -67,3 +67,7 @@ html, body {
   background-color: rgba(0, 255, 255, 0.2);
   transform: translateY(0);
 }
+
+.btn-void-white {
+  color: var(--white) !important;
+}

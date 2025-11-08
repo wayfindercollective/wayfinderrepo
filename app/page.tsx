@@ -136,7 +136,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange">
+            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -392,7 +392,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
-              <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan">
+              <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
                 <span className="inline-flex items-center gap-3">
                   <span className="cyan-dots-wrapper">
                     <Image 
@@ -511,7 +511,7 @@ export default function Home() {
                 href="https://bookmyeventnow.com/register?a=new&p=32"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-void w-full sm:w-auto"
+                className="btn-void btn-void-white w-full sm:w-auto"
               >
                 Join the Void
               </a>
