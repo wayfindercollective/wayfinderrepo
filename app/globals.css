@@ -58,6 +58,9 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   font-family: var(--font-body), sans-serif; /* Inter for body text */
   color: #ffffff; /* white text */
   backdrop-filter: none; /* no blur to maximize star visibility */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .cardVoid:hover {
@@ -473,6 +476,52 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   transform: perspective(1000px) rotateY(-360deg) rotateX(10deg);
 }
 
+/* Mobile responsive fixes for footer logos */
+@media (max-width: 768px) {
+  footer .signal-core-logo-wrapper {
+    height: 200px !important;
+    max-width: 120px;
+  }
+  
+  footer .signal-core-logo-static,
+  footer .signal-core-logo-spin {
+    height: 200px !important;
+    width: auto !important;
+  }
+  
+  /* Ensure footer content has proper spacing on mobile */
+  footer > div:last-child {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  
+  /* Prevent logos from overlapping content */
+  footer {
+    overflow: hidden;
+  }
+  
+  /* Reduce letter spacing for Founders Annual Pass on mobile */
+  .founders-annual-pass-title {
+    letter-spacing: -0.01em !important;
+    word-spacing: normal !important;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: clamp(1.2rem, 4vw, 2rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  footer > div:last-child {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  
+  footer .signal-core-logo-wrapper {
+    max-width: 80px;
+  }
+}
+
 /* Screen reader only text */
 .sr-only {
   position: absolute;
@@ -489,6 +538,31 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 /* Prevent horizontal scrollbars */
 body {
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all containers are properly centered on mobile */
+@media (max-width: 768px) {
+  .voidContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Ensure sections are centered */
+  section {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Ensure headingText underline only matches text width, not icons */

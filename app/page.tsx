@@ -93,19 +93,19 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full relative">
+    <div className="min-h-screen w-full relative overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 -mt-12 bg-transparent">
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-0 pb-2">
+      <section className="relative text-white overflow-hidden z-10 -mt-12 md:-mt-12 bg-transparent">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 pt-12 md:pt-0 pb-2">
           <div className="text-center">
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void -mt-4 text-center opacity-90 text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void -mt-4 text-center opacity-90 text-xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-base md:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
+            <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -131,10 +131,10 @@ export default function Home() {
               </span>
             </AnimatedSectionTitle>
           </div>
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-xl font-bold mb-4">Founders Annual Pass</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-4">Founders Annual Pass</h3>
                 <p>
                   Twelve months inside the program. Weekly lessons. Guided practices. Real world exercises. Live group sessions. Clear progress markers.
                 </p>
@@ -142,7 +142,7 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="fade">
               <div className="cardVoid p-8">
-                <h3 className="text-xl font-bold mb-4">Community that trains</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-4">Community that trains</h3>
                 <p>
                   People who show up, post results, and give useful feedback. Less talk. More proof.
                 </p>
@@ -150,9 +150,9 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-xl font-bold mb-4">Credit for live training</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-4">Credit for live training</h3>
                 <p>
-                  Five hundred credit you can use for a Jeffy Bootcamp in 2025 or 2026.
+                  $500 credit you can use for a Jeffy Bootcamp in 2025 or 2026.
                 </p>
               </div>
             </AnimatedColumn>
@@ -171,7 +171,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
+            <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -190,7 +190,7 @@ export default function Home() {
             <div className="space-y-8">
               <AnimatedColumn direction="left">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
                       src="/HourGlass.png" 
                       alt="" 
@@ -200,16 +200,16 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-1', e)}
                     />
-                    <span>Weekly Pack</span>
+                    <span style={{ fontFamily: 'var(--font-display), sans-serif' }}>Weekly Pack</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-base md:text-lg">
                     Each week you get a short lesson, a simple at-home practice, a small real world task, and a live session.
                   </p>
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
                       src="/HourGlass.png" 
                       alt="" 
@@ -219,16 +219,16 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-2'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-2', e)}
                     />
-                    <span>Skills we track</span>
+                    <span style={{ fontFamily: 'var(--font-display), sans-serif' }}>Skills we track</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-base md:text-lg">
                     Calm under pressure. Body language. Leading attention. Reading the room. Decisive action. Playfulness.
                   </p>
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="left">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
                       src="/HourGlass.png" 
                       alt="" 
@@ -238,16 +238,16 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-3'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-3', e)}
                     />
-                    <span>Sample practices</span>
+                    <span style={{ fontFamily: 'var(--font-display), sans-serif' }}>Sample practices</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-base md:text-lg">
                     Breathe and settle your weight. Hold eye contact. Pause for three beats before you speak. Lift the mood then land it sincere. Own a mistake and recover smoothly.
                   </p>
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
                 <div className="cardVoid p-8">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
                       src="/HourGlass.png" 
                       alt="" 
@@ -257,9 +257,9 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-4'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-4', e)}
                     />
-                    <span>Reset</span>
+                    <span style={{ fontFamily: 'var(--font-display), sans-serif' }}>Reset</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-base md:text-lg">
                     End of week check in that locks gains and sets your next step.
                   </p>
                 </div>
@@ -311,7 +311,7 @@ export default function Home() {
         <div className="voidContainer">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
-              <AnimatedSectionTitle className="text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
+              <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
                 <span className="inline-flex items-center gap-3">
                   <span className="cyan-dots-wrapper">
                     <Image 
@@ -326,14 +326,14 @@ export default function Home() {
                 </span>
               </AnimatedSectionTitle>
             </div>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
               Most charisma programs focus on theory. We focus on action.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Action first</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-4">Action first</h3>
                 <p>
                   You learn by doing. The body teaches faster than theory.
                 </p>
@@ -341,7 +341,7 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Field tested</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-4">Field tested</h3>
                 <p>
                   Drills come from years of live work and are built to be repeatable.
                 </p>
@@ -349,7 +349,7 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Clear philosophy</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-4">Clear philosophy</h3>
                 <p>
                   Presence over image. Lead reality with calm energy. Be the signal in the noise.
                 </p>
@@ -357,7 +357,7 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Proof and ethics</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-4">Proof and ethics</h3>
                 <p>
                   Track results. Lead with consent. No tricks. No manipulation.
                 </p>
@@ -369,10 +369,10 @@ export default function Home() {
 
       {/* Pricing Section */}
       <section className="relative text-white overflow-hidden z-10">
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-32">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
-              <AnimatedSectionTitle className="text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
+              <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
                 <span className="inline-flex items-center gap-3">
                   <span className="cyan-dots-wrapper">
                     <Image 
@@ -380,14 +380,15 @@ export default function Home() {
                       alt="" 
                       width={24} 
                       height={24} 
-                      className="h-[1em] w-auto cyan-dots-icon"
+                      className="h-[1em] w-[1em] cyan-dots-icon"
+                      style={{ aspectRatio: '1 / 1' }}
                     />
                   </span>
                   <span className="headingText">Investment</span>
                 </span>
               </AnimatedSectionTitle>
             </div>
-            <p className="text-xl text-gray-300" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-base md:text-xl text-gray-300" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
               One-time payment for 12 months of premium access
             </p>
           </div>
@@ -397,11 +398,11 @@ export default function Home() {
                 <div className="current-price mb-2">
                   $297
                 </div>
-                <div className="text-gray-300 mt-1" style={{ fontSize: '200%' }}>
+                <div className="text-gray-300 mt-1 founders-annual-pass-title" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
                   Founders Annual Pass
                 </div>
                 <div className="text-lg text-gray-300 mt-2">
-                  Includes five hundred credit for a Jeffy Bootcamp in 2025 or 2026.
+                  Includes $500 credit for a Jeffy Bootcamp in 2025 or 2026.
                 </div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
@@ -507,7 +508,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer text-center">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleCyan">
+            <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleCyan">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -528,7 +529,7 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 0 ? null : 0)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">Is this a course?</h3>
+                <h3 className="text-lg md:text-xl font-bold">Is this a course?</h3>
                 <span className="text-2xl">{openFAQ === 0 ? '−' : '+'}</span>
               </button>
               {openFAQ === 0 && (
@@ -542,7 +543,7 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">Do I need nightlife?</h3>
+                <h3 className="text-lg md:text-xl font-bold">Do I need nightlife?</h3>
                 <span className="text-2xl">{openFAQ === 1 ? '−' : '+'}</span>
               </button>
               {openFAQ === 1 && (
@@ -556,7 +557,7 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">Is this pickup?</h3>
+                <h3 className="text-lg md:text-xl font-bold">Is this pickup?</h3>
                 <span className="text-2xl">{openFAQ === 2 ? '−' : '+'}</span>
               </button>
               {openFAQ === 2 && (
@@ -570,7 +571,7 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">What changes in thirty days?</h3>
+                <h3 className="text-lg md:text-xl font-bold">What changes in thirty days?</h3>
                 <span className="text-2xl">{openFAQ === 3 ? '−' : '+'}</span>
               </button>
               {openFAQ === 3 && (
@@ -584,22 +585,23 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative text-white border-t border-white/10 z-10">
+      <footer className="relative text-white border-t border-white/10 z-10 min-h-[200px] md:min-h-[300px]">
         {/* Signal Core Logo - Left */}
         <div className="absolute left-0 bottom-0 top-0 flex items-center group">
-          <div className="h-full w-auto relative signal-core-logo-wrapper">
+          <div className="h-full w-auto relative signal-core-logo-wrapper" style={{ height: '200px', width: 'auto' }}>
             {/* Static text layer */}
             <Image
               src="/Signal_CoreLogo.png"
               alt=""
               width={1200}
               height={1200}
-              className="h-full w-auto object-contain signal-core-logo-static"
+              className="h-[200px] md:h-full w-auto object-contain signal-core-logo-static"
               unoptimized
               style={{
                 filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 clipPath: 'polygon(0% 68%, 100% 68%, 100% 100%, 0% 100%)',
+                height: '200px',
               }}
             />
             {/* Spinning top layer */}
@@ -608,31 +610,33 @@ export default function Home() {
               alt=""
               width={1200}
               height={1200}
-              className="h-full w-auto object-contain signal-core-logo-spin signal-core-logo-spin-left absolute top-0 left-0"
+              className="h-[200px] md:h-full w-auto object-contain signal-core-logo-spin signal-core-logo-spin-left absolute top-0 left-0"
               unoptimized
               style={{
                 filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 68%, 0% 68%)',
+                height: '200px',
               }}
             />
           </div>
         </div>
         {/* Signal Core Logo - Right */}
         <div className="absolute right-0 bottom-0 top-0 flex items-center justify-end group">
-          <div className="h-full w-auto relative signal-core-logo-wrapper">
+          <div className="h-full w-auto relative signal-core-logo-wrapper" style={{ height: '200px', width: 'auto' }}>
             {/* Static text layer */}
             <Image
               src="/Signal_CoreLogo.png"
               alt=""
               width={1200}
               height={1200}
-              className="h-full w-auto object-contain signal-core-logo-static"
+              className="h-[200px] md:h-full w-auto object-contain signal-core-logo-static"
               unoptimized
               style={{
                 filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 clipPath: 'polygon(0% 68%, 100% 68%, 100% 100%, 0% 100%)',
+                height: '200px',
               }}
             />
             {/* Spinning top layer */}
@@ -641,17 +645,18 @@ export default function Home() {
               alt=""
               width={1200}
               height={1200}
-              className="h-full w-auto object-contain signal-core-logo-spin signal-core-logo-spin-right absolute top-0 left-0"
+              className="h-[200px] md:h-full w-auto object-contain signal-core-logo-spin signal-core-logo-spin-right absolute top-0 left-0"
               unoptimized
               style={{
                 filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 68%, 0% 68%)',
+                height: '200px',
               }}
             />
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-12 relative z-10">
           <div className="text-center">
             <div className="max-w-md mx-auto relative group">
               <Image
