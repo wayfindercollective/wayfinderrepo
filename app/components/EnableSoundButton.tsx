@@ -376,7 +376,7 @@ export default function EnableSoundButton() {
         id="heroCta"
         ref={buttonRef}
         onClick={handleClick}
-        className={`px-6 py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable} mt-[45px]`}
+        className={`px-6 py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable} mt-[45px] md:mt-[45px]`}
         style={{ 
           fontFamily: 'var(--fontB-display), sans-serif', 
           letterSpacing: '0.1em', 

@@ -101,11 +101,11 @@ export default function Home() {
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void -mt-4 text-center opacity-90 text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void -mt-4 text-center opacity-90 text-2xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1 px-4 md:px-0" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
