@@ -101,11 +101,11 @@ export default function Home() {
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void -mt-4 text-center opacity-90 text-2xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void mt-4 md:-mt-4 text-center opacity-90 text-2xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1 px-4 md:px-0" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-xl text-gray-400 mb-6 max-w-2xl mx-auto mt-4 md:-mt-1 px-4 md:px-0 break-words" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
@@ -113,10 +113,10 @@ export default function Home() {
       </section>
 
       {/* What You Get Section */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection relative z-10" data-section="what-you-get">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
+            <AnimatedSectionTitle className="text-5xl font-bold mb-8 md:mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -131,27 +131,27 @@ export default function Home() {
               </span>
             </AnimatedSectionTitle>
           </div>
-          <div className="grid grid-cols-3 gap-8">
+          <div className="flex flex-col md:grid md:grid-cols-3 gap-0 md:gap-8">
             <AnimatedColumn direction="left">
-              <div className="cardVoid p-8">
+              <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-xl font-bold mb-4">Founders Annual Pass</h3>
-                <p>
+                <p className="break-words">
                   Twelve months inside the program. Weekly lessons. Guided practices. Real world exercises. Live group sessions. Clear progress markers.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="fade">
-              <div className="cardVoid p-8">
+              <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-xl font-bold mb-4">Community that trains</h3>
-                <p>
+                <p className="break-words">
                   People who show up, post results, and give useful feedback. Less talk. More proof.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
-              <div className="cardVoid p-8">
+              <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-0 md:mb-0 break-words">
                 <h3 className="text-xl font-bold mb-4">Credit for live training</h3>
-                <p>
+                <p className="break-words">
                   Five hundred credit you can use for a Jeffy Bootcamp in 2025 or 2026.
                 </p>
               </div>
@@ -168,10 +168,10 @@ export default function Home() {
       </section>
 
       {/* Program Details Section */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection relative z-10" data-section="the-program">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
+            <AnimatedSectionTitle className="text-5xl font-bold mb-8 md:mb-16 text-white sectionTitle sectionTitleMagenta">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -189,7 +189,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
               <AnimatedColumn direction="left">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -200,15 +200,15 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-1', e)}
                     />
-                    <span>Weekly Pack</span>
+                    <span className="headingText">Weekly Pack</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-lg break-words">
                     Each week you get a short lesson, a simple at-home practice, a small real world task, and a live session.
                   </p>
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -219,15 +219,15 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-2'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-2', e)}
                     />
-                    <span>Skills we track</span>
+                    <span className="headingText">Skills we track</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-lg break-words">
                     Calm under pressure. Body language. Leading attention. Reading the room. Decisive action. Playfulness.
                   </p>
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="left">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -238,15 +238,15 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-3'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-3', e)}
                     />
-                    <span>Sample practices</span>
+                    <span className="headingText">Sample practices</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-lg break-words">
                     Breathe and settle your weight. Hold eye contact. Pause for three beats before you speak. Lift the mood then land it sincere. Own a mistake and recover smoothly.
                   </p>
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
-                <div className="cardVoid p-8">
+                <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -257,9 +257,9 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-4'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-4', e)}
                     />
-                    <span>Reset</span>
+                    <span className="headingText">Reset</span>
                   </h3>
-                  <p className="text-lg">
+                  <p className="text-lg break-words">
                     End of week check in that locks gains and sets your next step.
                   </p>
                 </div>
@@ -307,11 +307,11 @@ export default function Home() {
       )}
 
       {/* WHY VOID UNDERGROUND */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection relative z-10" data-section="why-void-underground">
         <div className="voidContainer">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <div className="sectionTitleWrapper">
-              <AnimatedSectionTitle className="text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
+              <AnimatedSectionTitle className="text-5xl font-bold mb-4 md:mb-6 text-white sectionTitle sectionTitleOrange">
                 <span className="inline-flex items-center gap-3">
                   <span className="cyan-dots-wrapper">
                     <Image 
@@ -330,35 +330,35 @@ export default function Home() {
               Most charisma programs focus on theory. We focus on action.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-0 md:gap-8 max-w-5xl mx-auto">
             <AnimatedColumn direction="left">
-              <div className="cardVoid p-8">
+              <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Action first</h3>
-                <p>
+                <p className="break-words">
                   You learn by doing. The body teaches faster than theory.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
-              <div className="cardVoid p-8">
+              <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Field tested</h3>
-                <p>
+                <p className="break-words">
                   Drills come from years of live work and are built to be repeatable.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="left">
-              <div className="cardVoid p-8">
+              <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Clear philosophy</h3>
-                <p>
+                <p className="break-words">
                   Presence over image. Lead reality with calm energy. Be the signal in the noise.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
-              <div className="cardVoid p-8">
+              <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-0 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Proof and ethics</h3>
-                <p>
+                <p className="break-words">
                   Track results. Lead with consent. No tricks. No manipulation.
                 </p>
               </div>
@@ -370,9 +370,9 @@ export default function Home() {
       {/* Pricing Section */}
       <section className="relative text-white overflow-hidden z-10">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <div className="sectionTitleWrapper">
-              <AnimatedSectionTitle className="text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
+              <AnimatedSectionTitle className="text-5xl font-bold mb-4 md:mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
                 <span className="inline-flex items-center gap-3">
                   <span className="cyan-dots-wrapper">
                     <Image 
@@ -507,7 +507,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer text-center">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleCyan">
+            <AnimatedSectionTitle className="text-5xl font-bold mb-8 md:mb-16 text-white sectionTitle sectionTitleCyan">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
