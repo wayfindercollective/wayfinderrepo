@@ -16,8 +16,8 @@ export default function Home() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastPlayTimeRef = useRef<number>(0);
 
-  // Create triangle sound effect for hourglass
-  const playHourglassPing = () => {
+  // Create triangle sound effect for columns
+  const playColumnPing = () => {
     // Check if sound is enabled
     if (typeof window !== 'undefined') {
       const soundEnabled = localStorage.getItem('soundEnabled');
@@ -75,7 +75,7 @@ export default function Home() {
       osc.stop(currentTime + duration);
     } catch (error) {
       // Silently fail if audio context is not available
-      console.warn('Could not play hourglass triangle sound:', error);
+      console.warn('Could not play column triangle sound:', error);
     }
   };
 
@@ -88,9 +88,8 @@ export default function Home() {
 
   const handleHourglassIconHover = (id: string, e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent triggering card hover
-    // Trigger rotation and play sound
+    // Trigger rotation only (sound moved to columns)
     handleHourglassHover(id);
-    playHourglassPing();
   };
 
   return (
@@ -138,7 +137,7 @@ export default function Home() {
             </AnimatedSectionTitle>
           </div>
           <div className="flex flex-col md:grid md:grid-cols-3 gap-0 md:gap-8">
-            <AnimatedColumn direction="left">
+            <AnimatedColumn direction="left" onHover={playColumnPing}>
               <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-xl font-bold mb-4">Founders Annual Pass</h3>
                 <p className="break-words">
@@ -146,7 +145,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="fade">
+            <AnimatedColumn direction="fade" onHover={playColumnPing}>
               <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-xl font-bold mb-4">Community that trains</h3>
                 <p className="break-words">
@@ -154,7 +153,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="right">
+            <AnimatedColumn direction="right" onHover={playColumnPing}>
               <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-0 md:mb-0 break-words">
                 <h3 className="text-xl font-bold mb-4">Credit for live training</h3>
                 <p className="break-words">
@@ -194,7 +193,7 @@ export default function Home() {
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              <AnimatedColumn direction="left">
+              <AnimatedColumn direction="left" onHover={playColumnPing}>
                 <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
@@ -213,7 +212,7 @@ export default function Home() {
                   </p>
                 </div>
               </AnimatedColumn>
-              <AnimatedColumn direction="right">
+              <AnimatedColumn direction="right" onHover={playColumnPing}>
                 <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
@@ -232,7 +231,7 @@ export default function Home() {
                   </p>
                 </div>
               </AnimatedColumn>
-              <AnimatedColumn direction="left">
+              <AnimatedColumn direction="left" onHover={playColumnPing}>
                 <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
@@ -251,7 +250,7 @@ export default function Home() {
                   </p>
                 </div>
               </AnimatedColumn>
-              <AnimatedColumn direction="right">
+              <AnimatedColumn direction="right" onHover={playColumnPing}>
                 <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto break-words">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
@@ -337,7 +336,7 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col md:grid md:grid-cols-2 gap-0 md:gap-8 max-w-5xl mx-auto">
-            <AnimatedColumn direction="left">
+            <AnimatedColumn direction="left" onHover={playColumnPing}>
               <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Action first</h3>
                 <p className="break-words">
@@ -345,7 +344,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="right">
+            <AnimatedColumn direction="right" onHover={playColumnPing}>
               <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Field tested</h3>
                 <p className="break-words">
@@ -353,7 +352,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="left">
+            <AnimatedColumn direction="left" onHover={playColumnPing}>
               <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-8 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Clear philosophy</h3>
                 <p className="break-words">
@@ -361,7 +360,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="right">
+            <AnimatedColumn direction="right" onHover={playColumnPing}>
               <div className="cardVoid p-4 md:p-8 w-full max-w-[420px] mx-auto mb-0 md:mb-0 break-words">
                 <h3 className="text-2xl font-bold mb-4">Proof and ethics</h3>
                 <p className="break-words">
@@ -499,7 +498,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn-void btn-void-white w-auto"
               >
-                Join the Void
+                BUY NOW
               </a>
               <p className="text-sm text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace' }}>
                 One time payment for twelve months of access.

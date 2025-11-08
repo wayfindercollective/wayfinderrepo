@@ -14,7 +14,7 @@ export default function Pricing() {
         rel="noopener noreferrer"
         className="btn-void mt-10"
       >
-        Join the Void
+        BUY NOW
       </a>
     </div>
   );

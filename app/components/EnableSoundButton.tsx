@@ -294,7 +294,7 @@ export default function EnableSoundButton() {
       progressIntervalRef.current = null;
     }
     
-    // Always initialize audio and play when Join the Void is clicked
+    // Always initialize audio and play when BUY NOW is clicked
     if (!audioContext) {
       await initAudio();
     }
@@ -378,7 +378,7 @@ export default function EnableSoundButton() {
         onClick={handleClick}
         className="px-4 md:px-6 py-2 md:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer relative uppercase font-[var(--fontB-display)] tracking-[0.1em] font-bold opacity-100 transition-none mt-0 md:mt-[45px]"
       >
-        <span className="relative z-[2]">Join the Void</span>
+        <span className="relative z-[2]">BUY NOW</span>
       </button>
       
       {showLoading && (
