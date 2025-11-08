@@ -157,11 +157,11 @@ export default function EnableSoundButton() {
       setWelcomeTextDisplay(welcomeTextFull);
       setWelcomeTextRevealed(true);
     } else {
-      // Start typewriter animation - 1 second total
-      const totalDuration = 1000; // 1 second
+      // Start typewriter animation - 0.75 seconds total
+      const totalDuration = 750; // 0.75 seconds
       const characterCount = welcomeTextFull.length;
-      // Calculate interval so last character appears at exactly 1 second
-      // First character at 0ms, last at 1000ms, so interval = 1000 / (N-1)
+      // Calculate interval so last character appears at exactly 0.75 seconds
+      // First character at 0ms, last at 750ms, so interval = 750 / (N-1)
       const interval = characterCount > 1 ? totalDuration / (characterCount - 1) : totalDuration;
       let currentIndex = 0;
 
@@ -203,20 +203,15 @@ export default function EnableSoundButton() {
       return;
     }
 
-    // If loading but duration not yet received, wait for it
-    if (!audioDuration) {
-      return;
-    }
-
-    // Start progress animation with the audio duration
+    // Start progress animation with 0.75 seconds duration
     setProgress(0);
     // Clear any existing interval
     if (progressIntervalRef.current) {
       clearInterval(progressIntervalRef.current);
     }
     
-    // Use the actual audio duration (already in milliseconds)
-    const duration = audioDuration;
+    // Use 0.75 seconds (750ms) for the progress animation
+    const duration = 750;
     const steps = 100;
     const stepDuration = duration / steps;
     let currentProgress = 0;
@@ -240,11 +235,16 @@ export default function EnableSoundButton() {
         progressIntervalRef.current = null;
       }
     };
-  }, [showLoading, audioDuration]);
+  }, [showLoading]);
 
-  // Listen for audio ended event to redirect and stop flickering
+  // Redirect after 0.75 seconds when loading starts
   useEffect(() => {
-    const handleAudioEnded = () => {
+    if (!showLoading) {
+      return;
+    }
+
+    // Set up scroll to Buy Now button after 0.75 seconds
+    const redirectTimeout = setTimeout(() => {
       setIsFlickering(false);
       
       // Reset button and loading styles to match logo's initial state
@@ -260,21 +260,16 @@ export default function EnableSoundButton() {
         loadingRef.current.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
       }
       
-      if (showLoading) {
-        // Scroll to upper enrollment button in Pricing section
-        const enrollButton = document.getElementById('pricing-enroll');
-        if (enrollButton) {
-          enrollButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setShowLoading(false);
-        }
+      // Scroll to the Buy Now button in Pricing section
+      const enrollButton = document.getElementById('pricing-enroll');
+      if (enrollButton) {
+        enrollButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setShowLoading(false);
       }
-    };
+    }, 750);
 
-    // Listen for custom audio ended event
-    window.addEventListener('audioEnded', handleAudioEnded);
-    
     return () => {
-      window.removeEventListener('audioEnded', handleAudioEnded);
+      clearTimeout(redirectTimeout);
     };
   }, [showLoading]);
 
@@ -294,7 +289,7 @@ export default function EnableSoundButton() {
       progressIntervalRef.current = null;
     }
     
-    // Always initialize audio and play when BUY NOW is clicked
+    // Always initialize audio and play when Join the Void is clicked
     if (!audioContext) {
       await initAudio();
     }
@@ -306,28 +301,26 @@ export default function EnableSoundButton() {
     setTimeout(() => {
       setShowLoading(true);
       
-      // Start progress animation immediately if audioDuration is available
-      if (audioDuration) {
-        const duration = audioDuration;
-        const steps = 100;
-        const stepDuration = duration / steps;
-        let currentProgress = 0;
-        
-        setProgress(0);
-        
-        progressIntervalRef.current = setInterval(() => {
-          currentProgress += 1;
-          if (currentProgress >= 100) {
-            setProgress(100);
-            if (progressIntervalRef.current) {
-              clearInterval(progressIntervalRef.current);
-              progressIntervalRef.current = null;
-            }
-          } else {
-            setProgress(currentProgress);
+      // Start progress animation immediately - 0.75 seconds duration
+      const duration = 750;
+      const steps = 100;
+      const stepDuration = duration / steps;
+      let currentProgress = 0;
+      
+      setProgress(0);
+      
+      progressIntervalRef.current = setInterval(() => {
+        currentProgress += 1;
+        if (currentProgress >= 100) {
+          setProgress(100);
+          if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+            progressIntervalRef.current = null;
           }
-        }, stepDuration);
-      }
+        } else {
+          setProgress(currentProgress);
+        }
+      }, stepDuration);
     }, 0);
     
     // Start typewriter animation immediately when button is clicked
@@ -339,11 +332,11 @@ export default function EnableSoundButton() {
       setWelcomeTextDisplay(welcomeTextFull);
       setWelcomeTextRevealed(true);
     } else {
-      // Start typewriter animation - 1 second total
-      const totalDuration = 1000; // 1 second
+      // Start typewriter animation - 0.75 seconds total
+      const totalDuration = 750; // 0.75 seconds
       const characterCount = welcomeTextFull.length;
-      // Calculate interval so last character appears at exactly 1 second
-      // First character at 0ms, last at 1000ms, so interval = 1000 / (N-1)
+      // Calculate interval so last character appears at exactly 0.75 seconds
+      // First character at 0ms, last at 750ms, so interval = 750 / (N-1)
       const interval = characterCount > 1 ? totalDuration / (characterCount - 1) : totalDuration;
       let currentIndex = 0;
 
@@ -378,7 +371,7 @@ export default function EnableSoundButton() {
         onClick={handleClick}
         className="px-4 md:px-6 py-2 md:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer relative uppercase font-[var(--fontB-display)] tracking-[0.1em] font-bold opacity-100 transition-none mt-0 md:mt-[45px]"
       >
-        <span className="relative z-[2]">BUY NOW</span>
+        <span className="relative z-[2]">Join the Void</span>
       </button>
       
       {showLoading && (

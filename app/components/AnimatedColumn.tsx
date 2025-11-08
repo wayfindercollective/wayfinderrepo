@@ -6,10 +6,9 @@ interface AnimatedColumnProps {
   children: React.ReactNode;
   direction: 'left' | 'right' | 'fade';
   className?: string;
-  onHover?: () => void;
 }
 
-export default function AnimatedColumn({ children, direction, className = '', onHover }: AnimatedColumnProps) {
+export default function AnimatedColumn({ children, direction, className = '' }: AnimatedColumnProps) {
   const { elementRef, isVisible } = useColumnScrollAnimation();
 
   const getAnimationClass = () => {
@@ -25,18 +24,8 @@ export default function AnimatedColumn({ children, direction, className = '', on
     }
   };
 
-  const handleMouseEnter = () => {
-    if (onHover) {
-      onHover();
-    }
-  };
-
   return (
-    <div 
-      ref={elementRef} 
-      className={`${getAnimationClass()} ${className}`}
-      onMouseEnter={handleMouseEnter}
-    >
+    <div ref={elementRef} className={`${getAnimationClass()} ${className}`}>
       {children}
     </div>
   );

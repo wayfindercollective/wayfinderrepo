@@ -10,11 +10,13 @@ export default function HeroLogo() {
   const [flickerIntensity, setFlickerIntensity] = useState(1);
   const audioSourceRef = useRef<MediaElementAudioSourceNode | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
+  const gainNodeRef = useRef<GainNode | null>(null);
   const animationFrameRef = useRef<number | null>(null);
   const logoRef = useRef<HTMLDivElement | null>(null);
   const audioStartTimeRef = useRef<number | null>(null);
   const smoothedIntensityRef = useRef<number>(1.0);
   const smoothedBrightnessRef = useRef<number>(1.15);
+  const fadeOutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Create audio element for the video file
@@ -24,30 +26,8 @@ export default function HeroLogo() {
     audio.loop = false;
     audio.volume = 1.0;
     
-    // Stop flicker animation when audio ends
-    audio.addEventListener('ended', () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-        animationFrameRef.current = null;
-      }
-      
-      // Reset logo to original state
-      if (logoRef.current) {
-        const logo = logoRef.current.querySelector('img') as HTMLImageElement;
-        if (logo) {
-          logo.style.opacity = '1';
-          logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
-          logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
-        }
-      }
-      
-      setFlickerIntensity(1);
-      
-      // Dispatch audio ended event for redirect
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('audioEnded'));
-      }
-    });
+    // Note: Audio duration is now controlled manually (5 seconds + fade out)
+    // The 'ended' event listener is removed since we handle stopping manually
     
     setAudioElement(audio);
 
@@ -314,16 +294,23 @@ export default function HeroLogo() {
           try {
             const source = audioCtx.createMediaElementSource(audioElement);
             
+            // Create gain node for volume control
+            const gainNode = audioCtx.createGain();
+            gainNode.gain.value = 1.0;
+            
             // Create analyser node for audio visualization
             const analyser = audioCtx.createAnalyser();
             analyser.fftSize = 256;
             analyser.smoothingTimeConstant = 0.2; // Low smoothing for fast, responsive flickering
             
-            source.connect(analyser);
+            // Connect: source -> gain -> analyser -> destination
+            source.connect(gainNode);
+            gainNode.connect(analyser);
             analyser.connect(audioCtx.destination);
             
             audioSourceRef.current = source;
             analyserRef.current = analyser;
+            gainNodeRef.current = gainNode;
             
             // Start analyzing audio for flicker effect
             analyzeAudio();
@@ -332,7 +319,10 @@ export default function HeroLogo() {
             console.warn('Could not create media source:', err);
           }
         } else if (analyserRef.current) {
-          // If source already exists, start analyzing
+          // If source already exists, reset gain and start analyzing
+          if (gainNodeRef.current) {
+            gainNodeRef.current.gain.value = 1.0;
+          }
           analyzeAudio();
         }
       } catch (err) {
@@ -348,15 +338,78 @@ export default function HeroLogo() {
     smoothedIntensityRef.current = 1.0;
     smoothedBrightnessRef.current = 1.15;
     
+    // Clear any existing fade out timeout
+    if (fadeOutTimeoutRef.current) {
+      clearTimeout(fadeOutTimeoutRef.current);
+      fadeOutTimeoutRef.current = null;
+    }
+    
+    // Reset volume to full
+    if (gainNodeRef.current) {
+      gainNodeRef.current.gain.value = 1.0;
+    }
+    
     audioElement.play().catch((err) => {
       console.warn('Could not play audio:', err);
     });
+    
+    // After 5 seconds, start fading out
+    fadeOutTimeoutRef.current = setTimeout(() => {
+      const audioCtx = (window as any).audioContext;
+      if (gainNodeRef.current && audioCtx) {
+        const gainNode = gainNodeRef.current;
+        const currentTime = audioCtx.currentTime;
+        const fadeDuration = 1.0; // 1 second fade out
+        
+        // Fade out volume smoothly
+        gainNode.gain.setValueAtTime(1.0, currentTime);
+        gainNode.gain.linearRampToValueAtTime(0, currentTime + fadeDuration);
+        
+        // Stop audio after fade completes
+        setTimeout(() => {
+          if (audioElement) {
+            audioElement.pause();
+            audioElement.currentTime = 0;
+          }
+          
+          // Stop animation loop
+          if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
+            animationFrameRef.current = null;
+          }
+          
+          // Reset logo to original state
+          if (logoRef.current) {
+            const logo = logoRef.current.querySelector('img') as HTMLImageElement;
+            if (logo) {
+              logo.style.opacity = '1';
+              logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+              logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+            }
+          }
+          
+          setFlickerIntensity(1);
+          audioStartTimeRef.current = null;
+          
+          // Dispatch audio ended event
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('audioEnded'));
+          }
+        }, fadeDuration * 1000);
+      }
+    }, 5000); // 5 seconds
   };
 
   const handleMouseLeave = () => {
     if (audioElement) {
       audioElement.pause();
       audioElement.currentTime = 0;
+    }
+    
+    // Clear fade out timeout
+    if (fadeOutTimeoutRef.current) {
+      clearTimeout(fadeOutTimeoutRef.current);
+      fadeOutTimeoutRef.current = null;
     }
     
     // Stop animation loop

@@ -3,6 +3,7 @@ import "./globals.css";
 import "./../styles/brand-theme.css";
 import { inter, orbitron, plexMono } from "./fonts";
 import Starfield from "./components/Starfield";
+import GlobalFlickerEffect from "./components/GlobalFlickerEffect";
 
 export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${orbitron.variable} ${plexMono.variable}`}>
       <body className="antialiased relative">
+        <GlobalFlickerEffect />
         <Starfield />
         {children}
       </body>

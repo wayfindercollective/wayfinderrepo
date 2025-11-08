@@ -386,6 +386,62 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   }
 }
 
+/* Global flicker animation for text and logos - very subtle version */
+.global-text-flicker {
+  animation: global-text-flicker 3s ease-in-out infinite;
+}
+
+@keyframes global-text-flicker {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  8% {
+    opacity: 0.96;
+    filter: brightness(1.03);
+  }
+  16% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  25% {
+    opacity: 0.97;
+    filter: brightness(1.02);
+  }
+  33% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  42% {
+    opacity: 0.98;
+    filter: brightness(1.015);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  58% {
+    opacity: 0.96;
+    filter: brightness(1.025);
+  }
+  66% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  75% {
+    opacity: 0.97;
+    filter: brightness(1.02);
+  }
+  83% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  92% {
+    opacity: 0.98;
+    filter: brightness(1.015);
+  }
+}
+
 /* Signal Core Logo 3D Spin Effect */
 .signal-core-logo-container {
   perspective: 1000px;
