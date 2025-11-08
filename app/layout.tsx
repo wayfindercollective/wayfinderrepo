@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./../styles/brand-theme.css";
-import { manrope, exo2, jetbrains } from "./fonts";
+import { inter, orbitron, plexMono } from "./fonts";
 import Starfield from "./components/Starfield";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${exo2.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${plexMono.variable}`}>
       <body className="antialiased relative">
         <Starfield />
         {children}

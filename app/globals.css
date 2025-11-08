@@ -8,15 +8,15 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--fontB-body);
-  --font-display: var(--fontB-display);
-  --font-mono: var(--fontB-mono);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--fontB-body), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -55,7 +55,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: var(--fontB-display), var(--fontB-body), sans-serif; /* futuristic font */
+  font-family: var(--font-body), sans-serif; /* Inter for body text */
   color: #ffffff; /* white text */
   backdrop-filter: none; /* no blur to maximize star visibility */
 }
@@ -78,17 +78,17 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 .cardVoid span,
 .cardVoid * {
   color: #ffffff !important; /* white text */
-  font-family: var(--fontB-display), var(--fontB-body), sans-serif;
+  font-family: var(--font-body), sans-serif; /* Inter for body text */
 }
 
 .cardVoid h3 {
-  font-family: var(--fontB-display), sans-serif; /* more futuristic for headings */
+  font-family: var(--font-display), sans-serif; /* Orbitron for headings */
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 .cardVoid p {
-  font-family: var(--fontB-body), sans-serif;
+  font-family: var(--font-body), sans-serif; /* Inter for paragraphs */
   font-weight: 400;
 }
 
@@ -100,6 +100,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 /* full-width underlines for section titles - centered */
 .sectionTitle {
+  font-family: var(--font-display), sans-serif; /* Orbitron for display headers */
   font-weight: 800;
   letter-spacing: 0.02em;
   display: inline-block;

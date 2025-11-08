@@ -7,7 +7,7 @@
 
 /* Reusable class for main price styling - bottom price in white box */
 .price-main {
-  font-family: var(--fontB-body);
+  font-family: var(--font-body);
   font-weight: 800;
   letter-spacing: 0.5px;
   color: #000000;
@@ -32,7 +32,7 @@
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0.5px;
-  font-family: var(--fontB-display);
+  font-family: var(--font-display);
   color: #000000;
   -webkit-text-stroke: 2px #00ffff;
   text-stroke: 2px #00ffff;
@@ -214,6 +214,7 @@
   color: #a78bfa; /* soft magenta from your palette family */
   font-weight: 600;
   font-size: clamp(14px, 2vw, 18px);
+  font-family: var(--font-mono); /* IBM Plex Mono for small UI labels */
 }
 
 .meta-row {
