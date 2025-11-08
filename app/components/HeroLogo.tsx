@@ -549,8 +549,7 @@ export default function HeroLogo() {
       {/* logo plus cyan underline */}
       <div 
         ref={logoRef}
-        className="relative w-fit mx-auto -mt-4 group z-10" 
-        style={{ transform: 'scale(0.75)' }}
+        className="relative w-fit max-w-[90vw] mx-auto -mt-4 md:-mt-4 mb-[8vh] md:mb-0 group z-10 scale-[0.6] md:scale-[0.75]"
       >
         <Image
           src="/Master_Logo.png?v=2"
@@ -559,7 +558,7 @@ export default function HeroLogo() {
           height={400}
           priority
           unoptimized
-          className="block select-none pointer-events-none"
+          className="block select-none pointer-events-none w-full h-auto"
           style={{
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
             WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
@@ -582,7 +581,7 @@ export default function HeroLogo() {
         />
 
         {/* Sound button right under the cyan line */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[85%] md:top-[67.5%] z-10">
           <EnableSoundButton />
         </div>
       </div>
