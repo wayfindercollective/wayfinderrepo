@@ -87,34 +87,104 @@ export default function HeroLogo() {
     let baseFlickerIntensity = 0; // Base flickering independent of audio
     
     if (currentTime < 2.0) {
-      // First 2 seconds: Very intense, fast lamp-like flickering
-      // Create intense base flickering that doesn't depend on audio
-      // Use time-based sine wave for consistent visible flickering
-      const flickerSpeed = 15; // Fast flicker rate (15 cycles per second)
-      const timeBasedFlicker = Math.sin(currentTime * flickerSpeed * Math.PI * 2);
-      // Map from -1 to 1 range to 0.15 to 0.95 range for dramatic flickering
-      baseFlickerIntensity = 0.15 + (timeBasedFlicker + 1) / 2 * 0.8;
+      // First 2 seconds: Exactly 12 flickers
+      // Create 12 distinct flicker pulses evenly spaced over 2 seconds
+      const flickerCount = 12;
+      const flickerInterval = 2.0 / flickerCount; // ~0.167 seconds per flicker
+      const flickerIndex = Math.floor(currentTime / flickerInterval);
+      const flickerProgress = (currentTime % flickerInterval) / flickerInterval;
       
-      timeMultiplier = 4.5 - (currentTime / 2.0) * 2.0; // Start at 4.5, more intense than before
-      smoothingFactor = 0.05; // Even faster flickering (minimal smoothing) - like a flickering lamp
+      // Create a pulse function: quick flash that fades
+      // Each flicker is a pulse that peaks quickly and fades
+      // Make it sharper and more dramatic
+      let pulseValue = 0;
+      if (flickerProgress < 0.15) {
+        // Very quick rise (first 15% of flicker interval)
+        pulseValue = flickerProgress / 0.15; // 0 to 1
+      } else if (flickerProgress < 0.3) {
+        // Peak hold (15% to 30%)
+        pulseValue = 1.0;
+      } else {
+        // Fade out (30% to 100%)
+        pulseValue = Math.max(0, 1.0 - ((flickerProgress - 0.3) / 0.7)); // 1 to 0
+      }
+      
+      // Map pulse to intensity range: 0.1 to 1.0 for very dramatic flickering
+      // Make the low point very low and high point very high for clear visibility
+      baseFlickerIntensity = 0.1 + pulseValue * 0.9;
+      
+      timeMultiplier = 4.5 - (currentTime / 2.0) * 2.0; // Start at 4.5, decrease over time
+      smoothingFactor = 0.0; // No smoothing for instant, sharp flickering
       useRawValues = true; // Use raw values directly for instant, visible flickering
-    } else {
-      // After 2 seconds: Gradually decrease intensity and increase smoothing (slower)
+    } else if (currentTime < 4.0) {
+      // Transition period: 2-4 seconds - smoothly fade from base flicker to audio-based flicker
+      const transitionProgress = (currentTime - 2.0) / 2.0; // 0 to 1 over 2 seconds
+      
+      // Gradually blend from base flicker to audio-based flicker
+      // Start with more base flicker, end with more audio flicker
+      const baseFlickerWeight = 1.0 - transitionProgress; // Start at 1.0, fade to 0
+      const audioFlickerWeight = transitionProgress; // Start at 0, fade to 1
+      
+      // Create a subtle base flicker that fades out during transition
+      // Reduce the intensity range during transition to create a fade effect
+      const flickerCount = 12;
+      const flickerInterval = 2.0 / flickerCount;
+      const flickerProgress = ((currentTime - 2.0) % flickerInterval) / flickerInterval;
+      let pulseValue = 0;
+      if (flickerProgress < 0.15) {
+        pulseValue = flickerProgress / 0.15;
+      } else if (flickerProgress < 0.3) {
+        pulseValue = 1.0;
+      } else {
+        pulseValue = Math.max(0, 1.0 - ((flickerProgress - 0.3) / 0.7));
+      }
+      // Reduce base flicker intensity range during transition (fade it out)
+      const baseFlickerRange = 0.9 * (1.0 - transitionProgress); // Fade from 0.9 to 0
+      baseFlickerIntensity = 0.3 + pulseValue * baseFlickerRange; // Start higher, fade to 0.3
+      
+      // Gradually increase smoothing during transition
+      smoothingFactor = transitionProgress * 0.4; // From 0 to 0.4
+      useRawValues = transitionProgress < 0.3; // Switch to smoothed values earlier in transition
+      
+      // Calculate time multiplier - start lower and decrease more gradually
       const fadeStartTime = 2.0;
       const fadeDuration = 28.0;
       const elapsedAfterStart = currentTime - fadeStartTime;
       const fadeProgress = Math.min(elapsedAfterStart / fadeDuration, 1.0);
-      timeMultiplier = 1.5 - (fadeProgress * 1.2);
+      // Start at lower multiplier (around 1.0) and decrease gradually
+      timeMultiplier = 1.0 - (fadeProgress * 0.5); // From 1.0 to 0.5
+    } else {
+      // After 4 seconds: Fully audio-based flickering
+      const fadeStartTime = 2.0;
+      const fadeDuration = 28.0;
+      const elapsedAfterStart = currentTime - fadeStartTime;
+      const fadeProgress = Math.min(elapsedAfterStart / fadeDuration, 1.0);
+      // Continue gradual fade - start from where transition left off (around 0.5)
+      timeMultiplier = 0.5 - (fadeProgress * 0.4); // From 0.5 to 0.1 (very subtle)
       // Gradually increase smoothing (slower flickering) as time progresses
-      smoothingFactor = 0.1 + (fadeProgress * 0.85); // From 0.1 (fast) to 0.95 (slow)
+      smoothingFactor = 0.4 + (fadeProgress * 0.55); // From 0.4 (moderate) to 0.95 (slow)
+      useRawValues = false;
     }
     
     // Very intense flicker: combine base flicker (for first 2s), bass and overall amplitude
     // For first 2 seconds, baseFlickerIntensity provides guaranteed visible flickering
+    // For transition period (2-4s), blend between base and audio flicker
     const audioBasedIntensity = 0.2 + (normalized * 0.5) + (bass * 0.4);
-    const combinedIntensity = currentTime < 2.0 
-      ? baseFlickerIntensity * 0.6 + audioBasedIntensity * 0.4 * timeMultiplier // Mix base + audio for first 2s
-      : audioBasedIntensity * timeMultiplier; // Audio only after 2s
+    let combinedIntensity: number;
+    
+    if (currentTime < 2.0) {
+      // First 2 seconds: Dominantly use base flicker
+      combinedIntensity = baseFlickerIntensity * 0.9 + audioBasedIntensity * 0.1 * timeMultiplier;
+    } else if (currentTime < 4.0) {
+      // Transition period: Blend from base flicker to audio flicker
+      const transitionProgress = (currentTime - 2.0) / 2.0;
+      const baseFlickerWeight = 1.0 - transitionProgress;
+      const audioFlickerWeight = transitionProgress;
+      combinedIntensity = baseFlickerIntensity * baseFlickerWeight + audioBasedIntensity * audioFlickerWeight * timeMultiplier;
+    } else {
+      // After 4 seconds: Fully audio-based
+      combinedIntensity = audioBasedIntensity * timeMultiplier;
+    }
     
     const rawIntensity = Math.max(0.1, Math.min(1.0, combinedIntensity));
     
@@ -139,18 +209,56 @@ export default function HeroLogo() {
         const opacity = Math.max(0.1, Math.min(1.0, intensity));
         
         // High contrast brightness: ranges from 0.4 to 2.2 (very dramatic)
-        // For first 2 seconds, also add time-based brightness flickering
+        // For first 2 seconds, create 12 distinct brightness flickers
+        // For transition period (2-4s), blend between base and audio brightness
         let baseBrightness: number;
         if (currentTime < 2.0) {
-          // Intense brightness flickering in first 2 seconds
-          const flickerSpeed = 12; // Slightly different speed for brightness
-          const timeBasedBrightness = Math.sin(currentTime * flickerSpeed * Math.PI * 2);
-          const baseBrightnessFlicker = 0.3 + (timeBasedBrightness + 1) / 2 * 1.4; // 0.3 to 1.7 range
+          // Create 12 distinct brightness flickers matching intensity flickers
+          const flickerCount = 12;
+          const flickerInterval = 2.0 / flickerCount;
+          const flickerIndex = Math.floor(currentTime / flickerInterval);
+          const flickerProgress = (currentTime % flickerInterval) / flickerInterval;
+          
+          // Create matching pulse for brightness - sharper and more dramatic
+          let brightnessPulse = 0;
+          if (flickerProgress < 0.15) {
+            brightnessPulse = flickerProgress / 0.15;
+          } else if (flickerProgress < 0.3) {
+            brightnessPulse = 1.0;
+          } else {
+            brightnessPulse = Math.max(0, 1.0 - ((flickerProgress - 0.3) / 0.7));
+          }
+          
+          // More dramatic brightness range: 0.2 to 2.0 for very visible flickering
+          const baseBrightnessFlicker = 0.2 + brightnessPulse * 1.8;
           const audioBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
-          baseBrightness = baseBrightnessFlicker * 0.5 + audioBrightness * 0.5 * timeMultiplier;
-        } else {
-          baseBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
-        }
+          baseBrightness = baseBrightnessFlicker * 0.85 + audioBrightness * 0.15 * timeMultiplier;
+    } else if (currentTime < 4.0) {
+      // Transition period: Blend from base brightness flicker to audio brightness
+      const transitionProgress = (currentTime - 2.0) / 2.0;
+      const baseFlickerWeight = 1.0 - transitionProgress;
+      const audioFlickerWeight = transitionProgress;
+      
+      // Create fading base brightness flicker - reduce intensity during transition
+      const flickerCount = 12;
+      const flickerInterval = 2.0 / flickerCount;
+      const flickerProgress = ((currentTime - 2.0) % flickerInterval) / flickerInterval;
+      let brightnessPulse = 0;
+      if (flickerProgress < 0.15) {
+        brightnessPulse = flickerProgress / 0.15;
+      } else if (flickerProgress < 0.3) {
+        brightnessPulse = 1.0;
+      } else {
+        brightnessPulse = Math.max(0, 1.0 - ((flickerProgress - 0.3) / 0.7));
+      }
+      // Reduce brightness flicker range during transition
+      const brightnessFlickerRange = 1.8 * (1.0 - transitionProgress); // Fade from 1.8 to 0
+      const baseBrightnessFlicker = 0.5 + brightnessPulse * brightnessFlickerRange; // Start at 0.5-2.3, fade to 0.5
+      const audioBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
+      baseBrightness = baseBrightnessFlicker * baseFlickerWeight + audioBrightness * audioFlickerWeight * timeMultiplier;
+    } else {
+      baseBrightness = 0.4 + (normalized * 0.8) + (bass * 0.6);
+    }
         
         const rawBrightness = Math.max(0.3, Math.min(2.2, baseBrightness * (currentTime < 2.0 ? timeMultiplier : 1.0)));
         

@@ -157,11 +157,11 @@ export default function EnableSoundButton() {
       setWelcomeTextDisplay(welcomeTextFull);
       setWelcomeTextRevealed(true);
     } else {
-      // Start typewriter animation - 2.5 seconds total
-      const totalDuration = 2500; // 2.5 seconds
+      // Start typewriter animation - 1 second total
+      const totalDuration = 1000; // 1 second
       const characterCount = welcomeTextFull.length;
-      // Calculate interval so last character appears at exactly 2.5 seconds
-      // First character at 0ms, last at 2500ms, so interval = 2500 / (N-1)
+      // Calculate interval so last character appears at exactly 1 second
+      // First character at 0ms, last at 1000ms, so interval = 1000 / (N-1)
       const interval = characterCount > 1 ? totalDuration / (characterCount - 1) : totalDuration;
       let currentIndex = 0;
 
@@ -339,11 +339,11 @@ export default function EnableSoundButton() {
       setWelcomeTextDisplay(welcomeTextFull);
       setWelcomeTextRevealed(true);
     } else {
-      // Start typewriter animation - 2.5 seconds total
-      const totalDuration = 2500; // 2.5 seconds
+      // Start typewriter animation - 1 second total
+      const totalDuration = 1000; // 1 second
       const characterCount = welcomeTextFull.length;
-      // Calculate interval so last character appears at exactly 2.5 seconds
-      // First character at 0ms, last at 2500ms, so interval = 2500 / (N-1)
+      // Calculate interval so last character appears at exactly 1 second
+      // First character at 0ms, last at 1000ms, so interval = 1000 / (N-1)
       const interval = characterCount > 1 ? totalDuration / (characterCount - 1) : totalDuration;
       let currentIndex = 0;
 
