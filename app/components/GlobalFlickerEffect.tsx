@@ -1,24 +1,42 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function GlobalFlickerEffect() {
   const [isFlickering, setIsFlickering] = useState(false);
   const [isContinuousFlickering, setIsContinuousFlickering] = useState(false);
+  const continuousFlickerTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Listen for audio enabled to start flickering
   useEffect(() => {
     const handleAudioEnabled = () => {
+      // Clear any existing timeout
+      if (continuousFlickerTimeoutRef.current) {
+        clearTimeout(continuousFlickerTimeoutRef.current);
+        continuousFlickerTimeoutRef.current = null;
+      }
+      
+      // Reset states first
+      setIsContinuousFlickering(false);
       setIsFlickering(true);
+      
       // After 0.75 seconds, switch to continuous flickering for text/logos
-      setTimeout(() => {
+      continuousFlickerTimeoutRef.current = setTimeout(() => {
         setIsFlickering(false);
         setIsContinuousFlickering(true);
+        continuousFlickerTimeoutRef.current = null;
       }, 750);
     };
 
     const handleAudioEnded = () => {
-      // Stop continuous flickering when audio ends
+      // Clear any pending timeout
+      if (continuousFlickerTimeoutRef.current) {
+        clearTimeout(continuousFlickerTimeoutRef.current);
+        continuousFlickerTimeoutRef.current = null;
+      }
+      
+      // Stop all flickering when audio ends
+      setIsFlickering(false);
       setIsContinuousFlickering(false);
     };
 
@@ -28,6 +46,9 @@ export default function GlobalFlickerEffect() {
     return () => {
       window.removeEventListener('audioEnabled', handleAudioEnabled);
       window.removeEventListener('audioEnded', handleAudioEnded);
+      if (continuousFlickerTimeoutRef.current) {
+        clearTimeout(continuousFlickerTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -124,14 +145,22 @@ export default function GlobalFlickerEffect() {
           return;
         }
         
+        // Skip the EnableSoundButton itself
+        if (htmlElement.id === 'heroCta' || htmlElement.closest('#heroCta')) {
+          return;
+        }
+        
         // Add flicker class to text and logos
         htmlElement.classList.add('global-text-flicker');
       });
     } else {
       // Remove flicker class when continuous flickering stops
-      const flickeringElements = document.querySelectorAll('.global-text-flicker');
-      flickeringElements.forEach((element) => {
-        element.classList.remove('global-text-flicker');
+      // Use requestAnimationFrame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        const flickeringElements = document.querySelectorAll('.global-text-flicker');
+        flickeringElements.forEach((element) => {
+          element.classList.remove('global-text-flicker');
+        });
       });
     }
   }, [isContinuousFlickering]);
