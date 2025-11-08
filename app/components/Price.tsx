@@ -102,7 +102,9 @@ export default function Price() {
         </span>
       </div>
       <div className="meta-row">
-        <span className="bootcamp-credit"><span className="credit-emphasis">+ $500 credit</span><span className="tt-spacing"> </span><span className="bootcamp-text">towards a Jeffy 2025-2026 Bootcamp</span></span>
+        <span className="bootcamp-credit">
+          <span className="credit-pulse">+ $500 credit</span> toward a Jeffy Bootcamp in 2025 or 2026
+        </span>
       </div>
     </div>
   );

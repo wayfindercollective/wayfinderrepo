@@ -78,7 +78,8 @@ export default function Home() {
 
   const handleHourglassIconHover = (id: string, e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent triggering card hover
-    // Only play sound, rotation is handled by card hover
+    // Trigger rotation and play sound
+    handleHourglassHover(id);
     playHourglassPing();
   };
 
@@ -179,7 +180,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
               <AnimatedColumn direction="left">
-                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-1')}>
+                <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -198,7 +199,7 @@ export default function Home() {
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
-                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-2')}>
+                <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -217,7 +218,7 @@ export default function Home() {
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="left">
-                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-3')}>
+                <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -236,7 +237,7 @@ export default function Home() {
                 </div>
               </AnimatedColumn>
               <AnimatedColumn direction="right">
-                <div className="cardVoid p-8" onMouseEnter={() => handleHourglassHover('hourglass-4')}>
+                <div className="cardVoid p-8">
                   <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                     <Image 
                       src="/HourGlass.png" 
@@ -395,7 +396,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-1')}>
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
@@ -411,7 +412,7 @@ export default function Home() {
                   />
                   <span>Twelve months of premium content</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-2')}>
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
@@ -427,7 +428,7 @@ export default function Home() {
                   />
                   <span>Access to missions and live sessions</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-3')}>
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
@@ -443,7 +444,7 @@ export default function Home() {
                   />
                   <span>Simple practices you can do daily</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-4')}>
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
@@ -459,7 +460,7 @@ export default function Home() {
                   />
                   <span>Community support and feedback</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-5')}>
                   <Image 
                     src="/HourGlass.png" 
                     alt="" 
