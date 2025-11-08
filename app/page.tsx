@@ -13,8 +13,9 @@ export default function Home() {
   const [showWeekPackOverlay, setShowWeekPackOverlay] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const lastPlayTimeRef = useRef<number>(0);
 
-  // Create crystal clear ping sound for hourglass
+  // Create dark bell ping sound for hourglass
   const playHourglassPing = () => {
     // Check if sound is enabled
     if (typeof window !== 'undefined') {
@@ -23,6 +24,13 @@ export default function Home() {
         return; // Don't play sound if disabled
       }
     }
+
+    // Cooldown check: 300ms between plays
+    const now = Date.now();
+    if (now - lastPlayTimeRef.current < 300) {
+      return; // Still in cooldown
+    }
+    lastPlayTimeRef.current = now;
 
     try {
       // Initialize AudioContext if needed
@@ -36,36 +44,57 @@ export default function Home() {
         audioContext.resume();
       }
 
-      // Create oscillator for the ping sound
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
+      const currentTime = audioContext.currentTime;
+      const duration = 0.25; // 250ms - short but with proper decay
+      const baseFreq = 293.66; // D4 note - dark bell pitch
 
-      // Set frequency to a high, bright tone (like champagne flute tap)
-      // Using a high frequency around 2000-3000 Hz for that crystal clear ping
-      oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(2500, audioContext.currentTime);
-      
-      // Add a slight frequency sweep for more character (optional)
-      oscillator.frequency.exponentialRampToValueAtTime(2200, audioContext.currentTime + 0.05);
+      // Create dark bell with harmonics (emphasizing lower frequencies for dark character)
+      const oscillators: OscillatorNode[] = [];
+      const harmonics = [
+        { freq: 1, gain: 1.0 },      // Fundamental - strongest
+        { freq: 2, gain: 0.5 },      // Octave
+        { freq: 3, gain: 0.3 },      // Fifth
+        { freq: 4, gain: 0.15 },     // Octave
+        { freq: 5, gain: 0.08 },     // Third
+      ];
 
-      // Set gain envelope for natural decay
-      // Volume 0.25 as specified
-      const peakGain = 0.25;
-      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-      gainNode.gain.linearRampToValueAtTime(peakGain, audioContext.currentTime + 0.01); // Quick attack
-      // Natural decay over 600ms (middle of 400-900ms range)
-      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.61);
+      // Merge node for combining all oscillators
+      const mergeGain = audioContext.createGain();
+      mergeGain.gain.value = 1.0;
 
-      // Connect nodes
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
+      harmonics.forEach((harmonic) => {
+        const osc = audioContext.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(baseFreq * harmonic.freq, currentTime);
+        
+        const oscGain = audioContext.createGain();
+        // Fast attack for ping
+        oscGain.gain.setValueAtTime(0, currentTime);
+        oscGain.gain.linearRampToValueAtTime(harmonic.gain, currentTime + 0.003);
+        // Smooth decay that doesn't mute too fast - gradual exponential curve
+        oscGain.gain.exponentialRampToValueAtTime(0.01, currentTime + duration);
+        
+        osc.connect(oscGain);
+        oscGain.connect(mergeGain);
+        oscillators.push(osc);
+      });
 
-      // Play the sound (no loop)
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.61); // 610ms duration
+      // Master gain (moderate volume)
+      const masterGain = audioContext.createGain();
+      masterGain.gain.value = 0.3;
+
+      // Connect: oscillators -> merge -> master gain -> destination
+      mergeGain.connect(masterGain);
+      masterGain.connect(audioContext.destination);
+
+      // Start all oscillators
+      oscillators.forEach(osc => {
+        osc.start(currentTime);
+        osc.stop(currentTime + duration);
+      });
     } catch (error) {
       // Silently fail if audio context is not available
-      console.warn('Could not play hourglass ping sound:', error);
+      console.warn('Could not play hourglass dark bell ping sound:', error);
     }
   };
 
