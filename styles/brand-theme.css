@@ -112,7 +112,9 @@ html, body {
 
 .btn-void-white {
   color: var(--white) !important;
-}/* Make BUY NOW buttons match column width - responsive sizing */
+}
+
+/* Make BUY NOW buttons responsive - full width on mobile, original scaled size on desktop */
 .btn-void.mt-10 {
   width: 100%;
   max-width: 100%;
@@ -127,8 +129,12 @@ html, body {
 
 @media (min-width: 768px) {
   .btn-void.mt-10 {
-    font-size: 1.125rem;
-    padding: 16px 32px;
+    width: auto;
+    max-width: none;
+    transform: scale(1.5);
+    font-size: 1rem;
+    padding: 14px 24px;
+    animation: floatVerticalDesktop 5s ease-in-out infinite;
   }
 }
 
@@ -144,6 +150,18 @@ html, body {
   }
 }
 
+@keyframes floatVerticalDesktop {
+  0% {
+    transform: scale(1.5) translateY(0);
+  }
+  50% {
+    transform: scale(1.5) translateY(-8px);
+  }
+  100% {
+    transform: scale(1.5) translateY(0);
+  }
+}
+
 .btn-void.mt-10:hover {
   transform: translateY(-2px);
   border-color: var(--orange);
@@ -152,6 +170,12 @@ html, body {
     0 0 48px rgba(250, 100, 0, 0.4),
     0 0 2px rgba(250, 100, 0, 1) inset;
   background-color: rgba(250, 100, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .btn-void.mt-10:hover {
+    transform: scale(1.5) translateY(-2px);
+  }
 }
 
 .btn-void.mt-10:active {
@@ -163,3 +187,11 @@ html, body {
     0 0 4px rgba(250, 100, 0, 1) inset;
   background-color: rgba(250, 100, 0, 0.2);
 }
+
+@media (min-width: 768px) {
+  .btn-void.mt-10:active {
+    transform: scale(1.5) translateY(0);
+  }
+}
+
+
