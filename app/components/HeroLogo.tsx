@@ -549,7 +549,7 @@ export default function HeroLogo() {
       {/* logo plus cyan underline */}
       <div 
         ref={logoRef}
-        className="relative w-fit max-w-[90vw] mx-auto -mt-4 md:-mt-4 mb-[8vh] md:mb-0 group z-10 scale-[0.6] md:scale-[0.75]"
+        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto mt-0 md:-mt-4 mb-[4vh] md:mb-0 group z-10 scale-[0.6] md:scale-[0.75]"
       >
         <Image
           src="/Master_Logo.png?v=2"
@@ -577,11 +577,11 @@ export default function HeroLogo() {
             group-hover:w-[86%]
             z-10
           "
-          style={{ top: '60%' }}   // nudge this 58 to 62 until it kisses the word
+          style={{ top: '60%' }}
         />
 
-        {/* Sound button right under the cyan line */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[85%] md:top-[67.5%] z-10">
+        {/* Sound button - absolute positioned for desktop only */}
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10">
           <EnableSoundButton />
         </div>
       </div>

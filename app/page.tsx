@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import HeroLogo from "./components/HeroLogo";
+import EnableSoundButton from "./components/EnableSoundButton";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
@@ -95,13 +96,18 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative">
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 -mt-12 bg-transparent">
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-0 pb-2">
-          <div className="text-center">
+      <section className="relative text-white overflow-hidden z-10 bg-transparent flex flex-col items-center justify-start min-h-[90vh] pb-2 md:-mt-12" style={{ paddingTop: 'max(6vh, env(safe-area-inset-top))' }}>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full flex flex-col items-center">
+          <div className="text-center w-full flex flex-col items-center">
             <HeroLogo />
 
+            {/* Sound button - mobile only, in normal flow */}
+            <div className="block md:hidden mt-[3.5vh]">
+              <EnableSoundButton />
+            </div>
+
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void mt-4 md:-mt-4 text-center opacity-90 text-2xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void mt-[6vh] md:mt-4 md:-mt-4 text-center opacity-90 text-2xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 

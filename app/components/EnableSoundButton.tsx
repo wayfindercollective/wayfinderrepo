@@ -376,20 +376,9 @@ export default function EnableSoundButton() {
         id="heroCta"
         ref={buttonRef}
         onClick={handleClick}
-        className={`px-4 md:px-6 py-2 md:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable} mt-0 md:mt-[45px]`}
-        style={{ 
-          fontFamily: 'var(--fontB-display), sans-serif', 
-          letterSpacing: '0.1em', 
-          textTransform: 'uppercase',
-          fontWeight: 700,
-          position: 'relative',
-          opacity: 1,
-          filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
-          WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
-          transition: 'none' // Remove transition to allow instant flicker
-        }}
+        className="px-4 md:px-6 py-2 md:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer relative uppercase font-[var(--fontB-display)] tracking-[0.1em] font-bold opacity-100 transition-none mt-0 md:mt-[45px]"
       >
-        <span style={{ position: 'relative', zIndex: 2 }}>Join the Void</span>
+        <span className="relative z-[2]">Join the Void</span>
       </button>
       
       {showLoading && (

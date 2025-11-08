@@ -439,3 +439,9 @@ body {
 .headingText {
   display: inline-block;
 }
+
+/* Base filter state for hero button (will be overridden by flicker effect) */
+#heroCta {
+  filter: contrast(1.4) brightness(1.15) saturate(1.2);
+  -webkit-filter: contrast(1.4) brightness(1.15) saturate(1.2);
+}
