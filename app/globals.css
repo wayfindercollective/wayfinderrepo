@@ -432,7 +432,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 /* Mobile overrides to ensure desktop proportions are maintained */
 /* Add horizontal scroll for grid layouts on very small screens if needed */
-@media (max-width: 639px) {
+@media (max-width: 768px) {
   /* Hero section - button spacing below logo (8-10% viewport height) */
   #heroCta {
     margin-top: 8vh !important;
@@ -440,22 +440,23 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   }
   
   /* Hero section - center text and ensure proper spacing */
-  .voidSection:first-of-type h2,
-  .voidSection:first-of-type p {
-    text-align: center;
+  /* Target the first section (hero) which doesn't have voidSection class */
+  section:first-of-type h2,
+  section:first-of-type p {
+    text-align: center !important;
     margin-left: auto;
     margin-right: auto;
   }
   
   /* Hero section text spacing */
   section:first-of-type h2 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
   }
   
   section:first-of-type p {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
   }
   
   /* Columns - stack vertically on mobile */
