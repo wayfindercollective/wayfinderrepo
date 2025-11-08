@@ -96,7 +96,7 @@ export default function Home() {
             </h2>
 
             <p className="text-lg sm:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1">
-              A private dojo for presence under fire. Weekly drills. Live labs. Field ops. You do not binge. You install.
+              A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function Home() {
               <div className="cardVoid p-8">
                 <h3 className="text-xl font-bold mb-4">Founders Annual Pass</h3>
                 <p>
-                  Twelve months inside the dojo. Weekly doctrine. Drills. Field missions. Live labs. Clear wins tracked.
+                  Twelve months inside the program. Weekly lessons. Guided practices. Real world exercises. Live group sessions. Clear progress markers.
                 </p>
               </div>
             </AnimatedColumn>
@@ -134,7 +134,7 @@ export default function Home() {
               <div className="cardVoid p-8">
                 <h3 className="text-xl font-bold mb-4">Community that trains</h3>
                 <p>
-                  Operators who post reps and after action notes. Feedback that builds presence. Proof over talk.
+                  People who show up, post results, and give useful feedback. Less talk. More proof.
                 </p>
               </div>
             </AnimatedColumn>
@@ -142,7 +142,7 @@ export default function Home() {
               <div className="cardVoid p-8">
                 <h3 className="text-xl font-bold mb-4">Credit for live training</h3>
                 <p>
-                  $500 credit toward a Jeffy Bootcamp in 2025-2026.
+                  Five hundred credit you can use for a Jeffy Bootcamp in 2025 or 2026.
                 </p>
               </div>
             </AnimatedColumn>
@@ -190,10 +190,10 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-1', e)}
                     />
-                    WeekPack engine
+                    Weekly Pack
                   </h3>
                   <p className="text-lg">
-                    Every week you get a doctrine card, a short home drill, a real world mission, and a live lab.
+                    Each week you get a short lesson, a simple at-home practice, a small real world task, and a live session.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -209,10 +209,10 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-2'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-2', e)}
                     />
-                    KSIs we track
+                    Skills we track
                   </h3>
                   <p className="text-lg">
-                    State control. Nonverbals. Attention leadership. Calibration. Decisiveness. Spontaneity.
+                    Calm under pressure. Body language. Leading attention. Reading the room. Decisive action. Playfulness.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -228,10 +228,10 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-3'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-3', e)}
                     />
-                    Sample drills
+                    Sample practices
                   </h3>
                   <p className="text-lg">
-                    Breath weight eyes baseline. Three beat silence. Spike then sincere pivot. Empathy to plow recovery.
+                    Breathe and settle your weight. Hold eye contact. Pause for three beats before you speak. Lift the mood then land it sincere. Own a mistake and recover smoothly.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -247,10 +247,10 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-4'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-4', e)}
                     />
-                    Reset ritual
+                    Reset
                   </h3>
                   <p className="text-lg">
-                    End of week check that locks gains and sets the next mission.
+                    End of week check in that locks gains and sets your next step.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -260,9 +260,9 @@ export default function Home() {
             <button
               onClick={() => setShowWeekPackOverlay(true)}
               className="text-cyan-400 hover:text-cyan-300 underline"
-              style={{ fontSize: '300%' }}
+              style={{ fontSize: '150%' }}
             >
-              See a WeekPack
+              See a Weekly Pack
             </button>
           </div>
         </div>
@@ -278,13 +278,13 @@ export default function Home() {
             className="bg-gray-900 border border-cyan-500 rounded-lg p-8 max-w-md w-full"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl font-bold text-white mb-4">Sample WeekPack</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Sample Weekly Pack</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>• Doctrine card: Frame in a dying empire</li>
-              <li>• Home drill: Three beat silence</li>
-              <li>• Field mission: Attention leadership at coffee shop</li>
-              <li>• Live lab: State control under pressure</li>
-              <li>• Reset ritual: Lock gains and set next mission</li>
+              <li>• Short lesson: Presence over image</li>
+              <li>• At-home practice: Breathe and settle your weight</li>
+              <li>• Real world task: Hold eye contact for three beats</li>
+              <li>• Live session: Practice in a group setting</li>
+              <li>• Reset: Lock gains and set your next step</li>
             </ul>
             <button
               onClick={() => setShowWeekPackOverlay(false)}
@@ -312,7 +312,7 @@ export default function Home() {
                       className="h-[1em] w-auto cyan-dots-icon"
                     />
                   </span>
-                  Why Void Underground?
+                  Why Void Underground
                 </span>
               </AnimatedSectionTitle>
             </div>
@@ -323,33 +323,33 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Action over theory</h3>
+                <h3 className="text-2xl font-bold mb-4">Action first</h3>
                 <p>
-                  You train state first. Information emerges from embodiment.
+                  You learn by doing. The body teaches faster than theory.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Bootcamp precision</h3>
+                <h3 className="text-2xl font-bold mb-4">Field tested</h3>
                 <p>
-                  Field tested drills turned into a repeatable system without losing the heat.
+                  Drills come from years of live work and are built to be repeatable.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Myth and map</h3>
+                <h3 className="text-2xl font-bold mb-4">Clear philosophy</h3>
                 <p>
-                  Presence over Persona. Controlled Madness. Frame in a dying empire.
+                  Presence over image. Lead reality with calm energy. Be the signal in the noise.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-8">
-                <h3 className="text-2xl font-bold mb-4">Receipts and ethics</h3>
+                <h3 className="text-2xl font-bold mb-4">Proof and ethics</h3>
                 <p>
-                  Decades of live proof. Consent forward leadership. Zero manipulation.
+                  Track results. Lead with consent. No tricks. No manipulation.
                 </p>
               </div>
             </AnimatedColumn>
@@ -391,7 +391,7 @@ export default function Home() {
                   Founders Annual Pass
                 </div>
                 <div className="text-lg text-gray-300 mt-2">
-                  Includes $500 credit for a Jeffy Bootcamp in 2025-2026.
+                  Includes five hundred credit for a Jeffy Bootcamp in 2025 or 2026.
                 </div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
@@ -425,7 +425,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-2', e)}
                   />
-                  <span>Access to missions and labs</span>
+                  <span>Access to missions and live sessions</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Image 
@@ -441,7 +441,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-3', e)}
                   />
-                  <span>Action oriented tasks and exercises</span>
+                  <span>Simple practices you can do daily</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Image 
@@ -518,12 +518,12 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 0 ? null : 0)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">Is this a course</h3>
+                <h3 className="text-xl font-bold">Is this a course?</h3>
                 <span className="text-2xl">{openFAQ === 0 ? '−' : '+'}</span>
               </button>
               {openFAQ === 0 && (
                 <p className="mt-4 text-gray-300">
-                  No. It is a dojo with weekly training and clear KSIs that show change.
+                  It is a training space with weekly lessons and simple practices. You build skills and we measure progress.
                 </p>
               )}
             </div>
@@ -532,12 +532,12 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">Do I need nightlife</h3>
+                <h3 className="text-xl font-bold">Do I need nightlife?</h3>
                 <span className="text-2xl">{openFAQ === 1 ? '−' : '+'}</span>
               </button>
               {openFAQ === 1 && (
                 <p className="mt-4 text-gray-300">
-                  No. Day missions and labs cover all contexts.
+                  No. Tasks work in daily life, work, and social settings.
                 </p>
               )}
             </div>
@@ -546,12 +546,12 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">Is this pickup</h3>
+                <h3 className="text-xl font-bold">Is this pickup?</h3>
                 <span className="text-2xl">{openFAQ === 2 ? '−' : '+'}</span>
               </button>
               {openFAQ === 2 && (
                 <p className="mt-4 text-gray-300">
-                  No. It is consent forward charisma for dating, business, and leadership.
+                  No. This is consent forward charisma for dating, business, and leadership.
                 </p>
               )}
             </div>
@@ -560,12 +560,12 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-xl font-bold">What changes in thirty days</h3>
+                <h3 className="text-xl font-bold">What changes in thirty days?</h3>
                 <span className="text-2xl">{openFAQ === 3 ? '−' : '+'}</span>
               </button>
               {openFAQ === 3 && (
                 <p className="mt-4 text-gray-300">
-                  A louder baseline broadcast. Fewer freezes. Cleaner recovery under pressure.
+                  A calmer baseline, fewer freezes, and faster recovery when things get awkward.
                 </p>
               )}
             </div>
