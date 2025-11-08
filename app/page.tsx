@@ -491,9 +491,9 @@ export default function Home() {
                 href="https://bookmyeventnow.com/register?a=new&p=32"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-void btn-void-white w-auto"
+                className="btn-void mt-10"
               >
-                Join the Void
+                BUY NOW
               </a>
               <p className="text-sm text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace' }}>
                 One time payment for twelve months of access.
