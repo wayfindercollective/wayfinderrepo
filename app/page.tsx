@@ -15,7 +15,7 @@ export default function Home() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastPlayTimeRef = useRef<number>(0);
 
-  // Create dark bell ping sound for hourglass
+  // Create triangle sound effect for hourglass
   const playHourglassPing = () => {
     // Check if sound is enabled
     if (typeof window !== 'undefined') {
@@ -46,55 +46,35 @@ export default function Home() {
 
       const currentTime = audioContext.currentTime;
       const duration = 0.25; // 250ms - short but with proper decay
-      const baseFreq = 293.66; // D4 note - dark bell pitch
+      const baseFreq = 293.66; // D4 note
 
-      // Create dark bell with harmonics (emphasizing lower frequencies for dark character)
-      const oscillators: OscillatorNode[] = [];
-      const harmonics = [
-        { freq: 1, gain: 1.0 },      // Fundamental - strongest
-        { freq: 2, gain: 0.5 },      // Octave
-        { freq: 3, gain: 0.3 },      // Fifth
-        { freq: 4, gain: 0.15 },     // Octave
-        { freq: 5, gain: 0.08 },     // Third
-      ];
-
-      // Merge node for combining all oscillators
-      const mergeGain = audioContext.createGain();
-      mergeGain.gain.value = 1.0;
-
-      harmonics.forEach((harmonic) => {
-        const osc = audioContext.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(baseFreq * harmonic.freq, currentTime);
-        
-        const oscGain = audioContext.createGain();
-        // Fast attack for ping
-        oscGain.gain.setValueAtTime(0, currentTime);
-        oscGain.gain.linearRampToValueAtTime(harmonic.gain, currentTime + 0.003);
-        // Smooth decay that doesn't mute too fast - gradual exponential curve
-        oscGain.gain.exponentialRampToValueAtTime(0.01, currentTime + duration);
-        
-        osc.connect(oscGain);
-        oscGain.connect(mergeGain);
-        oscillators.push(osc);
-      });
-
+      // Create triangle wave sound
+      const osc = audioContext.createOscillator();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(baseFreq, currentTime);
+      
+      const oscGain = audioContext.createGain();
+      // Fast attack for ping
+      oscGain.gain.setValueAtTime(0, currentTime);
+      oscGain.gain.linearRampToValueAtTime(1.0, currentTime + 0.003);
+      // Smooth decay
+      oscGain.gain.exponentialRampToValueAtTime(0.01, currentTime + duration);
+      
       // Master gain (moderate volume)
       const masterGain = audioContext.createGain();
       masterGain.gain.value = 0.3;
 
-      // Connect: oscillators -> merge -> master gain -> destination
-      mergeGain.connect(masterGain);
+      // Connect: oscillator -> gain -> master gain -> destination
+      osc.connect(oscGain);
+      oscGain.connect(masterGain);
       masterGain.connect(audioContext.destination);
 
-      // Start all oscillators
-      oscillators.forEach(osc => {
-        osc.start(currentTime);
-        osc.stop(currentTime + duration);
-      });
+      // Start oscillator
+      osc.start(currentTime);
+      osc.stop(currentTime + duration);
     } catch (error) {
       // Silently fail if audio context is not available
-      console.warn('Could not play hourglass dark bell ping sound:', error);
+      console.warn('Could not play hourglass triangle sound:', error);
     }
   };
 
