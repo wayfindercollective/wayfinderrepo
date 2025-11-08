@@ -12,7 +12,7 @@ export default function Pricing() {
         href="https://bookmyeventnow.com/register?a=new&p=32"
         target="_blank"
         rel="noopener noreferrer"
-        className="btn-void mt-10"
+        className="btn-void mt-10 inline-block"
       >
         BUY NOW
       </a>

@@ -129,9 +129,10 @@ html, body {
 
 @media (min-width: 768px) {
   .btn-void.mt-10 {
-    width: auto;
+    display: inline-block;
+    width: auto !important;
     max-width: none;
-    transform: scale(1.5);
+    transform: none;
     font-size: 1rem;
     padding: 14px 24px;
     animation: floatVerticalDesktop 5s ease-in-out infinite;
@@ -152,13 +153,13 @@ html, body {
 
 @keyframes floatVerticalDesktop {
   0% {
-    transform: scale(1.5) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: scale(1.5) translateY(-8px);
+    transform: translateY(-8px);
   }
   100% {
-    transform: scale(1.5) translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -174,7 +175,7 @@ html, body {
 
 @media (min-width: 768px) {
   .btn-void.mt-10:hover {
-    transform: scale(1.5) translateY(-2px);
+    transform: translateY(-2px);
   }
 }
 
@@ -190,7 +191,7 @@ html, body {
 
 @media (min-width: 768px) {
   .btn-void.mt-10:active {
-    transform: scale(1.5) translateY(0);
+    transform: translateY(0);
   }
 }
 

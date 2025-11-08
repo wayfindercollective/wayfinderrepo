@@ -18,9 +18,12 @@ export default function Hero() {
         </p>
 
         {/* CTA that jumps to pricing section */}
-        <div className="mt-10">
-          <a href="https://bookmyeventnow.com/register?a=new&p=32" target="_blank" rel="noopener noreferrer" className="inline-block rounded-2xl bg-white px-8 py-4 text-black font-semibold">
-            Get your Founders Annual Pass Now
+        <div className="mt-10 max-w-3xl mx-auto text-center">
+          <a href="https://bookmyeventnow.com/register?a=new&p=32" target="_blank" rel="noopener noreferrer" className="inline-block rounded-2xl bg-white px-8 py-4 text-black font-semibold whitespace-normal">
+            <span className="block md:hidden">Get your Founders Annual Pass Now</span>
+            <span className="hidden md:block">
+              Get your Founders Annual<br />Pass Now
+            </span>
           </a>
         </div>
       </div>

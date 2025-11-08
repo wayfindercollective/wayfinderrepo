@@ -87,8 +87,11 @@ export default function Home() {
 
   const handleHourglassIconHover = (id: string, e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent triggering card hover
-    // Trigger rotation and play sound
+    // Trigger rotation only (sound removed)
     handleHourglassHover(id);
+  };
+
+  const handleColumnHover = () => {
     playHourglassPing();
   };
 
@@ -188,7 +191,7 @@ export default function Home() {
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              <AnimatedColumn direction="left">
+              <AnimatedColumn direction="left" onHover={handleColumnHover}>
                 <div className="cardVoid p-8">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
@@ -207,7 +210,7 @@ export default function Home() {
                   </p>
                 </div>
               </AnimatedColumn>
-              <AnimatedColumn direction="right">
+              <AnimatedColumn direction="right" onHover={handleColumnHover}>
                 <div className="cardVoid p-8">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
@@ -226,7 +229,7 @@ export default function Home() {
                   </p>
                 </div>
               </AnimatedColumn>
-              <AnimatedColumn direction="left">
+              <AnimatedColumn direction="left" onHover={handleColumnHover}>
                 <div className="cardVoid p-8">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
@@ -245,7 +248,7 @@ export default function Home() {
                   </p>
                 </div>
               </AnimatedColumn>
-              <AnimatedColumn direction="right">
+              <AnimatedColumn direction="right" onHover={handleColumnHover}>
                 <div className="cardVoid p-8">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-3" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Image 
@@ -331,7 +334,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <AnimatedColumn direction="left">
+            <AnimatedColumn direction="left" onHover={handleColumnHover}>
               <div className="cardVoid p-8">
                 <h3 className="text-xl md:text-2xl font-bold mb-4">Action first</h3>
                 <p>
@@ -339,7 +342,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="right">
+            <AnimatedColumn direction="right" onHover={handleColumnHover}>
               <div className="cardVoid p-8">
                 <h3 className="text-xl md:text-2xl font-bold mb-4">Field tested</h3>
                 <p>
@@ -347,7 +350,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="left">
+            <AnimatedColumn direction="left" onHover={handleColumnHover}>
               <div className="cardVoid p-8">
                 <h3 className="text-xl md:text-2xl font-bold mb-4">Clear philosophy</h3>
                 <p>
@@ -355,7 +358,7 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedColumn>
-            <AnimatedColumn direction="right">
+            <AnimatedColumn direction="right" onHover={handleColumnHover}>
               <div className="cardVoid p-8">
                 <h3 className="text-xl md:text-2xl font-bold mb-4">Proof and ethics</h3>
                 <p>
@@ -393,13 +396,21 @@ export default function Home() {
             </p>
           </div>
           <div className="max-w-2xl mx-auto">
-            <div className="cardVoid p-12 text-center">
+            <div className="cardVoid p-12 text-center" onMouseEnter={handleColumnHover}>
               <div className="mb-8" style={{ fontSize: '150%' }}>
-                <div className="current-price mb-2">
-                  $297
+                <div className="mb-2">
+                  <span className="current-price-wrapper">
+                    <span className="current-price">
+                      $297
+                    </span>
+                    <span className="black-friday-sticker shiny-sticker">Black Friday deal</span>
+                  </span>
                 </div>
-                <div className="text-gray-300 mt-1 founders-annual-pass-title" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
-                  Founders Annual Pass
+                <div className="text-gray-300 mt-1 founders-annual-pass-title" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 800 }}>
+                  <span className="block md:hidden">Founders Annual Pass</span>
+                  <span className="hidden md:block">
+                    Founders Annual<br />Pass
+                  </span>
                 </div>
                 <div className="text-lg text-gray-300 mt-2">
                   Includes $500 credit for a Jeffy Bootcamp in 2025 or 2026.
@@ -487,15 +498,17 @@ export default function Home() {
                   <span>From Charisma in the Void</span>
                 </div>
               </div>
-              <a
-                id="enroll"
-                href="https://bookmyeventnow.com/register?a=new&p=32"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-void mt-10"
-              >
-                BUY NOW
-              </a>
+              <div className="text-center">
+                <a
+                  id="enroll"
+                  href="https://bookmyeventnow.com/register?a=new&p=32"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-void mt-10 inline-block"
+                >
+                  BUY NOW
+                </a>
+              </div>
               <p className="text-sm text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace' }}>
                 One time payment for twelve months of access.
               </p>

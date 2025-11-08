@@ -88,11 +88,14 @@ export default function Price() {
   return (
     <div ref={priceRef} className="price-wrap">
       <div className="price-row">
-        <span 
-          className={`current-price ${isFlickering ? 'flickering' : ''}`} 
-          aria-hidden="true"
-        >
-          $297
+        <span className="current-price-wrapper">
+          <span 
+            className={`current-price ${isFlickering ? 'flickering' : ''}`} 
+            aria-hidden="true"
+          >
+            $297
+          </span>
+          <span className="black-friday-sticker shiny-sticker">Black Friday deal</span>
         </span>
         <span className="discount-note">50% Discount</span>
       </div>
