@@ -95,17 +95,17 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative">
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 -mt-8 sm:-mt-12 bg-transparent">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-2">
+      <section className="relative text-white overflow-hidden z-10 -mt-12 bg-transparent">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-0 pb-2">
           <div className="text-center">
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void -mt-4 text-center opacity-90 text-lg sm:text-xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void -mt-4 text-center opacity-90 text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
+            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -131,7 +131,7 @@ export default function Home() {
               </span>
             </AnimatedSectionTitle>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
                 <h3 className="text-xl font-bold mb-4">Founders Annual Pass</h3>
@@ -171,7 +171,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
+            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -311,7 +311,7 @@ export default function Home() {
         <div className="voidContainer">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
-              <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
+              <AnimatedSectionTitle className="text-5xl font-bold mb-6 text-white sectionTitle sectionTitleOrange">
                 <span className="inline-flex items-center gap-3">
                   <span className="cyan-dots-wrapper">
                     <Image 
@@ -330,7 +330,7 @@ export default function Home() {
               Most charisma programs focus on theory. We focus on action.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
                 <h3 className="text-2xl font-bold mb-4">Action first</h3>
@@ -369,10 +369,10 @@ export default function Home() {
 
       {/* Pricing Section */}
       <section className="relative text-white overflow-hidden z-10">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
-              <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
+              <AnimatedSectionTitle className="text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
                 <span className="inline-flex items-center gap-3">
                   <span className="cyan-dots-wrapper">
                     <Image 
@@ -491,7 +491,7 @@ export default function Home() {
                 href="https://bookmyeventnow.com/register?a=new&p=32"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-void btn-void-white w-full sm:w-auto"
+                className="btn-void btn-void-white w-auto"
               >
                 Join the Void
               </a>
@@ -507,7 +507,7 @@ export default function Home() {
       <section className="voidSection relative z-10">
         <div className="voidContainer text-center">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleCyan">
+            <AnimatedSectionTitle className="text-5xl font-bold mb-16 text-white sectionTitle sectionTitleCyan">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -651,7 +651,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="text-center">
             <div className="max-w-md mx-auto relative group">
               <Image

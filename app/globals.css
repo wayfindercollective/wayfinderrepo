@@ -429,3 +429,29 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Mobile overrides to ensure desktop proportions are maintained */
+/* Add horizontal scroll for grid layouts on very small screens if needed */
+@media (max-width: 639px) {
+  /* Ensure grid layouts maintain desktop column structure */
+  .grid.grid-cols-3 {
+    min-width: 100%;
+    gap: 2rem; /* Maintain desktop gap */
+  }
+  
+  .grid.grid-cols-2 {
+    min-width: 100%;
+    gap: 2rem; /* Maintain desktop gap */
+  }
+  
+  /* Ensure cards don't shrink too much */
+  .cardVoid {
+    min-width: 0; /* Allow flex shrinking but maintain proportions */
+  }
+  
+  /* Ensure voidContainer maintains desktop padding on mobile */
+  .voidContainer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

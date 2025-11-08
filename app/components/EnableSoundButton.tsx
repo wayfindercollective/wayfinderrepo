@@ -376,7 +376,7 @@ export default function EnableSoundButton() {
         id="heroCta"
         ref={buttonRef}
         onClick={handleClick}
-        className={`px-4 py-2 sm:px-6 sm:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-lg sm:text-2xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable} md:mt-[45px]`}
+        className={`px-6 py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable} mt-[45px]`}
         style={{ 
           fontFamily: 'var(--fontB-display), sans-serif', 
           letterSpacing: '0.1em', 
@@ -395,7 +395,7 @@ export default function EnableSoundButton() {
       {showLoading && (
         <div 
           ref={loadingRef}
-          className="mt-4 flex items-center gap-3 text-[#00FFFF] text-sm sm:text-base"
+          className="mt-4 flex items-center gap-3 text-[#00FFFF] text-base"
           style={{
             opacity: 1,
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
