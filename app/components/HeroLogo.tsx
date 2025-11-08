@@ -394,6 +394,25 @@ export default function HeroLogo() {
           }
         }
         
+        // Dispatch audio duration for progress animation
+        // If duration is not yet loaded, wait for loadedmetadata event
+        const dispatchDuration = () => {
+          const duration = audioElement.duration;
+          if (duration && isFinite(duration) && duration > 0) {
+            window.dispatchEvent(new CustomEvent('audioDuration', { 
+              detail: { duration: duration * 1000 } // Convert to milliseconds
+            }));
+          }
+        };
+        
+        if (audioElement.readyState >= 1) {
+          // Metadata already loaded
+          dispatchDuration();
+        } else {
+          // Wait for metadata to load
+          audioElement.addEventListener('loadedmetadata', dispatchDuration, { once: true });
+        }
+        
         audioElement.play().catch((err) => {
           console.warn('Could not play audio:', err);
         });

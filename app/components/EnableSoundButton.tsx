@@ -7,8 +7,11 @@ export default function EnableSoundButton() {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [showLoading, setShowLoading] = useState(false);
   const [isFlickering, setIsFlickering] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [audioDuration, setAudioDuration] = useState<number | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const loadingRef = useRef<HTMLDivElement>(null);
+  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const initAudio = async () => {
     // Create AudioContext
@@ -77,6 +80,72 @@ export default function EnableSoundButton() {
       window.removeEventListener('audioEnabled', handleAudioEnabled);
     };
   }, []);
+
+  // Listen for audio duration
+  useEffect(() => {
+    const handleAudioDuration = (event: any) => {
+      if (event.detail && event.detail.duration) {
+        setAudioDuration(event.detail.duration);
+      }
+    };
+
+    window.addEventListener('audioDuration', handleAudioDuration as EventListener);
+    
+    return () => {
+      window.removeEventListener('audioDuration', handleAudioDuration as EventListener);
+    };
+  }, []);
+
+  // Start progress animation when loading shows and duration is available
+  useEffect(() => {
+    if (!showLoading) {
+      // Reset progress when loading is hidden
+      setProgress(0);
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+        progressIntervalRef.current = null;
+      }
+      return;
+    }
+
+    // If loading but duration not yet received, wait for it
+    if (!audioDuration) {
+      return;
+    }
+
+    // Start progress animation with the audio duration
+    setProgress(0);
+    // Clear any existing interval
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+    }
+    
+    // Use the actual audio duration (already in milliseconds)
+    const duration = audioDuration;
+    const steps = 100;
+    const stepDuration = duration / steps;
+    let currentProgress = 0;
+    
+    progressIntervalRef.current = setInterval(() => {
+      currentProgress += 1;
+      if (currentProgress >= 100) {
+        setProgress(100);
+        if (progressIntervalRef.current) {
+          clearInterval(progressIntervalRef.current);
+          progressIntervalRef.current = null;
+        }
+      } else {
+        setProgress(currentProgress);
+      }
+    }, stepDuration);
+    
+    return () => {
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+        progressIntervalRef.current = null;
+      }
+    };
+  }, [showLoading, audioDuration]);
 
   // Listen for audio ended event to redirect and stop flickering
   useEffect(() => {
@@ -159,7 +228,32 @@ export default function EnableSoundButton() {
             transition: 'none' // Remove transition to allow instant flicker
           }}
         >
-          <div className="w-5 h-5 border-2 border-[#00FFFF] border-t-transparent rounded-full animate-spin"></div>
+          <div className="relative w-5 h-5 flex-shrink-0">
+            <svg className="w-5 h-5 transform -rotate-90" viewBox="0 0 20 20">
+              {/* Background circle */}
+              <circle
+                cx="10"
+                cy="10"
+                r="8"
+                fill="none"
+                stroke="rgba(0, 255, 255, 0.2)"
+                strokeWidth="2"
+              />
+              {/* Progress circle */}
+              <circle
+                cx="10"
+                cy="10"
+                r="8"
+                fill="none"
+                stroke="#00FFFF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray={`${2 * Math.PI * 8}`}
+                strokeDashoffset={`${2 * Math.PI * 8 * (1 - progress / 100)}`}
+                style={{ transition: 'stroke-dashoffset 0.1s linear' }}
+              />
+            </svg>
+          </div>
           <span className="font-medium">Welcome to the movement. You will be redirected shortly.</span>
         </div>
       )}
