@@ -121,11 +121,11 @@ export default function Home() {
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void -mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void -mt-4 text-center opacity-90 text-lg sm:text-xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-lg sm:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
@@ -147,7 +147,7 @@ export default function Home() {
                     className="h-[1em] w-auto cyan-dots-icon"
                   />
                 </span>
-                What You Get
+                <span className="headingText">What You Get</span>
               </span>
             </AnimatedSectionTitle>
           </div>
@@ -202,7 +202,7 @@ export default function Home() {
                     className="h-[1em] w-auto cyan-dots-icon"
                   />
                 </span>
-                The Program
+                <span className="headingText">The Program</span>
               </span>
             </AnimatedSectionTitle>
           </div>
@@ -220,7 +220,7 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-1', e)}
                     />
-                    Weekly Pack
+                    <span>Weekly Pack</span>
                   </h3>
                   <p className="text-lg">
                     Each week you get a short lesson, a simple at-home practice, a small real world task, and a live session.
@@ -239,7 +239,7 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-2'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-2', e)}
                     />
-                    Skills we track
+                    <span>Skills we track</span>
                   </h3>
                   <p className="text-lg">
                     Calm under pressure. Body language. Leading attention. Reading the room. Decisive action. Playfulness.
@@ -258,7 +258,7 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-3'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-3', e)}
                     />
-                    Sample practices
+                    <span>Sample practices</span>
                   </h3>
                   <p className="text-lg">
                     Breathe and settle your weight. Hold eye contact. Pause for three beats before you speak. Lift the mood then land it sincere. Own a mistake and recover smoothly.
@@ -277,7 +277,7 @@ export default function Home() {
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-4'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-4', e)}
                     />
-                    Reset
+                    <span>Reset</span>
                   </h3>
                   <p className="text-lg">
                     End of week check in that locks gains and sets your next step.
@@ -342,7 +342,7 @@ export default function Home() {
                       className="h-[1em] w-auto cyan-dots-icon"
                     />
                   </span>
-                  Why Void Underground
+                  <span className="headingText">Why Void Underground</span>
                 </span>
               </AnimatedSectionTitle>
             </div>
@@ -403,7 +403,7 @@ export default function Home() {
                       className="h-[1em] w-auto cyan-dots-icon"
                     />
                   </span>
-                  Investment
+                  <span className="headingText">Investment</span>
                 </span>
               </AnimatedSectionTitle>
             </div>
@@ -525,7 +525,7 @@ export default function Home() {
 
       {/* FAQ Section */}
       <section className="voidSection relative z-10">
-        <div className="voidContainer">
+        <div className="voidContainer text-center">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-4xl sm:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleCyan">
               <span className="inline-flex items-center gap-3">
@@ -538,7 +538,7 @@ export default function Home() {
                     className="h-[1em] w-auto cyan-dots-icon"
                   />
                 </span>
-                FAQ
+                <span className="headingText">FAQ</span>
               </span>
             </AnimatedSectionTitle>
           </div>

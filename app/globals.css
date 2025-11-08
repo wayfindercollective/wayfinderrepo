@@ -85,6 +85,46 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   font-family: var(--font-display), sans-serif; /* Orbitron for headings */
   font-weight: 700;
   letter-spacing: 0.02em;
+  position: relative;
+}
+
+/* For h3 elements without flex, make them inline-block so underline matches text width */
+.cardVoid h3:not(.flex) {
+  display: inline-block;
+}
+
+.cardVoid h3:not(.flex)::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+}
+
+/* For h3 elements with flex, the text span gets the underline */
+.cardVoid h3.flex {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cardVoid h3.flex > span:last-child {
+  position: relative;
+  display: inline-block;
+}
+
+.cardVoid h3.flex > span:last-child::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
 }
 
 .cardVoid p {
@@ -98,7 +138,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   color: #ffffff !important;
 }
 
-/* full-width underlines for section titles - centered */
+/* Section titles - underline now on headingText element */
 .sectionTitle {
   font-family: var(--font-display), sans-serif; /* Orbitron for display headers */
   font-weight: 800;
@@ -107,38 +147,48 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   cursor: default;
   position: relative;
 }
-.sectionTitle::after {
+
+/* headingText element - text-only underline matching text width */
+.headingText {
+  display: inline-block;
+  position: relative;
+}
+
+.headingText::after {
   content: "";
   display: block;
   width: 0;
   height: 3px;
-  margin: 1px 0 0;
-  box-shadow: 0 0 14px currentColor;
+  margin-top: 4px;
   transition: width 0.5s ease-out, opacity 0.4s ease-out;
   position: absolute;
   left: 50%;
-  top: 100%;
   transform: translateX(-50%);
+  bottom: -6px;
   opacity: 0;
 }
 
 /* Tighter spacing for specific sections */
-.sectionTitleTight::after {
-  margin: -2px 0 0;
+.sectionTitleTight .headingText::after {
+  margin-top: 2px;
+  bottom: -4px;
 }
-.sectionTitle:hover::after {
+
+.sectionTitle:hover .headingText::after {
   width: 100%;
   opacity: 1;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Scroll-triggered animation: line expands from center to sides */
-.sectionTitle.animate-line::after {
+.sectionTitle.animate-line .headingText::after {
   animation: expandFromCenter 0.8s ease-out forwards;
   opacity: 1;
 }
 
 /* Reset animation when class is removed */
-.sectionTitle:not(.animate-line)::after {
+.sectionTitle:not(.animate-line) .headingText::after {
   animation: none;
 }
 
@@ -163,32 +213,32 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   width: 100%;
 }
 
-/* color variants for section title underlines */
-.sectionTitleCyan::after {
+/* color variants for section title underlines - now targeting headingText */
+.sectionTitleCyan .headingText::after {
   background: var(--voidCyan);
   box-shadow: 0 0 14px rgba(0,255,255,0.55);
 }
-.sectionTitleMagenta::after {
+.sectionTitleMagenta .headingText::after {
   background: var(--voidMagenta);
   box-shadow: 0 0 14px rgba(255,0,255,0.55);
 }
-.sectionTitleOrange::after {
+.sectionTitleOrange .headingText::after {
   background: var(--voidOrange);
   box-shadow: 0 0 14px rgba(250,100,0,0.55);
 }
-.sectionTitlePurple::after {
+.sectionTitlePurple .headingText::after {
   background: var(--voidPurple);
   box-shadow: 0 0 14px rgba(128,0,255,0.55);
 }
-.sectionTitleLightBlue::after {
+.sectionTitleLightBlue .headingText::after {
   background: var(--voidLightBlue);
   box-shadow: 0 0 14px rgba(0,204,255,0.55);
 }
-.sectionTitlePink::after {
+.sectionTitlePink .headingText::after {
   background: var(--voidPink);
   box-shadow: 0 0 14px rgba(255,0,204,0.55);
 }
-.sectionTitleYellow::after {
+.sectionTitleYellow .headingText::after {
   background: var(--voidYellow);
   box-shadow: 0 0 14px rgba(255,255,0,0.55);
 }
@@ -365,4 +415,17 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 .group:hover .signal-core-logo-spin-right {
   transform: perspective(1000px) rotateY(-360deg) rotateX(10deg);
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

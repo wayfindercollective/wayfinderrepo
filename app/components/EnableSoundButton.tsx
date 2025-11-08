@@ -9,9 +9,15 @@ export default function EnableSoundButton() {
   const [isFlickering, setIsFlickering] = useState(false);
   const [progress, setProgress] = useState(0);
   const [audioDuration, setAudioDuration] = useState<number | null>(null);
+  const [welcomeTextDisplay, setWelcomeTextDisplay] = useState('');
+  const [welcomeTextRevealed, setWelcomeTextRevealed] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const loadingRef = useRef<HTMLDivElement>(null);
+  const welcomeTextRef = useRef<HTMLSpanElement>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const typewriterIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  
+  const welcomeTextFull = "Welcome to the movement. You will be redirected shortly.";
 
   const initAudio = async () => {
     // Create AudioContext
@@ -95,6 +101,95 @@ export default function EnableSoundButton() {
       window.removeEventListener('audioDuration', handleAudioDuration as EventListener);
     };
   }, []);
+
+  // Reserve space for welcome text on initial load
+  useEffect(() => {
+    if (typeof window !== 'undefined' && welcomeTextRef.current) {
+      // Wait for next frame to ensure styles are applied
+      requestAnimationFrame(() => {
+        if (welcomeTextRef.current) {
+          // Create a temporary element to measure the full text width
+          const tempElement = document.createElement('span');
+          tempElement.textContent = welcomeTextFull;
+          tempElement.style.visibility = 'hidden';
+          tempElement.style.position = 'absolute';
+          tempElement.style.whiteSpace = 'nowrap';
+          
+          // Copy computed styles from the actual element
+          const computedStyle = window.getComputedStyle(welcomeTextRef.current);
+          tempElement.style.fontSize = computedStyle.fontSize;
+          tempElement.style.fontFamily = computedStyle.fontFamily;
+          tempElement.style.fontWeight = computedStyle.fontWeight;
+          tempElement.style.letterSpacing = computedStyle.letterSpacing;
+          tempElement.style.fontStyle = computedStyle.fontStyle;
+          
+          document.body.appendChild(tempElement);
+          const width = tempElement.offsetWidth;
+          document.body.removeChild(tempElement);
+          
+          // Set the width to reserve space on the parent
+          if (welcomeTextRef.current.parentElement) {
+            welcomeTextRef.current.parentElement.style.minWidth = `${width}px`;
+          }
+        }
+      });
+    }
+  }, [welcomeTextFull]);
+
+  // Typewriter effect when loading starts
+  useEffect(() => {
+    if (!showLoading) {
+      // Reset when loading is hidden
+      setWelcomeTextDisplay('');
+      setWelcomeTextRevealed(false);
+      if (typewriterIntervalRef.current) {
+        clearInterval(typewriterIntervalRef.current);
+        typewriterIntervalRef.current = null;
+      }
+      return;
+    }
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Show full text instantly
+      setWelcomeTextDisplay(welcomeTextFull);
+      setWelcomeTextRevealed(true);
+    } else {
+      // Start typewriter animation - 2.5 seconds total
+      const totalDuration = 2500; // 2.5 seconds
+      const characterCount = welcomeTextFull.length;
+      // Calculate interval so last character appears at exactly 2.5 seconds
+      // First character at 0ms, last at 2500ms, so interval = 2500 / (N-1)
+      const interval = characterCount > 1 ? totalDuration / (characterCount - 1) : totalDuration;
+      let currentIndex = 0;
+
+      // Show first character immediately
+      setWelcomeTextDisplay(welcomeTextFull.substring(0, 1));
+      currentIndex = 1;
+
+      const typeInterval = setInterval(() => {
+        if (currentIndex < characterCount) {
+          setWelcomeTextDisplay(welcomeTextFull.substring(0, currentIndex + 1));
+          currentIndex++;
+        } else {
+          clearInterval(typeInterval);
+          setWelcomeTextRevealed(true);
+          typewriterIntervalRef.current = null;
+        }
+      }, interval);
+
+      typewriterIntervalRef.current = typeInterval;
+    }
+
+    return () => {
+      if (typewriterIntervalRef.current) {
+        clearInterval(typewriterIntervalRef.current);
+        typewriterIntervalRef.current = null;
+      }
+    };
+  }, [showLoading, welcomeTextFull]);
 
   // Start progress animation when loading shows and duration is available
   useEffect(() => {
@@ -184,12 +279,92 @@ export default function EnableSoundButton() {
   }, [showLoading]);
 
   const handleClick = async () => {
+    // Reset typewriter effect every time button is clicked
+    setWelcomeTextDisplay('');
+    setWelcomeTextRevealed(false);
+    if (typewriterIntervalRef.current) {
+      clearInterval(typewriterIntervalRef.current);
+      typewriterIntervalRef.current = null;
+    }
+    
+    // Reset loading spinner/progress every time button is clicked
+    setProgress(0);
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+      progressIntervalRef.current = null;
+    }
+    
     // Always initialize audio and play when Join the Void is clicked
     if (!audioContext) {
       await initAudio();
     }
     
-    setShowLoading(true);
+    // Temporarily set showLoading to false to force useEffect to restart
+    setShowLoading(false);
+    
+    // Use setTimeout to ensure state update completes before setting to true
+    setTimeout(() => {
+      setShowLoading(true);
+      
+      // Start progress animation immediately if audioDuration is available
+      if (audioDuration) {
+        const duration = audioDuration;
+        const steps = 100;
+        const stepDuration = duration / steps;
+        let currentProgress = 0;
+        
+        setProgress(0);
+        
+        progressIntervalRef.current = setInterval(() => {
+          currentProgress += 1;
+          if (currentProgress >= 100) {
+            setProgress(100);
+            if (progressIntervalRef.current) {
+              clearInterval(progressIntervalRef.current);
+              progressIntervalRef.current = null;
+            }
+          } else {
+            setProgress(currentProgress);
+          }
+        }, stepDuration);
+      }
+    }, 0);
+    
+    // Start typewriter animation immediately when button is clicked
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Show full text instantly
+      setWelcomeTextDisplay(welcomeTextFull);
+      setWelcomeTextRevealed(true);
+    } else {
+      // Start typewriter animation - 2.5 seconds total
+      const totalDuration = 2500; // 2.5 seconds
+      const characterCount = welcomeTextFull.length;
+      // Calculate interval so last character appears at exactly 2.5 seconds
+      // First character at 0ms, last at 2500ms, so interval = 2500 / (N-1)
+      const interval = characterCount > 1 ? totalDuration / (characterCount - 1) : totalDuration;
+      let currentIndex = 0;
+
+      // Show first character immediately
+      setWelcomeTextDisplay(welcomeTextFull.substring(0, 1));
+      currentIndex = 1;
+
+      const typeInterval = setInterval(() => {
+        if (currentIndex < characterCount) {
+          setWelcomeTextDisplay(welcomeTextFull.substring(0, currentIndex + 1));
+          currentIndex++;
+        } else {
+          clearInterval(typeInterval);
+          setWelcomeTextRevealed(true);
+          typewriterIntervalRef.current = null;
+        }
+      }, interval);
+
+      typewriterIntervalRef.current = typeInterval;
+    }
+    
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('audioEnabled'));
     }
@@ -201,7 +376,7 @@ export default function EnableSoundButton() {
         id="heroCta"
         ref={buttonRef}
         onClick={handleClick}
-        className={`px-6 py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-xl sm:text-2xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable} md:mt-[45px]`}
+        className={`px-4 py-2 sm:px-6 sm:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-lg sm:text-2xl md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer ${exo2.variable} md:mt-[45px]`}
         style={{ 
           fontFamily: 'var(--fontB-display), sans-serif', 
           letterSpacing: '0.1em', 
@@ -254,7 +429,16 @@ export default function EnableSoundButton() {
               />
             </svg>
           </div>
-          <span className="font-medium">Welcome to the movement. You will be redirected shortly.</span>
+          <span 
+            ref={welcomeTextRef}
+            className="welcomeText font-medium"
+            aria-live="polite"
+          >
+            {welcomeTextDisplay}
+            <span className="sr-only">
+              {welcomeTextRevealed ? welcomeTextFull : ''}
+            </span>
+          </span>
         </div>
       )}
     </div>
