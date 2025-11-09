@@ -14,8 +14,8 @@ export default function Pricing() {
             href="https://bookmyeventnow.com/register?a=new&p=32"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-void mt-8 inline-block"
-            style={{ padding: '13px 25px', fontSize: '1.125rem' }}
+            className="btn-void mt-10 inline-block"
+            style={{ fontSize: '1.4375rem', padding: '20px 35px' }}
           >
             BUY NOW
           </a>
