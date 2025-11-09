@@ -306,6 +306,13 @@ export default function EnableSoundButton() {
   }, [showLoading]);
 
   const handleClick = async () => {
+    const now = Date.now();
+    // Debounce: if event happened within 200ms of last trigger, ignore it
+    if (now - lastTriggerTimeRef.current < 200) {
+      return;
+    }
+    lastTriggerTimeRef.current = now;
+    
     // Reset typewriter effect every time button is clicked
     setWelcomeTextDisplay('');
     setWelcomeTextRevealed(false);
@@ -395,12 +402,27 @@ export default function EnableSoundButton() {
     }
   };
 
+  // Handle touch events for mobile (debounced to prevent double-firing with click)
+  const lastTriggerTimeRef = useRef<number>(0);
+  const handleTouchEnd = async (e: React.TouchEvent<HTMLButtonElement>) => {
+    const now = Date.now();
+    // Debounce: if event happened within 200ms of last trigger, ignore it
+    if (now - lastTriggerTimeRef.current < 200) {
+      e.preventDefault();
+      return;
+    }
+    lastTriggerTimeRef.current = now;
+    e.preventDefault();
+    await handleClick();
+  };
+
   return (
     <div className="flex flex-col items-center">
       <button
         id="heroCta"
         ref={buttonRef}
         onClick={handleClick}
+        onTouchEnd={handleTouchEnd}
         className="px-3 md:px-6 py-1.5 md:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-base md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer relative uppercase font-[var(--fontB-display)] tracking-[0.1em] font-bold opacity-100 transition-none mt-0 md:mt-[45px]"
       >
         <span className="relative z-[2]">Join the Void</span>

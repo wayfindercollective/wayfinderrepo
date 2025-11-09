@@ -19,17 +19,24 @@
   justify-items: center;
   text-align: center;
   user-select: none;
+  overflow: visible; /* Ensure glow is not clipped */
+  position: relative;
+  z-index: 1; /* Above background stars */
 }
 
 .price-row {
   display: flex;
   align-items: baseline;
   gap: 14px;
+  overflow: visible; /* Ensure glow is not clipped */
+  position: relative;
 }
 
 .current-price-wrapper {
   position: relative;
   display: inline-block;
+  overflow: visible; /* Ensure glow is not clipped */
+  z-index: 1; /* Above background stars, below labels */
 }
 
 .current-price {
@@ -47,6 +54,54 @@
     0 0 30px rgba(0, 255, 255, 0.4),
     0 0 40px rgba(0, 255, 255, 0.2);
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+  position: relative;
+}
+
+/* Blink-pulse animation - works on all breakpoints */
+.current-price.blink-pulse {
+  animation: blink-pulse 3s ease-in-out infinite;
+}
+
+/* Keyframes for blink-pulse - global, not wrapped in media query */
+@keyframes blink-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.2);
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 20px rgba(0, 255, 255, 1),
+      0 0 40px rgba(0, 255, 255, 0.9),
+      0 0 60px rgba(0, 255, 255, 0.7),
+      0 0 80px rgba(0, 255, 255, 0.5);
+  }
+}
+
+/* Reduced motion: show bright static state, no animation */
+@media (prefers-reduced-motion: reduce) {
+  .current-price.blink-pulse {
+    animation: none;
+    opacity: 1;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.35)) brightness(1.15);
+    -webkit-text-stroke: 2px #00ffff;
+    text-stroke: 2px #00ffff;
+    text-shadow: 
+      0 0 15px rgba(0, 255, 255, 0.9),
+      0 0 30px rgba(0, 255, 255, 0.7),
+      0 0 45px rgba(0, 255, 255, 0.5),
+      0 0 60px rgba(0, 255, 255, 0.3);
+  }
 }
 
 .black-friday-sticker {
@@ -143,10 +198,6 @@
   box-sizing: border-box;
   text-align: center;
   overflow: visible;
-}
-
-.timer-sticker.shiny-sticker {
-  /* Animation moved to .timer-sticker directly - no additional styles needed */
 }
 
 @keyframes shiny-glow-orange {

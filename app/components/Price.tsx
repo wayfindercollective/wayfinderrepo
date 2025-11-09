@@ -38,7 +38,32 @@ function makeShards(text: string) {
 export default function Price() {
   const priceRef = useRef<HTMLDivElement>(null);
   const [isFlickering, setIsFlickering] = useState(false);
+  const [isBlinkPulsing, setIsBlinkPulsing] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const audioEnabledRef = useRef(false);
+
+  // Listen for audioEnabled event to trigger blink-pulse animation
+  useEffect(() => {
+    const handleAudioEnabled = () => {
+      // Debounce: only apply once
+      if (audioEnabledRef.current) return;
+      audioEnabledRef.current = true;
+      
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      if (!prefersReducedMotion) {
+        // Start blink-pulse animation immediately
+        setIsBlinkPulsing(true);
+      }
+    };
+
+    window.addEventListener('audioEnabled', handleAudioEnabled);
+    
+    return () => {
+      window.removeEventListener('audioEnabled', handleAudioEnabled);
+    };
+  }, []);
 
   useEffect(() => {
     const element = priceRef.current;
@@ -89,7 +114,8 @@ export default function Price() {
       <div className="price-row">
         <span className="current-price-wrapper">
           <span 
-            className={`current-price ${isFlickering ? 'flickering' : ''}`} 
+            className={`current-price ${isFlickering ? 'flickering' : ''} ${isBlinkPulsing ? 'blink-pulse' : ''}`}
+            data-price-primary="true"
             aria-hidden="true"
           >
             $297
