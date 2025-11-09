@@ -7,7 +7,7 @@ import GlobalFlickerEffect from "./components/GlobalFlickerEffect";
 
 export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
-  description: "Join Void Underground - A 12-month community-driven program to transform your charisma through missions, tasks, and action. $297 value for $1200 of content.",
+  description: "Join Void Underground - A 12-month community-driven program to transform your charisma through missions, tasks, and action. $297 value for $600 of content.",
 };
 
 export const viewport: Viewport = {

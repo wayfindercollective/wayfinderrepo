@@ -277,7 +277,7 @@
   margin-bottom: 9px; /* additional 50% more space (6px + 50% = 9px total additional, total 15px) */
 }
 
-/* "$1200 value" that breaks apart on hover */
+/* "$600 value" that breaks apart on hover */
 .strike {
   position: relative;
   color: var(--muted);
