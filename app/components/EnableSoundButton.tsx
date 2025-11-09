@@ -280,7 +280,7 @@ export default function EnableSoundButton() {
       const isDesktop = window.innerWidth >= 768;
       
       if (isDesktop) {
-        // On desktop: Scroll to show both "What You Get" section and Pricing section
+        // On desktop: Scroll to center both "What You Get" section and Pricing section
         const whatYouGetSection = document.getElementById('what-you-get');
         const pricingSection = document.getElementById('pricing-section');
         
@@ -299,44 +299,25 @@ export default function EnableSoundButton() {
           const pricingTop = pricingRect.top + scrollTop;
           const pricingHeight = pricingRect.height;
           
-          // Calculate total height needed to show both sections
-          const totalHeight = (pricingTop + pricingHeight) - whatYouGetTop;
+          // Calculate the midpoint between the start of "What You Get" and the end of Pricing section
+          const combinedStart = whatYouGetTop;
+          const combinedEnd = pricingTop + pricingHeight;
+          const combinedHeight = combinedEnd - combinedStart;
+          
+          // Calculate center point of both sections
+          const combinedCenter = combinedStart + (combinedHeight / 2);
+          
+          // Get viewport height (excluding timer)
           const windowHeight = window.innerHeight;
           const visibleHeight = windowHeight - timerHeight;
           
-          // If both sections fit in viewport, center them vertically
-          if (totalHeight <= visibleHeight) {
-            // Center both sections in the viewport
-            const centerOffset = (visibleHeight - totalHeight) / 2;
-            const scrollPosition = whatYouGetTop - timerHeight - centerOffset;
-            
-            window.scrollTo({
-              top: Math.max(0, scrollPosition),
-              behavior: 'smooth'
-            });
-          } else {
-            // If sections don't fit, scroll to show as much as possible
-            // Position "What You Get" near the top, ensuring pricing section is visible
-            // Calculate how much of pricing section we can show
-            const availableForPricing = visibleHeight - whatYouGetHeight;
-            
-            if (availableForPricing > 0) {
-              // Show "What You Get" at top, and as much of pricing as possible
-              const scrollPosition = whatYouGetTop - timerHeight;
-              window.scrollTo({
-                top: Math.max(0, scrollPosition),
-                behavior: 'smooth'
-              });
-            } else {
-              // If "What You Get" alone doesn't fit, scroll to show both sections
-              // with "What You Get" title visible at top
-              const scrollPosition = whatYouGetTop - timerHeight;
-              window.scrollTo({
-                top: Math.max(0, scrollPosition),
-                behavior: 'smooth'
-              });
-            }
-          }
+          // Scroll to center the combined sections in the viewport
+          const scrollPosition = combinedCenter - (visibleHeight / 2);
+          
+          window.scrollTo({
+            top: Math.max(0, scrollPosition),
+            behavior: 'smooth'
+          });
         } else {
           // Fallback: scroll to Buy Now button if sections not found
           const enrollButton = document.getElementById('pricing-enroll');

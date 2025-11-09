@@ -694,6 +694,11 @@ export default function HeroLogo() {
           }}
         />
 
+        {/* Black Friday Special sticker - centered above the logo */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 md:mb-4 z-10">
+          <span className="black-friday-special-sticker-hero">Black Friday Special</span>
+        </div>
+
         {/* cyan line tucked under UNDERGROUND */}
         <span
           aria-hidden
@@ -712,11 +717,6 @@ export default function HeroLogo() {
         {/* Sound button - visible on all screen sizes */}
         <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10 mt-2 md:mt-0">
           <EnableSoundButton />
-        </div>
-
-        {/* Black Friday Special sticker - positioned to the right of the logo */}
-        <div className="absolute right-0 top-[20%] md:top-[15%] z-10">
-          <span className="black-friday-special-sticker-hero">Black Friday Special</span>
         </div>
       </div>
     </section>

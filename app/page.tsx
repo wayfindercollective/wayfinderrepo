@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* What You Get Section */}
-      <section id="what-you-get" className="voidSection relative z-10">
+      <section id="what-you-get" className="voidSection relative z-10 md:mt-20">
         <div className="voidContainer md:!py-8">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-8 md:mb-12 text-white sectionTitle sectionTitleOrange sectionTitleTight">
