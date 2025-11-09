@@ -369,7 +369,7 @@
 }
 
 .bootcamp-credit {
-  color: rgba(57, 255, 20, 0.8); /* toxic green at 80% opacity */
+  color: #ffffff; /* white */
   font-size: clamp(13px, 1.8vw, 17px); /* increased size for better visibility */
   text-align: center;
   margin-top: 10px; /* 8-12px range, using 10px */
