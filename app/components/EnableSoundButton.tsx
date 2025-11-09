@@ -1,7 +1,21 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { exo2 } from '../fonts';
+
+// Extend Window interface for custom properties
+declare global {
+  interface Window {
+    webkitAudioContext?: typeof AudioContext;
+    audioContext?: AudioContext;
+  }
+}
+
+interface FlickerDataEvent extends CustomEvent {
+  detail: {
+    intensity: number;
+    brightness: number;
+  };
+}
 
 export default function EnableSoundButton() {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
@@ -21,13 +35,13 @@ export default function EnableSoundButton() {
 
   const initAudio = async () => {
     // Create AudioContext
-    const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const ctx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
     
     // Try to resume audio context if suspended (handles autoplay policies)
     if (ctx.state === 'suspended') {
       try {
         await ctx.resume();
-      } catch (error) {
+      } catch {
         // Browser may require user interaction - that's okay, context is still created
         console.log('Audio context suspended, will need user interaction');
       }
@@ -37,16 +51,17 @@ export default function EnableSoundButton() {
     
     // Expose audioContext globally so you can use it to play sounds
     if (typeof window !== 'undefined') {
-      (window as any).audioContext = ctx;
+      window.audioContext = ctx;
       localStorage.setItem('soundEnabled', 'true');
     }
   };
 
   // Listen for flicker data from HeroLogo to apply to button and loading message
   useEffect(() => {
-    const handleFlickerData = (event: any) => {
-      if (isFlickering && event.detail) {
-        const { intensity, brightness } = event.detail;
+    const handleFlickerData = (event: Event) => {
+      const flickerEvent = event as FlickerDataEvent;
+      if (isFlickering && flickerEvent.detail) {
+        const { intensity, brightness } = flickerEvent.detail;
         const opacity = Math.max(0.1, Math.min(1.0, intensity));
         // Use the same filter as the logo: contrast(1.4) brightness() saturate(1.2)
         const filterValue = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
@@ -89,9 +104,10 @@ export default function EnableSoundButton() {
 
   // Listen for audio duration
   useEffect(() => {
-    const handleAudioDuration = (event: any) => {
-      if (event.detail && event.detail.duration) {
-        setAudioDuration(event.detail.duration);
+    const handleAudioDuration = (event: Event) => {
+      const customEvent = event as CustomEvent<{ duration: number }>;
+      if (customEvent.detail && customEvent.detail.duration) {
+        setAudioDuration(customEvent.detail.duration);
       }
     };
 

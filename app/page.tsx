@@ -9,6 +9,13 @@ import Timer from "./components/Timer";
 import Image from "next/image";
 import "./components/price.css";
 
+// Extend Window interface for custom properties
+declare global {
+  interface Window {
+    webkitAudioContext?: typeof AudioContext;
+  }
+}
+
 export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
   const [showWeekPackOverlay, setShowWeekPackOverlay] = useState(false);
@@ -36,7 +43,7 @@ export default function Home() {
     try {
       // Initialize AudioContext if needed
       if (!audioContextRef.current) {
-        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
       }
       const audioContext = audioContextRef.current;
 
