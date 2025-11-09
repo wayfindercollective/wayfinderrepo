@@ -672,7 +672,7 @@ export default function HeroLogo() {
       {/* logo plus cyan underline */}
       <div 
         ref={logoRef}
-        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto mt-0 md:-mt-4 mb-[4vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
+        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto mt-0 md:-mt-4 mb-[5vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
       >
         <Image
           src="/Master_Logo.png?v=2"
@@ -704,7 +704,7 @@ export default function HeroLogo() {
         />
 
         {/* Sound button - visible on all screen sizes */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10 mt-2 md:mt-0">
           <EnableSoundButton />
         </div>
 

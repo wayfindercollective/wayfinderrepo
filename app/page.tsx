@@ -99,7 +99,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
       {/* Static Timer at Top */}
-      <div id="timer-container" className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10 py-3">
+      <div id="timer-container" className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10 py-2 md:py-3">
         <div className="max-w-7xl mx-auto px-6">
           <Timer />
         </div>
@@ -112,11 +112,11 @@ export default function Home() {
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void -mt-4 text-center opacity-90 text-xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-base md:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-gray-400 mb-6 max-w-2xl mx-auto mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
@@ -721,3 +721,5 @@ export default function Home() {
     </div>
   );
 }
+
+

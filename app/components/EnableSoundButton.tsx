@@ -393,16 +393,17 @@ export default function EnableSoundButton() {
       {showLoading && (
         <div 
           ref={loadingRef}
-          className="mt-4 flex items-center gap-3 text-[#00FFFF] text-base"
+          className="mt-4 flex items-center gap-2 md:gap-3 text-[#00FFFF]"
           style={{
             opacity: 1,
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
             WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
-            transition: 'none' // Remove transition to allow instant flicker
+            transition: 'none', // Remove transition to allow instant flicker
+            fontSize: 'clamp(0.75rem, 1.5vw, 1rem)'
           }}
         >
-          <div className="relative w-5 h-5 flex-shrink-0">
-            <svg className="w-5 h-5 transform -rotate-90" viewBox="0 0 20 20">
+          <div className="relative flex-shrink-0" style={{ width: 'clamp(0.875rem, 1.5vw, 1.25rem)', height: 'clamp(0.875rem, 1.5vw, 1.25rem)' }}>
+            <svg className="transform -rotate-90" style={{ width: '100%', height: '100%' }} viewBox="0 0 20 20">
               {/* Background circle */}
               <circle
                 cx="10"

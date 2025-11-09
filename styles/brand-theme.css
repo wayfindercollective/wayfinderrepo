@@ -220,7 +220,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 14px 24px;
+  padding: 8px 16px;
   border-radius: 12px;
   background: var(--pure-black);
   color: var(--white);
@@ -243,6 +243,7 @@ html, body {
     display: inline-flex;
     width: auto !important;
     max-width: none;
+    padding: 14px 24px;
     transform: none;
     animation: floatVerticalDesktop 5s ease-in-out infinite;
     animation-delay: 0s;
