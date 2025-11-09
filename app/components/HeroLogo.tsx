@@ -14,8 +14,11 @@ declare global {
 }
 
 export default function HeroLogo() {
-  // Create audio element once using useMemo
+  // Create audio element once using useMemo (only in browser)
   const audioElement = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return null;
+    }
     const audioPath = '/reality real story_2025-10-22T10-31-44_1.MP4'.replace(/ /g, '%20');
     const audio = new Audio(audioPath);
     audio.loop = false;

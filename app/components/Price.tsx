@@ -23,7 +23,6 @@ function makeShards(text: string) {
         className="shard"
         style={
           {
-            // @ts-expect-error custom props for CSS
             "--dx": dx,
             "--dy": dy,
             "--rot": rot,
