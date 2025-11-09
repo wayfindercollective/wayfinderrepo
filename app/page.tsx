@@ -112,15 +112,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
-      {/* Static Timer at Top */}
-      <div id="timer-container" className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10 py-2 md:py-3">
-        <div className="max-w-7xl mx-auto px-6">
-          <Timer />
-        </div>
+      {/* Timer in top-right corner */}
+      <div id="timer-container" className="fixed top-4 right-4 z-50 bg-black/80 backdrop-blur-sm rounded-lg px-4 py-2 md:px-5 md:py-3 shadow-lg">
+        <Timer />
       </div>
       
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 -mt-12 md:-mt-12 bg-transparent pt-16">
+      <section className="relative text-white overflow-hidden z-10 bg-transparent pt-16">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 pt-12 md:pt-0 pb-2">
           <div className="text-center">
             <HeroLogo />
@@ -138,10 +136,10 @@ export default function Home() {
       </section>
 
       {/* What You Get Section */}
-      <section className="voidSection relative z-10">
-        <div className="voidContainer">
+      <section id="what-you-get" className="voidSection relative z-10">
+        <div className="voidContainer md:!py-8">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleOrange sectionTitleTight">
+            <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-8 md:mb-12 text-white sectionTitle sectionTitleOrange sectionTitleTight">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -156,7 +154,7 @@ export default function Home() {
               </span>
             </AnimatedSectionTitle>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-8">
                 <h3 className="text-lg md:text-xl font-bold mb-4">Founders Annual Pass</h3>
@@ -186,8 +184,8 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="voidSection relative z-10 pb-16 md:pb-24">
-        <div className="voidContainer">
+      <section id="pricing-section" className="voidSection relative z-10 pb-8 md:pb-12">
+        <div className="voidContainer md:!py-8">
           <Pricing />
         </div>
       </section>

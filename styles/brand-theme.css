@@ -45,8 +45,8 @@ html, body {
   font-size: 1rem;
   letter-spacing: 0.02em;
   background: var(--pure-black);
-  color: var(--cyan-glow);
-  border: 1px solid var(--cyan-glow);
+  color: var(--orange);
+  border: 1px solid var(--orange);
   transition: box-shadow 200ms ease, transform 200ms ease, background-color 200ms ease;
   position: relative;
   overflow: hidden;
@@ -63,7 +63,7 @@ html, body {
     90deg,
     transparent,
     rgba(255, 255, 255, 0.4),
-    rgba(0, 255, 255, 0.6),
+    rgba(250, 100, 0, 0.6),
     rgba(255, 255, 255, 0.4),
     transparent
   );
@@ -94,19 +94,19 @@ html, body {
 
 .btn-void:hover {
   box-shadow:
-    0 0 24px rgba(0, 255, 255, 0.8),
-    0 0 48px rgba(0, 255, 255, 0.4),
-    0 0 2px rgba(0, 255, 255, 1) inset;
-  background-color: rgba(0, 255, 255, 0.1);
+    0 0 24px rgba(250, 100, 0, 0.8),
+    0 0 48px rgba(250, 100, 0, 0.4),
+    0 0 2px rgba(250, 100, 0, 1) inset;
+  background-color: rgba(250, 100, 0, 0.1);
   transform: translateY(-2px);
 }
 
 .btn-void:active {
   box-shadow:
-    0 0 32px rgba(0, 255, 255, 1),
-    0 0 64px rgba(0, 255, 255, 0.6),
-    0 0 4px rgba(0, 255, 255, 1) inset;
-  background-color: rgba(0, 255, 255, 0.2);
+    0 0 32px rgba(250, 100, 0, 1),
+    0 0 64px rgba(250, 100, 0, 0.6),
+    0 0 4px rgba(250, 100, 0, 1) inset;
+  background-color: rgba(250, 100, 0, 0.2);
   transform: translateY(0);
 }
 
@@ -218,7 +218,7 @@ html, body {
 .timer-void {
   display: inline-flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   padding: 8px 16px;
   border-radius: 12px;
@@ -231,11 +231,11 @@ html, body {
   max-width: 100%;
   transform: none;
   transform-origin: center;
-  animation: floatVertical 5s ease-in-out infinite;
+  animation: none;
   animation-delay: 0s;
   vertical-align: middle;
   height: fit-content;
-  align-self: center;
+  align-self: flex-end;
 }
 
 @media (min-width: 768px) {
@@ -245,9 +245,9 @@ html, body {
     max-width: none;
     padding: 14px 24px;
     transform: none;
-    animation: floatVerticalDesktop 5s ease-in-out infinite;
+    animation: none;
     animation-delay: 0s;
-    align-self: center;
+    align-self: flex-end;
   }
 }
 

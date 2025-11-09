@@ -2,12 +2,12 @@ import Price from "./Price";
 
 export default function Pricing() {
   return (
-    <div className="mt-16 max-w-lg mx-auto text-center">
+    <div className="mt-8 md:mt-4 max-w-lg mx-auto text-center">
       {/* Branded price block: orange $297 + exploding "$600 value" */}
-      <div className="mt-8">
+      <div className="mt-4 md:mt-2">
         <Price />
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10" style={{ alignItems: 'center', alignContent: 'center' }}>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-6 md:mt-4" style={{ alignItems: 'center', alignContent: 'center' }}>
         <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
           <a
             id="pricing-enroll"

@@ -53,8 +53,8 @@ export default function Timer() {
 
   if (isLoading) {
     return (
-      <div className="text-center text-white">
-        <div className="text-sm text-gray-400">Loading timer...</div>
+      <div className="text-right text-white">
+        <div className="text-xs text-gray-400">Loading...</div>
       </div>
     );
   }
@@ -77,12 +77,12 @@ export default function Timer() {
   };
 
   return (
-    <div className="text-center text-white">
+    <div className="text-right text-white">
       <div className="timer-void">
-        <div className="text-xs text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.625rem, 2vw, 0.9375rem)', lineHeight: '1' }}>
+        <div className="text-xs text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.625rem, 1.2vw, 0.875rem)', lineHeight: '1' }}>
           Time Remaining
         </div>
-        <div className="font-bold text-white" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 3vw, 1.5rem)', lineHeight: '1.2', fontWeight: '600' }}>
+        <div className="font-bold text-white" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.875rem, 2vw, 1.25rem)', lineHeight: '1.2', fontWeight: '600' }}>
           {formatTime(timeRemaining)}
         </div>
       </div>
