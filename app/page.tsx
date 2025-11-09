@@ -5,9 +5,16 @@ import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
-import TimerSticker from "./components/TimerSticker";
+import Timer from "./components/Timer";
 import Image from "next/image";
 import "./components/price.css";
+
+// Extend Window interface for custom properties
+declare global {
+  interface Window {
+    webkitAudioContext?: typeof AudioContext;
+  }
+}
 
 export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
@@ -43,7 +50,7 @@ export default function Home() {
     try {
       // Initialize AudioContext if needed
       if (!audioContextRef.current) {
-        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
       }
       const audioContext = audioContextRef.current;
 
@@ -105,18 +112,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
+      {/* Static Timer at Top */}
+      <div id="timer-container" className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10 py-2 md:py-3">
+        <div className="max-w-7xl mx-auto px-6">
+          <Timer />
+        </div>
+      </div>
+      
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 -mt-12 md:-mt-12 bg-transparent">
+      <section className="relative text-white overflow-hidden z-10 -mt-12 md:-mt-12 bg-transparent pt-16">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 pt-12 md:pt-0 pb-2">
           <div className="text-center">
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void -mt-4 text-center opacity-90 text-xl md:text-2xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+            <h2 className="h2-void mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
               Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-base md:text-xl text-gray-400 mb-6 max-w-2xl mx-auto -mt-1" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+            <p className="text-gray-400 mb-6 max-w-2xl mx-auto mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
@@ -172,14 +186,14 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection relative z-10 pb-16 md:pb-24">
         <div className="voidContainer">
           <Pricing />
         </div>
       </section>
 
       {/* Program Details Section */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection relative z-10 pt-8 md:pt-12">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
@@ -281,7 +295,7 @@ export default function Home() {
             <button
               onClick={() => setShowWeekPackOverlay(true)}
               className="text-cyan-400 hover:text-cyan-300 underline"
-              style={{ fontSize: '150%' }}
+              style={{ fontSize: '112.5%' }}
             >
               See a Weekly Pack
             </button>
@@ -411,13 +425,20 @@ export default function Home() {
                     <span className="current-price">
                       $297
                     </span>
-                    <span className="black-friday-sticker shiny-sticker">Black Friday deal</span>
                   </span>
                 </div>
                 <div className="text-gray-300 mt-1 founders-annual-pass-title" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 800 }}>
-                  <span className="block md:hidden">Founders Annual Pass</span>
+                  <span className="block md:hidden">
+                    Founders Annual Pass
+                    <div className="mt-2 flex justify-center">
+                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Special</span>
+                    </div>
+                  </span>
                   <span className="hidden md:block">
                     Founders Annual<br />Pass
+                    <div className="mt-2 flex justify-center">
+                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Special</span>
+                    </div>
                   </span>
                 </div>
                 <div className="text-lg text-gray-300 mt-2">
@@ -517,7 +538,6 @@ export default function Home() {
                   >
                     BUY NOW
                   </a>
-                  <TimerSticker />
                 </div>
               </div>
               <p className="text-sm text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace' }}>
@@ -715,3 +735,5 @@ export default function Home() {
     </div>
   );
 }
+
+

@@ -3,9 +3,9 @@ export default function Hero() {
     <section className="text-white relative">
       <div className="mx-auto max-w-5xl px-6 py-20 text-center">
         {/* Eyebrow */}
-        <p className="text-sm md:text-base tracking-wide text-neutral-300">
-          Void Underground
-        </p>
+        <div className="text-sm md:text-base tracking-wide text-neutral-300">
+          Void Underground <span className="text-cyan-400 ml-2">Black Friday Special</span>
+        </div>
 
         {/* Main headline */}
         <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">

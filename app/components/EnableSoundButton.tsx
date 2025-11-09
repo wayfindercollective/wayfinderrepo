@@ -1,7 +1,21 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { exo2 } from '../fonts';
+
+// Extend Window interface for custom properties
+declare global {
+  interface Window {
+    webkitAudioContext?: typeof AudioContext;
+    audioContext?: AudioContext;
+  }
+}
+
+interface FlickerDataEvent extends CustomEvent {
+  detail: {
+    intensity: number;
+    brightness: number;
+  };
+}
 
 export default function EnableSoundButton() {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
@@ -21,13 +35,13 @@ export default function EnableSoundButton() {
 
   const initAudio = async () => {
     // Create AudioContext
-    const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const ctx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
     
     // Try to resume audio context if suspended (handles autoplay policies)
     if (ctx.state === 'suspended') {
       try {
         await ctx.resume();
-      } catch (error) {
+      } catch {
         // Browser may require user interaction - that's okay, context is still created
         console.log('Audio context suspended, will need user interaction');
       }
@@ -37,16 +51,17 @@ export default function EnableSoundButton() {
     
     // Expose audioContext globally so you can use it to play sounds
     if (typeof window !== 'undefined') {
-      (window as any).audioContext = ctx;
+      window.audioContext = ctx;
       localStorage.setItem('soundEnabled', 'true');
     }
   };
 
   // Listen for flicker data from HeroLogo to apply to button and loading message
   useEffect(() => {
-    const handleFlickerData = (event: any) => {
-      if (isFlickering && event.detail) {
-        const { intensity, brightness } = event.detail;
+    const handleFlickerData = (event: Event) => {
+      const flickerEvent = event as FlickerDataEvent;
+      if (isFlickering && flickerEvent.detail) {
+        const { intensity, brightness } = flickerEvent.detail;
         const opacity = Math.max(0.1, Math.min(1.0, intensity));
         // Use the same filter as the logo: contrast(1.4) brightness() saturate(1.2)
         const filterValue = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
@@ -89,9 +104,10 @@ export default function EnableSoundButton() {
 
   // Listen for audio duration
   useEffect(() => {
-    const handleAudioDuration = (event: any) => {
-      if (event.detail && event.detail.duration) {
-        setAudioDuration(event.detail.duration);
+    const handleAudioDuration = (event: Event) => {
+      const customEvent = event as CustomEvent<{ duration: number }>;
+      if (customEvent.detail && customEvent.detail.duration) {
+        setAudioDuration(customEvent.detail.duration);
       }
     };
 
@@ -263,7 +279,23 @@ export default function EnableSoundButton() {
       // Scroll to the Buy Now button in Pricing section
       const enrollButton = document.getElementById('pricing-enroll');
       if (enrollButton) {
-        enrollButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Get timer height to account for it in centering calculation
+        const timerContainer = document.getElementById('timer-container');
+        const timerHeight = timerContainer ? timerContainer.offsetHeight : 0;
+        
+        // Calculate the position to center the button in the viewport (excluding timer)
+        const rect = enrollButton.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const elementTop = rect.top + scrollTop;
+        const elementHeight = rect.height;
+        const windowHeight = window.innerHeight;
+        const visibleHeight = windowHeight - timerHeight; // Subtract timer height
+        const offset = elementTop - (visibleHeight / 2) + (elementHeight / 2) - timerHeight;
+        
+        window.scrollTo({
+          top: offset,
+          behavior: 'smooth'
+        });
         setShowLoading(false);
       }
     }, 750);
@@ -377,16 +409,17 @@ export default function EnableSoundButton() {
       {showLoading && (
         <div 
           ref={loadingRef}
-          className="mt-4 flex items-center gap-3 text-[#00FFFF] text-base"
+          className="mt-4 flex items-center gap-2 md:gap-3 text-[#00FFFF]"
           style={{
             opacity: 1,
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
             WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
-            transition: 'none' // Remove transition to allow instant flicker
+            transition: 'none', // Remove transition to allow instant flicker
+            fontSize: 'clamp(0.75rem, 1.5vw, 1rem)'
           }}
         >
-          <div className="relative w-5 h-5 flex-shrink-0">
-            <svg className="w-5 h-5 transform -rotate-90" viewBox="0 0 20 20">
+          <div className="relative flex-shrink-0" style={{ width: 'clamp(0.875rem, 1.5vw, 1.25rem)', height: 'clamp(0.875rem, 1.5vw, 1.25rem)' }}>
+            <svg className="transform -rotate-90" style={{ width: '100%', height: '100%' }} viewBox="0 0 20 20">
               {/* Background circle */}
               <circle
                 cx="10"

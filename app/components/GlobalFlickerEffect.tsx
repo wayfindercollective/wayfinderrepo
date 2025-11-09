@@ -54,9 +54,10 @@ export default function GlobalFlickerEffect() {
 
   // Listen for flicker data from HeroLogo to apply to all elements (intense flicker for first 0.75s)
   useEffect(() => {
-    const handleFlickerData = (event: any) => {
-      if (isFlickering && event.detail) {
-        const { intensity, brightness } = event.detail;
+    const handleFlickerData = (event: Event) => {
+      const flickerEvent = event as CustomEvent<{ intensity: number; brightness: number }>;
+      if (isFlickering && flickerEvent.detail) {
+        const { intensity, brightness } = flickerEvent.detail;
         const opacity = Math.max(0.1, Math.min(1.0, intensity));
         // Use the same filter as the logo: contrast(1.4) brightness() saturate(1.2)
         const filterValue = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
@@ -76,12 +77,16 @@ export default function GlobalFlickerEffect() {
           // Skip elements that already have specific flicker handling
           // Skip canvas elements (starfield)
           // Skip script and style tags
+          // Skip timer element
           if (
             htmlElement.id === 'heroCta' ||
+            htmlElement.id === 'timer-container' ||
             htmlElement.classList.contains('starfieldCanvas') ||
             htmlElement.tagName === 'SCRIPT' ||
             htmlElement.tagName === 'STYLE' ||
-            htmlElement.tagName === 'NOSCRIPT'
+            htmlElement.tagName === 'NOSCRIPT' ||
+            htmlElement.querySelector('.timer-void') ||
+            htmlElement.querySelector('[class*="timer"]')
           ) {
             return;
           }
@@ -150,6 +155,11 @@ export default function GlobalFlickerEffect() {
           return;
         }
         
+        // Skip timer elements
+        if (htmlElement.id === 'timer-container' || htmlElement.classList.contains('timer-void') || htmlElement.closest('.timer-void') || htmlElement.closest('#timer-container') || htmlElement.querySelector('.timer-void')) {
+          return;
+        }
+        
         // Add flicker class to text and logos
         htmlElement.classList.add('global-text-flicker');
       });
@@ -181,10 +191,13 @@ export default function GlobalFlickerEffect() {
         const htmlElement = element as HTMLElement;
         if (
           htmlElement.id === 'heroCta' ||
+          htmlElement.id === 'timer-container' ||
           htmlElement.classList.contains('starfieldCanvas') ||
           htmlElement.tagName === 'SCRIPT' ||
           htmlElement.tagName === 'STYLE' ||
-          htmlElement.tagName === 'NOSCRIPT'
+          htmlElement.tagName === 'NOSCRIPT' ||
+          htmlElement.querySelector('.timer-void') ||
+          htmlElement.querySelector('[class*="timer"]')
         ) {
           return;
         }

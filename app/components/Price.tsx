@@ -23,7 +23,7 @@ function makeShards(text: string) {
         className="shard"
         style={
           {
-            // @ts-ignore custom props for CSS
+            // @ts-expect-error custom props for CSS
             "--dx": dx,
             "--dy": dy,
             "--rot": rot,
@@ -95,7 +95,6 @@ export default function Price() {
           >
             $297
           </span>
-          <span className="black-friday-sticker shiny-sticker">Black Friday deal</span>
         </span>
         <span className="discount-note">50% Discount</span>
       </div>

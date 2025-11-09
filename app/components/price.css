@@ -70,6 +70,50 @@
   line-height: 1.2;
 }
 
+.black-friday-special-sticker {
+  display: inline-block;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 4px 8px;
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 700;
+  font-family: var(--font-display);
+  white-space: nowrap;
+  border: 1.5px solid #ffffff;
+  border-radius: 3px;
+  z-index: 10;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+}
+
+.black-friday-special-sticker-hero {
+  display: inline-block;
+  background-color: #000000;
+  color: #00ffff;
+  padding: 3px 6px;
+  font-size: clamp(8px, 0.8vw, 12px);
+  font-weight: 700;
+  font-family: var(--font-display);
+  white-space: nowrap;
+  border: 1.5px solid #00ffff;
+  border-radius: 3px;
+  transform-origin: center;
+  z-index: 10;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+  animation: floatVerticalHero 5s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+@media (min-width: 768px) {
+  .black-friday-special-sticker-hero {
+    padding: 4px 8px;
+    font-size: clamp(10px, 1vw, 12px);
+  }
+}
+
 .shiny-sticker {
   animation: shiny-glow 2s ease-in-out infinite;
 }
@@ -102,7 +146,7 @@
 }
 
 .timer-sticker.shiny-sticker {
-  /* Animation moved to .timer-sticker directly */
+  /* Animation moved to .timer-sticker directly - no additional styles needed */
 }
 
 @keyframes shiny-glow-orange {
@@ -139,6 +183,25 @@
       0 0 20px rgba(255, 255, 255, 0.6),
       0 0 30px rgba(255, 255, 255, 0.4);
     border-color: #ffffff;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes shiny-glow-cyan {
+  0%, 100% {
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 0 5px rgba(0, 255, 255, 0.3),
+      0 0 10px rgba(0, 255, 255, 0.2);
+    border-color: #00ffff;
+  }
+  50% {
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4);
+    border-color: #00ffff;
     filter: brightness(1.2);
   }
 }
@@ -396,5 +459,24 @@
   }
   50% {
     transform: scale(1.12);
+  }
+}
+
+@keyframes floatVerticalHero {
+  0% {
+    transform: rotate(12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(12deg) translateY(-8px);
+  }
+  100% {
+    transform: rotate(12deg) translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .black-friday-special-sticker-hero {
+    animation: floatVerticalHero 5s ease-in-out infinite;
+    animation-delay: 0s;
   }
 }

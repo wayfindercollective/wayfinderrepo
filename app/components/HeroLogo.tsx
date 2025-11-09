@@ -1,12 +1,28 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import Starfield from './Starfield';
 import EnableSoundButton from './EnableSoundButton';
+import './price.css';
+
+// Extend Window interface for custom properties
+declare global {
+  interface Window {
+    audioContext?: AudioContext;
+  }
+}
 
 export default function HeroLogo() {
-  const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
+  // Create audio element once using useMemo
+  const audioElement = useMemo(() => {
+    const audioPath = '/reality real story_2025-10-22T10-31-44_1.MP4'.replace(/ /g, '%20');
+    const audio = new Audio(audioPath);
+    audio.loop = false;
+    audio.volume = 1.0;
+    return audio;
+  }, []);
+
   const [flickerIntensity, setFlickerIntensity] = useState(1);
   const audioSourceRef = useRef<MediaElementAudioSourceNode | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
@@ -19,29 +35,17 @@ export default function HeroLogo() {
   const fadeOutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Create audio element for the video file
-    // URL encode spaces in filename
-    const audioPath = '/reality real story_2025-10-22T10-31-44_1.MP4'.replace(/ /g, '%20');
-    const audio = new Audio(audioPath);
-    audio.loop = false;
-    audio.volume = 1.0;
-    
-    // Note: Audio duration is now controlled manually (5 seconds + fade out)
-    // The 'ended' event listener is removed since we handle stopping manually
-    
-    setAudioElement(audio);
-
+    // Cleanup on unmount
     return () => {
-      // Cleanup
-      if (audio) {
-        audio.pause();
-        audio.src = '';
+      if (audioElement) {
+        audioElement.pause();
+        audioElement.src = '';
       }
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [audioElement]);
 
   // Analyze audio and update flicker effect
   const analyzeAudio = () => {
@@ -278,7 +282,7 @@ export default function HeroLogo() {
       return; // Don't play audio if disabled
     }
 
-    const audioCtx = (window as any).audioContext;
+    const audioCtx = window.audioContext;
     
     // If Web Audio API is enabled, connect the audio element to it
     if (audioCtx) {
@@ -355,7 +359,7 @@ export default function HeroLogo() {
     
     // After 5 seconds, start fading out
     fadeOutTimeoutRef.current = setTimeout(() => {
-      const audioCtx = (window as any).audioContext;
+      const audioCtx = window.audioContext;
       if (gainNodeRef.current && audioCtx) {
         const gainNode = gainNodeRef.current;
         const currentTime = audioCtx.currentTime;
@@ -497,7 +501,7 @@ export default function HeroLogo() {
           animationFrameRef.current = null;
         }
 
-        const audioCtx = (window as any).audioContext;
+        const audioCtx = window.audioContext;
         
         // If Web Audio API is enabled, connect the audio element to it
         if (audioCtx) {
@@ -603,7 +607,7 @@ export default function HeroLogo() {
         
         // After 5 seconds, start fading out
         fadeOutTimeoutRef.current = setTimeout(() => {
-          const audioCtx = (window as any).audioContext;
+          const audioCtx = window.audioContext;
           if (gainNodeRef.current && audioCtx) {
             const gainNode = gainNodeRef.current;
             const currentTime = audioCtx.currentTime;
@@ -671,7 +675,7 @@ export default function HeroLogo() {
       {/* logo plus cyan underline */}
       <div 
         ref={logoRef}
-        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto mt-0 md:-mt-4 mb-[4vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
+        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto mt-0 md:-mt-4 mb-[5vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
       >
         <Image
           src="/Master_Logo.png?v=2"
@@ -703,8 +707,13 @@ export default function HeroLogo() {
         />
 
         {/* Sound button - visible on all screen sizes */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10 mt-2 md:mt-0">
           <EnableSoundButton />
+        </div>
+
+        {/* Black Friday Special sticker - positioned to the right of the logo */}
+        <div className="absolute right-0 top-[20%] md:top-[15%] z-10">
+          <span className="black-friday-special-sticker-hero">Black Friday Special</span>
         </div>
       </div>
     </section>
