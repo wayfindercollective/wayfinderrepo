@@ -74,6 +74,56 @@
   animation: shiny-glow 2s ease-in-out infinite;
 }
 
+.timer-sticker {
+  position: absolute;
+  bottom: -5px;
+  right: -30px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 4px 5px;
+  font-size: clamp(7px, 0.7vw, 9px);
+  font-weight: 600 !important;
+  font-family: var(--font-display) !important;
+  white-space: nowrap;
+  border: 1.5px solid var(--void-orange);
+  border-radius: 3px;
+  transform: rotate(-18deg);
+  transform-origin: center;
+  z-index: 10;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.02em !important;
+  line-height: 1.2;
+  animation: shiny-glow-orange 2s ease-in-out infinite;
+  width: auto;
+  min-width: fit-content;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: visible;
+}
+
+.timer-sticker.shiny-sticker {
+  /* Animation moved to .timer-sticker directly */
+}
+
+@keyframes shiny-glow-orange {
+  0%, 100% {
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 0 3px rgba(250, 100, 0, 0.3),
+      0 0 6px rgba(250, 100, 0, 0.2);
+    border-color: var(--void-orange);
+  }
+  50% {
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 0 6px rgba(250, 100, 0, 0.6),
+      0 0 12px rgba(250, 100, 0, 0.4),
+      0 0 18px rgba(250, 100, 0, 0.2);
+    border-color: var(--void-orange);
+    filter: brightness(1.1);
+  }
+}
+
 @keyframes shiny-glow {
   0%, 100% {
     box-shadow: 

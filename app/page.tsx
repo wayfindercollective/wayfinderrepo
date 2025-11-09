@@ -5,6 +5,7 @@ import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
+import TimerSticker from "./components/TimerSticker";
 import Image from "next/image";
 import "./components/price.css";
 
@@ -498,16 +499,19 @@ export default function Home() {
                   <span>From Charisma in the Void</span>
                 </div>
               </div>
-              <div className="text-center">
-                <a
-                  id="enroll"
-                  href="https://bookmyeventnow.com/register?a=new&p=32"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-void mt-10 inline-block"
-                >
-                  BUY NOW
-                </a>
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10" style={{ alignItems: 'center', alignContent: 'center' }}>
+                <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
+                  <a
+                    id="enroll"
+                    href="https://bookmyeventnow.com/register?a=new&p=32"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-void mt-10 inline-block"
+                  >
+                    BUY NOW
+                  </a>
+                  <TimerSticker />
+                </div>
               </div>
               <p className="text-sm text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace' }}>
                 One time payment for twelve months of access.

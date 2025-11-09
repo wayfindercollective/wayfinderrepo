@@ -122,20 +122,39 @@ html, body {
   transform-origin: center;
   border-color: var(--orange);
   color: var(--white);
-  animation: floatVertical 5s ease-in-out infinite;
-  font-size: 1rem;
-  padding: 14px 24px;
+  font-size: 1.15rem;
+  padding: 16px 28px;
+  vertical-align: middle;
+  align-self: center;
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-display);
 }
 
 @media (min-width: 768px) {
   .btn-void.mt-10 {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     width: auto !important;
     max-width: none;
     transform: none;
-    font-size: 1rem;
-    padding: 14px 24px;
+    font-size: 1.15rem;
+    padding: 16px 28px;
+    height: auto;
+    align-self: center;
+  }
+}
+
+.btn-wrapper-float {
+  animation: floatVertical 5s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+@media (min-width: 768px) {
+  .btn-wrapper-float {
     animation: floatVerticalDesktop 5s ease-in-out infinite;
+    animation-delay: 0s;
   }
 }
 
@@ -195,4 +214,70 @@ html, body {
   }
 }
 
+/* Timer styling to match Buy Now button */
+.timer-void {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 12px;
+  background: var(--pure-black);
+  color: var(--white);
+  border: 1px solid var(--orange);
+  transition: box-shadow 200ms ease, transform 200ms ease, background-color 200ms ease;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  transform: none;
+  transform-origin: center;
+  animation: floatVertical 5s ease-in-out infinite;
+  animation-delay: 0s;
+  vertical-align: middle;
+  height: fit-content;
+  align-self: center;
+}
 
+@media (min-width: 768px) {
+  .timer-void {
+    display: inline-flex;
+    width: auto !important;
+    max-width: none;
+    transform: none;
+    animation: floatVerticalDesktop 5s ease-in-out infinite;
+    animation-delay: 0s;
+    align-self: center;
+  }
+}
+
+.timer-void:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange);
+  box-shadow:
+    0 0 24px rgba(250, 100, 0, 0.8),
+    0 0 48px rgba(250, 100, 0, 0.4),
+    0 0 2px rgba(250, 100, 0, 1) inset;
+  background-color: rgba(250, 100, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .timer-void:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.timer-void:active {
+  transform: translateY(0);
+  border-color: var(--orange);
+  box-shadow:
+    0 0 32px rgba(250, 100, 0, 1),
+    0 0 64px rgba(250, 100, 0, 0.6),
+    0 0 4px rgba(250, 100, 0, 1) inset;
+  background-color: rgba(250, 100, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .timer-void:active {
+    transform: translateY(0);
+  }
+}

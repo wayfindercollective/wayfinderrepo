@@ -1,4 +1,5 @@
 import Price from "./Price";
+import TimerSticker from "./TimerSticker";
 
 export default function Pricing() {
   return (
@@ -7,15 +8,20 @@ export default function Pricing() {
       <div className="mt-8">
         <Price />
       </div>
-      <a
-        id="pricing-enroll"
-        href="https://bookmyeventnow.com/register?a=new&p=32"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-void mt-10 inline-block"
-      >
-        BUY NOW
-      </a>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10" style={{ alignItems: 'center', alignContent: 'center' }}>
+        <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
+          <a
+            id="pricing-enroll"
+            href="https://bookmyeventnow.com/register?a=new&p=32"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-void mt-10 inline-block"
+          >
+            BUY NOW
+          </a>
+          <TimerSticker />
+        </div>
+      </div>
     </div>
   );
 }
