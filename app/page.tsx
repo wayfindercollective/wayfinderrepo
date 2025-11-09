@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
@@ -15,6 +15,13 @@ export default function Home() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastPlayTimeRef = useRef<number>(0);
+
+  useEffect(() => {
+    const commitSha = process.env.NEXT_PUBLIC_COMMIT_SHA;
+    if (commitSha) {
+      console.log(`build ${commitSha}`);
+    }
+  }, []);
 
   // Create triangle sound effect for hourglass
   const playHourglassPing = () => {
