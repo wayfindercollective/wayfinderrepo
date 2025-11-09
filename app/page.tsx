@@ -137,9 +137,9 @@ export default function Home() {
 
       {/* What You Get Section */}
       <section id="what-you-get" className="voidSection relative z-10 md:mt-20">
-        <div className="voidContainer md:!py-8">
+        <div className="voidContainer md:!py-6">
           <div className="sectionTitleWrapper">
-            <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-8 md:mb-12 text-white sectionTitle sectionTitleOrange sectionTitleTight">
+            <AnimatedSectionTitle className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-white sectionTitle sectionTitleOrange sectionTitleTight">
               <span className="inline-flex items-center gap-3">
                 <span className="cyan-dots-wrapper">
                   <Image 
@@ -154,27 +154,27 @@ export default function Home() {
               </span>
             </AnimatedSectionTitle>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-3">
             <AnimatedColumn direction="left">
-              <div className="cardVoid p-8">
-                <h3 className="text-lg md:text-xl font-bold mb-4">Founders Annual Pass</h3>
-                <p>
+              <div className="cardVoid p-6">
+                <h3 className="text-base md:text-lg font-bold mb-3">Founders Annual Pass</h3>
+                <p className="text-sm md:text-base">
                   Twelve months inside the program. Weekly lessons. Guided practices. Real world exercises. Live group sessions. Clear progress markers.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="fade">
-              <div className="cardVoid p-8">
-                <h3 className="text-lg md:text-xl font-bold mb-4">Community that trains</h3>
-                <p>
+              <div className="cardVoid p-6">
+                <h3 className="text-base md:text-lg font-bold mb-3">Community that trains</h3>
+                <p className="text-sm md:text-base">
                   People who show up, post results, and give useful feedback. Less talk. More proof.
                 </p>
               </div>
             </AnimatedColumn>
             <AnimatedColumn direction="right">
-              <div className="cardVoid p-8">
-                <h3 className="text-lg md:text-xl font-bold mb-4">Credit for live training</h3>
-                <p>
+              <div className="cardVoid p-6">
+                <h3 className="text-base md:text-lg font-bold mb-3">Credit for live training</h3>
+                <p className="text-sm md:text-base">
                   $500 credit you can use for a Jeffy Bootcamp in 2025 or 2026.
                 </p>
               </div>
@@ -185,7 +185,7 @@ export default function Home() {
 
       {/* Pricing Section */}
       <section id="pricing-section" className="voidSection relative z-10 pb-8 md:pb-12">
-        <div className="voidContainer md:!py-8">
+        <div className="voidContainer md:!py-6">
           <Pricing />
         </div>
       </section>
