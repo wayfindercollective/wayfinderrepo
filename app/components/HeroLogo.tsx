@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Starfield from './Starfield';
 import EnableSoundButton from './EnableSoundButton';
+import './price.css';
 
 export default function HeroLogo() {
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
@@ -705,6 +706,11 @@ export default function HeroLogo() {
         {/* Sound button - visible on all screen sizes */}
         <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-10">
           <EnableSoundButton />
+        </div>
+
+        {/* Black Friday Special sticker - positioned to the right of the logo */}
+        <div className="absolute right-0 top-[20%] md:top-[15%] z-10">
+          <span className="black-friday-special-sticker-hero">Black Friday Special</span>
         </div>
       </div>
     </section>

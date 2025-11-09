@@ -95,7 +95,6 @@ export default function Price() {
           >
             $297
           </span>
-          <span className="black-friday-sticker shiny-sticker">Black Friday deal</span>
         </span>
         <span className="discount-note">50% Discount</span>
       </div>

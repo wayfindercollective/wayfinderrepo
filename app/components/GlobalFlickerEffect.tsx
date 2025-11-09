@@ -76,12 +76,16 @@ export default function GlobalFlickerEffect() {
           // Skip elements that already have specific flicker handling
           // Skip canvas elements (starfield)
           // Skip script and style tags
+          // Skip timer element
           if (
             htmlElement.id === 'heroCta' ||
+            htmlElement.id === 'timer-container' ||
             htmlElement.classList.contains('starfieldCanvas') ||
             htmlElement.tagName === 'SCRIPT' ||
             htmlElement.tagName === 'STYLE' ||
-            htmlElement.tagName === 'NOSCRIPT'
+            htmlElement.tagName === 'NOSCRIPT' ||
+            htmlElement.querySelector('.timer-void') ||
+            htmlElement.querySelector('[class*="timer"]')
           ) {
             return;
           }
@@ -150,6 +154,11 @@ export default function GlobalFlickerEffect() {
           return;
         }
         
+        // Skip timer elements
+        if (htmlElement.id === 'timer-container' || htmlElement.classList.contains('timer-void') || htmlElement.closest('.timer-void') || htmlElement.closest('#timer-container') || htmlElement.querySelector('.timer-void')) {
+          return;
+        }
+        
         // Add flicker class to text and logos
         htmlElement.classList.add('global-text-flicker');
       });
@@ -181,10 +190,13 @@ export default function GlobalFlickerEffect() {
         const htmlElement = element as HTMLElement;
         if (
           htmlElement.id === 'heroCta' ||
+          htmlElement.id === 'timer-container' ||
           htmlElement.classList.contains('starfieldCanvas') ||
           htmlElement.tagName === 'SCRIPT' ||
           htmlElement.tagName === 'STYLE' ||
-          htmlElement.tagName === 'NOSCRIPT'
+          htmlElement.tagName === 'NOSCRIPT' ||
+          htmlElement.querySelector('.timer-void') ||
+          htmlElement.querySelector('[class*="timer"]')
         ) {
           return;
         }

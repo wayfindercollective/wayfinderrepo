@@ -1,5 +1,4 @@
 import Price from "./Price";
-import TimerSticker from "./TimerSticker";
 
 export default function Pricing() {
   return (
@@ -19,7 +18,6 @@ export default function Pricing() {
           >
             BUY NOW
           </a>
-          <TimerSticker />
         </div>
       </div>
     </div>
