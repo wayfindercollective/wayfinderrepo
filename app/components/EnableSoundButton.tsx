@@ -467,30 +467,86 @@ export default function EnableSoundButton() {
     }
   };
 
-  // Handle touch events for mobile (debounced to prevent double-firing with click)
+  // Handle touch events for mobile - more direct approach
   const lastTriggerTimeRef = useRef<number>(0);
+  const touchHandledRef = useRef<boolean>(false);
+  
+  const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+    // Mark that we're handling a touch
+    touchHandledRef.current = true;
+  };
+  
   const handleTouchEnd = async (e: React.TouchEvent<HTMLButtonElement>) => {
+    if (!touchHandledRef.current) return;
+    
     const now = Date.now();
-    // Debounce: if event happened within 200ms of last trigger, ignore it
-    if (now - lastTriggerTimeRef.current < 200) {
-      e.preventDefault();
+    // Debounce: if event happened within 300ms of last trigger, ignore it
+    if (now - lastTriggerTimeRef.current < 300) {
+      touchHandledRef.current = false;
       return;
     }
     lastTriggerTimeRef.current = now;
+    
+    // Prevent default to stop click event from also firing
     e.preventDefault();
+    e.stopPropagation();
+    
+    // Call handleClick directly
+    await handleClick();
+    
+    // Reset flag after a delay
+    setTimeout(() => {
+      touchHandledRef.current = false;
+    }, 500);
+  };
+
+  const handleClickWrapper = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    // If touch was already handled, prevent double-firing
+    if (touchHandledRef.current) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
     await handleClick();
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div 
+      className="flex flex-col items-center" 
+      style={{ 
+        position: 'relative', 
+        zIndex: 20, 
+        pointerEvents: 'auto',
+        touchAction: 'manipulation'
+      }}
+      onTouchStart={(e) => e.stopPropagation()}
+      onTouchEnd={(e) => e.stopPropagation()}
+    >
       <button
         id="heroCta"
         ref={buttonRef}
-        onClick={handleClick}
+        onClick={handleClickWrapper}
+        onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
+        style={{ 
+          touchAction: 'manipulation',
+          WebkitTapHighlightColor: 'transparent',
+          position: 'relative',
+          zIndex: 20,
+          pointerEvents: 'auto',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          minWidth: '44px',
+          minHeight: '44px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          WebkitTouchCallout: 'none'
+        }}
         className="px-3 md:px-6 py-1.5 md:py-3 bg-black border-2 border-white rounded text-[#00FFFF] text-base md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer relative uppercase font-[var(--fontB-display)] tracking-[0.1em] font-bold opacity-100 transition-none mt-0 md:mt-[45px]"
       >
-        <span className="relative z-[2]">Join the Void</span>
+        <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>Join the Void</span>
       </button>
       
       {showLoading && (

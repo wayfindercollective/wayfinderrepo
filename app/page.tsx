@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       {/* Program Details Section */}
-      <section className="voidSection relative z-10 pt-8 md:pt-12">
+      <section className="voidSection relative z-10 pt-8 md:pt-12 md:mt-20">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
