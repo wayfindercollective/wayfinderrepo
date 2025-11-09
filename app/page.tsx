@@ -172,14 +172,14 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection relative z-10 pb-16 md:pb-24">
         <div className="voidContainer">
           <Pricing />
         </div>
       </section>
 
       {/* Program Details Section */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection relative z-10 pt-8 md:pt-12">
         <div className="voidContainer">
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-16 text-white sectionTitle sectionTitleMagenta">
@@ -281,7 +281,7 @@ export default function Home() {
             <button
               onClick={() => setShowWeekPackOverlay(true)}
               className="text-cyan-400 hover:text-cyan-300 underline"
-              style={{ fontSize: '150%' }}
+              style={{ fontSize: '112.5%' }}
             >
               See a Weekly Pack
             </button>

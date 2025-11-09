@@ -263,7 +263,23 @@ export default function EnableSoundButton() {
       // Scroll to the Buy Now button in Pricing section
       const enrollButton = document.getElementById('pricing-enroll');
       if (enrollButton) {
-        enrollButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Get timer height to account for it in centering calculation
+        const timerContainer = document.getElementById('timer-container');
+        const timerHeight = timerContainer ? timerContainer.offsetHeight : 0;
+        
+        // Calculate the position to center the button in the viewport (excluding timer)
+        const rect = enrollButton.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const elementTop = rect.top + scrollTop;
+        const elementHeight = rect.height;
+        const windowHeight = window.innerHeight;
+        const visibleHeight = windowHeight - timerHeight; // Subtract timer height
+        const offset = elementTop - (visibleHeight / 2) + (elementHeight / 2) - timerHeight;
+        
+        window.scrollTo({
+          top: offset,
+          behavior: 'smooth'
+        });
         setShowLoading(false);
       }
     }, 750);
