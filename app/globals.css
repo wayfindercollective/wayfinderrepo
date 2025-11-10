@@ -454,6 +454,9 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 .signal-core-logo-wrapper {
   position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .signal-core-logo-static {
@@ -463,17 +466,35 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 
 .signal-core-logo-spin {
   transform-style: preserve-3d;
-  transition: transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center 50%;
   z-index: 2;
 }
 
 .group:hover .signal-core-logo-spin-left {
-  transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
+  animation: spin3dLeft 1.5s ease-in-out forwards;
 }
 
 .group:hover .signal-core-logo-spin-right {
-  transform: perspective(1000px) rotateY(-360deg) rotateX(10deg);
+  animation: spin3dRight 1.5s ease-in-out forwards;
+}
+
+@keyframes spin3dLeft {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg) translateZ(0px);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(10deg) translateZ(20px);
+  }
+}
+
+@keyframes spin3dRight {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg) translateZ(0px);
+  }
+  100% {
+    transform: rotateY(-360deg) rotateX(10deg) translateZ(20px);
+  }
 }
 
 /* Mobile responsive fixes for footer logos */

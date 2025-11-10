@@ -716,7 +716,7 @@ export default function HeroLogo() {
         </div>
 
         {/* Black Friday Special sticker - positioned diagonally to the right of the logo, touching the D in void */}
-        <div className="absolute right-[10%] md:right-[15%] top-[22%] md:top-[25%] z-10">
+        <div className="absolute right-[12%] md:right-[15%] top-[22%] md:top-[25%] z-10">
           <span className="black-friday-special-sticker-hero">Black Friday Special</span>
         </div>
       </div>

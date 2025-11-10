@@ -630,7 +630,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative text-white border-t border-white/10 z-10 min-h-[200px] md:min-h-[300px]">
         {/* Signal Core Logo - Left */}
-        <div className="absolute left-0 bottom-0 top-0 flex items-center group">
+        <div className="absolute left-8 md:left-16 lg:left-24 bottom-0 top-0 flex items-center group">
           <div className="h-full w-auto relative signal-core-logo-wrapper" style={{ height: '200px', width: 'auto' }}>
             {/* Static text layer */}
             <Image
@@ -665,7 +665,7 @@ export default function Home() {
           </div>
         </div>
         {/* Signal Core Logo - Right */}
-        <div className="absolute right-0 bottom-0 top-0 flex items-center justify-end group">
+        <div className="absolute right-8 md:right-16 lg:right-24 bottom-0 top-0 flex items-center justify-end group">
           <div className="h-full w-auto relative signal-core-logo-wrapper" style={{ height: '200px', width: 'auto' }}>
             {/* Static text layer */}
             <Image
