@@ -46,10 +46,30 @@ html, body {
   letter-spacing: 0.02em;
   background: var(--pure-black);
   color: var(--orange);
-  border: 1px solid var(--orange);
+  border: 2px solid var(--orange);
   transition: box-shadow 200ms ease, transform 200ms ease, background-color 200ms ease;
   position: relative;
   overflow: hidden;
+  animation: borderShine 2s ease-in-out infinite;
+}
+
+@keyframes borderShine {
+  0%, 100% {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 rgba(250, 100, 0, 0);
+  }
+  25% {
+    border-color: rgba(250, 100, 0, 0.8);
+    box-shadow: 0 0 8px rgba(250, 100, 0, 0.4);
+  }
+  50% {
+    border-color: rgba(255, 200, 100, 1);
+    box-shadow: 0 0 12px rgba(250, 100, 0, 0.6);
+  }
+  75% {
+    border-color: rgba(250, 100, 0, 0.8);
+    box-shadow: 0 0 8px rgba(250, 100, 0, 0.4);
+  }
 }
 
 .btn-void::before {
@@ -99,6 +119,17 @@ html, body {
     0 0 2px rgba(250, 100, 0, 1) inset;
   background-color: rgba(250, 100, 0, 0.1);
   transform: translateY(-2px);
+  border-color: var(--orange);
+  animation: borderShine 2s ease-in-out infinite, borderShineHover 2s ease-in-out infinite;
+}
+
+@keyframes borderShineHover {
+  0%, 100% {
+    border-color: var(--orange);
+  }
+  50% {
+    border-color: rgba(255, 200, 100, 1);
+  }
 }
 
 .btn-void:active {
@@ -120,6 +151,7 @@ html, body {
   max-width: 100%;
   transform: none;
   transform-origin: center;
+  border: 2px solid var(--orange);
   border-color: var(--orange);
   color: var(--white);
   font-size: 1.15rem;

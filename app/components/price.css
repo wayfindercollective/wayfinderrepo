@@ -146,8 +146,8 @@
   display: inline-block;
   background-color: #000000;
   color: #00ffff;
-  padding: 6px 12px;
-  font-size: clamp(20px, 2.5vw, 36px);
+  padding: 4.5px 9px;
+  font-size: clamp(15px, 1.875vw, 27px);
   font-weight: 700;
   font-family: var(--font-display);
   white-space: nowrap;
@@ -164,8 +164,8 @@
 
 @media (min-width: 768px) {
   .black-friday-special-sticker-hero {
-    padding: 8px 16px;
-    font-size: clamp(24px, 3vw, 42px);
+    padding: 6px 12px;
+    font-size: clamp(18px, 2.25vw, 31.5px);
     border-width: 2.5px;
     border-radius: 5px;
   }
@@ -517,13 +517,13 @@
 
 @keyframes floatVerticalHero {
   0% {
-    transform: translateY(0);
+    transform: rotate(12deg) translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: rotate(12deg) translateY(-8px);
   }
   100% {
-    transform: translateY(0);
+    transform: rotate(12deg) translateY(0);
   }
 }
 

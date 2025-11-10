@@ -415,7 +415,7 @@ export default function Home() {
               One-time payment for 12 months of premium access
             </p>
           </div>
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto md:scale-[0.8] md:origin-center">
             <div className="cardVoid p-12 text-center" onMouseEnter={handleColumnHover}>
               <div className="mb-8" style={{ fontSize: '150%' }}>
                 <div className="mb-2">
@@ -533,6 +533,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-void mt-10 inline-block"
+                    style={{ fontSize: '1.15rem', padding: '16px 28px' }}
                   >
                     BUY NOW
                   </a>
