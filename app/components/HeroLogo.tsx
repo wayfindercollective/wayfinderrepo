@@ -707,7 +707,7 @@ export default function HeroLogo() {
             group-hover:w-[86%]
             z-10
           "
-          style={{ top: '60%' }}
+          style={{ top: '57%' }}
         />
 
         {/* Sound button - visible on all screen sizes */}
