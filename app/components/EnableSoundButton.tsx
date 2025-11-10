@@ -370,12 +370,26 @@ export default function EnableSoundButton() {
     };
   }, [showLoading]);
 
+  // Single debounce ref for both touch and click events
+  const lastTriggerTimeRef = useRef<number>(0);
+  const isProcessingRef = useRef<boolean>(false);
+  
   const handleClick = async () => {
     const now = Date.now();
-    // Debounce: if event happened within 200ms of last trigger, ignore it
-    if (now - lastTriggerTimeRef.current < 200) {
+    
+    // Prevent multiple simultaneous executions
+    if (isProcessingRef.current) {
       return;
     }
+    
+    // Debounce: if event happened within 300ms of last trigger, ignore it
+    // This prevents rapid double-taps but allows legitimate single taps
+    // Only check if we've actually triggered before (lastTriggerTimeRef > 0)
+    if (lastTriggerTimeRef.current > 0 && now - lastTriggerTimeRef.current < 300) {
+      return;
+    }
+    
+    isProcessingRef.current = true;
     lastTriggerTimeRef.current = now;
     
     // Reset typewriter effect every time button is clicked
@@ -465,48 +479,21 @@ export default function EnableSoundButton() {
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('audioEnabled'));
     }
-  };
-
-  // Handle touch events for mobile - more direct approach
-  const lastTriggerTimeRef = useRef<number>(0);
-  const touchHandledRef = useRef<boolean>(false);
-  
-  const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
-    // Mark that we're handling a touch
-    touchHandledRef.current = true;
-  };
-  
-  const handleTouchEnd = async (e: React.TouchEvent<HTMLButtonElement>) => {
-    if (!touchHandledRef.current) return;
     
-    const now = Date.now();
-    // Debounce: if event happened within 300ms of last trigger, ignore it
-    if (now - lastTriggerTimeRef.current < 300) {
-      touchHandledRef.current = false;
-      return;
-    }
-    lastTriggerTimeRef.current = now;
-    
-    // Prevent default to stop click event from also firing
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Call handleClick directly
-    await handleClick();
-    
-    // Reset flag after a delay
+    // Reset processing flag after a short delay
     setTimeout(() => {
-      touchHandledRef.current = false;
-    }, 500);
+      isProcessingRef.current = false;
+    }, 100);
   };
 
-  const handleClickWrapper = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    // If touch was already handled, prevent double-firing
-    if (touchHandledRef.current) {
+  // Unified handler for both touch and click events
+  const handleInteraction = async (e: React.TouchEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>) => {
+    // Prevent default only for touch events to avoid double-firing
+    if ('touches' in e) {
       e.preventDefault();
       e.stopPropagation();
-      return;
     }
+    
     await handleClick();
   };
 
@@ -519,15 +506,12 @@ export default function EnableSoundButton() {
         pointerEvents: 'auto',
         touchAction: 'manipulation'
       }}
-      onTouchStart={(e) => e.stopPropagation()}
-      onTouchEnd={(e) => e.stopPropagation()}
     >
       <button
         id="heroCta"
         ref={buttonRef}
-        onClick={handleClickWrapper}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
+        onClick={handleInteraction}
+        onTouchEnd={handleInteraction}
         style={{ 
           touchAction: 'manipulation',
           WebkitTapHighlightColor: 'transparent',
