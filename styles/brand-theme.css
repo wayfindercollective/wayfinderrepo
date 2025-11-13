@@ -40,7 +40,7 @@ html, body {
   justify-content: center;
   padding: 14px 24px;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700; /* Heavier weight to anchor against glowing environment */
   font-family: var(--fontB-display);
   font-size: 1rem;
   letter-spacing: 0.02em;
@@ -49,8 +49,20 @@ html, body {
   border: 2px solid var(--orange);
   transition: box-shadow 200ms ease, transform 200ms ease, background-color 200ms ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allow glow to show */
   animation: borderShine 2s ease-in-out infinite;
+}
+
+/* Ambient radial gradient background glow - very subtle hue */
+.btn-void::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.1) 0%, rgba(0, 255, 255, 0.06) 35%, transparent 65%);
+  border-radius: 12px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 @keyframes borderShine {

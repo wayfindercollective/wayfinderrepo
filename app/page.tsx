@@ -118,14 +118,14 @@ export default function Home() {
       </div>
       
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 bg-transparent pt-16">
-        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 pt-12 md:pt-0 pb-2">
+      <section className="relative text-white overflow-hidden z-10 bg-transparent min-h-screen flex items-center justify-center pt-32 md:pt-40">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 w-full">
           <div className="text-center">
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
             <h2 className="h2-void mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
-              Reality is broken. <span className="emphasis-word">Charisma</span> bends it.
+              Reality is broken. <span className="emphasis-word charisma-word">Charisma</span> bends it.
             </h2>
 
             <p className="text-gray-400 mb-6 max-w-2xl mx-auto mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
@@ -184,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing-section" className="voidSection relative z-10 pb-8 md:pb-12">
+      <section id="pricing-section" className="voidSection voidSection-alt relative z-10 pb-8 md:pb-12">
         <div className="voidContainer md:!py-6">
           <Pricing />
         </div>
@@ -330,7 +330,7 @@ export default function Home() {
       )}
 
       {/* WHY VOID UNDERGROUND */}
-      <section className="voidSection relative z-10">
+      <section className="voidSection voidSection-alt relative z-10">
         <div className="voidContainer">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
@@ -391,7 +391,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="relative text-white overflow-hidden z-10">
+      <section className="relative text-white overflow-hidden z-10 bg-transparent">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-32">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">

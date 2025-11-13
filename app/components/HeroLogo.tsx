@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
-import Starfield from './Starfield';
 import EnableSoundButton from './EnableSoundButton';
 import './price.css';
 
@@ -670,15 +669,34 @@ export default function HeroLogo() {
 
   return (
     <section className="relative text-white overflow-visible bg-transparent">
-      {/* starfield behind everything */}
-      <div className="absolute inset-0 -z-10">
-        <Starfield />
+      {/* starfield is rendered globally in layout.tsx */}
+
+      {/* VU Logo V2 - Full logo/lockup at top */}
+      <div className="relative w-fit mx-auto mb-0 md:mb-0 z-10 flex justify-center">
+        <Image
+          src="/VU_LOGO_V2.png"
+          alt="Void Underground Logo"
+          width={2838}
+          height={2583}
+          priority
+          unoptimized
+          className="block select-none pointer-events-none h-[25vh] md:h-[30vh] w-auto relative z-10"
+          style={{
+            filter: 'contrast(1.2) brightness(1.1) saturate(1.1)',
+            WebkitFilter: 'contrast(1.2) brightness(1.1) saturate(1.1)',
+          }}
+        />
+        
+        {/* Black Friday Special sticker - positioned in top right corner of VU_LOGO_V2 */}
+        <div className="absolute -right-40 top-0 md:-right-48 md:top-2 z-10" style={{ transform: 'rotate(15deg)' }}>
+          <span className="black-friday-special-sticker-hero">Black Friday Special</span>
+        </div>
       </div>
 
-      {/* logo plus cyan underline */}
+      {/* Master Logo plus cyan underline - positioned very close to VU_LOGO_V2 */}
       <div 
         ref={logoRef}
-        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto mt-0 md:-mt-4 mb-[5vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
+        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto -mt-32 md:-mt-55 mb-[5vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
         style={{ pointerEvents: 'auto' }}
       >
         <Image
@@ -713,11 +731,6 @@ export default function HeroLogo() {
         {/* Sound button - visible on all screen sizes */}
         <div className="absolute left-1/2 -translate-x-1/2 top-[67.5%] z-20 mt-2 md:mt-0" style={{ pointerEvents: 'auto' }}>
           <EnableSoundButton />
-        </div>
-
-        {/* Black Friday Special sticker - positioned diagonally to the right of the logo, touching the D in void */}
-        <div className="absolute right-[12%] md:right-[15%] top-[22%] md:top-[25%] z-10">
-          <span className="black-friday-special-sticker-hero">Black Friday Special</span>
         </div>
       </div>
     </section>

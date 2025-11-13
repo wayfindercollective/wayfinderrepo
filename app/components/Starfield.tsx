@@ -2,11 +2,13 @@
 import { useRef, useEffect } from 'react';
 import './starfield.css';
 
-type Star = { x: number; y: number; z: number; r: number; vx: number; vy: number; rotation: number; rotSpeed: number };
+type Star = { x: number; y: number; z: number; r: number; vx: number; vy: number; rotation: number; rotSpeed: number; color: string };
 
 export default function Starfield({ count = 150 }: { count?: number }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const starsRef = useRef<Star[]>([]);
+  const flareRef = useRef<{ x: number; y: number; progress: number; active: boolean; startTime: number }>({ x: 0, y: 0, progress: 0, active: false, startTime: 0 });
+  const lastFlareTimeRef = useRef<number>(Date.now());
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -29,12 +31,15 @@ export default function Starfield({ count = 150 }: { count?: number }) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    const color = getComputedStyle(document.documentElement)
+    const cyanColor = getComputedStyle(document.documentElement)
       .getPropertyValue('--cyan-glow')
       .trim() || '#00FFFF';
+    const magentaColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--magenta')
+      .trim() || '#FF00FF';
 
     // Function to draw a star shape
-    const drawStar = (ctx: CanvasRenderingContext2D, x: number, y: number, r: number, rotation: number) => {
+    const drawStar = (ctx: CanvasRenderingContext2D, x: number, y: number, r: number, rotation: number, starColor: string) => {
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(rotation);
@@ -56,6 +61,8 @@ export default function Starfield({ count = 150 }: { count?: number }) {
         }
       }
       ctx.closePath();
+      // Ensure we're filling, not stroking
+      ctx.fillStyle = starColor;
       ctx.fill();
       ctx.restore();
     };
@@ -63,19 +70,30 @@ export default function Starfield({ count = 150 }: { count?: number }) {
     const makeStars = () => {
       const w = canvas.width / dpr;
       const h = canvas.height / dpr;
-      starsRef.current = Array.from({ length: count }, () => {
+      starsRef.current = Array.from({ length: count }, (_, i) => {
         const z = Math.random() * 0.7 + 0.3;
         const angle = Math.random() * Math.PI * 2;
         const speed = (Math.random() * 0.15 + 0.05) * z; // Vary speed based on depth
+        
+        // Gradient density: more stars near top (mandala apex), fewer toward bottom
+        // Use exponential distribution biased toward top
+        const topBias = Math.pow(Math.random(), 2); // Square to bias toward 0 (top)
+        const y = topBias * h;
+        
+        // 1-2% magenta points, rest cyan
+        const isMagenta = Math.random() < 0.015; // 1.5% chance
+        const starColor = isMagenta ? magentaColor : cyanColor;
+        
         return {
           x: Math.random() * w,
-          y: Math.random() * h,
+          y,
           z,
           r: (1 * z + 0.5) * 0.5,  // Half the size
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
           rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.02 // Slow rotation
+          rotSpeed: (Math.random() - 0.5) * 0.02, // Slow rotation
+          color: starColor
         };
       });
     };
@@ -83,11 +101,68 @@ export default function Starfield({ count = 150 }: { count?: number }) {
     const step = () => {
       const w = canvas.width / dpr;
       const h = canvas.height / dpr;
+      const currentTime = Date.now();
+      
+      // Reset transform before clearing to ensure we clear the entire canvas
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Reapply the device pixel ratio transform
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Check if it's time for a new signal pulse (every 30 seconds)
+      if (!flareRef.current.active && currentTime - lastFlareTimeRef.current >= 30000) {
+        lastFlareTimeRef.current = currentTime;
+        flareRef.current = {
+          x: -50, // Start off-screen top-left
+          y: -50,
+          progress: 0,
+          active: true,
+          startTime: currentTime
+        };
+      }
+
+      // Update and draw signal pulse flare
+      if (flareRef.current.active) {
+        const flare = flareRef.current;
+        const duration = 2000; // 2 seconds to cross screen
+        const elapsed = currentTime - flare.startTime;
+        flare.progress = Math.min(elapsed / duration, 1);
+        
+        // Diagonal path from top-left to bottom-right
+        flare.x = -50 + (w + 100) * flare.progress;
+        flare.y = -50 + (h + 100) * flare.progress;
+        
+        // Draw faint cyan flare with trail
+        ctx.save();
+        ctx.strokeStyle = cyanColor;
+        ctx.lineWidth = 2;
+        ctx.globalAlpha = 0.3 * (1 - flare.progress); // Fade out as it progresses
+        ctx.shadowColor = cyanColor;
+        ctx.shadowBlur = 15;
+        
+        // Draw trail
+        const trailLength = 100;
+        ctx.beginPath();
+        ctx.moveTo(flare.x - trailLength * Math.cos(Math.PI / 4), flare.y - trailLength * Math.sin(Math.PI / 4));
+        ctx.lineTo(flare.x, flare.y);
+        ctx.stroke();
+        
+        // Draw flare point
+        ctx.globalAlpha = 0.5 * (1 - flare.progress);
+        ctx.beginPath();
+        ctx.arc(flare.x, flare.y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = cyanColor;
+        ctx.fill();
+        
+        ctx.restore();
+        
+        if (flare.progress >= 1) {
+          flare.active = false;
+        }
+      }
 
       ctx.save();
-      ctx.fillStyle = color;
-      ctx.shadowColor = color;
       ctx.shadowBlur = 8;
       ctx.globalAlpha = 0.9;
 
@@ -102,7 +177,8 @@ export default function Starfield({ count = 150 }: { count?: number }) {
         if (s.y < -20) s.y = h + 20;
         if (s.y > h + 20) s.y = -20;
 
-        drawStar(ctx, s.x, s.y, s.r, s.rotation);
+        ctx.shadowColor = s.color;
+        drawStar(ctx, s.x, s.y, s.r, s.rotation, s.color);
       }
       ctx.restore();
 

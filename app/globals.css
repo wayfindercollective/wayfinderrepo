@@ -19,6 +19,12 @@ body {
   font-family: var(--font-body), Arial, Helvetica, sans-serif;
 }
 
+/* Body copy: IBM Plex Mono at 80% opacity white */
+p {
+  font-family: var(--font-mono), monospace !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
 :root {
   --voidBlack: #000000;
   --voidCyan: #00ffff;     /* Cyan */
@@ -45,8 +51,34 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 }
 
 /* section backgrounds */
-.voidSection { position: relative; }
-/* Backgrounds removed to show starfield throughout */
+.voidSection { 
+  position: relative;
+  background: transparent; /* Ensure starfield shows through */
+}
+
+/* Breathing zones: 60-90px padding above and below on mobile */
+@media (max-width: 767px) {
+  .voidSection {
+    padding-top: clamp(60px, 8vw, 90px) !important;
+    padding-bottom: clamp(60px, 8vw, 90px) !important;
+  }
+  
+  /* Override existing padding on voidSection children to work with new padding */
+  .voidSection .voidContainer {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+/* Every second voidSection gets darker panel tint for rhythm - semi-transparent to show starfield */
+.voidSection-alt {
+  background-color: rgba(2, 2, 2, 0.3); /* Semi-transparent so starfield shows through */
+}
+
+/* Ensure sections don't have full-width text blocks back-to-back */
+.voidSection + .voidSection {
+  margin-top: 0; /* Remove any default margin, padding handles spacing */
+}
 
 /* cards on dark backgrounds stay readable */
 .cardVoid {
@@ -61,6 +93,19 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+}
+
+/* Ambient radial gradient background glow - very subtle hue */
+.cardVoid::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.12) 0%, rgba(0, 255, 255, 0.08) 40%, transparent 70%);
+  border-radius: 12px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .cardVoid:hover {
@@ -68,6 +113,10 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   box-shadow: 0 16px 40px rgba(0,0,0,0.4);
   border-color: rgba(255, 255, 255, 1); /* maintain bright border on hover */
   border-width: 2px;
+}
+
+.cardVoid:hover::before {
+  opacity: 0.8; /* Slightly more visible on hover */
 }
 
 /* Hourglass rotation on card hover */
@@ -131,8 +180,9 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 }
 
 .cardVoid p {
-  font-family: var(--font-body), sans-serif; /* Inter for paragraphs */
+  font-family: var(--font-mono), monospace !important; /* IBM Plex Mono for body copy */
   font-weight: 400;
+  color: rgba(255, 255, 255, 0.8) !important; /* 80% opacity white */
 }
 
 /* Bullet points in white */
@@ -149,6 +199,18 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   display: inline-block;
   cursor: default;
   position: relative;
+}
+
+/* Ambient radial gradient background glow - very subtle hue */
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.15) 0%, rgba(0, 255, 255, 0.1) 30%, transparent 70%);
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 /* headingText element - text-only underline matching text width */
@@ -222,12 +284,13 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   box-shadow: 0 0 14px rgba(0,255,255,0.55);
 }
 .sectionTitleMagenta .headingText::after {
-  background: var(--voidMagenta);
+  background: var(--magenta); /* Match exact magenta from VU_LOGO_V2 */
   box-shadow: 0 0 14px rgba(255,0,255,0.55);
 }
 .sectionTitleOrange .headingText::after {
-  background: var(--voidOrange);
-  box-shadow: 0 0 14px rgba(250,100,0,0.55);
+  background: linear-gradient(90deg, var(--voidMagenta), var(--voidCyan));
+  height: 2px; /* Thin rule - twice as thick */
+  box-shadow: 0 0 8px rgba(255,0,255,0.4), 0 0 8px rgba(0,255,255,0.4);
 }
 .sectionTitlePurple .headingText::after {
   background: var(--voidPurple);
@@ -238,8 +301,8 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   box-shadow: 0 0 14px rgba(0,204,255,0.55);
 }
 .sectionTitlePink .headingText::after {
-  background: var(--voidPink);
-  box-shadow: 0 0 14px rgba(255,0,204,0.55);
+  background: var(--voidMagenta); /* Changed from pink to magenta */
+  box-shadow: 0 0 14px rgba(255,0,255,0.55);
 }
 .sectionTitleYellow .headingText::after {
   background: var(--voidYellow);
@@ -268,6 +331,38 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
   font-size: 1.6em;
   text-transform: uppercase;
   display: inline-block;
+  letter-spacing: normal; /* Ensure no letter-spacing on other emphasis words */
+}
+
+/* Micro-letter-tracking for CHARISMA with breathing effect - ONLY affects the specific Charisma span */
+h2 .emphasis-word.charisma-word,
+h2.h2-void .emphasis-word.charisma-word {
+  animation: breathe-charisma 3s ease-in-out infinite !important;
+  display: inline-block !important;
+}
+
+/* Explicitly prevent animation on parent h2 and other text */
+h2.h2-void,
+h2.h2-void *:not(.charisma-word),
+.emphasis-word:not(.charisma-word) {
+  animation: none !important;
+  letter-spacing: normal !important;
+}
+
+/* Prevent animation on other elements */
+h1 .charisma-word,
+p .charisma-word {
+  animation: none !important;
+  letter-spacing: normal !important;
+}
+
+@keyframes breathe-charisma {
+  0%, 100% {
+    letter-spacing: 0.05em;
+  }
+  50% {
+    letter-spacing: 0.12em;
+  }
 }
 
 /* Column scroll animations */
@@ -388,6 +483,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
     transform: translateY(-6px) translateX(0);
   }
 }
+
 
 /* Global flicker animation for text and logos - very subtle version */
 .global-text-flicker {
@@ -595,4 +691,20 @@ html {
 #heroCta {
   filter: contrast(1.4) brightness(1.15) saturate(1.2);
   -webkit-filter: contrast(1.4) brightness(1.15) saturate(1.2);
+}
+
+/* Ambient radial gradient background glow for Hero CTA - very subtle hue */
+.hero-cta-button {
+  position: relative;
+}
+
+.hero-cta-button::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.1) 0%, rgba(0, 255, 255, 0.06) 35%, transparent 65%);
+  border-radius: 1rem;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
 }
