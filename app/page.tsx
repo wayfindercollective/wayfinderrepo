@@ -141,16 +141,16 @@ export default function Home() {
           <div className="sectionTitleWrapper">
             <AnimatedSectionTitle className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-white sectionTitle sectionTitleOrange sectionTitleTight">
               <span className="inline-flex items-center gap-3">
-                <span className="cyan-dots-wrapper">
-                  <Image 
-                    src="/CyanDots.png" 
-                    alt="" 
-                    width={24} 
-                    height={24} 
-                    className="h-[1em] w-auto cyan-dots-icon"
-                  />
-                </span>
-                <span className="headingText">What You Get</span>
+                <Image 
+                  src="/HourGlass.png" 
+                  alt="" 
+                  width={24} 
+                  height={24} 
+                  className="h-[1em] w-auto hourglass-icon cursor-pointer"
+                  style={{ transform: `rotate(${(hourglassRotations['initiation-hourglass'] || 0) * 180}deg)` }}
+                  onMouseEnter={(e) => handleHourglassIconHover('initiation-hourglass', e)}
+                />
+                <span className="headingText">INITIATION PACKAGE</span>
               </span>
             </AnimatedSectionTitle>
           </div>
