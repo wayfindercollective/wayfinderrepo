@@ -688,7 +688,7 @@ export default function HeroLogo() {
         />
         
         {/* Black Friday Special sticker - positioned in top right corner of VU_LOGO_V2 */}
-        <div className="absolute -right-40 top-0 md:-right-48 md:top-2 z-10" style={{ transform: 'rotate(15deg)' }}>
+        <div className="absolute -right-40 top-0 md:-right-48 md:top-2 z-10" style={{ transform: 'rotate(15deg) scale(0.5)' }}>
           <span className="black-friday-special-sticker-hero">Black Friday Special</span>
         </div>
       </div>
