@@ -426,7 +426,7 @@ export default function Home() {
               <div className="cardVoid p-8">
                 <h3 className="text-xl md:text-2xl font-bold mb-4">Field tested</h3>
                 <p>
-                  Drills come from years of live work and are built to be repeatable.
+                  Drills come from decades of live work and are built to be repeatable.
                 </p>
               </div>
             </AnimatedColumn>
