@@ -4,6 +4,7 @@ import "./../styles/brand-theme.css";
 import { inter, orbitron, plexMono } from "./fonts";
 import Starfield from "./components/Starfield";
 import GlobalFlickerEffect from "./components/GlobalFlickerEffect";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
@@ -44,6 +45,7 @@ export default function RootLayout({
         <GlobalFlickerEffect />
         <Starfield />
         {children}
+        <Analytics />
       </body>
     </html>
   );
