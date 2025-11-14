@@ -704,7 +704,7 @@ export default function HeroLogo() {
       {/* starfield is rendered globally in layout.tsx */}
 
       {/* VU Logo V2 - Full logo/lockup at top */}
-      <div className="relative w-fit mx-auto mb-0 md:mb-0 z-10 flex justify-center">
+      <div className="relative w-fit mx-auto mb-0 md:mb-0 z-20 flex justify-center">
         <Image
           src="/VU_LOGO_V2.png"
           alt="Void Underground Logo"
@@ -712,23 +712,18 @@ export default function HeroLogo() {
           height={2583}
           priority
           unoptimized
-          className="block select-none pointer-events-none h-[25vh] md:h-[30vh] w-auto relative z-10"
+          className="block select-none pointer-events-none h-[25vh] md:h-[30vh] w-auto relative z-20"
           style={{
             filter: 'contrast(1.2) brightness(1.1) saturate(1.1)',
             WebkitFilter: 'contrast(1.2) brightness(1.1) saturate(1.1)',
           }}
         />
-        
-        {/* Black Friday Access sticker - positioned in top right corner of VU_LOGO_V2 */}
-        <div className="absolute -right-56 top-0 md:-right-64 md:top-2 z-10" style={{ transform: 'rotate(15deg) scale(0.5)' }}>
-          <span className="black-friday-special-sticker-hero">Black Friday Access</span>
-        </div>
       </div>
 
       {/* Master Logo plus cyan underline - positioned very close to VU_LOGO_V2 */}
       <div 
         ref={logoRef}
-        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto -mt-32 md:-mt-55 mb-[5vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
+        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto -mt-16 md:-mt-55 mb-[1vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
         style={{ pointerEvents: 'auto' }}
       >
         {/* Base logo without glow */}

@@ -113,22 +113,35 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
       {/* Timer in top-right corner */}
-      <div id="timer-container" className="fixed top-4 right-4 z-50 bg-black/80 backdrop-blur-sm rounded-lg px-4 py-2 md:px-5 md:py-3 shadow-lg">
-        <Timer />
+      <div id="timer-container" className="fixed top-4 right-4 z-50 bg-black/80 backdrop-blur-sm rounded-lg px-4 py-2 md:px-5 md:py-3 shadow-lg scale-75 md:scale-100 origin-top-right">
+        <div className="text-white flex flex-col gap-1 items-center">
+          {/* Phase I */}
+          <div className="text-xs text-white opacity-80 border border-[#00FFFF] px-2 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.625rem, 1.2vw, 0.875rem)', lineHeight: '1' }}>
+            Phase I
+          </div>
+          {/* Black Friday Access */}
+          <div className="text-xs text-white opacity-80 border border-[#00FFFF] px-2 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.625rem, 1.2vw, 0.875rem)', lineHeight: '1' }}>
+            Black Friday Access
+          </div>
+          {/* Timer */}
+          <div className="w-full">
+            <Timer />
+          </div>
+        </div>
       </div>
       
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 bg-transparent min-h-screen flex items-center justify-center pt-32 md:pt-40">
+      <section className="relative text-white overflow-hidden z-10 bg-transparent min-h-screen flex items-center justify-center pt-16 md:pt-24">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 w-full">
           <div className="text-center">
             <HeroLogo />
 
             {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
+            <h2 className="h2-void mt-12 md:mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
               Reality is broken. <span className="emphasis-word charisma-word">Charisma</span> bends it.
             </h2>
 
-            <p className="text-gray-400 mb-6 max-w-2xl mx-auto mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
+            <p className="text-gray-400 mb-8 md:mb-6 max-w-2xl mx-auto mt-4 md:mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
@@ -546,7 +559,7 @@ export default function Home() {
                   >
                     ENTER THE VOID
                   </a>
-                  <span className="text-xs md:text-sm mt-2 block text-center accentMagenta" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+                  <span className="text-xs md:text-sm mt-2 block text-center accentMagenta presence-rebellion-flash" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
                     Presence as Rebellion
                   </span>
                 </div>

@@ -531,7 +531,7 @@ export default function EnableSoundButton() {
           <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>ENTER THE VOID</span>
         </button>
       </div>
-      <span className="text-xs md:text-sm mt-2 block text-center" style={{ color: 'var(--voidMagenta)', fontFamily: 'var(--font-body), sans-serif' }}>
+      <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash" style={{ color: 'var(--voidMagenta)', fontFamily: 'var(--font-body), sans-serif' }}>
         Presence as Rebellion
       </span>
       

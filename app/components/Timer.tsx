@@ -77,7 +77,7 @@ export default function Timer() {
   };
 
   return (
-    <div className="text-right text-white">
+    <div className="text-center text-white">
       <div className="timer-void">
         <div className="text-xs text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.625rem, 1.2vw, 0.875rem)', lineHeight: '1' }}>
           Time Remaining
