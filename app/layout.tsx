@@ -9,6 +9,10 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "Join the Void",
   description: "A Cyber-Monk Dojo for Real-World Charisma",
+  metadataBase: new URL("https://thevoidunderground.com"),
+  alternates: {
+    canonical: "https://thevoidunderground.com",
+  },
   openGraph: {
     title: "Join the Void",
     description: "A Cyber-Monk Dojo for Real-World Charisma",
@@ -16,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Void Underground",
     images: [
       {
-        url: "https://thevoidunderground.com/VU_LOGO_V2.png",
+        url: "/VU_LOGO_V2.png",
         width: 1200,
         height: 630,
         alt: "Void Underground Logo",
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Join the Void",
     description: "A Cyber-Monk Dojo for Real-World Charisma",
-    images: ["https://thevoidunderground.com/VU_LOGO_V2.png"],
+    images: ["/VU_LOGO_V2.png"],
   },
 };
 
