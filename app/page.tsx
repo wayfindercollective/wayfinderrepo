@@ -267,7 +267,8 @@ export default function Home() {
                     <span style={{ fontFamily: 'var(--font-display), sans-serif' }}>Skills we track</span>
                   </h3>
                   <p className="text-base md:text-lg">
-                    Calm under pressure. Body language. Leading attention. Reading the room. Decisive action. Playfulness.
+                    State control. Nonverbals. Attention leadership.<br />
+                    Calibration. Decisiveness. Spontaneity.
                   </p>
                 </div>
               </AnimatedColumn>
@@ -315,7 +316,7 @@ export default function Home() {
             <button
               onClick={() => setShowWeekPackOverlay(true)}
               className="text-cyan-400 hover:text-cyan-300 underline"
-              style={{ fontSize: '112.5%' }}
+              style={{ fontSize: '112.5%', fontFamily: 'var(--font-mono), monospace' }}
             >
               See a Weekly Pack
             </button>
@@ -326,27 +327,64 @@ export default function Home() {
       {/* WeekPack Overlay */}
       {showWeekPackOverlay && (
         <div 
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-2 md:p-4"
           onClick={() => setShowWeekPackOverlay(false)}
         >
           <div 
-            className="bg-gray-900 border border-cyan-500 rounded-lg p-8 max-w-md w-full"
+            className="bg-gray-900 border border-cyan-500 rounded-lg p-3 md:p-6 max-w-4xl w-full flex flex-col md:flex-row gap-2 md:gap-4 items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl font-bold text-white mb-4">Sample Weekly Pack</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li>• Short lesson: Presence over image</li>
-              <li>• At-home practice: Breathe and settle your weight</li>
-              <li>• Real world task: Hold eye contact for three beats</li>
-              <li>• Live session: Practice in a group setting</li>
-              <li>• Reset: Lock gains and set your next step</li>
-            </ul>
-            <button
-              onClick={() => setShowWeekPackOverlay(false)}
-              className="mt-6 text-cyan-400 hover:text-cyan-300 underline"
-            >
-              Close
-            </button>
+            {/* Left side - Sample Weekly Pack */}
+            <div className="flex-1 w-full md:w-auto">
+              <h3 className="text-lg md:text-2xl font-bold text-white mb-2 md:mb-4" style={{ fontFamily: 'var(--font-mono), monospace' }}><span className="text-cyan-400">🜂</span> SAMPLE WEEK PACK</h3>
+              <div className="space-y-2 md:space-y-4 text-sm md:text-base text-gray-300" style={{ fontFamily: 'var(--font-mono), monospace' }}>
+                <div>
+                  <div className="font-bold text-white mb-1 md:mb-2 text-xs md:text-base">Doctrine — Presence {'>'} Persona</div>
+                </div>
+                <div>
+                  <div className="font-bold text-white mb-1 md:mb-2 text-xs md:text-base">Home — Operator Baseline</div>
+                  <div className="ml-4 text-xs md:text-base">4–2–6 breath.</div>
+                  <div className="ml-4 mt-1 md:mt-2 text-xs md:text-base">Speak one line at half-speed:</div>
+                  <div className="ml-4 italic text-xs md:text-base">"I'm not rushing for anyone."</div>
+                </div>
+                <div>
+                  <div className="font-bold text-white mb-1 md:mb-2 text-xs md:text-base">Field — 90/10 Statement Drop</div>
+                  <div className="ml-4 text-xs md:text-base">Say three statements before your first question.</div>
+                  <div className="ml-4 mt-0.5 md:mt-1 text-xs md:text-base">Anchor the thread and own the tempo. No audition.</div>
+                </div>
+                <div>
+                  <div className="font-bold text-white mb-1 md:mb-2 text-xs md:text-base">Signal Lab — Weekly Live Group Session</div>
+                </div>
+                <div>
+                  <div className="font-bold text-white mb-1 md:mb-2 text-xs md:text-base"><span className="text-cyan-400">🜏</span> Reset — Operator Debrief</div>
+                  <div className="ml-4 text-xs md:text-base">1 win, 1 glitch, 1 correction.</div>
+                </div>
+                <div className="pt-2 md:pt-3 border-t border-gray-700">
+                  <div className="text-white font-bold text-xs md:text-base">Done.</div>
+                  <div className="mt-0.5 md:mt-1 text-xs md:text-base">One week.</div>
+                  <div className="mt-0.5 md:mt-1 text-xs md:text-base">Twenty-three missions left.</div>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowWeekPackOverlay(false)}
+                className="mt-2 md:mt-4 text-cyan-400 hover:text-cyan-300 underline text-xs md:text-base"
+                style={{ fontFamily: 'var(--font-mono), monospace' }}
+              >
+                Close
+              </button>
+            </div>
+            
+            {/* Right side - Doctrine Card Image */}
+            <div className="flex-1 flex items-center justify-center w-full md:w-auto">
+              <Image
+                src="/Week 1 Doctrine Card.png"
+                alt="Week 1 Doctrine Card"
+                width={400}
+                height={600}
+                className="w-auto h-auto max-w-[200px] md:max-w-[400px] max-h-[40vh] md:max-h-[80vh]"
+                unoptimized
+              />
+            </div>
           </div>
         </div>
       )}
