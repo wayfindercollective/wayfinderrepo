@@ -27,7 +27,10 @@ export async function GET() {
       .jpeg({ quality: 90 })
       .toBuffer();
 
-    return new Response(compositeImage, {
+    // Convert Buffer to Uint8Array for Response compatibility
+    const imageArray = new Uint8Array(compositeImage);
+
+    return new Response(imageArray, {
       headers: {
         'Content-Type': 'image/jpeg',
         'Cache-Control': 'public, max-age=31536000, immutable',
