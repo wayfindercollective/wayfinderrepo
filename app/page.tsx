@@ -113,18 +113,18 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
       {/* Timer in top-right corner */}
-      <div id="timer-container" className="fixed top-4 right-1 z-50 px-3 py-2 md:px-5 md:py-3 origin-top-right scale-90 md:scale-100">
-        <div className="text-white flex flex-col gap-1 items-center">
+      <div id="timer-container" className="fixed top-4 right-1 z-50 px-2 py-1.5 md:px-5 md:py-3 origin-top-right scale-85 md:scale-95">
+        <div className="text-white flex flex-col gap-1.5 md:gap-3 items-center">
           {/* Phase I */}
-          <div className="text-white opacity-80 border border-[#00FFFF] px-0 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
+          <div className="text-white opacity-80 border border-[#00FFFF] px-1 py-1 md:px-2 md:py-1.5 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.65rem, 1.3vw, 0.8rem)', lineHeight: '1' }}>
             Phase I
           </div>
           {/* Black Friday Access */}
-          <div className="text-white opacity-80 border border-[#00FFFF] px-0 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
+          <div className="text-white opacity-80 border border-[#00FFFF] px-1 py-1 md:px-2 md:py-1.5 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.65rem, 1.3vw, 0.8rem)', lineHeight: '1' }}>
             Black Friday Access
           </div>
           {/* Timer */}
-          <div className="w-full">
+          <div className="flex justify-center items-center w-full">
             <Timer />
           </div>
         </div>

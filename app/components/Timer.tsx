@@ -77,12 +77,12 @@ export default function Timer() {
   };
 
   return (
-    <div className="text-center text-white w-full">
-      <div className="timer-void flex flex-col items-center">
-        <div className="text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
+    <div className="text-white flex flex-col items-center justify-center w-full">
+      <div className="timer-void flex flex-col items-center justify-center gap-1 md:gap-2 w-full">
+        <div className="text-white opacity-80 text-center whitespace-nowrap mx-auto" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.6rem, 1.2vw, 0.75rem)', lineHeight: '1' }}>
           Time Remaining
         </div>
-        <div className="font-bold text-white" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', lineHeight: '1.2', fontWeight: '600' }}>
+        <div className="font-bold text-white text-center whitespace-nowrap mx-auto" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.9rem, 2.2vw, 1.1rem)', lineHeight: '1.2', fontWeight: '600' }}>
           {formatTime(timeRemaining)}
         </div>
       </div>
