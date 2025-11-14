@@ -7,8 +7,8 @@ import GlobalFlickerEffect from "./components/GlobalFlickerEffect";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "Void Underground - Charisma Coaching Program",
-  description: "Join Void Underground - A 12-month community-driven program to transform your charisma through missions, tasks, and action. $297 value for $600 of content.",
+  title: "Join the Void",
+  description: "A Cyber-Monk Dojo for Real-World Charisma",
   openGraph: {
     title: "Join the Void",
     description: "A Cyber-Monk Dojo for Real-World Charisma",
