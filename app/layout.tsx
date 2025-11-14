@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Void Underground",
     images: [
       {
-        url: "/VU_LOGO_V2.png",
+        url: "/api/og-image",
         width: 1200,
         height: 630,
         alt: "Void Underground Logo",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Join the Void",
     description: "A Cyber-Monk Dojo for Real-World Charisma",
-    images: ["/VU_LOGO_V2.png"],
+    images: ["/api/og-image"],
   },
 };
 
