@@ -189,8 +189,11 @@ export default function HeroLogo() {
 
     // Apply visual flicker effect with dramatic contrast changes
     if (logoRef.current) {
-      const logo = logoRef.current.querySelector('img') as HTMLImageElement;
-      if (logo) {
+      const images = logoRef.current.querySelectorAll('img');
+      const baseLogo = images[0] as HTMLImageElement; // Base logo without glow
+      const glowLogo = images[1] as HTMLImageElement; // Overlay with glow for "void" only
+      
+      if (baseLogo) {
         // High contrast opacity: ranges from 0.1 to 1.0 (very dramatic fade in/out)
         const opacity = Math.max(0.1, Math.min(1.0, intensity));
         
@@ -259,9 +262,17 @@ export default function HeroLogo() {
           brightness = smoothedBrightnessRef.current;
         }
         
-        logo.style.opacity = opacity.toString();
-        logo.style.filter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
-        logo.style.webkitFilter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
+        // Update base logo (no glow)
+        baseLogo.style.opacity = opacity.toString();
+        baseLogo.style.filter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
+        baseLogo.style.webkitFilter = `contrast(1.4) brightness(${brightness}) saturate(1.2)`;
+        
+        // Update glow overlay (only "void" portion with glow)
+        if (glowLogo) {
+          glowLogo.style.opacity = opacity.toString();
+          glowLogo.style.filter = `contrast(1.4) brightness(${brightness}) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))`;
+          glowLogo.style.webkitFilter = `contrast(1.4) brightness(${brightness}) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))`;
+        }
         
         // Dispatch flicker data for other components (like button)
         if (typeof window !== 'undefined') {
@@ -386,11 +397,18 @@ export default function HeroLogo() {
           
           // Reset logo to original state
           if (logoRef.current) {
-            const logo = logoRef.current.querySelector('img') as HTMLImageElement;
-            if (logo) {
-              logo.style.opacity = '1';
-              logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
-              logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+            const images = logoRef.current.querySelectorAll('img');
+            const baseLogo = images[0] as HTMLImageElement;
+            const glowLogo = images[1] as HTMLImageElement;
+            if (baseLogo) {
+              baseLogo.style.opacity = '1';
+              baseLogo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+              baseLogo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+            }
+            if (glowLogo) {
+              glowLogo.style.opacity = '1';
+              glowLogo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
+              glowLogo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
             }
           }
           
@@ -432,11 +450,18 @@ export default function HeroLogo() {
     
     // Reset logo to original state
     if (logoRef.current) {
-      const logo = logoRef.current.querySelector('img') as HTMLImageElement;
-      if (logo) {
-        logo.style.opacity = '1';
-        logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
-        logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+      const images = logoRef.current.querySelectorAll('img');
+      const baseLogo = images[0] as HTMLImageElement;
+      const glowLogo = images[1] as HTMLImageElement;
+      if (baseLogo) {
+        baseLogo.style.opacity = '1';
+        baseLogo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+        baseLogo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+      }
+      if (glowLogo) {
+        glowLogo.style.opacity = '1';
+        glowLogo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
+        glowLogo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
       }
     }
     
@@ -473,8 +498,8 @@ export default function HeroLogo() {
         const logo = logoRef.current.querySelector('img') as HTMLImageElement;
         if (logo) {
           logo.style.opacity = '1';
-          logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
-          logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+          logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
+          logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
         }
       }
       
@@ -571,11 +596,18 @@ export default function HeroLogo() {
         
         // Reset logo to original state before starting
         if (logoRef.current) {
-          const logo = logoRef.current.querySelector('img') as HTMLImageElement;
-          if (logo) {
-            logo.style.opacity = '1';
-            logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
-            logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+          const images = logoRef.current.querySelectorAll('img');
+          const baseLogo = images[0] as HTMLImageElement;
+          const glowLogo = images[1] as HTMLImageElement;
+          if (baseLogo) {
+            baseLogo.style.opacity = '1';
+            baseLogo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+            baseLogo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+          }
+          if (glowLogo) {
+            glowLogo.style.opacity = '1';
+            glowLogo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
+            glowLogo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
           }
         }
         
@@ -637,8 +669,8 @@ export default function HeroLogo() {
                 const logo = logoRef.current.querySelector('img') as HTMLImageElement;
                 if (logo) {
                   logo.style.opacity = '1';
-                  logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
-                  logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
+                  logo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
+                  logo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
                 }
               }
               
@@ -699,6 +731,7 @@ export default function HeroLogo() {
         className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto -mt-32 md:-mt-55 mb-[5vh] md:mb-0 group z-10 scale-[0.75] md:scale-[0.75]"
         style={{ pointerEvents: 'auto' }}
       >
+        {/* Base logo without glow */}
         <Image
           src="/Master_Logo.png?v=2"
           alt="Void Underground"
@@ -706,10 +739,35 @@ export default function HeroLogo() {
           height={400}
           priority
           unoptimized
-          className="block select-none pointer-events-none w-full h-auto"
+          className="block select-none pointer-events-none w-full h-auto relative z-0"
           style={{
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
             WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
+          }}
+        />
+        {/* Glow overlay - only for "void" text (top portion) */}
+        <Image
+          src="/Master_Logo.png?v=2"
+          alt=""
+          width={1800}
+          height={400}
+          priority
+          unoptimized
+          className="block select-none pointer-events-none w-full h-auto absolute top-0 left-0 z-10 void-glow-breath"
+          style={{
+            filter: 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))',
+            WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))',
+            clipPath: 'polygon(36% 15%, 64% 15%, 64% 42%, 36% 42%)',
+            WebkitClipPath: 'polygon(36% 15%, 64% 15%, 64% 42%, 36% 42%)',
+            maskImage: 'url(/Master_Logo.png?v=2)',
+            WebkitMaskImage: 'url(/Master_Logo.png?v=2)',
+            maskSize: '100% 100%',
+            WebkitMaskSize: '100% 100%',
+            maskPosition: 'center',
+            WebkitMaskPosition: 'center',
+            maskRepeat: 'no-repeat',
+            WebkitMaskRepeat: 'no-repeat',
+            mixBlendMode: 'normal',
           }}
         />
 

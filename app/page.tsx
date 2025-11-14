@@ -401,7 +401,7 @@ export default function Home() {
 
       {/* Pricing Section */}
       <section className="relative text-white overflow-hidden z-10 bg-transparent">
-        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-32">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-16 md:py-20">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper">
               <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
@@ -558,6 +558,21 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Salt Glyph Transition Sigil */}
+      <div className="relative w-full flex items-center justify-center py-8 md:py-12 overflow-hidden">
+        <div className="salt-glyph-transition">
+          <Image
+            src="/Updated Salt Glyph.png"
+            alt=""
+            width={200}
+            height={200}
+            className="w-32 md:w-40 h-auto"
+            priority
+            unoptimized
+          />
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <section className="voidSection relative z-10">
