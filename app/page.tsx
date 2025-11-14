@@ -316,7 +316,7 @@ export default function Home() {
             <button
               onClick={() => setShowWeekPackOverlay(true)}
               className="text-cyan-400 hover:text-cyan-300 underline"
-              style={{ fontSize: '112.5%', fontFamily: 'var(--font-mono), monospace' }}
+              style={{ fontSize: '168.75%', fontFamily: 'var(--font-mono), monospace' }}
             >
               See a Weekly Pack
             </button>
@@ -331,22 +331,44 @@ export default function Home() {
           onClick={() => setShowWeekPackOverlay(false)}
         >
           <div 
-            className="bg-gray-900 border border-cyan-500 rounded-lg p-3 md:p-6 max-w-4xl w-full flex flex-col md:flex-row gap-2 md:gap-4 items-center relative"
+            className="bg-gray-900 border border-cyan-500 rounded-lg p-2.5 md:p-6 max-w-4xl w-full flex flex-col md:flex-row gap-1.5 md:gap-4 items-center relative max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible"
             onClick={(e) => e.stopPropagation()}
           >
             {/* X button for mobile only */}
             <button
               onClick={() => setShowWeekPackOverlay(false)}
-              className="md:hidden absolute top-2 right-2 text-white hover:text-cyan-400 transition-colors z-10"
+              className="md:hidden absolute top-2 right-2 text-white hover:text-cyan-400 transition-colors z-20 bg-gray-900 rounded-full w-8 h-8 flex items-center justify-center"
               aria-label="Close"
-              style={{ fontSize: '24px', lineHeight: '1', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{ fontSize: '24px', lineHeight: '1' }}
             >
               ×
             </button>
+            {/* Right side - Doctrine Card Image */}
+            <div className="flex-1 flex items-center justify-center w-full md:w-auto order-1 md:order-2">
+              {/* Mobile - WIDE version */}
+              <Image
+                src="/Week 1 Doctrine Card WIDE.png"
+                alt="Week 1 Doctrine Card"
+                width={400}
+                height={600}
+                className="w-full h-auto md:hidden"
+                unoptimized
+              />
+              {/* Desktop - Regular version */}
+              <Image
+                src="/Week 1 Doctrine Card.png"
+                alt="Week 1 Doctrine Card"
+                width={400}
+                height={600}
+                className="hidden md:block w-auto h-auto max-w-[400px] max-h-[80vh]"
+                unoptimized
+              />
+            </div>
+            
             {/* Left side - Sample Weekly Pack */}
-            <div className="flex-1 w-full md:w-auto">
-              <h3 className="text-lg md:text-2xl font-bold text-white mb-2 md:mb-4" style={{ fontFamily: 'var(--font-mono), monospace' }}><span className="text-cyan-400">🜂</span> SAMPLE WEEK PACK</h3>
-              <div className="space-y-2 md:space-y-4 text-sm md:text-base text-gray-300" style={{ fontFamily: 'var(--font-mono), monospace' }}>
+            <div className="flex-1 w-full md:w-auto pt-1 md:pt-0 order-2 md:order-1">
+              <h3 className="text-base md:text-2xl font-bold text-white mb-1.5 md:mb-4" style={{ fontFamily: 'var(--font-mono), monospace' }}><span className="text-cyan-400">🜂</span> SAMPLE WEEK PACK</h3>
+              <div className="space-y-1.5 md:space-y-4 text-xs md:text-base text-gray-300" style={{ fontFamily: 'var(--font-mono), monospace' }}>
                 <div>
                   <div className="font-bold text-white mb-1 md:mb-2 text-xs md:text-base">Doctrine — Presence {'>'} Persona</div>
                 </div>
@@ -376,23 +398,11 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowWeekPackOverlay(false)}
-                className="mt-2 md:mt-4 text-cyan-400 hover:text-cyan-300 underline text-xs md:text-base"
+                className="mt-1.5 md:mt-4 text-cyan-400 hover:text-cyan-300 underline text-xs md:text-base"
                 style={{ fontFamily: 'var(--font-mono), monospace' }}
               >
                 Close
               </button>
-            </div>
-            
-            {/* Right side - Doctrine Card Image */}
-            <div className="flex-1 flex items-center justify-center w-full md:w-auto">
-              <Image
-                src="/Week 1 Doctrine Card.png"
-                alt="Week 1 Doctrine Card"
-                width={400}
-                height={600}
-                className="w-auto h-auto max-w-[200px] md:max-w-[400px] max-h-[40vh] md:max-h-[80vh]"
-                unoptimized
-              />
             </div>
           </div>
         </div>
