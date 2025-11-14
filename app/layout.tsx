@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Void Underground - Charisma Coaching Program",
   description: "Join Void Underground - A 12-month community-driven program to transform your charisma through missions, tasks, and action. $297 value for $600 of content.",
   openGraph: {
-    title: "Void Underground - Charisma Coaching Program",
+    title: "Join the Void",
     description: "A Cyber-Monk Dojo for Real-World Charisma",
     images: [
       {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Void Underground - Charisma Coaching Program",
+    title: "Join the Void",
     description: "A Cyber-Monk Dojo for Real-World Charisma",
     images: ["/VU_LOGO_V2.png"],
   },
