@@ -331,9 +331,18 @@ export default function Home() {
           onClick={() => setShowWeekPackOverlay(false)}
         >
           <div 
-            className="bg-gray-900 border border-cyan-500 rounded-lg p-3 md:p-6 max-w-4xl w-full flex flex-col md:flex-row gap-2 md:gap-4 items-center"
+            className="bg-gray-900 border border-cyan-500 rounded-lg p-3 md:p-6 max-w-4xl w-full flex flex-col md:flex-row gap-2 md:gap-4 items-center relative"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* X button for mobile only */}
+            <button
+              onClick={() => setShowWeekPackOverlay(false)}
+              className="md:hidden absolute top-2 right-2 text-white hover:text-cyan-400 transition-colors z-10"
+              aria-label="Close"
+              style={{ fontSize: '24px', lineHeight: '1', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              ×
+            </button>
             {/* Left side - Sample Weekly Pack */}
             <div className="flex-1 w-full md:w-auto">
               <h3 className="text-lg md:text-2xl font-bold text-white mb-2 md:mb-4" style={{ fontFamily: 'var(--font-mono), monospace' }}><span className="text-cyan-400">🜂</span> SAMPLE WEEK PACK</h3>
@@ -664,12 +673,12 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-lg md:text-xl font-bold">Do I need nightlife?</h3>
+                <h3 className="text-lg md:text-xl font-bold">Is this pickup?</h3>
                 <span className="text-2xl">{openFAQ === 1 ? '−' : '+'}</span>
               </button>
               {openFAQ === 1 && (
                 <p className="mt-4 text-gray-300">
-                  No. Tasks work in daily life, work, and social settings.
+                  No. This is consent forward charisma for dating, business, and leadership.
                 </p>
               )}
             </div>
@@ -678,12 +687,12 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-lg md:text-xl font-bold">Is this pickup?</h3>
+                <h3 className="text-lg md:text-xl font-bold">What changes in thirty days?</h3>
                 <span className="text-2xl">{openFAQ === 2 ? '−' : '+'}</span>
               </button>
               {openFAQ === 2 && (
                 <p className="mt-4 text-gray-300">
-                  No. This is consent forward charisma for dating, business, and leadership.
+                  A calmer baseline, fewer freezes, and faster recovery when things get awkward.
                 </p>
               )}
             </div>
@@ -692,13 +701,27 @@ export default function Home() {
                 onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
                 className="w-full text-left flex items-center justify-between"
               >
-                <h3 className="text-lg md:text-xl font-bold">What changes in thirty days?</h3>
+                <h3 className="text-lg md:text-xl font-bold">I have more questions, how can I contact you guys?</h3>
                 <span className="text-2xl">{openFAQ === 3 ? '−' : '+'}</span>
               </button>
               {openFAQ === 3 && (
-                <p className="mt-4 text-gray-300">
-                  A calmer baseline, fewer freezes, and faster recovery when things get awkward.
-                </p>
+                <div className="mt-4">
+                  <p className="text-gray-300 mb-4">
+                    Send us an email at: support@wayfindercoaching.net
+                  </p>
+                  <a
+                    href="mailto:support@wayfindercoaching.net"
+                    className="inline-block px-6 py-2.5 border border-cyan-400/60 rounded-lg text-white hover:border-cyan-400 transition-all duration-200"
+                    style={{ 
+                      fontSize: '1rem',
+                      fontFamily: 'var(--font-display), sans-serif',
+                      boxShadow: '0 0 12px rgba(0, 255, 255, 0.2), 0 0 4px rgba(0, 255, 255, 0.15)',
+                      textShadow: '0 0 4px rgba(0, 255, 255, 0.3)'
+                    }}
+                  >
+                    Send us a message
+                  </a>
+                </div>
               )}
             </div>
           </div>

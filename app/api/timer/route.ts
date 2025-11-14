@@ -1,61 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// In-memory storage for timers (IP -> end timestamp)
-// In production, you'd want to use a database or Redis
-const timers = new Map<string, number>();
-
-// Timer duration in milliseconds (default: 24 hours)
-const TIMER_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-
-function getClientIP(request: NextRequest): string {
-  // Try to get IP from various headers (for proxies/load balancers)
-  const forwarded = request.headers.get('x-forwarded-for');
-  const realIP = request.headers.get('x-real-ip');
-  const cfConnectingIP = request.headers.get('cf-connecting-ip'); // Cloudflare
-  
-  if (forwarded) {
-    // x-forwarded-for can contain multiple IPs, take the first one
-    return forwarded.split(',')[0].trim();
-  }
-  
-  if (realIP) {
-    return realIP;
-  }
-  
-  if (cfConnectingIP) {
-    return cfConnectingIP;
-  }
-  
-  // Fallback to a default (shouldn't happen in production)
-  return 'unknown';
-}
+// Fixed end date: Monday, November 17th, 2025 at 9 AM CST
+// CST is UTC-6, so 9 AM CST = 3 PM UTC (15:00 UTC)
+// Date: November 17, 2025 15:00:00 UTC
+const FIXED_END_TIME = new Date('2025-11-17T15:00:00Z').getTime();
 
 export async function GET(request: NextRequest) {
   try {
-    const ip = getClientIP(request);
-    
-    // Check if timer exists for this IP
-    const endTime = timers.get(ip);
     const now = Date.now();
-    
-    if (!endTime || endTime <= now) {
-      // No timer exists or timer has expired, create a new one
-      const newEndTime = now + TIMER_DURATION;
-      timers.set(ip, newEndTime);
-      
-      return NextResponse.json({
-        remaining: TIMER_DURATION,
-        endTime: newEndTime,
-        isNew: true,
-      });
-    }
-    
-    // Timer exists and is still active
-    const remaining = endTime - now;
+    const remaining = Math.max(0, FIXED_END_TIME - now);
     
     return NextResponse.json({
-      remaining: Math.max(0, remaining),
-      endTime: endTime,
+      remaining: remaining,
+      endTime: FIXED_END_TIME,
       isNew: false,
     });
   } catch (error) {
