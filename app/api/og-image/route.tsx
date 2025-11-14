@@ -9,46 +9,27 @@ export const size = {
   width: 1200,
   height: 630,
 };
-export const contentType = 'image/png';
+export const contentType = 'image/jpeg';
 
 export async function GET() {
   try {
-    // Read the logo image file
-    const logoPath = join(process.cwd(), 'public', 'VU_LOGO_V2.png');
+    // Read the preview logo image file
+    const logoPath = join(process.cwd(), 'public', 'PreviewLogo.jpg');
     const logoBuffer = await readFile(logoPath);
     
-    // Resize logo to fit nicely (90% of width, maintaining aspect ratio)
-    const maxWidth = Math.floor(1200 * 0.9); // 90% of canvas width
-    const maxHeight = Math.floor(630 * 0.9); // 90% of canvas height
-    
-    const logoResized = await sharp(logoBuffer)
-      .resize(maxWidth, maxHeight, {
-        fit: 'inside',
-        withoutEnlargement: true,
+    // Resize the preview logo to fit the Open Graph dimensions (1200x630)
+    // Using 'cover' to fill the entire area while maintaining aspect ratio
+    const compositeImage = await sharp(logoBuffer)
+      .resize(1200, 630, {
+        fit: 'cover',
+        position: 'center',
       })
-      .toBuffer();
-
-    // Use Sharp to composite the resized logo onto a black background
-    const compositeImage = await sharp({
-      create: {
-        width: 1200,
-        height: 630,
-        channels: 4,
-        background: { r: 0, g: 0, b: 0, alpha: 1 }, // Pure black background
-      },
-    })
-      .composite([
-        {
-          input: logoResized,
-          gravity: 'center',
-        },
-      ])
-      .png()
+      .jpeg({ quality: 90 })
       .toBuffer();
 
     return new Response(compositeImage, {
       headers: {
-        'Content-Type': 'image/png',
+        'Content-Type': 'image/jpeg',
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
