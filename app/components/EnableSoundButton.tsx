@@ -25,6 +25,7 @@ export default function EnableSoundButton() {
   const [audioDuration, setAudioDuration] = useState<number | null>(null);
   const [welcomeTextDisplay, setWelcomeTextDisplay] = useState('');
   const [welcomeTextRevealed, setWelcomeTextRevealed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const loadingRef = useRef<HTMLDivElement>(null);
   const welcomeTextRef = useRef<HTMLSpanElement>(null);
@@ -32,6 +33,18 @@ export default function EnableSoundButton() {
   const typewriterIntervalRef = useRef<NodeJS.Timeout | null>(null);
   
   const welcomeTextFull = "Welcome to the movement. You will be redirected shortly.";
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const initAudio = async () => {
     // Create AudioContext
@@ -525,10 +538,13 @@ export default function EnableSoundButton() {
             minHeight: '44px',
             cursor: 'pointer',
             WebkitTouchCallout: 'none',
+            fontSize: isMobile ? '1.15rem' : '2.3rem',
+            padding: isMobile ? '16px 28px' : '32px 56px',
+            ...(isMobile && { whiteSpace: 'nowrap' }),
           }}
-          className="btn-void mt-10 uppercase tracking-[0.1em]"
+          className="btn-void mt-10 uppercase tracking-[0.1em] inline-block"
         >
-          <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>ENTER THE VOID</span>
+          <span className="relative z-[2]" style={{ pointerEvents: 'none', ...(isMobile && { whiteSpace: 'nowrap' }) }}>ENTER THE VOID</span>
         </button>
       </div>
       <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash" style={{ color: 'var(--voidMagenta)', fontFamily: 'var(--font-body), sans-serif' }}>

@@ -113,14 +113,14 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
       {/* Timer in top-right corner */}
-      <div id="timer-container" className="fixed top-4 right-4 z-50 bg-black/80 backdrop-blur-sm rounded-lg px-4 py-2 md:px-5 md:py-3 shadow-lg scale-75 md:scale-100 origin-top-right">
+      <div id="timer-container" className="fixed top-4 right-1 z-50 px-3 py-2 md:px-5 md:py-3 origin-top-right scale-90 md:scale-100">
         <div className="text-white flex flex-col gap-1 items-center">
           {/* Phase I */}
-          <div className="text-xs text-white opacity-80 border border-[#00FFFF] px-2 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.625rem, 1.2vw, 0.875rem)', lineHeight: '1' }}>
+          <div className="text-white opacity-80 border border-[#00FFFF] px-0 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
             Phase I
           </div>
           {/* Black Friday Access */}
-          <div className="text-xs text-white opacity-80 border border-[#00FFFF] px-2 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.625rem, 1.2vw, 0.875rem)', lineHeight: '1' }}>
+          <div className="text-white opacity-80 border border-[#00FFFF] px-0 py-1 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
             Black Friday Access
           </div>
           {/* Timer */}
