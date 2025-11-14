@@ -507,32 +507,33 @@ export default function EnableSoundButton() {
         touchAction: 'manipulation'
       }}
     >
-      <button
-        id="heroCta"
-        ref={buttonRef}
-        onClick={handleInteraction}
-        onTouchEnd={handleInteraction}
-        style={{ 
-          touchAction: 'manipulation',
-          WebkitTapHighlightColor: 'transparent',
-          position: 'relative',
-          zIndex: 20,
-          pointerEvents: 'auto',
-          userSelect: 'none',
-          WebkitUserSelect: 'none',
-          minWidth: '44px',
-          minHeight: '44px',
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          WebkitTouchCallout: 'none',
-          borderRadius: '12px'
-        }}
-        className="px-3 md:px-6 py-1.5 md:py-3 bg-black border-2 border-white text-[#00FFFF] text-base md:text-3xl font-bold cursor-pointer hover:bg-[#0a0a0a] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] button-shimmer relative uppercase font-[var(--fontB-display)] tracking-[0.1em] font-bold opacity-100 transition-none mt-0 md:mt-[45px]"
-      >
-        <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>Join the Void</span>
-      </button>
+      <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
+        <button
+          id="heroCta"
+          ref={buttonRef}
+          onClick={handleInteraction}
+          onTouchEnd={handleInteraction}
+          style={{ 
+            touchAction: 'manipulation',
+            WebkitTapHighlightColor: 'transparent',
+            position: 'relative',
+            zIndex: 20,
+            pointerEvents: 'auto',
+            userSelect: 'none',
+            WebkitUserSelect: 'none',
+            minWidth: '44px',
+            minHeight: '44px',
+            cursor: 'pointer',
+            WebkitTouchCallout: 'none',
+          }}
+          className="btn-void mt-10 uppercase tracking-[0.1em]"
+        >
+          <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>ENTER THE VOID</span>
+        </button>
+      </div>
+      <span className="text-xs md:text-sm mt-2 block text-center" style={{ color: 'var(--voidMagenta)', fontFamily: 'var(--font-body), sans-serif' }}>
+        Presence as Rebellion
+      </span>
       
       {showLoading && (
         <div 

@@ -17,8 +17,11 @@ export default function Pricing() {
             className="btn-void mt-10 inline-block"
             style={{ fontSize: '1.15rem', padding: '16px 28px' }}
           >
-            BUY NOW
+            ENTER THE VOID
           </a>
+          <span className="text-xs md:text-sm mt-2 block text-center" style={{ color: 'var(--voidMagenta)', fontFamily: 'var(--font-body), sans-serif' }}>
+            Presence as Rebellion
+          </span>
         </div>
       </div>
     </div>

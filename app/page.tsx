@@ -147,10 +147,19 @@ export default function Home() {
                   width={24} 
                   height={24} 
                   className="h-[1em] w-auto hourglass-icon cursor-pointer"
-                  style={{ transform: `rotate(${(hourglassRotations['initiation-hourglass'] || 0) * 180}deg)` }}
-                  onMouseEnter={(e) => handleHourglassIconHover('initiation-hourglass', e)}
+                  style={{ transform: `rotate(${(hourglassRotations['initiation-hourglass-left'] || 0) * 180}deg)` }}
+                  onMouseEnter={(e) => handleHourglassIconHover('initiation-hourglass-left', e)}
                 />
                 <span className="headingText">INITIATION PACKAGE</span>
+                <Image 
+                  src="/HourGlass.png" 
+                  alt="" 
+                  width={24} 
+                  height={24} 
+                  className="h-[1em] w-auto hourglass-icon cursor-pointer"
+                  style={{ transform: `rotate(${(hourglassRotations['initiation-hourglass-right'] || 0) * 180}deg)` }}
+                  onMouseEnter={(e) => handleHourglassIconHover('initiation-hourglass-right', e)}
+                />
               </span>
             </AnimatedSectionTitle>
           </div>
@@ -165,7 +174,7 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="fade">
               <div className="cardVoid p-6">
-                <h3 className="text-base md:text-lg font-bold mb-3">Community that trains</h3>
+                <h3 className="text-base md:text-lg font-bold mb-3">The Field That Trains Back</h3>
                 <p className="text-sm md:text-base">
                   People who show up, post results, and give useful feedback. Less talk. More proof.
                 </p>
@@ -173,7 +182,7 @@ export default function Home() {
             </AnimatedColumn>
             <AnimatedColumn direction="right">
               <div className="cardVoid p-6">
-                <h3 className="text-base md:text-lg font-bold mb-3">Credit for live training</h3>
+                <h3 className="text-base md:text-lg font-bold mb-3">The Future Summons — Bootcamp Credit</h3>
                 <p className="text-sm md:text-base">
                   $500 credit you can use for a Jeffy Bootcamp in 2025 or 2026.
                 </p>
@@ -429,13 +438,13 @@ export default function Home() {
                   <span className="block md:hidden">
                     Founders Annual Pass
                     <div className="mt-2 flex justify-center">
-                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Special</span>
+                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Access</span>
                     </div>
                   </span>
                   <span className="hidden md:block">
                     Founders Annual<br />Pass
                     <div className="mt-2 flex justify-center">
-                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Special</span>
+                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Access</span>
                     </div>
                   </span>
                 </div>
@@ -535,8 +544,11 @@ export default function Home() {
                     className="btn-void mt-10 inline-block"
                     style={{ fontSize: '1.15rem', padding: '16px 28px' }}
                   >
-                    BUY NOW
+                    ENTER THE VOID
                   </a>
+                  <span className="text-xs md:text-sm mt-2 block text-center accentMagenta" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+                    Presence as Rebellion
+                  </span>
                 </div>
               </div>
               <p className="text-sm text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace' }}>

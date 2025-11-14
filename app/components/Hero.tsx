@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="mx-auto max-w-5xl px-6 py-20 text-center">
         {/* Eyebrow */}
         <div className="text-sm md:text-base tracking-wide text-neutral-300">
-          Void Underground <span className="text-cyan-400 ml-2">Black Friday Special</span>
+          Void Underground <span className="text-cyan-400 ml-2">Black Friday Access</span>
         </div>
 
         {/* Main headline */}

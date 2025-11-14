@@ -52,7 +52,11 @@
     0 0 10px rgba(0, 255, 255, 0.8),
     0 0 20px rgba(0, 255, 255, 0.6),
     0 0 30px rgba(0, 255, 255, 0.4),
-    0 0 40px rgba(0, 255, 255, 0.2);
+    0 0 40px rgba(0, 255, 255, 0.2),
+    0 0 10px rgba(255, 0, 255, 0.8),
+    0 0 20px rgba(255, 0, 255, 0.6),
+    0 0 30px rgba(255, 0, 255, 0.4),
+    0 0 40px rgba(255, 0, 255, 0.2);
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
   position: relative;
 }
@@ -73,7 +77,11 @@
       0 0 10px rgba(0, 255, 255, 0.8),
       0 0 20px rgba(0, 255, 255, 0.6),
       0 0 30px rgba(0, 255, 255, 0.4),
-      0 0 40px rgba(0, 255, 255, 0.2);
+      0 0 40px rgba(0, 255, 255, 0.2),
+      0 0 10px rgba(255, 0, 255, 0.8),
+      0 0 20px rgba(255, 0, 255, 0.6),
+      0 0 30px rgba(255, 0, 255, 0.4),
+      0 0 40px rgba(255, 0, 255, 0.2);
   }
   50% {
     opacity: 1;
@@ -84,7 +92,11 @@
       0 0 20px rgba(0, 255, 255, 1),
       0 0 40px rgba(0, 255, 255, 0.9),
       0 0 60px rgba(0, 255, 255, 0.7),
-      0 0 80px rgba(0, 255, 255, 0.5);
+      0 0 80px rgba(0, 255, 255, 0.5),
+      0 0 20px rgba(255, 0, 255, 1),
+      0 0 40px rgba(255, 0, 255, 0.9),
+      0 0 60px rgba(255, 0, 255, 0.7),
+      0 0 80px rgba(255, 0, 255, 0.5);
   }
 }
 
@@ -100,7 +112,11 @@
       0 0 15px rgba(0, 255, 255, 0.9),
       0 0 30px rgba(0, 255, 255, 0.7),
       0 0 45px rgba(0, 255, 255, 0.5),
-      0 0 60px rgba(0, 255, 255, 0.3);
+      0 0 60px rgba(0, 255, 255, 0.3),
+      0 0 15px rgba(255, 0, 255, 0.9),
+      0 0 30px rgba(255, 0, 255, 0.7),
+      0 0 45px rgba(255, 0, 255, 0.5),
+      0 0 60px rgba(255, 0, 255, 0.3);
   }
 }
 
@@ -426,7 +442,7 @@
 }
 
 .discount-note {
-  color: #a78bfa; /* soft magenta from your palette family */
+  color: rgba(255, 255, 255, 0.8); /* soft white */
   font-weight: 600;
   font-size: clamp(12px, 1.7vw, 16px);
   font-family: var(--font-mono); /* IBM Plex Mono for small UI labels */
@@ -446,7 +462,7 @@
 /* "$600 value" that breaks apart on hover */
 .strike {
   position: relative;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.3); /* 30% opacity gray */
   display: inline-flex;
   gap: 1px;
   cursor: default;

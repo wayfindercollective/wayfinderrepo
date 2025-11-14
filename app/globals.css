@@ -312,6 +312,9 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 /* small accents that you can apply where needed */
 .accentCyan { color: var(--voidCyan); }
 .accentMagenta { color: var(--voidMagenta); }
+.accentMagenta.cardVoid,
+.cardVoid .accentMagenta,
+.cardVoid span.accentMagenta { color: var(--voidMagenta) !important; }
 .accentOrange { color: var(--voidOrange); }
 
 .fx-hero-sub{
