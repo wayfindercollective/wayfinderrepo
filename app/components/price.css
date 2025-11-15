@@ -459,7 +459,7 @@
   margin-bottom: 6px; /* reduced spacing */
 }
 
-/* "$600 value" that breaks apart on hover */
+/* "$1100 value" that breaks apart on hover */
 .strike {
   position: relative;
   color: rgba(255, 255, 255, 0.3); /* 30% opacity gray */
