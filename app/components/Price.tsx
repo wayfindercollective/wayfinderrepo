@@ -121,7 +121,7 @@ export default function Price() {
             $297
           </span>
         </span>
-        <span className="discount-note">50% Discount</span>
+        <span className="discount-note">73% Discount</span>
       </div>
       <div className="meta-row value-row">
         <span className="strike" title="Original price">
