@@ -26,6 +26,7 @@ export default function HeroLogo() {
   }, []);
 
   const [flickerIntensity, setFlickerIntensity] = useState(1);
+  const [animationComplete, setAnimationComplete] = useState(false);
   const audioSourceRef = useRef<MediaElementAudioSourceNode | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
@@ -512,6 +513,9 @@ export default function HeroLogo() {
     // Listen for audio enabled event to auto-play
     const handleAudioEnabled = () => {
       if (audioElement) {
+        // Reset animationComplete state so button can be clicked again
+        setAnimationComplete(false);
+        
         // Check if audio is enabled
         const soundEnabled = localStorage.getItem('soundEnabled');
         if (soundEnabled === 'false') {
@@ -594,7 +598,7 @@ export default function HeroLogo() {
         smoothedIntensityRef.current = 1.0;
         smoothedBrightnessRef.current = 1.15;
         
-        // Reset logo to original state before starting
+        // Reset logo to original state before starting and re-add glow animation
         if (logoRef.current) {
           const images = logoRef.current.querySelectorAll('img');
           const baseLogo = images[0] as HTMLImageElement;
@@ -608,6 +612,8 @@ export default function HeroLogo() {
             glowLogo.style.opacity = '1';
             glowLogo.style.filter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
             glowLogo.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))';
+            // Re-add animation class so it animates again
+            glowLogo.classList.add('void-glow-breath');
           }
         }
         
@@ -748,7 +754,7 @@ export default function HeroLogo() {
           height={400}
           priority
           unoptimized
-          className="block select-none pointer-events-none w-full h-auto absolute top-0 left-0 z-10 void-glow-breath"
+          className={`block select-none pointer-events-none w-full h-auto absolute top-0 left-0 z-10 ${!animationComplete ? 'void-glow-breath' : ''}`}
           style={{
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))',
             WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))',
