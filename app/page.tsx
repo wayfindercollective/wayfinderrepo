@@ -20,6 +20,7 @@ export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
   const [showWeekPackOverlay, setShowWeekPackOverlay] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [currentPhase, setCurrentPhase] = useState<'II' | 'III'>('II');
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastPlayTimeRef = useRef<number>(0);
 
@@ -28,6 +29,30 @@ export default function Home() {
     if (commitSha) {
       console.log(`build ${commitSha}`);
     }
+  }, []);
+
+  // Listen for phase changes from Timer component
+  useEffect(() => {
+    const handlePhaseChange = (event: Event) => {
+      const customEvent = event as CustomEvent<{ phase: 'II' | 'III' }>;
+      setCurrentPhase(customEvent.detail.phase);
+    };
+
+    window.addEventListener('timerPhaseChange', handlePhaseChange);
+    
+    // Fetch initial phase from API
+    fetch('/api/timer')
+      .then(res => res.json())
+      .then(data => {
+        if (data.phase) {
+          setCurrentPhase(data.phase);
+        }
+      })
+      .catch(err => console.error('Failed to fetch initial phase:', err));
+
+    return () => {
+      window.removeEventListener('timerPhaseChange', handlePhaseChange);
+    };
   }, []);
 
   // Create triangle sound effect for hourglass
@@ -115,9 +140,9 @@ export default function Home() {
       {/* Timer in top-right corner */}
       <div id="timer-container" className="fixed top-4 right-1 z-50 px-2 py-1.5 md:px-5 md:py-3 origin-top-right scale-85 md:scale-95">
         <div className="text-white flex flex-col gap-1.5 md:gap-3 items-center">
-          {/* Phase I */}
+          {/* Phase Display */}
           <div className="text-white opacity-80 border border-[#00FFFF] px-1 py-1 md:px-2 md:py-1.5 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.65rem, 1.3vw, 0.8rem)', lineHeight: '1' }}>
-            Phase I
+            Phase {currentPhase}
           </div>
           {/* Black Friday Access */}
           <div className="text-white opacity-80 border border-[#00FFFF] px-1 py-1 md:px-2 md:py-1.5 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.65rem, 1.3vw, 0.8rem)', lineHeight: '1' }}>

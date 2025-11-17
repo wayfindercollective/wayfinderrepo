@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface TimerData {
   remaining: number;
   endTime: number;
+  phase: 'II' | 'III';
+  nextPhase: 'III' | null;
   isNew: boolean;
 }
 
@@ -12,25 +14,37 @@ export default function Timer() {
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [endTime, setEndTime] = useState<number | null>(null);
+  const [currentPhase, setCurrentPhase] = useState<'II' | 'III'>('II');
+  const [hasExpired, setHasExpired] = useState(false);
+
+  const fetchTimer = useCallback(async () => {
+    try {
+      const response = await fetch('/api/timer');
+      const data: TimerData = await response.json();
+      
+      setTimeRemaining(data.remaining);
+      setEndTime(data.endTime);
+      setCurrentPhase(data.phase);
+      setHasExpired(false);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch timer:', error);
+      setIsLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     // Fetch timer data from API
-    const fetchTimer = async () => {
-      try {
-        const response = await fetch('/api/timer');
-        const data: TimerData = await response.json();
-        
-        setTimeRemaining(data.remaining);
-        setEndTime(data.endTime);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Failed to fetch timer:', error);
-        setIsLoading(false);
-      }
-    };
-
     fetchTimer();
-  }, []);
+  }, [fetchTimer]);
+
+  // Emit phase change event when phase updates
+  useEffect(() => {
+    if (!isLoading && currentPhase) {
+      const event = new CustomEvent('timerPhaseChange', { detail: { phase: currentPhase } });
+      window.dispatchEvent(event);
+    }
+  }, [currentPhase, isLoading]);
 
   useEffect(() => {
     if (timeRemaining === null || timeRemaining <= 0) return;
@@ -42,14 +56,20 @@ export default function Timer() {
         const remaining = Math.max(0, endTime - now);
         setTimeRemaining(remaining);
         
-        if (remaining <= 0) {
+        // When timer expires, automatically fetch next phase
+        if (remaining <= 0 && !hasExpired) {
+          setHasExpired(true);
           clearInterval(interval);
+          // Small delay to ensure smooth transition, then fetch next phase
+          setTimeout(() => {
+            fetchTimer();
+          }, 1000);
         }
       }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [endTime, timeRemaining]);
+  }, [endTime, timeRemaining, hasExpired, fetchTimer]);
 
   if (isLoading) {
     return (
