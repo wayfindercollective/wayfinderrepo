@@ -62,6 +62,7 @@ export default function RootLayout({
               if(saQry['CID']!=''&&typeof saQry['CID']!==undefined)sessionStorage.setItem('CID', saQry['CID']);
               if(saQry['l']!=''&&typeof saQry['l']!==undefined)sessionStorage.setItem('l', saQry['l']);
               if(saQry['SID']!=''&&typeof saQry['SID']!==undefined)sessionStorage.setItem('SID', saQry['SID']);
+              if(saQry['t']!=''&&typeof saQry['l']!==undefined)sessionStorage.setItem('t', saQry['t']);
             `,
           }}
         />
@@ -107,6 +108,10 @@ export default function RootLayout({
                     var sid = sessionStorage.getItem('SID');
                     if (sid != null) {
                       url += '&SID=' + sid;
+                    }
+                    var t = sessionStorage.getItem('t');
+                    if (t != null) {
+                      url += '&t=' + t;
                     }
                     $(this).attr('href', query_params ? url : url.replace(/&/, '?'));
                   }
