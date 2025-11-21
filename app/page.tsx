@@ -163,7 +163,7 @@ export default function Home() {
 
             {/* Your tagline and paragraph below the logo can remain */}
             <h2 className="h2-void mt-12 md:mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
-              Reality is broken. <span className="emphasis-word charisma-word">Charisma</span> bends it.
+              Reality is broken. <span className="emphasis-word charisma-word">Presence</span> bends it.
             </h2>
 
             <p className="text-gray-400 mb-8 md:mb-6 max-w-2xl mx-auto mt-4 md:mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
