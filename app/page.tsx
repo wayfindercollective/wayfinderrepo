@@ -20,7 +20,7 @@ export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
   const [showWeekPackOverlay, setShowWeekPackOverlay] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [currentPhase, setCurrentPhase] = useState<'II' | 'III'>('II');
+  const [currentPhase, setCurrentPhase] = useState<'IV' | 'V'>('IV');
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastPlayTimeRef = useRef<number>(0);
 
@@ -34,7 +34,7 @@ export default function Home() {
   // Listen for phase changes from Timer component
   useEffect(() => {
     const handlePhaseChange = (event: Event) => {
-      const customEvent = event as CustomEvent<{ phase: 'II' | 'III' }>;
+      const customEvent = event as CustomEvent<{ phase: 'IV' | 'V' }>;
       setCurrentPhase(customEvent.detail.phase);
     };
 

@@ -5,8 +5,8 @@ import { useState, useEffect, useCallback } from 'react';
 interface TimerData {
   remaining: number;
   endTime: number;
-  phase: 'II' | 'III';
-  nextPhase: 'III' | null;
+  phase: 'IV' | 'V';
+  nextPhase: 'V' | null;
   isNew: boolean;
 }
 
@@ -14,7 +14,7 @@ export default function Timer() {
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [endTime, setEndTime] = useState<number | null>(null);
-  const [currentPhase, setCurrentPhase] = useState<'II' | 'III'>('II');
+  const [currentPhase, setCurrentPhase] = useState<'IV' | 'V'>('IV');
   const [hasExpired, setHasExpired] = useState(false);
 
   const fetchTimer = useCallback(async () => {
