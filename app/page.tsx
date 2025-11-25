@@ -454,7 +454,7 @@ export default function Home() {
               </AnimatedSectionTitle>
             </div>
             <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
-              Most charisma programs focus on theory. We focus on action.
+              Most 'charisma' programs focus on theory. We focus on action.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -626,7 +626,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-5', e)}
                   />
-                  <span>From Charisma in the Void</span>
+                  <span>From Presence in the Void</span>
                 </div>
               </div>
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10" style={{ alignItems: 'center', alignContent: 'center' }}>
