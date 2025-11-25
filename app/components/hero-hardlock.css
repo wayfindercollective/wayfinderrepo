@@ -1,0 +1,152 @@
+/* Hero Hard Lock Styles - Highest Priority Override
+   Loads after Tailwind to ensure it wins against all utilities */
+
+/* Hard lock wrapper - isolation and containment */
+[data-hero-hardlock] {
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+/* V2 Logo container - Fixed width, auto height */
+[data-hero-hardlock] [data-v2-logo] {
+  width: 320px !important;
+  max-width: none !important;
+  min-width: 320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+  contain: layout paint !important;
+  position: static !important;
+}
+
+/* V2 Logo image inside container */
+[data-hero-hardlock] [data-v2-logo] img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+}
+
+/* Master Logo - Fixed width, auto height */
+[data-hero-hardlock] [data-master-logo] {
+  width: 680px !important;
+  height: auto !important;
+  max-width: none !important;
+  min-width: 680px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+  contain: layout paint !important;
+  position: static !important;
+}
+
+/* Master Logo wrapper */
+[data-hero-hardlock] [data-master-logo-wrapper] {
+  width: 680px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  transform: none !important;
+  scale: 1 !important;
+  contain: layout paint !important;
+  position: relative !important;
+}
+
+/* Enable Sound Button wrapper */
+[data-hero-hardlock] [data-sound-button-wrapper] {
+  contain: layout paint !important;
+  position: static !important;
+  margin-top: 48px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
+}
+
+/* Enable Sound Button */
+[data-hero-hardlock] [data-sound-button] {
+  contain: layout paint !important;
+  position: static !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Gap between V2 and Master Logo */
+[data-hero-hardlock] [data-v2-logo] + [data-master-logo-wrapper] {
+  margin-top: 64px !important;
+}
+
+/* Tablet breakpoint: up to 1024px */
+@media (max-width: 1024px) {
+  [data-hero-hardlock] [data-v2-logo] {
+    width: 280px !important;
+    min-width: 280px !important;
+  }
+
+  [data-hero-hardlock] [data-master-logo] {
+    width: 600px !important;
+    min-width: 600px !important;
+  }
+
+  [data-hero-hardlock] [data-master-logo-wrapper] {
+    width: 600px !important;
+  }
+
+  [data-hero-hardlock] [data-v2-logo] + [data-master-logo-wrapper] {
+    margin-top: 56px !important;
+  }
+
+  [data-hero-hardlock] [data-sound-button-wrapper] {
+    margin-top: 40px !important;
+  }
+}
+
+/* Phone breakpoint: up to 480px */
+@media (max-width: 480px) {
+  [data-hero-hardlock] [data-v2-logo] {
+    width: 240px !important;
+    min-width: 240px !important;
+  }
+
+  [data-hero-hardlock] [data-master-logo] {
+    width: 340px !important;
+    min-width: 340px !important;
+  }
+
+  [data-hero-hardlock] [data-master-logo-wrapper] {
+    width: 340px !important;
+  }
+
+  [data-hero-hardlock] [data-v2-logo] + [data-master-logo-wrapper] {
+    margin-top: 48px !important;
+  }
+
+  [data-hero-hardlock] [data-sound-button-wrapper] {
+    margin-top: 32px !important;
+  }
+}
+
+/* Desktop breakpoint: above 1024px - restore absolute positioning for button */
+@media (min-width: 1025px) {
+  [data-hero-hardlock] [data-sound-button-wrapper] {
+    position: absolute !important;
+    top: 76% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-top: 0 !important;
+  }
+
+  [data-hero-hardlock] [data-master-logo-wrapper] {
+    position: relative !important;
+  }
+}
+

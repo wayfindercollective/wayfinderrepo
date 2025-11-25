@@ -3,43 +3,43 @@ import { NextRequest, NextResponse } from 'next/server';
 // Phase definitions
 // CST is UTC-6, so 9 AM CST = 3 PM UTC (15:00 UTC)
 const PHASES = {
-  II: {
-    endTime: new Date('2025-11-20T15:00:00Z').getTime(), // November 20, 2025 9 AM CST
-    nextPhase: 'III' as const,
+  IV: {
+    endTime: new Date('2025-11-26T15:00:00Z').getTime(), // November 26, 2025 9 AM CST
+    nextPhase: 'V' as const,
   },
-  III: {
-    endTime: new Date('2025-11-23T15:00:00Z').getTime(), // November 23, 2025 9 AM CST
+  V: {
+    endTime: new Date('2025-11-29T15:00:00Z').getTime(), // November 29, 2025 9 AM CST
     nextPhase: null,
   },
 };
 
 // Determine current phase based on time
-function getCurrentPhase(): { phase: 'II' | 'III'; endTime: number; nextPhase: 'III' | null } {
+function getCurrentPhase(): { phase: 'IV' | 'V'; endTime: number; nextPhase: 'V' | null } {
   const now = Date.now();
   
-  // Check Phase II
-  if (now < PHASES.II.endTime) {
+  // Check Phase IV
+  if (now < PHASES.IV.endTime) {
     return {
-      phase: 'II',
-      endTime: PHASES.II.endTime,
-      nextPhase: PHASES.II.nextPhase,
+      phase: 'IV',
+      endTime: PHASES.IV.endTime,
+      nextPhase: PHASES.IV.nextPhase,
     };
   }
   
-  // Check Phase III
-  if (now < PHASES.III.endTime) {
+  // Check Phase V
+  if (now < PHASES.V.endTime) {
     return {
-      phase: 'III',
-      endTime: PHASES.III.endTime,
-      nextPhase: PHASES.III.nextPhase,
+      phase: 'V',
+      endTime: PHASES.V.endTime,
+      nextPhase: PHASES.V.nextPhase,
     };
   }
   
-  // Default to Phase II if all phases expired (shouldn't happen in normal flow)
+  // Default to Phase V if expired (still show Phase V)
   return {
-    phase: 'II',
-    endTime: PHASES.II.endTime,
-    nextPhase: PHASES.II.nextPhase,
+    phase: 'V',
+    endTime: PHASES.V.endTime,
+    nextPhase: PHASES.V.nextPhase,
   };
 }
 

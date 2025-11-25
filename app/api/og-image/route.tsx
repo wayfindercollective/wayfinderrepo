@@ -15,7 +15,19 @@ export async function GET() {
   try {
     // Read the preview logo image file
     const logoPath = join(process.cwd(), 'public', 'PreviewLogo.jpg');
-    const logoBuffer = await readFile(logoPath);
+    
+    let logoBuffer: Buffer;
+    try {
+      logoBuffer = await readFile(logoPath);
+    } catch (fileError) {
+      // Log the error for debugging
+      console.error('Failed to read PreviewLogo.jpg:', {
+        path: logoPath,
+        cwd: process.cwd(),
+        error: fileError,
+      });
+      throw fileError;
+    }
     
     // Resize the preview logo to fit the Open Graph dimensions (1200x630)
     // Using 'cover' to fill the entire area while maintaining aspect ratio

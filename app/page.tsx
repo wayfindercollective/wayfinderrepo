@@ -20,7 +20,7 @@ export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
   const [showWeekPackOverlay, setShowWeekPackOverlay] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [currentPhase, setCurrentPhase] = useState<'II' | 'III'>('II');
+  const [currentPhase, setCurrentPhase] = useState<'IV' | 'V'>('IV');
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastPlayTimeRef = useRef<number>(0);
 
@@ -34,7 +34,7 @@ export default function Home() {
   // Listen for phase changes from Timer component
   useEffect(() => {
     const handlePhaseChange = (event: Event) => {
-      const customEvent = event as CustomEvent<{ phase: 'II' | 'III' }>;
+      const customEvent = event as CustomEvent<{ phase: 'IV' | 'V' }>;
       setCurrentPhase(customEvent.detail.phase);
     };
 
@@ -149,7 +149,7 @@ export default function Home() {
             Black Friday Access
           </div>
           {/* Timer */}
-          <div className="w-full">
+          <div className="flex justify-center items-center w-full">
             <Timer />
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function Home() {
 
             {/* Your tagline and paragraph below the logo can remain */}
             <h2 className="h2-void mt-12 md:mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
-              Reality is broken. <span className="emphasis-word charisma-word">Presence</span> bends it.
+              Reality is broken. <span className="emphasis-word charisma-word">presence</span> bends it.
             </h2>
 
             <p className="text-gray-400 mb-8 md:mb-6 max-w-2xl mx-auto mt-4 md:mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
