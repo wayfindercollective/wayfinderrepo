@@ -11,6 +11,7 @@
     "check": "npm run lint && npm run type-check && npm run build"
   },
   "dependencies": {
+    "@intercom/messenger-js-sdk": "^0.0.18",
     "@vercel/analytics": "^1.5.0",
     "next": "16.0.1",
     "react": "19.2.0",
