@@ -4,6 +4,7 @@ import "./../styles/brand-theme.css";
 import { inter, orbitron, plexMono } from "./fonts";
 import Starfield from "./components/Starfield";
 import GlobalFlickerEffect from "./components/GlobalFlickerEffect";
+import IntercomButton from "./components/IntercomButton";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -126,6 +127,7 @@ export default function RootLayout({
         <GlobalFlickerEffect />
         <Starfield />
         {children}
+        <IntercomButton />
         <Analytics />
       </body>
     </html>

@@ -717,7 +717,6 @@ export default function HeroLogo() {
           width={2838}
           height={2583}
           priority
-          unoptimized
           className="block select-none pointer-events-none h-[25vh] md:h-[30vh] w-auto relative z-20"
           style={{
             filter: 'contrast(1.2) brightness(1.1) saturate(1.1)',
@@ -734,12 +733,11 @@ export default function HeroLogo() {
       >
         {/* Base logo without glow */}
         <Image
-          src="/Master_Logo.png?v=2"
+          src="/Master_Logo.png"
           alt="Void Underground"
           width={1800}
           height={400}
           priority
-          unoptimized
           className="block select-none pointer-events-none w-full h-auto relative z-0"
           style={{
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
@@ -748,20 +746,19 @@ export default function HeroLogo() {
         />
         {/* Glow overlay - only for "void" text (top portion) */}
         <Image
-          src="/Master_Logo.png?v=2"
+          src="/Master_Logo.png"
           alt=""
           width={1800}
           height={400}
           priority
-          unoptimized
           className={`block select-none pointer-events-none w-full h-auto absolute top-0 left-0 z-10 ${!animationComplete ? 'void-glow-breath' : ''}`}
           style={{
             filter: 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))',
             WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))',
             clipPath: 'polygon(36% 15%, 64% 15%, 64% 42%, 36% 42%)',
             WebkitClipPath: 'polygon(36% 15%, 64% 15%, 64% 42%, 36% 42%)',
-            maskImage: 'url(/Master_Logo.png?v=2)',
-            WebkitMaskImage: 'url(/Master_Logo.png?v=2)',
+            maskImage: 'url(/Master_Logo.png)',
+            WebkitMaskImage: 'url(/Master_Logo.png)',
             maskSize: '100% 100%',
             WebkitMaskSize: '100% 100%',
             maskPosition: 'center',

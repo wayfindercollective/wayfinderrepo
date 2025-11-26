@@ -185,6 +185,7 @@ export default function Home() {
                   width={24} 
                   height={24} 
                   className="h-[1em] w-auto hourglass-icon cursor-pointer"
+                  loading="lazy"
                   style={{ transform: `rotate(${(hourglassRotations['initiation-hourglass-left'] || 0) * 180}deg)` }}
                   onMouseEnter={(e) => handleHourglassIconHover('initiation-hourglass-left', e)}
                 />
@@ -195,6 +196,7 @@ export default function Home() {
                   width={24} 
                   height={24} 
                   className="h-[1em] w-auto hourglass-icon cursor-pointer"
+                  loading="lazy"
                   style={{ transform: `rotate(${(hourglassRotations['initiation-hourglass-right'] || 0) * 180}deg)` }}
                   onMouseEnter={(e) => handleHourglassIconHover('initiation-hourglass-right', e)}
                 />
@@ -250,6 +252,7 @@ export default function Home() {
                     width={24} 
                     height={24} 
                     className="h-[1em] w-auto cyan-dots-icon"
+                    loading="lazy"
                   />
                 </span>
                 <span className="headingText">The Program</span>
@@ -267,6 +270,7 @@ export default function Home() {
                       width={24} 
                       height={24} 
                       className="h-[1em] w-auto hourglass-icon cursor-pointer"
+                      loading="lazy"
                       style={{ transform: `rotate(${(hourglassRotations['hourglass-1'] || 0) * 180}deg)` }}
                       onMouseEnter={(e) => handleHourglassIconHover('hourglass-1', e)}
                     />
@@ -377,7 +381,7 @@ export default function Home() {
                 width={400}
                 height={600}
                 className="w-full h-auto md:hidden"
-                unoptimized
+                loading="lazy"
               />
               {/* Desktop - Regular version */}
               <Image
@@ -386,7 +390,7 @@ export default function Home() {
                 width={400}
                 height={600}
                 className="hidden md:block w-auto h-auto max-w-[400px] max-h-[80vh]"
-                unoptimized
+                loading="lazy"
               />
             </div>
             
@@ -555,6 +559,7 @@ export default function Home() {
                     width={36} 
                     height={36} 
                     className="hourglass-icon cursor-pointer"
+                    loading="lazy"
                     style={{ 
                       transform: `rotate(${(hourglassRotations['investment-hourglass-1'] || 0) * 180}deg)`,
                       height: '1em',
@@ -663,8 +668,7 @@ export default function Home() {
             width={200}
             height={200}
             className="w-32 md:w-40 h-auto"
-            priority
-            unoptimized
+            loading="lazy"
           />
         </div>
       </div>
@@ -682,6 +686,7 @@ export default function Home() {
                     width={24} 
                     height={24} 
                     className="h-[1em] w-auto cyan-dots-icon"
+                    loading="lazy"
                   />
                 </span>
                 <span className="headingText">FAQ</span>
@@ -775,7 +780,7 @@ export default function Home() {
               width={1200}
               height={1200}
               className="h-[200px] md:h-full w-auto object-contain signal-core-logo-static"
-              unoptimized
+              loading="lazy"
               style={{
                 filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
@@ -790,7 +795,7 @@ export default function Home() {
               width={1200}
               height={1200}
               className="h-[200px] md:h-full w-auto object-contain signal-core-logo-spin signal-core-logo-spin-left absolute top-0 left-0"
-              unoptimized
+              loading="lazy"
               style={{
                 filter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
                 WebkitFilter: 'contrast(1.5) brightness(1.3) saturate(1.4)',
@@ -844,6 +849,7 @@ export default function Home() {
                 width={800}
                 height={200}
                 className="w-full h-auto"
+                loading="lazy"
                 style={{
                   filter: 'contrast(1.4) brightness(1.15) saturate(1.2)',
                   WebkitFilter: 'contrast(1.4) brightness(1.15) saturate(1.2)',

@@ -4,7 +4,7 @@ import './starfield.css';
 
 type Star = { x: number; y: number; z: number; r: number; vx: number; vy: number; rotation: number; rotSpeed: number; color: string };
 
-export default function Starfield({ count = 150 }: { count?: number }) {
+export default function Starfield({ count = 75 }: { count?: number }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const starsRef = useRef<Star[]>([]);
   const flareRef = useRef<{ x: number; y: number; progress: number; active: boolean; startTime: number }>({ x: 0, y: 0, progress: 0, active: false, startTime: 0 });
@@ -98,10 +98,20 @@ export default function Starfield({ count = 150 }: { count?: number }) {
       });
     };
 
-    const step = () => {
+    let lastFrameTime = 0;
+    const targetFPS = 30; // Reduce to 30 FPS for better performance
+    const frameInterval = 1000 / targetFPS;
+
+    const step = (currentTime: number = Date.now()) => {
+      // Throttle to 30 FPS for better performance
+      if (currentTime - lastFrameTime < frameInterval) {
+        raf = requestAnimationFrame(() => step(Date.now()));
+        return;
+      }
+      lastFrameTime = currentTime;
+
       const w = canvas.width / dpr;
       const h = canvas.height / dpr;
-      const currentTime = Date.now();
       
       // Reset transform before clearing to ensure we clear the entire canvas
       ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -109,7 +119,7 @@ export default function Starfield({ count = 150 }: { count?: number }) {
       
       // Reapply the device pixel ratio transform
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
+      
       // Check if it's time for a new signal pulse (every 30 seconds)
       if (!flareRef.current.active && currentTime - lastFlareTimeRef.current >= 30000) {
         lastFlareTimeRef.current = currentTime;
@@ -163,9 +173,10 @@ export default function Starfield({ count = 150 }: { count?: number }) {
       }
 
       ctx.save();
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = 6; // Reduce shadow blur for better performance
       ctx.globalAlpha = 0.9;
 
+      // Batch updates for better performance
       for (const s of starsRef.current) {
         s.x += s.vx;
         s.y += s.vy;
@@ -176,13 +187,16 @@ export default function Starfield({ count = 150 }: { count?: number }) {
         if (s.x > w + 20) s.x = -20;
         if (s.y < -20) s.y = h + 20;
         if (s.y > h + 20) s.y = -20;
+      }
 
+      // Draw all stars in one batch
+      for (const s of starsRef.current) {
         ctx.shadowColor = s.color;
         drawStar(ctx, s.x, s.y, s.r, s.rotation, s.color);
       }
       ctx.restore();
 
-      raf = requestAnimationFrame(step);
+      raf = requestAnimationFrame(() => step(Date.now()));
     };
 
     resize();
@@ -194,7 +208,7 @@ export default function Starfield({ count = 150 }: { count?: number }) {
     };
     
     window.addEventListener('resize', handleResize);
-    raf = requestAnimationFrame(step);
+    raf = requestAnimationFrame(() => step(Date.now()));
     
     return () => {
       cancelAnimationFrame(raf);
