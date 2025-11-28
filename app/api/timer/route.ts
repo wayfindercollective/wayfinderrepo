@@ -8,7 +8,7 @@ const PHASES = {
     nextPhase: 'V' as const,
   },
   V: {
-    endTime: new Date('2025-11-29T15:00:00Z').getTime(), // November 29, 2025 9 AM CST
+    endTime: new Date('2025-11-29T07:59:00Z').getTime(), // November 28, 2025 11:59 PM PST
     nextPhase: null,
   },
 };
