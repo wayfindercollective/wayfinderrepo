@@ -729,7 +729,7 @@ export default function HeroLogo() {
       {/* Master Logo plus cyan underline - positioned very close to VU_LOGO_V2 */}
       <div 
         ref={logoRef}
-        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto -mt-16 md:-mt-55 mb-[1vh] md:mb-0 group z-10 scale-100 md:scale-[0.75]"
+        className="relative w-fit max-w-[85vw] md:max-w-[90vw] mx-auto -mt-10 md:-mt-55 mb-[1vh] md:mb-0 group z-10 scale-100 md:scale-[0.75]"
         style={{ pointerEvents: 'auto' }}
       >
         {/* Base logo without glow */}

@@ -122,7 +122,7 @@ export default function Home() {
       </section>
 
       {/* YouTube Embed Section */}
-      <section className="relative z-10 mt-0 md:mt-8 lg:-mt-[25vh]" style={{ paddingTop: '0px', paddingBottom: '30px' }}>
+      <section className="relative z-10 -mt-[2vh] md:mt-8 lg:-mt-[25vh]" style={{ paddingTop: '0px', paddingBottom: '30px' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8">
           {/* YouTube Embed */}
           <div className="w-full mx-auto" style={{ maxWidth: '720px', border: '2px solid rgba(0, 255, 255, 0.2)', borderRadius: '4px', boxShadow: '0 0 8px rgba(0, 255, 255, 0.15)' }}>
