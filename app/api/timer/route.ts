@@ -1,59 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Phase definitions
-// CST is UTC-6, so 9 AM CST = 3 PM UTC (15:00 UTC)
-const PHASES = {
-  II: {
-    endTime: new Date('2025-11-20T15:00:00Z').getTime(), // November 20, 2025 9 AM CST
-    nextPhase: 'III' as const,
-  },
-  III: {
-    endTime: new Date('2025-11-23T15:00:00Z').getTime(), // November 23, 2025 9 AM CST
-    nextPhase: null,
-  },
-};
-
-// Determine current phase based on time
-function getCurrentPhase(): { phase: 'II' | 'III'; endTime: number; nextPhase: 'III' | null } {
-  const now = Date.now();
-  
-  // Check Phase II
-  if (now < PHASES.II.endTime) {
-    return {
-      phase: 'II',
-      endTime: PHASES.II.endTime,
-      nextPhase: PHASES.II.nextPhase,
-    };
-  }
-  
-  // Check Phase III
-  if (now < PHASES.III.endTime) {
-    return {
-      phase: 'III',
-      endTime: PHASES.III.endTime,
-      nextPhase: PHASES.III.nextPhase,
-    };
-  }
-  
-  // Default to Phase II if all phases expired (shouldn't happen in normal flow)
-  return {
-    phase: 'II',
-    endTime: PHASES.II.endTime,
-    nextPhase: PHASES.II.nextPhase,
-  };
-}
+// Last Phase countdown
+// PST is UTC-8, so 11:59 PM PST on November 30, 2025 = December 1, 2025 07:59 AM UTC
+const LAST_PHASE_END_TIME = new Date('2025-12-01T07:59:00Z').getTime(); // November 30, 2025 11:59 PM PST
 
 export async function GET(request: NextRequest) {
   try {
     const now = Date.now();
-    const { phase, endTime, nextPhase } = getCurrentPhase();
-    const remaining = Math.max(0, endTime - now);
+    const remaining = Math.max(0, LAST_PHASE_END_TIME - now);
     
     return NextResponse.json({
       remaining: remaining,
-      endTime: endTime,
-      phase: phase,
-      nextPhase: nextPhase,
+      endTime: LAST_PHASE_END_TIME,
+      phase: 'II' as const,
+      nextPhase: null,
       isNew: false,
     });
   } catch (error) {

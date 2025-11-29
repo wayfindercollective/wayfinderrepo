@@ -5,6 +5,7 @@ import { inter, orbitron, plexMono } from "./fonts";
 import Starfield from "./components/Starfield";
 import GlobalFlickerEffect from "./components/GlobalFlickerEffect";
 import IntercomButton from "./components/IntercomButton";
+import Timer from "./components/Timer";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -53,6 +54,9 @@ export default function RootLayout({
       <body className="antialiased relative">
         <GlobalFlickerEffect />
         <Starfield />
+        <div id="timer-container" className="fixed top-4 right-4 z-50">
+          <Timer />
+        </div>
         {children}
         <IntercomButton />
         <Analytics />
