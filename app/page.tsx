@@ -117,13 +117,34 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 w-full">
           <div className="text-center">
             <HeroLogo />
+          </div>
+        </div>
+      </section>
 
-            {/* Your tagline and paragraph below the logo can remain */}
-            <h2 className="h2-void mt-12 md:mt-8 md:-mt-4 text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
+      {/* YouTube Embed Section */}
+      <section className="relative z-10" style={{ paddingTop: '50px', paddingBottom: '30px' }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8">
+          {/* YouTube Embed */}
+          <div className="w-full md:mx-auto" style={{ maxWidth: '720px', border: '2px solid rgba(0, 255, 255, 0.2)', borderRadius: '4px', boxShadow: '0 0 8px rgba(0, 255, 255, 0.15)' }}>
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/Eqwvv6dhow4"
+                title="THE INITIATION"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ border: 'none' }}
+              />
+            </div>
+          </div>
+          
+          {/* Text below embed */}
+          <div className="text-center mt-8">
+            <h2 className="h2-void text-center opacity-90" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
               Reality is broken. <span className="emphasis-word charisma-word">presence</span> bends it.
             </h2>
 
-            <p className="text-gray-400 mb-8 md:mb-6 max-w-2xl mx-auto mt-4 md:mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.875rem, 1.8vw, 1.25rem)' }}>
+            <p className="text-gray-400 mb-8 md:mb-6 max-w-xl mx-auto mt-4 md:mt-2 md:-mt-1" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: 'clamp(0.75rem, 1.2vw, 0.95rem)' }}>
               A private training space for real presence under pressure. Weekly lessons. Live practice. Real world reps. You do not binge. You build.
             </p>
           </div>
