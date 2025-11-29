@@ -5,8 +5,8 @@ import { useState, useEffect, useCallback } from 'react';
 interface TimerData {
   remaining: number;
   endTime: number;
-  phase: 'II' | 'III';
-  nextPhase: 'III' | null;
+  phase: 'BLACK_FRIDAY' | 'CYBER_MONDAY';
+  nextPhase: 'CYBER_MONDAY' | null;
   isNew: boolean;
 }
 
@@ -14,7 +14,7 @@ export default function Timer() {
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [endTime, setEndTime] = useState<number | null>(null);
-  const [currentPhase, setCurrentPhase] = useState<'II' | 'III'>('II');
+  const [currentPhase, setCurrentPhase] = useState<'BLACK_FRIDAY' | 'CYBER_MONDAY'>('BLACK_FRIDAY');
   const [hasExpired, setHasExpired] = useState(false);
 
   const fetchTimer = useCallback(async () => {
@@ -100,7 +100,10 @@ export default function Timer() {
     <div className="text-center text-white w-full">
       <div className="timer-void flex flex-col items-center">
         <div className="text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
-          Final Phase
+          Black Friday
+        </div>
+        <div className="text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
+          Last Phase
         </div>
         <div className="font-bold text-white" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', lineHeight: '1.2', fontWeight: '600' }}>
           {formatTime(timeRemaining)}
