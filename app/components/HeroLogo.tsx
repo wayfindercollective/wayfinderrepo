@@ -788,7 +788,7 @@ export default function HeroLogo() {
         />
 
         {/* Sound button - visible on all screen sizes */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[68%] z-20 mt-0" style={{ pointerEvents: 'auto' }}>
+        <div className="absolute left-1/2 -translate-x-1/2 top-[68%] z-[30] mt-0" style={{ pointerEvents: 'auto' }}>
           <EnableSoundButton />
         </div>
       </div>

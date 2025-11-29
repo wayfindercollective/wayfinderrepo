@@ -49,17 +49,17 @@ html, body {
   border: 2px solid var(--cyan-glow);
   transition: box-shadow 200ms ease, transform 200ms ease, background-color 200ms ease;
   position: relative;
-  overflow: visible; /* Allow glow to show */
+  overflow: hidden; /* Contain glow effects inside button */
   animation: borderShine 2s ease-in-out infinite;
 }
 
-/* Ambient radial gradient background glow - very subtle hue */
+/* Ambient radial gradient background glow - very subtle hue - contained inside button */
 .btn-void::after {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: 0;
   background: radial-gradient(circle, rgba(255, 0, 255, 0.1) 0%, rgba(0, 255, 255, 0.06) 35%, transparent 65%);
-  border-radius: 12px;
+  border-radius: 10px;
   z-index: -1;
   pointer-events: none;
   opacity: 0.5;
