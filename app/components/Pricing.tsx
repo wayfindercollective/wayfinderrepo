@@ -14,10 +14,24 @@ export default function Pricing() {
             href="https://bookmyeventnow.com/register?a=new&p=32"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-void mt-4 inline-block"
-            style={{ fontSize: '1.15rem', padding: '16px 28px' }}
+            className="btn-void mt-4 uppercase tracking-[0.1em] inline-block"
+            style={{ 
+              fontSize: '1.15rem', 
+              padding: '16px 28px', 
+              position: 'relative',
+              zIndex: 20,
+              pointerEvents: 'auto',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              cursor: 'pointer',
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
+              WebkitTouchCallout: 'none',
+              minWidth: '44px',
+              minHeight: '44px'
+            }}
           >
-            ENTER THE VOID
+            <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>ENTER THE VOID</span>
           </a>
           <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash" style={{ color: 'var(--voidMagenta)', fontFamily: 'var(--font-body), sans-serif' }}>
             Presence as Rebellion

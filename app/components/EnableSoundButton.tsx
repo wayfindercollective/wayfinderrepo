@@ -515,7 +515,7 @@ export default function EnableSoundButton() {
       className="flex flex-col items-center" 
       style={{ 
         position: 'relative', 
-        zIndex: 20, 
+        zIndex: 30, 
         pointerEvents: 'auto',
         touchAction: 'manipulation'
       }}
@@ -530,7 +530,7 @@ export default function EnableSoundButton() {
             touchAction: 'manipulation',
             WebkitTapHighlightColor: 'transparent',
             position: 'relative',
-            zIndex: 20,
+            zIndex: 30,
             pointerEvents: 'auto',
             userSelect: 'none',
             WebkitUserSelect: 'none',

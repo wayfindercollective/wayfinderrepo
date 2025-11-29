@@ -113,7 +113,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative text-white overflow-visible z-10 bg-transparent min-h-[70vh] md:min-h-[50vh] lg:min-h-[40vh] flex items-center justify-center pt-8 md:pt-20 lg:pt-24 pb-8 md:pb-12 lg:pb-8">
+      <section className="relative text-white overflow-visible z-10 bg-transparent min-h-[70vh] md:min-h-[50vh] lg:min-h-[500px] flex items-center justify-center pt-8 md:pt-20 lg:pt-24 pb-8 md:pb-12 lg:pb-0">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 w-full">
           <div className="text-center">
             <HeroLogo />
@@ -122,7 +122,7 @@ export default function Home() {
       </section>
 
       {/* YouTube Embed Section */}
-      <section className="relative z-10 -mt-[2vh] md:mt-8 lg:-mt-[25vh]" style={{ paddingTop: '0px', paddingBottom: '30px' }}>
+      <section className="relative z-[5] md:mt-8 lg:-mt-[120px]" style={{ paddingTop: '0px', paddingBottom: '30px' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8">
           {/* YouTube Embed */}
           <div className="w-full mx-auto" style={{ maxWidth: '720px', border: '2px solid rgba(0, 255, 255, 0.2)', borderRadius: '4px', boxShadow: '0 0 8px rgba(0, 255, 255, 0.15)' }}>
@@ -602,10 +602,24 @@ export default function Home() {
                     href="https://bookmyeventnow.com/register?a=new&p=32"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-void mt-4 inline-block"
-                    style={{ fontSize: '1.15rem', padding: '16px 28px' }}
+                    className="btn-void mt-4 uppercase tracking-[0.1em] inline-block"
+                    style={{ 
+                      fontSize: '1.15rem', 
+                      padding: '16px 28px', 
+                      position: 'relative',
+                      zIndex: 20,
+                      pointerEvents: 'auto',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      cursor: 'pointer',
+                      WebkitTapHighlightColor: 'transparent',
+                      touchAction: 'manipulation',
+                      WebkitTouchCallout: 'none',
+                      minWidth: '44px',
+                      minHeight: '44px'
+                    }}
                   >
-                    ENTER THE VOID
+                    <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>ENTER THE VOID</span>
                   </a>
                   <span className="text-xs md:text-sm mt-2 block text-center accentMagenta presence-rebellion-flash" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
                     Presence as Rebellion
