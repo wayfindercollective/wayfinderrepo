@@ -3,7 +3,7 @@ import Price from "./Price";
 export default function Pricing() {
   return (
     <div className="mt-6 md:mt-3 max-w-lg mx-auto text-center">
-      {/* Branded price block: orange $297 + exploding "$1100 value" */}
+      {/* Branded price block */}
       <div className="mt-3 md:mt-2">
         <Price />
       </div>

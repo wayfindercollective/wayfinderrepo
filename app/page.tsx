@@ -5,7 +5,6 @@ import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
-import Timer from "./components/Timer";
 import Image from "next/image";
 import "./components/price.css";
 
@@ -20,7 +19,6 @@ export default function Home() {
   const [hourglassRotations, setHourglassRotations] = useState<Record<string, number>>({});
   const [showWeekPackOverlay, setShowWeekPackOverlay] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [currentPhase, setCurrentPhase] = useState<'IV' | 'V'>('IV');
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastPlayTimeRef = useRef<number>(0);
 
@@ -31,29 +29,6 @@ export default function Home() {
     }
   }, []);
 
-  // Listen for phase changes from Timer component
-  useEffect(() => {
-    const handlePhaseChange = (event: Event) => {
-      const customEvent = event as CustomEvent<{ phase: 'IV' | 'V' }>;
-      setCurrentPhase(customEvent.detail.phase);
-    };
-
-    window.addEventListener('timerPhaseChange', handlePhaseChange);
-    
-    // Fetch initial phase from API
-    fetch('/api/timer')
-      .then(res => res.json())
-      .then(data => {
-        if (data.phase) {
-          setCurrentPhase(data.phase);
-        }
-      })
-      .catch(err => console.error('Failed to fetch initial phase:', err));
-
-    return () => {
-      window.removeEventListener('timerPhaseChange', handlePhaseChange);
-    };
-  }, []);
 
   // Create triangle sound effect for hourglass
   const playHourglassPing = () => {
@@ -137,24 +112,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
-      {/* Timer in top-right corner */}
-      <div id="timer-container" className="fixed top-4 right-1 z-50 px-2 py-1.5 md:px-5 md:py-3 origin-top-right scale-85 md:scale-95">
-        <div className="text-white flex flex-col gap-1.5 md:gap-3 items-center">
-          {/* Phase Display */}
-          <div className="text-white opacity-80 border border-[#00FFFF] px-1 py-1 md:px-2 md:py-1.5 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.65rem, 1.3vw, 0.8rem)', lineHeight: '1' }}>
-            Phase {currentPhase}
-          </div>
-          {/* Black Friday Access */}
-          <div className="text-white opacity-80 border border-[#00FFFF] px-1 py-1 md:px-2 md:py-1.5 rounded" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.65rem, 1.3vw, 0.8rem)', lineHeight: '1' }}>
-            Black Friday Access
-          </div>
-          {/* Timer */}
-          <div className="flex justify-center items-center w-full">
-            <Timer />
-          </div>
-        </div>
-      </div>
-      
       {/* Hero Section */}
       <section className="relative text-white overflow-hidden z-10 bg-transparent min-h-screen flex items-center justify-center pt-16 md:pt-24">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 w-full">
@@ -203,10 +160,10 @@ export default function Home() {
               </span>
             </AnimatedSectionTitle>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-3">
             <AnimatedColumn direction="left">
               <div className="cardVoid p-6">
-                <h3 className="text-base md:text-lg font-bold mb-3">Founders Annual Pass</h3>
+                <h3 className="text-base md:text-lg font-bold mb-3">Annual Pass</h3>
                 <p className="text-sm md:text-base">
                   Twelve months inside the program. Weekly lessons. Guided practices. Real world exercises. Live group sessions. Clear progress markers.
                 </p>
@@ -217,14 +174,6 @@ export default function Home() {
                 <h3 className="text-base md:text-lg font-bold mb-3">The Field That Trains Back</h3>
                 <p className="text-sm md:text-base">
                   People who show up, post results, and give useful feedback. Less talk. More proof.
-                </p>
-              </div>
-            </AnimatedColumn>
-            <AnimatedColumn direction="right">
-              <div className="cardVoid p-6">
-                <h3 className="text-base md:text-lg font-bold mb-3">The Future Summons — Bootcamp Credit</h3>
-                <p className="text-sm md:text-base">
-                  $500 credit you can use for a Jeffy Bootcamp in 2025 or 2026.
                 </p>
               </div>
             </AnimatedColumn>
@@ -529,26 +478,17 @@ export default function Home() {
                 <div className="mb-2">
                   <span className="current-price-wrapper">
                     <span className="current-price">
-                      $297
+                      $594
                     </span>
                   </span>
                 </div>
                 <div className="text-gray-300 mt-1 founders-annual-pass-title" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 800 }}>
                   <span className="block md:hidden">
-                    Founders Annual Pass
-                    <div className="mt-2 flex justify-center">
-                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Access</span>
-                    </div>
+                    Annual Pass
                   </span>
                   <span className="hidden md:block">
-                    Founders Annual<br />Pass
-                    <div className="mt-2 flex justify-center">
-                      <span className="black-friday-special-sticker shiny-sticker">Black Friday Access</span>
-                    </div>
+                    Annual<br />Pass
                   </span>
-                </div>
-                <div className="text-lg text-gray-300 mt-2">
-                  Includes $500 credit for a Jeffy Bootcamp in 2025 or 2026.
                 </div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>

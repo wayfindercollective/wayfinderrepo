@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="mx-auto max-w-5xl px-6 py-20 text-center">
         {/* Eyebrow */}
         <div className="text-sm md:text-base tracking-wide text-neutral-300">
-          Void Underground <span className="text-cyan-400 ml-2">Black Friday Access</span>
+          Void Underground
         </div>
 
         {/* Main headline */}
@@ -20,9 +20,9 @@ export default function Hero() {
         {/* CTA that jumps to pricing section */}
         <div className="mt-10 max-w-3xl mx-auto text-center">
           <a href="https://bookmyeventnow.com/register?a=new&p=32" target="_blank" rel="noopener noreferrer" className="hero-cta-button inline-block rounded-2xl bg-white px-8 py-4 text-black font-bold whitespace-normal" style={{ fontWeight: 700 }}>
-            <span className="block md:hidden">Get your Founders Annual Pass Now</span>
+            <span className="block md:hidden">Get your Annual Pass Now</span>
             <span className="hidden md:block">
-              Get your Founders Annual<br />Pass Now
+              Get your Annual<br />Pass Now
             </span>
           </a>
         </div>
