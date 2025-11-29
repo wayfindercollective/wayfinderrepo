@@ -113,7 +113,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full relative overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden z-10 bg-transparent min-h-screen flex items-center justify-center pt-16 md:pt-24">
+      <section className="relative text-white overflow-visible z-10 bg-transparent min-h-[70vh] md:min-h-[50vh] lg:min-h-[40vh] flex items-center justify-center pt-8 md:pt-20 lg:pt-24 pb-8 md:pb-12 lg:pb-8">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 w-full">
           <div className="text-center">
             <HeroLogo />
@@ -122,10 +122,10 @@ export default function Home() {
       </section>
 
       {/* YouTube Embed Section */}
-      <section className="relative z-10" style={{ paddingTop: '50px', paddingBottom: '30px' }}>
+      <section className="relative z-10 mt-0 md:mt-8 lg:-mt-[25vh]" style={{ paddingTop: '0px', paddingBottom: '30px' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8">
           {/* YouTube Embed */}
-          <div className="w-full md:mx-auto" style={{ maxWidth: '720px', border: '2px solid rgba(0, 255, 255, 0.2)', borderRadius: '4px', boxShadow: '0 0 8px rgba(0, 255, 255, 0.15)' }}>
+          <div className="w-full mx-auto" style={{ maxWidth: '720px', border: '2px solid rgba(0, 255, 255, 0.2)', borderRadius: '4px', boxShadow: '0 0 8px rgba(0, 255, 255, 0.15)' }}>
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
@@ -595,14 +595,14 @@ export default function Home() {
                   <span>From Presence in the Void</span>
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10" style={{ alignItems: 'center', alignContent: 'center' }}>
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-4" style={{ alignItems: 'center', alignContent: 'center' }}>
                 <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
                   <a
                     id="enroll"
                     href="https://bookmyeventnow.com/register?a=new&p=32"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-void mt-10 inline-block"
+                    className="btn-void mt-4 inline-block"
                     style={{ fontSize: '1.15rem', padding: '16px 28px' }}
                   >
                     ENTER THE VOID

@@ -538,8 +538,8 @@ export default function EnableSoundButton() {
             minHeight: '44px',
             cursor: 'pointer',
             WebkitTouchCallout: 'none',
-            fontSize: isMobile ? '1.15rem' : '2.3rem',
-            padding: isMobile ? '16px 28px' : '32px 56px',
+            fontSize: isMobile ? '0.8625rem' : '1.725rem',
+            padding: isMobile ? '12px 21px' : '24px 42px',
             ...(isMobile && { whiteSpace: 'nowrap' }),
           }}
           className="btn-void mt-10 uppercase tracking-[0.1em] inline-block"
