@@ -499,7 +499,7 @@ export default function Home() {
                 <div className="mb-2">
                   <span className="current-price-wrapper">
                     <span className="current-price">
-                      $594
+                      $297
                     </span>
                   </span>
                 </div>
