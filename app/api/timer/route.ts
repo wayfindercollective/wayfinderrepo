@@ -17,7 +17,7 @@ const PHASES = {
 function getCurrentPhase(): { phase: 'BLACK_FRIDAY' | 'CYBER_MONDAY'; endTime: number; nextPhase: 'CYBER_MONDAY' | null } {
   const now = Date.now();
   
-  // Check Black Friday phase
+  // Check Cyber Monday phase
   if (now < PHASES.BLACK_FRIDAY.endTime) {
     return {
       phase: 'BLACK_FRIDAY',
