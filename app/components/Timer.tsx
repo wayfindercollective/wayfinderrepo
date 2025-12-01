@@ -97,17 +97,12 @@ export default function Timer() {
   };
 
   return (
-    <div className="text-center text-white w-full">
-      <div className="timer-void flex flex-col items-center">
-        <div className="text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
-          Black Friday
-        </div>
-        <div className="text-white mb-0.5 opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1' }}>
-          Final Phase
-        </div>
-        <div className="font-bold text-white" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', lineHeight: '1.2', fontWeight: '600' }}>
-          {formatTime(timeRemaining)}
-        </div>
+    <div className="text-center text-white w-full flex flex-col items-center gap-2">
+      <div className="text-white opacity-80" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)', lineHeight: '1', border: '2px solid var(--voidCyan)', padding: '0.5rem 1rem', borderRadius: '0.25rem' }}>
+        Cyber Monday
+      </div>
+      <div className="font-bold text-white" style={{ fontFamily: 'var(--font-display), sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', lineHeight: '1.2', fontWeight: '600', border: '2px solid var(--voidOrange)', padding: '0.5rem 1rem', borderRadius: '0.25rem' }}>
+        {formatTime(timeRemaining)}
       </div>
     </div>
   );
