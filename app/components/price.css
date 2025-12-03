@@ -518,7 +518,7 @@
   margin-right: 8px; /* gap between credit and toward */
   padding-right: 2px; /* extra space to prevent overlap when scaling */
   animation: pulse-credit 2s ease-in-out infinite;
-  transform-origin: left center;
+  transform-origin: center center;
   vertical-align: baseline;
 }
 

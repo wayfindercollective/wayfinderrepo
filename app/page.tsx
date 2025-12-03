@@ -5,7 +5,6 @@ import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
-import InvestmentCarousel from "./components/InvestmentCarousel";
 import Image from "next/image";
 import { show } from '@intercom/messenger-js-sdk';
 import "./components/price.css";
@@ -204,13 +203,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing-section" className="voidSection voidSection-alt relative z-10 pb-8 md:pb-12">
-        <div className="voidContainer md:!py-6">
-          <Pricing />
-        </div>
-      </section>
-
       {/* Program Details Section */}
       <section className="voidSection relative z-10 pt-8 md:pt-12 md:mt-20">
         <div className="voidContainer">
@@ -321,6 +313,320 @@ export default function Home() {
             >
               See a Weekly Pack
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Investment Section */}
+      <section className="relative text-white overflow-hidden z-10 bg-transparent">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-16">
+            <div className="sectionTitleWrapper relative">
+              <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
+                <span className="inline-flex items-center gap-3 relative">
+                  <span className="cyan-dots-wrapper absolute -left-12 md:-left-16">
+                    <Image 
+                      src="/CyanDots.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-[1em] cyan-dots-icon"
+                      style={{ aspectRatio: '1 / 1' }}
+                    />
+                  </span>
+                  <span className="headingText" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Investment</span>
+                </span>
+              </AnimatedSectionTitle>
+            </div>
+            <p className="text-base md:text-xl text-gray-300 mx-auto" style={{ fontFamily: 'var(--font-body), sans-serif', textAlign: 'center', width: '100%', paddingLeft: '0.5rem' }}>
+              Choose your access plan
+            </p>
+          </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {/* Annual Pass - Left */}
+              <div className="cardVoid p-6 md:p-8 text-center relative" onMouseEnter={handleColumnHover}>
+              {/* Crossed out price in top right */}
+              <div className="absolute top-2 right-2 md:top-3 md:right-3 text-right">
+                <span style={{ 
+                  fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
+                  color: '#666',
+                  textDecoration: 'line-through',
+                  fontFamily: 'var(--font-display), sans-serif',
+                  fontWeight: 400
+                }}>
+                  $900
+                </span>
+                <div style={{ 
+                  fontSize: 'clamp(0.6rem, 1.5vw, 0.75rem)',
+                  color: '#666',
+                  fontFamily: 'var(--font-display), sans-serif',
+                  fontWeight: 400,
+                  marginTop: '1px',
+                  lineHeight: 1.1,
+                  letterSpacing: '-0.02em'
+                }}>
+                  total value
+                </div>
+              </div>
+              <div className="mb-4 md:mb-6" style={{ fontSize: 'clamp(110%, 4vw, 135%)' }}>
+                <div className="mb-1 md:mb-2">
+                  <span className="current-price-wrapper">
+                    <span className="current-price">
+                      $499
+                    </span>
+                  </span>
+                </div>
+                <div className="text-gray-300 mt-1" style={{ fontSize: 'clamp(140%, 5vw, 180%)', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
+                    Annual Pass
+                </div>
+              </div>
+              <div className="mb-3 md:mb-4 text-center">
+                <div style={{ fontSize: 'clamp(0.9375rem, 3.125vw, 1.25rem)' }}>
+                  <div className="credit-pulse">+ $300 credit</div>
+                  <div style={{ fontSize: 'clamp(0.75rem, 2vw, 0.9rem)', marginTop: '0.25rem' }}>Toward a Jeffy Bootcamp in 2025 or 2026</div>
+                  <div style={{ fontSize: 'clamp(0.75rem, 2vw, 0.9rem)', marginTop: '0.25rem', fontFamily: 'var(--font-mono), monospace' }}>
+                    2 months access <span style={{ textTransform: 'uppercase' }}>FREE</span>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 text-left" style={{ fontSize: 'clamp(110%, 3.5vw, 135%)' }}>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-1')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    loading="lazy"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-1'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-1', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Twelve months of premium content</span>
+                </div>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-2')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-2'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-2', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Access to missions and live sessions</span>
+                </div>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-3')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-3'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-3', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Daily practices that increase your signal</span>
+                </div>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-4')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['investment-hourglass-4'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-4', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Community support and feedback</span>
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-3 md:gap-4 mt-2 md:mt-3">
+                <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
+                  <a
+                    id="enroll-annual"
+                    href="https://bookmyeventnow.com/register?a=new&p=38"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-void mt-3 md:mt-4 uppercase tracking-[0.1em] inline-block"
+                    style={{ 
+                      fontSize: 'clamp(0.9rem, 3vw, 1.15rem)', 
+                      padding: 'clamp(12px, 3vw, 16px) clamp(20px, 4vw, 28px)', 
+                      position: 'relative',
+                      zIndex: 20,
+                      pointerEvents: 'auto',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      cursor: 'pointer',
+                      WebkitTapHighlightColor: 'transparent',
+                      touchAction: 'manipulation',
+                      WebkitTouchCallout: 'none',
+                      minWidth: '44px',
+                      minHeight: '44px',
+                      fontFamily: 'var(--font-display), sans-serif'
+                    }}
+                  >
+                    <span className="relative z-[2]" style={{ pointerEvents: 'none', fontFamily: 'var(--font-display), sans-serif' }}>ENTER THE VOID</span>
+                  </a>
+                  <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash cyan-text" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+                    Presence as Rebellion
+                  </span>
+                </div>
+              </div>
+              <p className="text-base text-gray-400 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)' }}>
+                12 months of access on a yearly subscription. Cancel any time.
+              </p>
+              </div>
+
+              {/* Monthly Pass - Right */}
+              <div className="cardVoid p-6 md:p-8 text-center" onMouseEnter={handleColumnHover}>
+              <div className="mb-4 md:mb-6" style={{ fontSize: 'clamp(110%, 4vw, 135%)' }}>
+                <div className="mb-1 md:mb-2">
+                  <span className="current-price-wrapper">
+                    <span className="current-price" style={{ 
+                      color: '#000000',
+                      WebkitTextStroke: '2px #CC00CC',
+                      textShadow: '0 0 10px rgba(204, 0, 204, 0.8), 0 0 20px rgba(204, 0, 204, 0.6), 0 0 30px rgba(204, 0, 204, 0.4), 0 0 40px rgba(204, 0, 204, 0.2)'
+                    } as React.CSSProperties}>
+                      $50
+                    </span>
+                  </span>
+                </div>
+                <div className="text-gray-300 mt-1" style={{ fontSize: 'clamp(140%, 5vw, 180%)', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
+                  Monthly Pass
+                </div>
+              </div>
+              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 text-left" style={{ fontSize: 'clamp(110%, 3.5vw, 135%)' }}>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-1')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    loading="lazy"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['monthly-hourglass-1'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto',
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-1', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Monthly premium content</span>
+                </div>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-2')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['monthly-hourglass-2'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto',
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-2', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Access to missions and live sessions</span>
+                </div>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-3')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['monthly-hourglass-3'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto',
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-3', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Daily practices that increase your signal</span>
+                </div>
+                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-4')}>
+                  <Image 
+                    src="/HourGlass.png" 
+                    alt="" 
+                    width={36} 
+                    height={36} 
+                    className="hourglass-icon cursor-pointer"
+                    style={{ 
+                      transform: `rotate(${(hourglassRotations['monthly-hourglass-4'] || 0) * 180}deg)`,
+                      height: '1em',
+                      width: 'auto',
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
+                    }}
+                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-4', e)}
+                  />
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Community support and feedback</span>
+                </div>
+              </div>
+              <div className="mb-4 md:mb-6 text-center" style={{ minHeight: 'clamp(2rem, 5vw, 2.5rem)' }}>
+                {/* Spacer to match Annual Pass card height */}
+              </div>
+              <div className="flex flex-col items-center justify-center gap-3 md:gap-4 mt-2 md:mt-3">
+                <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
+                  <a
+                    id="enroll-monthly"
+                    href="https://bookmyeventnow.com/register?a=new&p=33"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-void btn-void-magenta mt-3 md:mt-4 uppercase tracking-[0.1em] inline-block"
+                    style={{ 
+                      fontSize: 'clamp(0.9rem, 3vw, 1.15rem)', 
+                      padding: 'clamp(12px, 3vw, 16px) clamp(20px, 4vw, 28px)', 
+                      position: 'relative',
+                      zIndex: 20,
+                      pointerEvents: 'auto',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
+                      cursor: 'pointer',
+                      WebkitTapHighlightColor: 'transparent',
+                      touchAction: 'manipulation',
+                      WebkitTouchCallout: 'none',
+                      minWidth: '44px',
+                      minHeight: '44px',
+                      fontFamily: 'var(--font-display), sans-serif'
+                    }}
+                  >
+                    <span className="relative z-[2]" style={{ pointerEvents: 'none', fontFamily: 'var(--font-display), sans-serif' }}>ENTER THE VOID</span>
+                  </a>
+                  <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash deep-magenta-text" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+                    Presence as Rebellion
+                  </span>
+                </div>
+              </div>
+              <p className="text-base text-gray-400 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)' }}>
+                Monthly subscription. Cancel any time.
+              </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -471,323 +777,11 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="relative text-white overflow-hidden z-10 bg-transparent">
-        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-16 md:py-20">
-          <div className="text-center mb-16">
-            <div className="sectionTitleWrapper relative">
-              <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
-                <span className="inline-flex items-center gap-3 relative">
-                  <span className="cyan-dots-wrapper absolute -left-12 md:-left-16">
-                    <Image 
-                      src="/CyanDots.png" 
-                      alt="" 
-                      width={24} 
-                      height={24} 
-                      className="h-[1em] w-[1em] cyan-dots-icon"
-                      style={{ aspectRatio: '1 / 1' }}
-                    />
-                  </span>
-                  <span className="headingText" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Investment</span>
-                </span>
-              </AnimatedSectionTitle>
-            </div>
-            <p className="text-base md:text-xl text-gray-300 mx-auto" style={{ fontFamily: 'var(--font-body), sans-serif', textAlign: 'center', width: '100%', paddingLeft: '0.5rem' }}>
-              Choose your access plan
-            </p>
-          </div>
-          <div className="max-w-6xl mx-auto">
-            <InvestmentCarousel>
-              {/* Annual Pass - Left */}
-              <div className="cardVoid p-6 md:p-8 text-center" onMouseEnter={handleColumnHover}>
-              <div className="mb-4 md:mb-6" style={{ fontSize: 'clamp(110%, 4vw, 135%)' }}>
-                <div className="mb-1 md:mb-2">
-                  <span className="current-price-wrapper">
-                    <span className="current-price">
-                      $594
-                    </span>
-                  </span>
-                </div>
-                <div className="text-gray-300 mt-1" style={{ fontSize: 'clamp(140%, 5vw, 180%)', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
-                    Annual Pass
-                </div>
-              </div>
-              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 text-left" style={{ fontSize: 'clamp(110%, 3.5vw, 135%)' }}>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-1')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    loading="lazy"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['investment-hourglass-1'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-1', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Twelve months of premium content</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-2')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['investment-hourglass-2'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-2', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Access to missions and live sessions</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-3')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['investment-hourglass-3'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-3', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Simple practices you can do daily</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-4')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['investment-hourglass-4'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-4', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Community support and feedback</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-5')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['investment-hourglass-5'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-5', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>From Presence in the Void</span>
-                </div>
-              </div>
-              <div className="mb-4 md:mb-6 text-center">
-                <span className="bootcamp-credit" style={{ fontSize: 'clamp(0.75rem, 2.5vw, 1rem)' }}>
-                  <span className="credit-pulse">+ $300 credit</span> toward a Jeffy Bootcamp in 2025 or 2026
-                </span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-3 md:gap-4 mt-2 md:mt-3">
-                <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
-                  <a
-                    id="enroll-annual"
-                    href="https://bookmyeventnow.com/register?a=new&p=32"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-void mt-3 md:mt-4 uppercase tracking-[0.1em] inline-block"
-                    style={{ 
-                      fontSize: 'clamp(0.9rem, 3vw, 1.15rem)', 
-                      padding: 'clamp(12px, 3vw, 16px) clamp(20px, 4vw, 28px)', 
-                      position: 'relative',
-                      zIndex: 20,
-                      pointerEvents: 'auto',
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      cursor: 'pointer',
-                      WebkitTapHighlightColor: 'transparent',
-                      touchAction: 'manipulation',
-                      WebkitTouchCallout: 'none',
-                      minWidth: '44px',
-                      minHeight: '44px',
-                      fontFamily: 'var(--font-display), sans-serif'
-                    }}
-                  >
-                    <span className="relative z-[2]" style={{ pointerEvents: 'none', fontFamily: 'var(--font-display), sans-serif' }}>ENTER THE VOID</span>
-                  </a>
-                  <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash cyan-text" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
-                    Presence as Rebellion
-                  </span>
-                </div>
-              </div>
-              <p className="text-base text-gray-400 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)' }}>
-                One time payment for 12 months of access. Subscription-based.
-              </p>
-              </div>
-
-              {/* Monthly Pass - Right */}
-              <div className="cardVoid p-6 md:p-8 text-center" onMouseEnter={handleColumnHover}>
-              <div className="mb-4 md:mb-6" style={{ fontSize: 'clamp(110%, 4vw, 135%)' }}>
-                <div className="mb-1 md:mb-2">
-                  <span className="current-price-wrapper">
-                    <span className="current-price" style={{ 
-                      color: '#000000',
-                      WebkitTextStroke: '2px #CC00CC',
-                      textShadow: '0 0 10px rgba(204, 0, 204, 0.8), 0 0 20px rgba(204, 0, 204, 0.6), 0 0 30px rgba(204, 0, 204, 0.4), 0 0 40px rgba(204, 0, 204, 0.2)'
-                    } as React.CSSProperties}>
-                      $50
-                    </span>
-                  </span>
-                </div>
-                <div className="text-gray-300 mt-1" style={{ fontSize: 'clamp(140%, 5vw, 180%)', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
-                  Monthly Pass
-                </div>
-              </div>
-              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 text-left" style={{ fontSize: 'clamp(110%, 3.5vw, 135%)' }}>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-1')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    loading="lazy"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['monthly-hourglass-1'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-1', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Monthly premium content</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-2')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['monthly-hourglass-2'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-2', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Access to missions and live sessions</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-3')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['monthly-hourglass-3'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-3', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Simple practices you can do daily</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-4')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['monthly-hourglass-4'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-4', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Community support and feedback</span>
-                </div>
-                <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-5')}>
-                  <Image 
-                    src="/HourGlass.png" 
-                    alt="" 
-                    width={36} 
-                    height={36} 
-                    className="hourglass-icon cursor-pointer"
-                    style={{ 
-                      transform: `rotate(${(hourglassRotations['monthly-hourglass-5'] || 0) * 180}deg)`,
-                      height: '1em',
-                      width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
-                    }}
-                    onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-5', e)}
-                  />
-                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>From Presence in the Void</span>
-                </div>
-              </div>
-              <div className="mb-4 md:mb-6 text-center" style={{ minHeight: 'clamp(2rem, 5vw, 2.5rem)' }}>
-                {/* Spacer to match Annual Pass card height */}
-              </div>
-              <div className="flex flex-col items-center justify-center gap-3 md:gap-4 mt-2 md:mt-3">
-                <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
-                  <a
-                    id="enroll-monthly"
-                    href="https://bookmyeventnow.com/register?a=new&p=33"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-void btn-void-magenta mt-3 md:mt-4 uppercase tracking-[0.1em] inline-block"
-                    style={{ 
-                      fontSize: 'clamp(0.9rem, 3vw, 1.15rem)', 
-                      padding: 'clamp(12px, 3vw, 16px) clamp(20px, 4vw, 28px)', 
-                      position: 'relative',
-                      zIndex: 20,
-                      pointerEvents: 'auto',
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      cursor: 'pointer',
-                      WebkitTapHighlightColor: 'transparent',
-                      touchAction: 'manipulation',
-                      WebkitTouchCallout: 'none',
-                      minWidth: '44px',
-                      minHeight: '44px',
-                      fontFamily: 'var(--font-display), sans-serif'
-                    }}
-                  >
-                    <span className="relative z-[2]" style={{ pointerEvents: 'none', fontFamily: 'var(--font-display), sans-serif' }}>ENTER THE VOID</span>
-                  </a>
-                  <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash deep-magenta-text" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
-                    Presence as Rebellion
-                  </span>
-                </div>
-              </div>
-              <p className="text-base text-gray-400 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)' }}>
-                Monthly recurring payment. Subscription-based.
-              </p>
-              </div>
-            </InvestmentCarousel>
-          </div>
+      <section id="pricing-section" className="voidSection voidSection-alt relative z-10 pb-8 md:pb-12" style={{ paddingTop: 'clamp(120px, 16vw, 180px)' }}>
+        <div className="voidContainer md:!py-6">
+          <Pricing 
+            handleColumnHover={handleColumnHover}
+          />
         </div>
       </section>
 

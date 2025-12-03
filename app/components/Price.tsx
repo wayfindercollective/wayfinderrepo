@@ -118,7 +118,7 @@ export default function Price() {
             data-price-primary="true"
             aria-hidden="true"
           >
-            $594
+            $499
           </span>
         </span>
       </div>
