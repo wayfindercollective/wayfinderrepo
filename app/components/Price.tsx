@@ -118,19 +118,13 @@ export default function Price() {
             data-price-primary="true"
             aria-hidden="true"
           >
-            $297
+            $594
           </span>
-        </span>
-        <span className="discount-note">73% Discount</span>
-      </div>
-      <div className="meta-row value-row">
-        <span className="strike" title="Original price">
-          {makeShards("$1100 value")}
         </span>
       </div>
       <div className="meta-row">
         <span className="bootcamp-credit">
-          <span className="credit-pulse">+ $500 credit</span> toward a Jeffy Bootcamp in 2025 or 2026
+          <span className="credit-pulse">+ $300 credit</span> toward a Jeffy Bootcamp in 2025 or 2026
         </span>
       </div>
     </div>

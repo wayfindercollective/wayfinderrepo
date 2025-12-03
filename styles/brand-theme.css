@@ -328,3 +328,71 @@ html, body {
     transform: translateY(0);
   }
 }
+
+/* Magenta variant for Monthly Pass button */
+.btn-void-magenta {
+  border-color: var(--magenta) !important;
+  animation: borderShineMagenta 2s ease-in-out infinite !important;
+}
+
+.btn-void-magenta::after {
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.15) 0%, rgba(255, 0, 255, 0.08) 35%, transparent 65%) !important;
+}
+
+.btn-void-magenta::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 0, 255, 0.6),
+    rgba(255, 255, 255, 0.4),
+    transparent
+  ) !important;
+}
+
+@keyframes borderShineMagenta {
+  0%, 100% {
+    border-color: var(--magenta);
+    box-shadow: 0 0 0 rgba(255, 0, 255, 0);
+  }
+  25% {
+    border-color: rgba(255, 0, 255, 0.8);
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
+  }
+  50% {
+    border-color: rgba(255, 0, 255, 1);
+    box-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
+  }
+  75% {
+    border-color: rgba(255, 0, 255, 0.8);
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
+  }
+}
+
+.btn-void-magenta:hover {
+  box-shadow:
+    0 0 24px rgba(255, 0, 255, 0.8),
+    0 0 48px rgba(255, 0, 255, 0.4),
+    0 0 2px rgba(255, 0, 255, 1) inset !important;
+  background-color: rgba(255, 0, 255, 0.1) !important;
+  border-color: var(--magenta) !important;
+  animation: borderShineMagenta 2s ease-in-out infinite, borderShineHoverMagenta 2s ease-in-out infinite !important;
+}
+
+@keyframes borderShineHoverMagenta {
+  0%, 100% {
+    border-color: var(--magenta);
+  }
+  50% {
+    border-color: rgba(255, 0, 255, 1);
+  }
+}
+
+.btn-void-magenta:active {
+  box-shadow:
+    0 0 32px rgba(255, 0, 255, 1),
+    0 0 64px rgba(255, 0, 255, 0.6),
+    0 0 4px rgba(255, 0, 255, 1) inset,
+    0 2px 4px rgba(255, 0, 255, 0.5) !important;
+  background-color: rgba(255, 0, 255, 0.2) !important;
+}

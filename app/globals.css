@@ -315,6 +315,7 @@ body { background: var(--voidBlack); color: var(--voidWhite); }
 .accentMagenta.cardVoid,
 .cardVoid .accentMagenta,
 .cardVoid span.accentMagenta { color: var(--voidMagenta) !important; }
+.cardVoid span.presence-rebellion-flash.cyan-text { color: #00FFFF !important; }
 .accentOrange { color: var(--voidOrange); }
 
 .fx-hero-sub{
