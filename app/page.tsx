@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* Investment Section */}
-      <section className="relative text-white overflow-hidden z-10 bg-transparent">
+      <section id="investment-section" className="relative text-white overflow-hidden z-10 bg-transparent">
         <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-16 md:py-20">
           <div className="text-center mb-16">
             <div className="sectionTitleWrapper relative">

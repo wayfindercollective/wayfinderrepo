@@ -289,16 +289,16 @@ export default function EnableSoundButton() {
         loadingRef.current.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
       }
       
-      // Scroll to Program section (both desktop and mobile)
-      const programSection = document.getElementById('program-section');
+      // Scroll to Investment section (both desktop and mobile)
+      const investmentSection = document.getElementById('investment-section');
       
-      if (programSection) {
+      if (investmentSection) {
         // Get timer height to account for it
         const timerContainer = document.getElementById('timer-container');
         const timerHeight = timerContainer ? Math.max(0, timerContainer.offsetHeight - 20) : 0;
         
-        // Get position and height of Program section
-        const rect = programSection.getBoundingClientRect();
+        // Get position and height of Investment section
+        const rect = investmentSection.getBoundingClientRect();
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const elementTop = rect.top + scrollTop;
         const elementHeight = rect.height;
@@ -307,10 +307,10 @@ export default function EnableSoundButton() {
         const windowHeight = window.innerHeight;
         const visibleHeight = windowHeight - timerHeight;
         
-        // Calculate center point of Program section
+        // Calculate center point of Investment section
         const elementCenter = elementTop + (elementHeight / 2);
         
-        // Scroll to center the Program section in the viewport
+        // Scroll to center the Investment section in the viewport
         const scrollPosition = elementCenter - (visibleHeight / 2);
         
         window.scrollTo({
