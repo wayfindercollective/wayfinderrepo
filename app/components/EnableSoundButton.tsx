@@ -289,90 +289,34 @@ export default function EnableSoundButton() {
         loadingRef.current.style.webkitFilter = 'contrast(1.4) brightness(1.15) saturate(1.2)';
       }
       
-      // Check if desktop (md breakpoint is typically 768px)
-      const isDesktop = window.innerWidth >= 768;
+      // Scroll to Program section (both desktop and mobile)
+      const programSection = document.getElementById('program-section');
       
-      if (isDesktop) {
-        // On desktop: Scroll to center both "What You Get" section and Pricing section
-        const whatYouGetSection = document.getElementById('what-you-get');
-        const pricingSection = document.getElementById('pricing-section');
+      if (programSection) {
+        // Get timer height to account for it
+        const timerContainer = document.getElementById('timer-container');
+        const timerHeight = timerContainer ? Math.max(0, timerContainer.offsetHeight - 20) : 0;
         
-        if (whatYouGetSection && pricingSection) {
-          // Get timer height to account for it (now it's just a corner element, minimal impact)
-          const timerContainer = document.getElementById('timer-container');
-          const timerHeight = timerContainer ? Math.max(0, timerContainer.offsetHeight - 20) : 0; // Small buffer since it's in corner
-          
-          // Get positions and heights of both sections
-          const whatYouGetRect = whatYouGetSection.getBoundingClientRect();
-          const pricingRect = pricingSection.getBoundingClientRect();
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          
-          const whatYouGetTop = whatYouGetRect.top + scrollTop;
-          const whatYouGetHeight = whatYouGetRect.height;
-          const pricingTop = pricingRect.top + scrollTop;
-          const pricingHeight = pricingRect.height;
-          
-          // Calculate the midpoint between the start of "What You Get" and the end of Pricing section
-          const combinedStart = whatYouGetTop;
-          const combinedEnd = pricingTop + pricingHeight;
-          const combinedHeight = combinedEnd - combinedStart;
-          
-          // Calculate center point of both sections
-          const combinedCenter = combinedStart + (combinedHeight / 2);
-          
-          // Get viewport height (excluding timer)
-          const windowHeight = window.innerHeight;
-          const visibleHeight = windowHeight - timerHeight;
-          
-          // Scroll to center the combined sections in the viewport
-          const scrollPosition = combinedCenter - (visibleHeight / 2);
-          
-          window.scrollTo({
-            top: Math.max(0, scrollPosition),
-            behavior: 'smooth'
-          });
-        } else {
-          // Fallback: scroll to Buy Now button if sections not found
-          const enrollButton = document.getElementById('pricing-enroll');
-          if (enrollButton) {
-            const timerContainer = document.getElementById('timer-container');
-            const timerHeight = timerContainer ? timerContainer.offsetHeight : 0;
-            const rect = enrollButton.getBoundingClientRect();
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const elementTop = rect.top + scrollTop;
-            const elementHeight = rect.height;
-            const windowHeight = window.innerHeight;
-            const visibleHeight = windowHeight - timerHeight;
-            const offset = elementTop - (visibleHeight / 2) + (elementHeight / 2) - timerHeight;
-            
-            window.scrollTo({
-              top: offset,
-              behavior: 'smooth'
-            });
-          }
-        }
-      } else {
-        // On mobile: Scroll to the Buy Now button (original behavior)
-        const enrollButton = document.getElementById('pricing-enroll');
-        if (enrollButton) {
-          // Get timer height to account for it in centering calculation
-          const timerContainer = document.getElementById('timer-container');
-          const timerHeight = timerContainer ? timerContainer.offsetHeight : 0;
-          
-          // Calculate the position to center the button in the viewport (excluding timer)
-          const rect = enrollButton.getBoundingClientRect();
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          const elementTop = rect.top + scrollTop;
-          const elementHeight = rect.height;
-          const windowHeight = window.innerHeight;
-          const visibleHeight = windowHeight - timerHeight; // Subtract timer height
-          const offset = elementTop - (visibleHeight / 2) + (elementHeight / 2) - timerHeight;
-          
-          window.scrollTo({
-            top: offset,
-            behavior: 'smooth'
-          });
-        }
+        // Get position and height of Program section
+        const rect = programSection.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const elementTop = rect.top + scrollTop;
+        const elementHeight = rect.height;
+        
+        // Get viewport height (excluding timer)
+        const windowHeight = window.innerHeight;
+        const visibleHeight = windowHeight - timerHeight;
+        
+        // Calculate center point of Program section
+        const elementCenter = elementTop + (elementHeight / 2);
+        
+        // Scroll to center the Program section in the viewport
+        const scrollPosition = elementCenter - (visibleHeight / 2);
+        
+        window.scrollTo({
+          top: Math.max(0, scrollPosition),
+          behavior: 'smooth'
+        });
       }
       
       setShowLoading(false);
