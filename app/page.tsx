@@ -5,6 +5,8 @@ import HeroLogo from "./components/HeroLogo";
 import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
+import InvestmentCarousel from "./components/InvestmentCarousel";
+import CommunityGlobe from "./components/CommunityGlobe";
 import Image from "next/image";
 import { show } from '@intercom/messenger-js-sdk';
 import "./components/price.css";
@@ -494,22 +496,23 @@ export default function Home() {
               Choose your access plan
             </p>
           </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {/* Annual Pass - Left */}
-            <div className="cardVoid p-12 text-center" onMouseEnter={handleColumnHover}>
-              <div className="mb-8" style={{ fontSize: '150%' }}>
-                <div className="mb-2">
+          <div className="max-w-6xl mx-auto">
+            <InvestmentCarousel>
+              {/* Annual Pass - Left */}
+              <div className="cardVoid p-6 md:p-8 text-center" onMouseEnter={handleColumnHover}>
+              <div className="mb-4 md:mb-6" style={{ fontSize: 'clamp(110%, 4vw, 135%)' }}>
+                <div className="mb-1 md:mb-2">
                   <span className="current-price-wrapper">
                     <span className="current-price">
                       $594
                     </span>
                   </span>
                 </div>
-                <div className="text-gray-300 mt-1" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
+                <div className="text-gray-300 mt-1" style={{ fontSize: 'clamp(140%, 5vw, 180%)', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
                     Annual Pass
                 </div>
               </div>
-              <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
+              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 text-left" style={{ fontSize: 'clamp(110%, 3.5vw, 135%)' }}>
                 <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-1')}>
                   <Image 
                     src="/HourGlass.png" 
@@ -592,22 +595,22 @@ export default function Home() {
                   <span style={{ fontFamily: 'var(--font-mono), monospace' }}>From Presence in the Void</span>
                 </div>
               </div>
-              <div className="mb-8 text-center">
-                <span className="bootcamp-credit">
+              <div className="mb-4 md:mb-6 text-center">
+                <span className="bootcamp-credit" style={{ fontSize: 'clamp(0.75rem, 2.5vw, 1rem)' }}>
                   <span className="credit-pulse">+ $300 credit</span> toward a Jeffy Bootcamp in 2025 or 2026
                 </span>
               </div>
-              <div className="flex flex-col items-center justify-center gap-6 mt-4">
+              <div className="flex flex-col items-center justify-center gap-3 md:gap-4 mt-2 md:mt-3">
                 <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
                   <a
                     id="enroll-annual"
                     href="https://bookmyeventnow.com/register?a=new&p=32"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-void mt-4 uppercase tracking-[0.1em] inline-block"
+                    className="btn-void mt-3 md:mt-4 uppercase tracking-[0.1em] inline-block"
                     style={{ 
-                      fontSize: '1.15rem', 
-                      padding: '16px 28px', 
+                      fontSize: 'clamp(0.9rem, 3vw, 1.15rem)', 
+                      padding: 'clamp(12px, 3vw, 16px) clamp(20px, 4vw, 28px)', 
                       position: 'relative',
                       zIndex: 20,
                       pointerEvents: 'auto',
@@ -629,15 +632,15 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <p className="text-base text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: '1.25rem' }}>
+              <p className="text-base text-gray-400 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)' }}>
                 One time payment for 12 months of access. Subscription-based.
               </p>
-            </div>
+              </div>
 
-            {/* Monthly Pass - Right */}
-            <div className="cardVoid p-12 text-center" onMouseEnter={handleColumnHover} style={{ transform: 'scale(0.8)', transformOrigin: 'center' }}>
-              <div className="mb-8" style={{ fontSize: '150%' }}>
-                <div className="mb-2">
+              {/* Monthly Pass - Right */}
+              <div className="cardVoid p-6 md:p-8 text-center" onMouseEnter={handleColumnHover}>
+              <div className="mb-4 md:mb-6" style={{ fontSize: 'clamp(110%, 4vw, 135%)' }}>
+                <div className="mb-1 md:mb-2">
                   <span className="current-price-wrapper">
                     <span className="current-price" style={{ 
                       color: '#000000',
@@ -648,11 +651,11 @@ export default function Home() {
                     </span>
                   </span>
                 </div>
-                <div className="text-gray-300 mt-1" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
+                <div className="text-gray-300 mt-1" style={{ fontSize: 'clamp(140%, 5vw, 180%)', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
                   Monthly Pass
                 </div>
               </div>
-              <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
+              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 text-left" style={{ fontSize: 'clamp(110%, 3.5vw, 135%)' }}>
                 <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('monthly-hourglass-1')}>
                   <Image 
                     src="/HourGlass.png" 
@@ -745,17 +748,20 @@ export default function Home() {
                   <span style={{ fontFamily: 'var(--font-mono), monospace' }}>From Presence in the Void</span>
                 </div>
               </div>
-              <div className="flex flex-col items-center justify-center gap-6 mt-4">
+              <div className="mb-4 md:mb-6 text-center" style={{ minHeight: 'clamp(2rem, 5vw, 2.5rem)' }}>
+                {/* Spacer to match Annual Pass card height */}
+              </div>
+              <div className="flex flex-col items-center justify-center gap-3 md:gap-4 mt-2 md:mt-3">
                 <div className="btn-wrapper-float" style={{ display: 'inline-block', position: 'relative', overflow: 'visible' }}>
                   <a
                     id="enroll-monthly"
                     href="https://bookmyeventnow.com/register?a=new&p=33"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-void btn-void-magenta mt-4 uppercase tracking-[0.1em] inline-block"
+                    className="btn-void btn-void-magenta mt-3 md:mt-4 uppercase tracking-[0.1em] inline-block"
                     style={{ 
-                      fontSize: '1.15rem', 
-                      padding: '16px 28px', 
+                      fontSize: 'clamp(0.9rem, 3vw, 1.15rem)', 
+                      padding: 'clamp(12px, 3vw, 16px) clamp(20px, 4vw, 28px)', 
                       position: 'relative',
                       zIndex: 20,
                       pointerEvents: 'auto',
@@ -777,10 +783,39 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <p className="text-base text-gray-400 mt-6" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: '1.25rem' }}>
+              <p className="text-base text-gray-400 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-mono), monospace', fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)' }}>
                 Monthly recurring payment. Subscription-based.
               </p>
+              </div>
+            </InvestmentCarousel>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Section */}
+      <section className="relative text-white overflow-hidden z-10 bg-transparent">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-16">
+            <div className="sectionTitleWrapper relative">
+              <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
+                <span className="inline-flex items-center gap-3 relative">
+                  <span className="cyan-dots-wrapper absolute -left-12 md:-left-16">
+                    <Image 
+                      src="/CyanDots.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="h-[1em] w-[1em] cyan-dots-icon"
+                      style={{ aspectRatio: '1 / 1' }}
+                    />
+                  </span>
+                  <span className="headingText" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Community</span>
+                </span>
+              </AnimatedSectionTitle>
             </div>
+          </div>
+          <div className="flex justify-center">
+            <CommunityGlobe />
           </div>
         </div>
       </section>
