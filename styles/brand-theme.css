@@ -41,7 +41,7 @@ html, body {
   padding: 14px 24px;
   border-radius: 12px;
   font-weight: 700; /* Heavier weight to anchor against glowing environment */
-  font-family: var(--fontB-display);
+  font-family: var(--font-display);
   font-size: 1rem;
   letter-spacing: 0.02em;
   background: var(--pure-black);

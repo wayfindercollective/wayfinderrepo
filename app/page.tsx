@@ -485,7 +485,7 @@ export default function Home() {
                       style={{ aspectRatio: '1 / 1' }}
                     />
                   </span>
-                  <span className="headingText">Investment</span>
+                  <span className="headingText" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Investment</span>
                 </span>
               </AnimatedSectionTitle>
             </div>
@@ -503,13 +503,8 @@ export default function Home() {
                     </span>
                   </span>
                 </div>
-                <div className="text-gray-300 mt-1 founders-annual-pass-title" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 800 }}>
-                  <span className="block md:hidden">
-                    Annual Pass
-                  </span>
-                  <span className="hidden md:block">
-                    Annual<br />Pass
-                  </span>
+                <div className="text-gray-300 mt-1" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
+                  Annual Pass
                 </div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
@@ -528,7 +523,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-1', e)}
                   />
-                  <span>Twelve months of premium content</span>
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Twelve months of premium content</span>
                 </div>
                 <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-2')}>
                   <Image 
@@ -544,7 +539,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-2', e)}
                   />
-                  <span>Access to missions and live sessions</span>
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Access to missions and live sessions</span>
                 </div>
                 <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-3')}>
                   <Image 
@@ -560,7 +555,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-3', e)}
                   />
-                  <span>Simple practices you can do daily</span>
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Simple practices you can do daily</span>
                 </div>
                 <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-4')}>
                   <Image 
@@ -576,7 +571,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-4', e)}
                   />
-                  <span>Community support and feedback</span>
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>Community support and feedback</span>
                 </div>
                 <div className="flex items-center gap-3" onMouseEnter={() => handleHourglassHover('investment-hourglass-5')}>
                   <Image 
@@ -592,7 +587,7 @@ export default function Home() {
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('investment-hourglass-5', e)}
                   />
-                  <span>From Presence in the Void</span>
+                  <span style={{ fontFamily: 'var(--font-mono), monospace' }}>From Presence in the Void</span>
                 </div>
               </div>
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-4" style={{ alignItems: 'center', alignContent: 'center' }}>
@@ -616,10 +611,11 @@ export default function Home() {
                       touchAction: 'manipulation',
                       WebkitTouchCallout: 'none',
                       minWidth: '44px',
-                      minHeight: '44px'
+                      minHeight: '44px',
+                      fontFamily: 'var(--font-display), sans-serif'
                     }}
                   >
-                    <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>ENTER THE VOID</span>
+                    <span className="relative z-[2]" style={{ pointerEvents: 'none', fontFamily: 'var(--font-display), sans-serif' }}>ENTER THE VOID</span>
                   </a>
                   <span className="text-xs md:text-sm mt-2 block text-center accentMagenta presence-rebellion-flash" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
                     Presence as Rebellion

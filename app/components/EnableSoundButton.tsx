@@ -540,6 +540,7 @@ export default function EnableSoundButton() {
             WebkitTouchCallout: 'none',
             fontSize: isMobile ? '0.8625rem' : '1.725rem',
             padding: isMobile ? '12px 21px' : '24px 42px',
+            fontFamily: 'var(--font-display), sans-serif',
             ...(isMobile && { whiteSpace: 'nowrap' }),
           }}
           className="btn-void mt-10 uppercase tracking-[0.1em] inline-block"

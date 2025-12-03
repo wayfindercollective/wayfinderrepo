@@ -28,10 +28,11 @@ export default function Pricing() {
               touchAction: 'manipulation',
               WebkitTouchCallout: 'none',
               minWidth: '44px',
-              minHeight: '44px'
+              minHeight: '44px',
+              fontFamily: 'var(--font-display), sans-serif'
             }}
           >
-            <span className="relative z-[2]" style={{ pointerEvents: 'none' }}>ENTER THE VOID</span>
+            <span className="relative z-[2]" style={{ pointerEvents: 'none', fontFamily: 'var(--font-display), sans-serif' }}>ENTER THE VOID</span>
           </a>
           <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash" style={{ color: 'var(--voidMagenta)', fontFamily: 'var(--font-body), sans-serif' }}>
             Presence as Rebellion
