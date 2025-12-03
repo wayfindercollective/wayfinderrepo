@@ -6,7 +6,6 @@ import Pricing from "./components/Pricing";
 import AnimatedSectionTitle from "./components/AnimatedSectionTitle";
 import AnimatedColumn from "./components/AnimatedColumn";
 import InvestmentCarousel from "./components/InvestmentCarousel";
-import CommunityGlobe from "./components/CommunityGlobe";
 import Image from "next/image";
 import { show } from '@intercom/messenger-js-sdk';
 import "./components/price.css";
@@ -788,34 +787,6 @@ export default function Home() {
               </p>
               </div>
             </InvestmentCarousel>
-          </div>
-        </div>
-      </section>
-
-      {/* Community Section */}
-      <section className="relative text-white overflow-hidden z-10 bg-transparent">
-        <div className="relative max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-16 md:py-20">
-          <div className="text-center mb-16">
-            <div className="sectionTitleWrapper relative">
-              <AnimatedSectionTitle className="text-3xl md:text-5xl font-bold mb-6 text-white sectionTitle sectionTitleCyan sectionTitleTight">
-                <span className="inline-flex items-center gap-3 relative">
-                  <span className="cyan-dots-wrapper absolute -left-12 md:-left-16">
-                    <Image 
-                      src="/CyanDots.png" 
-                      alt="" 
-                      width={24} 
-                      height={24} 
-                      className="h-[1em] w-[1em] cyan-dots-icon"
-                      style={{ aspectRatio: '1 / 1' }}
-                    />
-                  </span>
-                  <span className="headingText" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Community</span>
-                </span>
-              </AnimatedSectionTitle>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <CommunityGlobe />
           </div>
         </div>
       </section>
