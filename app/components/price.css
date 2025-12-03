@@ -673,3 +673,53 @@
   animation: presenceRebellionFlash 7.5s ease-out 0s infinite;
   will-change: opacity, text-shadow;
 }
+
+@keyframes presenceRebellionFlashCyan {
+  0% {
+    opacity: 0;
+    text-shadow: 0 0 0 rgba(0, 255, 255, 0);
+  }
+  1.6% {
+    opacity: 1;
+    text-shadow: 
+      0 0 20px rgba(0, 255, 255, 1),
+      0 0 40px rgba(0, 255, 255, 0.9),
+      0 0 60px rgba(0, 255, 255, 0.7),
+      0 0 80px rgba(0, 255, 255, 0.5);
+  }
+  3.2% {
+    opacity: 1;
+    text-shadow: 
+      0 0 15px rgba(0, 255, 255, 0.9),
+      0 0 30px rgba(0, 255, 255, 0.7),
+      0 0 45px rgba(0, 255, 255, 0.5);
+  }
+  6.4% {
+    opacity: 0.8;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.6),
+      0 0 20px rgba(0, 255, 255, 0.4);
+  }
+  9.6% {
+    opacity: 0.4;
+    text-shadow: 
+      0 0 5px rgba(0, 255, 255, 0.3),
+      0 0 10px rgba(0, 255, 255, 0.2);
+  }
+  12.8% {
+    opacity: 0.1;
+    text-shadow: 0 0 3px rgba(0, 255, 255, 0.1);
+  }
+  16% {
+    opacity: 0;
+    text-shadow: 0 0 0 rgba(0, 255, 255, 0);
+  }
+  16.01%, 100% {
+    opacity: 0;
+    text-shadow: 0 0 0 rgba(0, 255, 255, 0);
+  }
+}
+
+.presence-rebellion-flash.cyan-text {
+  animation: presenceRebellionFlashCyan 7.5s ease-out 0s infinite;
+}
