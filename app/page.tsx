@@ -506,7 +506,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="text-gray-300 mt-1" style={{ fontSize: '200%', fontFamily: 'var(--font-display), sans-serif', letterSpacing: '0.02em', fontWeight: 700 }}>
-                  Annual Pass
+                    Annual Pass
                 </div>
               </div>
               <div className="space-y-4 mb-8 text-left" style={{ fontSize: '150%' }}>
@@ -641,8 +641,8 @@ export default function Home() {
                   <span className="current-price-wrapper">
                     <span className="current-price" style={{ 
                       color: '#000000',
-                      WebkitTextStroke: '2px #ff00ff',
-                      textShadow: '0 0 10px rgba(255, 0, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.6), 0 0 30px rgba(255, 0, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.2)'
+                      WebkitTextStroke: '2px #CC00CC',
+                      textShadow: '0 0 10px rgba(204, 0, 204, 0.8), 0 0 20px rgba(204, 0, 204, 0.6), 0 0 30px rgba(204, 0, 204, 0.4), 0 0 40px rgba(204, 0, 204, 0.2)'
                     } as React.CSSProperties}>
                       $50
                     </span>
@@ -665,8 +665,8 @@ export default function Home() {
                       transform: `rotate(${(hourglassRotations['monthly-hourglass-1'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))'
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-1', e)}
                   />
@@ -683,8 +683,8 @@ export default function Home() {
                       transform: `rotate(${(hourglassRotations['monthly-hourglass-2'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))'
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-2', e)}
                   />
@@ -701,8 +701,8 @@ export default function Home() {
                       transform: `rotate(${(hourglassRotations['monthly-hourglass-3'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))'
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-3', e)}
                   />
@@ -719,8 +719,8 @@ export default function Home() {
                       transform: `rotate(${(hourglassRotations['monthly-hourglass-4'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))'
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-4', e)}
                   />
@@ -737,8 +737,8 @@ export default function Home() {
                       transform: `rotate(${(hourglassRotations['monthly-hourglass-5'] || 0) * 180}deg)`,
                       height: '1em',
                       width: 'auto',
-                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))',
-                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(1.1) contrast(1.2) drop-shadow(0 0 8px rgba(255, 0, 255, 0.9)) drop-shadow(0 0 12px rgba(255, 0, 255, 0.7))'
+                      filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))',
+                      WebkitFilter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7500%) hue-rotate(300deg) brightness(0.85) contrast(1.2) drop-shadow(0 0 8px rgba(204, 0, 204, 0.9)) drop-shadow(0 0 12px rgba(204, 0, 204, 0.7))'
                     }}
                     onMouseEnter={(e) => handleHourglassIconHover('monthly-hourglass-5', e)}
                   />
@@ -772,7 +772,7 @@ export default function Home() {
                   >
                     <span className="relative z-[2]" style={{ pointerEvents: 'none', fontFamily: 'var(--font-display), sans-serif' }}>ENTER THE VOID</span>
                   </a>
-                  <span className="text-xs md:text-sm mt-2 block text-center accentMagenta presence-rebellion-flash" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
+                  <span className="text-xs md:text-sm mt-2 block text-center presence-rebellion-flash deep-magenta-text" style={{ fontFamily: 'var(--font-body), sans-serif' }}>
                     Presence as Rebellion
                   </span>
                 </div>
@@ -879,7 +879,7 @@ export default function Home() {
                     <div className="inline-block">
                       <div 
                         className="intercom-button-wrapper-faq"
-                        style={{
+                    style={{ 
                           background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
                           padding: '2px',
                           borderRadius: '50%',
@@ -910,7 +910,7 @@ export default function Home() {
                           className="flex items-center justify-center w-full h-full rounded-full cursor-pointer transition-all duration-300 group hover:bg-black/90 active:scale-95"
                           aria-label="Open chat"
                           style={{
-                            fontFamily: 'var(--font-display), sans-serif',
+                      fontFamily: 'var(--font-display), sans-serif',
                             boxShadow: 'inset 0 0 20px rgba(0, 255, 255, 0.1)',
                             border: 'none',
                             background: 'rgba(0, 0, 0, 0.8)',
